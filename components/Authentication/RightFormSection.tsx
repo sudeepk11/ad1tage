@@ -11,36 +11,30 @@ const RightFormSection = ({
   titleText,
   children,
   googleText,
-  linkedinText,
   authText,
   isAuthText,
   authLinkText,
   authLink,
 }: any) => {
   return (
-    <div className="p-4 basis-3/6 bg-[#fafafa]">
+    <div className="p-4 basis-3/6">
       <Link className="flex items-center justify-center" href="/">
-        <Image className="w-[45px]" src={logoLionImage} alt="" />
-        <Image className="w-auto h-full pl-2 max-h-3" src={logoText} alt="" />
+        <h2 className="font-semibold text-3xl">SeniorSpot</h2>
         {/* {logoText} */}
       </Link>
       <h3
-        className={`flex items-center justify-center pt-6 text-2xl ${josefin.className}`}
+        className={`flex items-center justify-center pt-6 text-xl ${josefin.className}`}
       >
         {titleText}
       </h3>
       {children}
       {isAuthText ? (
         <>
-          <p className="text-center text-2xl mt-4 text-darkGrey">or</p>
+          <p className="text-center text-xl mt-4 text-darkGrey">or</p>
           <div className="m-2 max-w-[384px] w-full mx-auto">
             <div className="flex justify-center items-center mb-6 px-4 py-[11px] border border-lightBrown rounded-[8px]">
               <Image className="w-7 h-[30px]  mr-2" src={google} alt="" />
               <p className="text-base text-black font-medium">{googleText}</p>
-            </div>
-            <div className="flex justify-center items-center mb-6 px-4 py-[11px] border border-lightBrown rounded-[8px]">
-              <Image className="w-7 h-[30px] mr-2" src={linkedin} alt="" />
-              <p className="text-base text-black font-medium">{linkedinText}</p>
             </div>
           </div>
         </>
@@ -50,7 +44,7 @@ const RightFormSection = ({
           {authText}{" "}
           <span>
             <Link
-              className="text-[#886750] underline capitalize"
+              className="text-primary underline capitalize"
               href={`${authLink}`}
             >
               {authLinkText}
