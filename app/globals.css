@@ -1,0 +1,185 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+:root {
+  --foreground-rgb: 0, 0, 0;
+  --background-start-rgb: 214, 219, 220;
+  --background-end-rgb: 255, 255, 255;
+}
+
+@media (prefers-color-scheme: dark) {
+  :root {
+    --foreground-rgb: 255, 255, 255;
+    --background-start-rgb: 0, 0, 0;
+    --background-end-rgb: 0, 0, 0;
+  }
+}
+
+body {
+  /* color: rgb(var(--foreground-rgb)); */
+  background-color: #fff;
+  font-family: "Poppins", sans-serif;
+  /* max-width: 1440px;
+  width: 100%; */
+  /* background: linear-gradient(
+      to bottom,
+      transparent,
+      rgb(var(--background-end-rgb))
+    )
+    rgb(var(--background-start-rgb)); */
+}
+.container-2xl {
+  /* max-width: 1440px; */
+  width: 100%;
+  margin: 0 auto;
+}
+.hotel-suggestion .slick-arrow.slick-next,
+.hotel-suggestion .slick-arrow.slick-prev {
+  background-size: 30px;
+  width: 30px;
+  height: 30px;
+  border-radius: 50%;
+  z-index: 1;
+}
+.hotel-suggestion .slick-arrow.slick-prev,
+.hotel-suggestion .slick-prev:hover,
+.hotel-suggestion .slick-prev:focus {
+  left: 16px;
+  background: url("../images/slider-arrow.png") no-repeat center;
+}
+.hotel-suggestion .slick-arrow.slick-next,
+.hotel-suggestion .slick-arrow.slick-next,
+.hotel-suggestion .slick-next:hover,
+.hotel-suggestion .slick-next:focus {
+  right: 16px;
+  background: url("../images/slider-arrow-right.png") no-repeat center;
+}
+.hotel-suggestion .slick-arrow.slick-next:before,
+.hotel-suggestion .slick-arrow.slick-prev:before {
+  display: none;
+}
+.multiple-width-img .slick-list {
+  margin: 0 -28px 0 0;
+}
+.multiple-width-img .slick-active {
+  margin: 0 14px 0 0;
+}
+.hotel-suggestion .slick-dots button::before {
+  width: 6px;
+  height: 6px;
+  color: rgba(255, 255, 255, 0.4);
+  opacity: 1;
+}
+.hotel-suggestion .slick-dots {
+  bottom: 20px;
+  text-align: right;
+  padding-right: 16px;
+}
+.hotel-suggestion .slick-dots li {
+  width: 6px;
+  height: 6px;
+  margin: 0 2.5px;
+}
+.hotel-suggestion .slick-dots li.slick-active button::before {
+  color: #fff;
+  opacity: 1;
+}
+
+/* slick */
+
+div.property-detail .slick-list {
+  margin: 0 -5px;
+}
+.property-detail .slick-slide > div {
+  padding: 0 5px;
+}
+
+.property-detail.hotel-suggestion .slick-arrow.slick-prev,
+.property-detail.hotel-suggestion .slick-prev:hover,
+.property-detail.hotel-suggestion .slick-prev:focus {
+  left: 50px;
+  background: url("../images/secondary-solid-color-arrow.png") no-repeat center;
+  width: 55px;
+  height: 55px;
+}
+.property-detail.hotel-suggestion .slick-arrow.slick-next,
+.property-detail.hotel-suggestion .slick-next:hover,
+.property-detail.hotel-suggestion .slick-next:focus {
+  right: 50px;
+  background: url("../images/blog-arrow-right.png") no-repeat center;
+  width: 55px;
+  height: 55px;
+}
+/* date range picker */
+.flex .react-daterange-picker__wrapper {
+  border: none;
+  color: #886750;
+  width: max-content;
+}
+button.react-calendar__navigation__label,
+.flex .react-daterange-picker__wrapper {
+  font-family: "__Josefin_Sans_4fe354", "__Josefin_Sans_Fallback_4fe354";
+  font-weight: 500;
+}
+.react-daterange-picker__calendar {
+  display: block !important;
+  margin-top: 20px;
+  border: none !important;
+}
+.react-calendar__tile--active {
+  background-color: #e1d9ce !important;
+}
+.react-calendar__tile--rangeStart {
+  border-top-left-radius: 16px !important;
+  border-bottom-left-radius: 16px !important;
+}
+.react-calendar__tile--rangeEnd {
+  border-top-right-radius: 16px !important;
+  border-bottom-right-radius: 16px !important;
+}
+.react-calendar__month-view__days button.react-calendar__tile {
+  margin-bottom: 10px;
+}
+.react-daterange-picker__inputGroup__month {
+  width: max-content;
+}
+.react-daterange-picker__calendar,
+.react-calendar {
+  position: unset !important;
+  height: 335px !important;
+  margin-bottom: 10px !important;
+  width: 100% !important;
+}
+.react-calendar {
+  border: none !important;
+}
+.react-daterange-picker {
+  display: flex !important;
+  flex-direction: column !important;
+}
+.react-calendar__navigation__label {
+  color: #886750 !important;
+}
+abbr:where([title]) {
+  text-decoration: none;
+}
+.react-calendar__navigation__label {
+  pointer-events: none;
+}
+div .react-calendar--selectRange {
+  background-color: transparent;
+}
+.react-calendar__navigation__prev2-button,
+.react-calendar__navigation__next2-button {
+  display: none;
+}
+.react-calendar__navigation__arrow {
+  border-radius: 50px;
+}
+.react-calendar__navigation__prev-button,
+.react-calendar__navigation__next-button {
+  color: #886750 !important;
+  font-size: 20px;
+  background-color: #e6e6e6 !important;
+}
