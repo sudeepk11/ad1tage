@@ -2,17 +2,18 @@ import React from "react";
 import { josefin } from "../../utils/utilsFonts";
 import CardWithSlider from "../Common/CardWithSlider";
 
-const HotelSuggestions = () => {
+const Services = ({ title }) => {
   return (
-    <div className="bg-lightBrown py-[60px] px-[50px] max-lg:px-4 max-lg:py-10 hotel-suggestion">
+    <div className=" py-[60px] px-[50px] max-lg:px-4 max-lg:py-10 hotel-suggestion">
       <h2
-        className={` ${josefin.className} text-[40px] text-black max-w-[452px] mb-[50px] max-lg:text-[32px] max-lg:leading-[35px] max-lg:mb-[30px]`}
+        className={` ${josefin.className} text-[40px] text-black max-lg:text-[32px] max-lg:leading-[35px] mb-[30px]`}
       >
-        Hotels You would want to Visit
+        {title}
       </h2>
       <div className="grid grid-cols-4 gap-6 hotel-card-design max-lg:grid-cols-1">
         <CardWithSlider
           paraText={" 1 Bed Apartment with Stunning View"}
+          subParaText={"Hospitality Service"}
           rating={"5.0"}
           perRoomUserCount={"2 sleeps"}
           bedCount={"1 Bedroom"}
@@ -20,7 +21,8 @@ const HotelSuggestions = () => {
           likeButton={"unfilled"}
         />
         <CardWithSlider
-          paraText={" 1 Bed Apartment with Stunning View"}
+          paraText={"Katti Caterers, Mysore"}
+          subParaText={"Caterining Service"}
           rating={"5.0"}
           perRoomUserCount={"2 sleeps"}
           bedCount={"1 Bedroom"}
@@ -28,7 +30,8 @@ const HotelSuggestions = () => {
           likeButton={"filled"}
         />
         <CardWithSlider
-          paraText={" 1 Bed Apartment with Stunning View"}
+          paraText={"One Stop Caretakers, Mysore"}
+          subParaText={"Caretaking Service"}
           rating={"4.0"}
           perRoomUserCount={"2 sleeps"}
           bedCount={"1 Bedroom"}
@@ -36,7 +39,8 @@ const HotelSuggestions = () => {
           likeButton={"filled"}
         />
         <CardWithSlider
-          paraText={" 1 Bed Apartment with Stunning View"}
+          paraText={"A.K Medicals, Mysore"}
+          subParaText={"Medical Service"}
           rating={"3.0"}
           perRoomUserCount={"2 sleeps"}
           bedCount={"1 Bedroom"}
@@ -48,4 +52,4 @@ const HotelSuggestions = () => {
   );
 };
 
-export default HotelSuggestions;
+export default Services;
