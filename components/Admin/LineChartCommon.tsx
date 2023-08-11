@@ -46,14 +46,14 @@ const data = [
 
 const LineChartCommon = (props: any) => {
   return (
-    <ResponsiveContainer width="100%" height={140}>
+    <ResponsiveContainer width="100%" height={100}>
       <AreaChart
         width={500}
-        height={200}
+        height={250}
         data={data}
         syncId="anyId"
         margin={{
-          top: 10,
+          top: 30,
           right: 0,
           left: 0,
           bottom: 0,

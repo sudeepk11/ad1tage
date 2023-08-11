@@ -6,12 +6,14 @@ import home_banner from "../../Assets/Images/home_banner.png";
 
 const Banner = () => {
   return (
-    <div className="grid grid-cols-2 content-center items-center h-[640px] max-md:h-[730px]">
-      <div className=" text-black max-md:left-5 max-md:pr-5">
-        <h1 className={`text-[64px] leading-[64px] ${josefin.className}`}>
+    <div className="grid grid-cols-2 content-center items-center h-[540px] max-md:h-[730px]">
+      <div className="flex flex-col justify-center text-black px-10">
+        <h1
+          className={`text-[45px] font-semibold leading-[64px] ${josefin.className}`}
+        >
           Empowering Seniors: Find Nearby Services with Ease!
         </h1>
-        <p className="text-lg mb-[30px]">
+        <p className="text-lg mb-[18px]">
           Discover personalized and reliable solutions for a vibrant and
           fulfilling senior lifestyle. Your gateway to a life enriched with
           convenience and care.

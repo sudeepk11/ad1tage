@@ -25,7 +25,7 @@ const SearchBox = ({ searchClasses }) => {
           ButtonText={"Find Services near me"}
           icon={locationIcon}
           ButtonClasses={
-            "bg-blue-100 text-black w-fit flex items-center justify-center max-h-[58px] max-xl:w-full max-md:py-3"
+            "!bg-blue-100 text-black w-fit flex items-center justify-center max-h-[58px] max-xl:w-full max-md:py-3"
           }
         ></Button>
       </div>
