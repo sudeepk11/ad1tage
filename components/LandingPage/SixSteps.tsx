@@ -58,7 +58,7 @@ const SixSteps = () => {
         </p>
       </div>
 
-      <div className="grid lg:grid-cols-3 lg:px-[124px] gap-[30px]">
+      <div className="grid lg:grid-cols-3 lg:px-[124px] gap-[40px]">
         {items.map((item, index) => (
           <div className="flex flex-col items-center my-3">
             <Image src={item.icon} alt="icon" />
