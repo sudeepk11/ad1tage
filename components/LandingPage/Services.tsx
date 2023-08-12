@@ -12,7 +12,7 @@ const Services = ({ title }) => {
       </h2>
       <div className="grid grid-cols-4 gap-6 hotel-card-design max-lg:grid-cols-1">
         <CardWithSlider
-          paraText={" 1 Bed Apartment with Stunning View"}
+          paraText={"Kle Hospital"}
           subParaText={"Hospitality Service"}
           rating={"5.0"}
           perRoomUserCount={"2 sleeps"}
@@ -32,7 +32,7 @@ const Services = ({ title }) => {
         <CardWithSlider
           paraText={"One Stop Caretakers, Mysore"}
           subParaText={"Caretaking Service"}
-          rating={"4.0"}
+          rating={"5.0"}
           perRoomUserCount={"2 sleeps"}
           bedCount={"1 Bedroom"}
           bathCount={"1 Bath"}
@@ -41,7 +41,7 @@ const Services = ({ title }) => {
         <CardWithSlider
           paraText={"A.K Medicals, Mysore"}
           subParaText={"Medical Service"}
-          rating={"3.0"}
+          rating={"5.0"}
           perRoomUserCount={"2 sleeps"}
           bedCount={"1 Bedroom"}
           bathCount={"1 Bath"}

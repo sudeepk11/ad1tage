@@ -7,7 +7,7 @@ const Mission = () => {
   return (
     <div className="my-[50px]">
       <h3
-        className={`md:text-[40px] leading-[45px] md:font-bold ${josefin.className} mb-6 max-md:font-semibold max-md:text-[32px]`}
+        className={`md:text-[40px] leading-[45px] md:font-semibold ${josefin.className} mb-6 max-md:font-semibold max-md:text-[32px]`}
       >
         Mission
       </h3>
@@ -15,15 +15,12 @@ const Mission = () => {
         <Image
           src={aboutImgSixth}
           alt=""
-          className="object-cover w-full max-md:h-full"
+          className="object-cover w-full max-md:h-full rounded-lg"
         />
 
         <div>
-          <p className="text-base md:font-bold max-md:font-normal">
-            What began as a journey to provide a better stay has grown into a
-            celebration of modern design and exceptional comfort. We’re working
-            with world-class architects and designers to create truly remarkable
-            spaces—ones that transcend hospitality and enrich lives.
+          <p className="text-base md:font-semibold max-md:font-normal">
+          Our mission at ad1tage is to create a vibrant and supportive community where seniors can thrive. We are dedicated to delivering exceptional services that enhance their quality of life and enable them to savor their golden year
           </p>
         </div>
       </div>

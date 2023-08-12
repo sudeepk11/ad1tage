@@ -30,7 +30,7 @@ const Navbar = () => {
   const [userSettingDropdown, setUserSettingDropdown] = useState(false);
   return (
     <div
-      className={`sticky top-0 left-0 z-20 w-full h-auto bg-white ${
+      className={`sticky top-0 left-0 z-20 w-full h-auto shadow-md s bg-white ${
         isLogin || isAdmin ? "shadow-md" : ""
       } `}
     >
@@ -38,11 +38,7 @@ const Navbar = () => {
         <div className="flex gap-[50px]">
           <Link className="flex items-center" href="/">
             <Image className="w-[45px]" src={logoLionImage} alt="" />
-            <Image
-              className="w-auto h-full pl-2 max-h-3"
-              src={logoText}
-              alt=""
-            />
+          
             {/* {logoText} */}
           </Link>
           <input type="checkbox" className="hidden peer" id="nav-check" />
@@ -59,7 +55,7 @@ const Navbar = () => {
                       key={index}
                       className={`lg:mr-[20px] mb-5 lg:mb-0 max-lg:text-2xl lg:text-sm xl:mr-[50px] xl:text-base text-black max-lg:leading-[] ${
                         items.link === router
-                          ? "underline underline-offset-8"
+                          ? "underline underline-offset-8 decoration-primary"
                           : ""
                       }`}
                     >
@@ -119,13 +115,13 @@ const Navbar = () => {
               href={"/signup"}
               className="lg:text-sm laptopScreen:text-base"
             >
-              Create an Account
+              Business Owner? <span className="text-primary cursor-pointer font-medium">Join Us</span> 
             </Link>
             <Link
-              className={`bg-blackLight rounded-[8px] px-[31px] py-2  laptopScreen:text-base text-white`}
+              className={`bg-primary rounded-[8px] px-[31px] py-2  laptopScreen:text-base text-white`}
               href={"/login"}
             >
-              Sign In
+              Sign Up
             </Link>
             {/* <Button /> */}
           </div>

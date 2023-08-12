@@ -13,21 +13,18 @@ import SubBanner from "../Common/SubBanner";
 const Contact = () => {
   return (
     <div className="container-2xl max-lg:px-4 lg:px-[50px] max-md:py-5">
-      <SubBanner
-        imageDesktopSrc={subBannerImg}
-        imageModbileSrc={subBannerMobileImg}
-        bannerHeading="Contact Us"
-      />
-      <div className="lg:px-[74px] md:mt-[100px] max-md:mt-[50px] ">
+
+      <div className="lg:px-[74px] md:mt-16 max-md:mt-[50px] ">
+      <h1 className="font-medium text-2xl mb-10"> Contact Us </h1>
         <ContactForm />
       </div>
-      <div>
+      {/* <div>
         <h2
           className={`max-md:text-[32px] md:text-[40px] ${josefin.className} mb-10 `}
         >
           Contact or Follow Us
         </h2>
-        <div className="bg-lightBrown grid md:grid-cols-3 md:px-[50px] lg:px-[200px] max-md:py-[30px] md:py-[70px] justify-center rounded-2xl mb-[100px]">
+        <div className="bg-white grid md:grid-cols-3 md:px-[50px] lg:px-[200px] max-md:py-[30px] md:py-[70px] justify-center rounded-2xl mb-[100px]">
           <Link
             href="/"
             className="flex flex-col items-center justify-center relative 
@@ -35,7 +32,7 @@ const Contact = () => {
              md:after:w-[25%] md:after:h-[2px] after:flex after:absolute md:after:right-0 after:bg-greyishBrown"
           >
             <Image src={emailIcon} alt="" className="object-contain mb-5" />
-            <p className="underline">hello@trophystays.com</p>
+            <p className="underline decoration-primary text-primary">hello@ad1tage.com</p>
           </Link>
 
           <Link
@@ -47,7 +44,7 @@ const Contact = () => {
             after:w-[25%] after:h-[2px] after:flex after:absolute after:right-0 after:bg-greyishBrown"
           >
             <Image src={linkedInIcon} alt="" className="object-contain mb-5" />
-            <p className="underline">trophy-stays</p>
+            <p className="underline decoration-primary text-primary">ad1tage</p>
           </Link>
 
           <Link
@@ -57,10 +54,10 @@ const Contact = () => {
             before:w-[25%] before:h-[2px] after:flex before:absolute md:before:left-0 before:bg-greyishBrown"
           >
             <Image src={instaIcon} alt="" className="object-contain mb-5" />
-            <p className="underline">@trophystays</p>
+            <p className="underline decoration-primary text-primary">@ad1tage</p>
           </Link>
         </div>
-      </div>
+      </div> */}
     </div>
   );
 };

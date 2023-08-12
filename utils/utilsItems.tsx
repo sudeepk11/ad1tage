@@ -10,12 +10,12 @@ export const navbarItems = [
     link: "/",
   },
   {
-    name: "Services",
-    link: "/services",
+    name: "Categories",
+    link: "/categories",
   },
   {
-    name: "Reviews",
-    link: "/reviews",
+    name: "Services",
+    link: "/services",
   },
   {
     name: "About Us",
@@ -120,28 +120,23 @@ export const blogDeailPara5 =
 export const aboutGoal = [
   {
     id: 1,
-    title: "Your stay managed from your mobile",
+    title: "Enhanced Services",
     content:
-      "Our Guest App allows you to request maintenance support, home cleaning or even fresh towels and linens.",
+      "Elevate and expand our service offerings to encompass a wide spectrum of senior needs, ensuring a holistic and enriching experience.",
   },
   {
     id: 2,
-    title: "Month-to-month living for the nomad in you",
+    title: "Innovation and Adaptation",
     content:
-      "Live downtown one month, and uptown the next. Experience the freedom to move between apartments, neighborhoods, or cities, all on your terms.",
+      "Stay at the forefront of innovation in senior care, embracing new technologies and approaches to enhance the quality of our services.",
   },
   {
     id: 3,
-    title: "Technology to harness the power of home",
+    title: "Personalized Care",
     content:
-      "High-speed internet, smart TVs, and modern in-home entertainment gadgets come standard so you can live in style.",
+      "Continuously refine our services to provide tailored solutions for each senior, respecting their preferences, needs, and individuality",
   },
-  {
-    id: 4,
-    title: "Thoughtfully furnished & meticulously-designed",
-    content:
-      "Offering spacious work & living areas, our purposefully designed spaces provide inspired spaces for the modern traveler.",
-  },
+  
 ];
 
 export const privacyPolicyContent = [

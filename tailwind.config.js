@@ -19,6 +19,7 @@ module.exports = {
         lightBrown: "#F5EADB",
         greyishBrown: "#E1D9CE",
         offWhite: "#FAFAFA",
+        footer: "#1E2F3F"
       },
       gridTemplateColumns: {
         "image-gallery-4": "160px repeat(3 , 1fr)",
