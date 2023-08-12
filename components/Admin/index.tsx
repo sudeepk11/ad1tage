@@ -2,6 +2,8 @@
 import React, { useState } from "react";
 import AdminInsights from "./AdminDashboard";
 import AdminListing from "./AdminListing";
+import AdminManageCategories from "./AdminManageCategories";
+import AdminAddService from "./AdminAddService";
 import { josefin } from "../../utils/utilsFonts";
 
 const Admin = () => {
@@ -52,6 +54,8 @@ const Admin = () => {
       </div>
       {currTab === 1 && <AdminInsights />}
       {currTab === 2 && <AdminListing />}
+      {currTab === 3 && <AdminManageCategories />}
+      {currTab === 4 && <AdminAddService />}
     </React.Fragment>
   );
 };
