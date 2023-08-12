@@ -6,7 +6,7 @@ const Categories = ({ title, categories }) => {
   return (
     <div className=" py-[60px] px-[50px] max-lg:px-4 max-lg:py-10 hotel-suggestion">
       <h2
-        className={` ${josefin.className} text-[40px] text-black max-lg:text-[32px] max-lg:leading-[35px] mb-[30px]`}
+        className={` ${josefin.className} text-[32px] font-semibold text-black max-lg:text-[32px] max-lg:leading-[35px] mb-[30px]`}
       >
         {title}
       </h2>

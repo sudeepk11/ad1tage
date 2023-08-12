@@ -12,9 +12,9 @@ const HotelListing = () => {
   const [mapView, setMapView] = useState(false);
 
   return (
-    <div className="hotel-suggestion">
+    <div className="hotel-suggestion py-5">
       <SearchBox searchClasses="mt-[20px] mb-10" />
-      <FilterImgTile />
+  
       <FilterOptions listOrMapView={() => setMapView(!mapView)} />
       {mapView === true ? (
         <div className="grid grid-cols-2 gap-6 max-md:flex max-md:flex-col-reverse max-lg:grid-col-2">

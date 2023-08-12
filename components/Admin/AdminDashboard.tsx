@@ -76,7 +76,7 @@ const AdminDashboard = () => {
           <div className="col-span-2 p-5 bg-offWhite rounded-xl max-md:p-3">
             <div className="flex justify-between mb-5">
               <p className="mr-10 font-semibold leading-9 text-black md:text-2xl max-md:text-lg">
-                SeniorSpot Reviews
+                ad1tage Reviews
               </p>
               <div className="flex flex-wrap content-center max-md:justify-end">
                 <Rating />

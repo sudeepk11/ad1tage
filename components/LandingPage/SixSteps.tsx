@@ -48,7 +48,7 @@ const SixSteps = () => {
     <div className="py-5 pb-20">
       <div className="px-[50px] max-lg:px-4 max-lg:py-10 hotel-suggestion">
         <h2 className={`text-[40px] text-center text-black max-lg:text-[32px] max-lg:leading-[35px] mb-[30px]`}>
-          Why SeniorSpot?
+          Why ad1tage?
         </h2>
         <p className="text-[18px] font-light text-center">
           Navigating Life's Next Chapter - Your Gateway to Tailored Services for Seniors.

@@ -23,7 +23,7 @@ const FilterOptions = ({ listOrMapView }: any) => {
         <div
           className={`flex rounded-lg h-max p-[14px] items-center transition-all ${
             mapView === false
-              ? "bg-black text-white"
+              ? "bg-primary text-white"
               : "bg-transparent text-black"
           }`}
         >
@@ -45,7 +45,7 @@ const FilterOptions = ({ listOrMapView }: any) => {
         </div>
         <div
           className={`flex rounded-lg h-max p-[14px] items-center transition-all ${
-            mapView === true ? "bg-black text-white " : "bg-transparent"
+            mapView === true ? "bg-primary text-white " : "bg-transparent"
           }`}
         >
           {mapView ? (
