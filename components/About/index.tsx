@@ -14,8 +14,9 @@ const About = () => {
         <Image
           src={aboutImg}
           alt=""
-          className="py-10 rounded-3xl object-cover sticky top-[80px] left-0 w-full"
+          className="py-16 object-cover sticky top-[80px] h-screen left-0 w-full"
         />
+  
       </div>
       <div className="max-md:w-full md:w-[45%] md:mb-[100px] max-md:mb-5">
         <h1

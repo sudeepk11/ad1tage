@@ -4,7 +4,7 @@ import CardWithSlider from "../Common/CardWithSlider";
 
 const Services = ({ title }) => {
   return (
-    <div className=" py-[60px] px-[50px] max-lg:px-4 max-lg:py-10 hotel-suggestion">
+    <div className=" py-16 px-[50px] max-lg:px-4 max-lg:py-10  hotel-suggestion">
       <h2
         className={` ${josefin.className} text-[32px] text-black max-lg:text-[32px] max-lg:leading-[35px] mb-[30px] font-semibold`}
       >

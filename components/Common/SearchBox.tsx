@@ -7,7 +7,7 @@ import locationIcon from "../../Assets/Icons/location.png";
 const SearchBox = ({ searchClasses }) => {
   return (
     <div
-      className={`bg-white p-[20px] rounded-xl shadow-md max-w-[1190px] w-full m-auto relative z-1 ${searchClasses} h-fit`}
+      className={`bg-white p-[20px] mb-10 rounded-xl shadow-md max-w-[1190px] w-full m-auto relative z-1 ${searchClasses} h-fit`}
     >
       <div className="flex justify-between gap-4 relative max-xl:grid max-xl:grid-cols-3 max-md:grid-cols-1">
         <input

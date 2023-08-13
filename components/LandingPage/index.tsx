@@ -23,8 +23,8 @@ const LandingPage = () => {
       </div>
 
       <Services title="Find Top Services Nearby" />
-      <Categories title="Categories" categories={categories} />
-      <Services title="Recently Viewed" />
+      <Categories title="Top Categories" categories={categories} />
+      <Services title="Your Recently Viewed Services" />
       <SixSteps />
     </React.Fragment>
   );

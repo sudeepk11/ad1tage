@@ -36,10 +36,8 @@ const Navbar = () => {
     >
       <div className="flex items-center justify-between max-w-full py-[13px] mx-auto px-5 lg:px-[50px] ">
         <div className="flex gap-[50px]">
-          <Link className="flex items-center" href="/">
-            <Image className="w-[45px]" src={logoLionImage} alt="" />
-          
-            {/* {logoText} */}
+          <Link className="flex items-center text-gray-600" href="/">
+            <Image className="w-[80px]" src={logoLionImage} alt="" />
           </Link>
           <input type="checkbox" className="hidden peer" id="nav-check" />
           {!isLogin && (
@@ -53,7 +51,7 @@ const Navbar = () => {
                   return (
                     <li
                       key={index}
-                      className={`lg:mr-[20px] mb-5 lg:mb-0 max-lg:text-2xl lg:text-sm xl:mr-[50px] xl:text-base text-black max-lg:leading-[] ${
+                      className={`lg:mr-[20px] mb-5 lg:mb-0 max-lg:text-2xl lg:text-sm xl:mr-10 xl:text-base text-black max-lg:leading-[] ${
                         items.link === router
                           ? "underline underline-offset-8 decoration-primary"
                           : ""

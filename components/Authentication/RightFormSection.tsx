@@ -19,7 +19,7 @@ const RightFormSection = ({
   return (
     <div className="p-4 basis-3/6">
       <Link className="flex items-center justify-center" href="/">
-        <h2 className="font-semibold text-3xl">SeniorSpot</h2>
+        <h2 className="font-semibold text-3xl">ad1tage</h2>
         {/* {logoText} */}
       </Link>
       <h3
