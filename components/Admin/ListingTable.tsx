@@ -89,7 +89,7 @@ const ListingTable = (props: any) => {
                 alt=""
                 className="w-14 h-auto rounded-lg m-3"
               />
-              <p className="mx-3">{data.listing}</p>
+              <p className="flex items-center justify-center ml-3 font-semibold">{data.listing}</p>
             </td>
             <td className="py-5 px-3">
               <p

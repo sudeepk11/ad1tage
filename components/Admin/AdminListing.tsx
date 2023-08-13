@@ -26,10 +26,7 @@ const AdminListing = () => {
           </div>
         </div>
         <div className="flex content-center justify-between gap-4 mt-4 mb-6 max-md:flex-col md:flex-wrap">
-          <Dropdown dropdownBeforeImg="hidden" />
-          <Dropdown dropdownBeforeImg="hidden" />
-          <Dropdown dropdownBeforeImg="hidden" />
-          <Dropdown dropdownBeforeImg="hidden" />
+       
           <div className="flex justify-center items-start md:w-[507px] gap-4 max-md:w-full max-md:justify-between max-md:flex-col">
             <div className="relative top-0 left-0 search-bar max-md:w-[100%]">
               <input

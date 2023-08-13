@@ -12,15 +12,15 @@ import SubBanner from "../Common/SubBanner";
 
 const Contact = () => {
   return (
-    <div className="container-2xl max-lg:px-4 lg:px-[50px] max-md:py-3">
+    <div className="grid grid-cols-1 mt-10 md:grid-cols-3 gap-10 p-3  md:mt-16 max-lg:px-4 lg:px-[50px] max-md:py-3">
 
-      <div className="lg:px-[74px] md:mt-16 max-md:mt-[50px] ">
+      <div className="col-span-2">
         <h1 className="font-medium text-2xl mb-4">Any query? Reach out to us</h1>
         <p className="font-medium text-md mb-10">Your queries will be addressed within the span of 24 to 48 hours</p>
         <ContactForm />
       </div>
 
-      <div className="lg:px-[74px] md:mt-16 max-md:mt-[50px]">
+      <div className="mt-1">
         <h2 className={`text-2xl font-medium mb-3`}>Contact Information</h2>
         <div className="">
           <div className="flex flex-wrap lg:justify-between">

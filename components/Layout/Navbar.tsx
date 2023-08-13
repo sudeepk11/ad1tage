@@ -90,8 +90,8 @@ const Navbar = () => {
               className="flex items-center max-lg:hidden"
               onClick={() => setUserSettingDropdown(!userSettingDropdown)}
             >
-              <Image className="w-[44px] h-[44px]" src={profileImage} alt="" />
-              <span className="pl-2 text-base font-normal">Trophy</span>
+              {/* <Image className="w-[44px] h-[44px]" src={} alt="" /> */}
+              <span className="pl-2 text-base font-normal">Mohan Kamat</span>
               <Image className="w-[20px] pl-2" src={arrowDown} alt="" />
             </div>
             {userSettingDropdown && (

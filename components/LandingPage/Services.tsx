@@ -13,6 +13,7 @@ const Services = ({ title }) => {
       <div className="grid grid-cols-4 gap-6 hotel-card-design max-lg:grid-cols-1">
         <CardWithSlider
           paraText={"Kle Hospital"}
+          location =  {"Belgaum"}
           subParaText={"Hospitality Service"}
           rating={"5.0"}
           perRoomUserCount={"2 sleeps"}
@@ -21,7 +22,8 @@ const Services = ({ title }) => {
           likeButton={"unfilled"}
         />
         <CardWithSlider
-          paraText={"Katti Caterers, Mysore"}
+          paraText={"Katti Caterers"}
+          location =  {"Mysore"}
           subParaText={"Caterining Service"}
           rating={"5.0"}
           perRoomUserCount={"2 sleeps"}
@@ -30,7 +32,8 @@ const Services = ({ title }) => {
           likeButton={"filled"}
         />
         <CardWithSlider
-          paraText={"One Stop Caretakers, Mysore"}
+          paraText={"One Stop Caretakers"}
+          location={"Bengaluru"}
           subParaText={"Caretaking Service"}
           rating={"5.0"}
           perRoomUserCount={"2 sleeps"}
@@ -39,7 +42,8 @@ const Services = ({ title }) => {
           likeButton={"filled"}
         />
         <CardWithSlider
-          paraText={"A.K Medicals, Mysore"}
+          paraText={"A.K Medicals"}
+          location={"Hubli"}
           subParaText={"Medical Service"}
           rating={"5.0"}
           perRoomUserCount={"2 sleeps"}

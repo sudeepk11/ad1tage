@@ -20,7 +20,7 @@ const ContactForm = () => {
           alert(JSON.stringify(values, null, 2));
         }}
       >
-        <Form className="flex flex-wrap justify-between gap-6 mb-[100px]">
+        <Form className="flex flex-wrap justify-between gap-6 mb-4">
           <Field
             className="p-4 border rounded-lg placeholder:font-medium border-greyishBrown max-md:w-full md:basis-[48%]"
             id="firstName"

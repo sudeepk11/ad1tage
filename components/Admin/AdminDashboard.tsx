@@ -12,18 +12,18 @@ import Image from "next/image";
 import BarChartCommon from "../Common/BarChartCommon";
 const reviewArr = [
   {
-    headingName: "By Waqas L",
+    headingName: "By Sriharan",
     headingDetails:
-      "stayed at Luxurious 1 BR Apt at Adress Residence Jumeirah Resort in May 2023",
+      "ABC Caterers , Udupi",
     review:
-      "Location and apartment is amazing and Anna’s keep things updated I give 5star highly recommended",
+      "I give 4 star highly recommended",
   },
   {
-    headingName: "By Mirette A",
+    headingName: "By Sanjeev H",
     headingDetails:
-      "stayed at Modern | Chic Studio in the heart of Arjan in May 2023",
+      "KLE Hospital, Belgaum",
     review:
-      "The place was very clean and the whole prep was was very smooth and organized and it was really easy to reach out to Anna",
+      "The hospital was very clean and the whole service was was very smooth and organized and it was really easy to reach out to mohan",
   },
 ];
 const listingArr = [
@@ -70,6 +70,54 @@ const AdminDashboard = () => {
               30-Day Calls
             </p>
             <LineChartCommon color="#8FCAB5" dataKey="amt" />
+          </div>
+
+          <div className="bg-offWhite w-full max-lg:mb-4 h-[185px] rounded-2xl overflow-hidden">
+            <p className="text-3xl font-semibold mt-5 text-center">4.9</p>
+            <p className="text-[14px] font-semibold mt-3 text-center">
+              Average Reviews
+            </p>
+            <LineChartCommon color="#F9C270" dataKey="amt" />
+          </div>
+
+          <div className="bg-offWhite w-full max-lg:mb-4 h-[185px] rounded-2xl overflow-hidden">
+            <p className="text-3xl font-semibold mt-5 text-center">14</p>
+            <p className="text-[14px] font-semibold mt-3 text-center">
+              Total Categories
+            </p>
+            <LineChartCommon color="#6DB3C9" dataKey="amt" />
+          </div>
+
+          <div className="bg-offWhite w-full max-lg:mb-4 h-[185px] rounded-2xl overflow-hidden">
+            <p className="text-3xl font-semibold mt-5 text-center">24</p>
+            <p className="text-[14px] font-semibold mt-3 text-center">
+              Total Users
+            </p>
+            <LineChartCommon color="#E99A9A" dataKey="amt" />
+          </div>
+
+          <div className="bg-offWhite w-full max-lg:mb-4 h-[185px] rounded-2xl overflow-hidden">
+            <p className="text-3xl font-semibold mt-5 text-center">94</p>
+            <p className="text-[14px] font-semibold mt-3 text-center">
+              Total Business Owners
+            </p>
+            <LineChartCommon color="#B5D4B4" dataKey="amt" />
+          </div>
+
+          <div className="bg-offWhite w-full max-lg:mb-4 h-[185px] rounded-2xl overflow-hidden">
+            <p className="text-3xl font-semibold mt-5 text-center">94</p>
+            <p className="text-[14px] font-semibold mt-3 text-center">
+              Total Reviews
+            </p>
+            <LineChartCommon color="#F2A5A0" dataKey="amt" />
+          </div>
+
+          <div className="bg-offWhite w-full max-lg:mb-4 h-[185px] rounded-2xl overflow-hidden">
+            <p className="text-3xl font-semibold mt-5 text-center">94</p>
+            <p className="text-[14px] font-semibold mt-3 text-center">
+              Total Queries
+            </p>
+            <LineChartCommon color="#B39DDB" dataKey="amt" />
           </div>
         </div>
         <div className="grid justify-between gap-4 mt-6 mb-2 lg:grid-cols-3 max-lg:grid-cols-1">

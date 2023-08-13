@@ -87,7 +87,7 @@ const CardWithSlider = (props) => {
              : (
               ""
             )}
-            <span>{props.rating}</span>
+            <span className="ml-2 font-medium">{props.rating}</span>
           </div>
           <div className="cursor-pointer">
             {props.likeButton === "filled" ? (
@@ -106,10 +106,11 @@ const CardWithSlider = (props) => {
           </div>
         </div>
         <Link href={`property-details/1Aserdwaaxxde${props.id}`}>
-          <p className={`text-base ${josefin.className}`}>{props.paraText}</p>
-          <p className={`text-base text-gray-400 ${josefin.className}`}>
+          <p className={`text-base mt-1`}>{props.paraText}</p>
+          <p className={` text-gray-600 text-sm`}>
             {props.subParaText}
           </p>
+          <p className={`text-primary text-[14px] mt-1`}>{props.location}</p>
         </Link>
       </div>
     </div>
