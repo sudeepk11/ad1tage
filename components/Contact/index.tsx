@@ -43,7 +43,7 @@ const Contact = () => {
                   <div className="w-full">
                     <h4 className="mb-1 text-xl font-semibold ">Our Location</h4>
                     <p className="text-base text-body-color">
-                      99 S.t Jomblo Park Pekanbaru 28292. Indonesia
+                      Sanjaynagar Bengaluru , Karnataka
                     </p>
                   </div>
                 </div>
