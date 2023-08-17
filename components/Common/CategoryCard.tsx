@@ -14,15 +14,15 @@ var settings = {
 const CategoryCard = (props) => {
   return (
     <div className="bg-white rounded-[16px] hotel-card-design shadow-lg">
-      <div className="relative before:bg-slider-overlay before:absolute before:h-fit before:w-full before:top-0 before:left-0">
-        <Image
-          className="w-full h-full object-contain"
-          src={sliderImg}
-          alt=""
-        />
-      </div>
+      <Link href={`/category`}>
+        <div className="relative before:bg-slider-overlay before:absolute before:h-fit before:w-full before:top-0 before:left-0">
+          <Image
+            className="w-full h-full object-contain"
+            src={sliderImg}
+            alt=""
+          />
+        </div>
 
-      <Link href={`/`}>
         <p className={`text-base ${josefin.className} mx-3 my-2`}>
           {props.paraText}
         </p>

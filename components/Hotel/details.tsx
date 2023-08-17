@@ -121,7 +121,7 @@ const PropertyDetails = () => {
 
             <div>
               <h3 className="mb-5 text-xl font-medium">Description</h3>
-              <p className="mb-5 text-base">
+              <p className="mb-5 text-base text-justify">
                 Discover the best of Austin, with this studio East Austin
                 apartment with balcony views over the city. It’ll be easy to
                 simply show up and start living in this lavishly Blueground
@@ -134,7 +134,7 @@ const PropertyDetails = () => {
                 Designed with you in mind
               </p>
 
-              <p className="mb-5 text-base">
+              <p className="mb-5 text-base  text-justify">
                 Thoughtfully designed with bespoke finishes, modern furnishings,
                 and a fully-equipped kitchen, you’ll enjoy that “I’m home”
                 feeling with this Blueground apartment. Whether you’re lounging
@@ -154,7 +154,7 @@ const PropertyDetails = () => {
               <p className="mb-5 text-base font-medium">
                 Arrival and ongoing support
               </p>
-              <p className="mb-5 text-base">
+              <p className="mb-5 text-base  text-justify">
                 The entire apartment is yours to enjoy! You’ll either be
                 personally greeted by a Blueground team member or given self
                 check-in instructions. Throughout your stay, you’ll have access
@@ -173,7 +173,7 @@ const PropertyDetails = () => {
 
           <div>
             <p className="mb-5 text-base font-medium">About the Location</p>
-            <p className="mb-5 text-base">
+            <p className="mb-5 text-base text-justify">
               This furnished apartment is located in East Austin, one of the
               city’s hippest and most diverse neighborhoods. The area is home to
               a thriving nightlife scene that includes breweries, cocktail bars,
@@ -278,7 +278,7 @@ const PropertyDetails = () => {
                     />
                     <span className="text-md">4.0</span>
                   </div>
-                  <p className="my-2">
+                  <p className="my-2 text-justify">
                     Lorem ipsum dolor sit amet, consectetur adipisicing elit.
                     Unde temporibus reprehenderit consectetur, animi enim
                     explicabo repudiandae officiis ipsum amet veniam incidunt
@@ -310,7 +310,7 @@ const PropertyDetails = () => {
           <div className="flex my-5">
             <Image src={verifiedIcon} alt="" className="object-contain" />
             <span
-              className={`${josefin.className} text-[15px] text-primary bg-blue-100 mx-4 px-4 border-primary border-solid border-2 rounded-full`}
+              className={`${josefin.className} text-[15px] text-primary bg-blue-100 md:mx-4 ml-2 px-4 border-primary border-solid border-2 rounded-full w-fit`}
             >
               SeniorSpot Recommended
             </span>

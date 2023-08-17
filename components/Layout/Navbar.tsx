@@ -53,7 +53,7 @@ const Navbar = () => {
                       key={index}
                       className={`lg:mr-[20px] mb-5 lg:mb-0 max-lg:text-2xl lg:text-sm xl:mr-10 xl:text-base text-black max-lg:leading-[] ${
                         items.link === router
-                          ? "underline underline-offset-8 decoration-primary"
+                          ? "text-primary font-semibold"
                           : ""
                       }`}
                     >

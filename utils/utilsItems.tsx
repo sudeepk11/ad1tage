@@ -15,7 +15,7 @@ export const navbarItems = [
   },
   {
     name: "Services",
-    link: "/services",
+    link: "/service-details/1",
   },
   {
     name: "About Us",
@@ -136,7 +136,6 @@ export const aboutGoal = [
     content:
       "Continuously refine our services to provide tailored solutions for each senior, respecting their preferences, needs, and individuality",
   },
-  
 ];
 
 export const privacyPolicyContent = [

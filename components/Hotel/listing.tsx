@@ -17,7 +17,7 @@ const HotelListing = () => {
     <div className="hotel-suggestion py-5">
       <div className="flex justify-between">
         <h2
-          className={` ${josefin.className} text-[32px] text-black max-lg:text-[32px] max-lg:leading-[35px] mb-[30px] font-semibold`}
+          className={` ${josefin.className} text-[32px] text-black max-lg:text-[32px] max-lg:leading-[35px] max-md:text-[22px] mb-[30px] font-semibold`}
         >
           Category: HealthCare
         </h2>

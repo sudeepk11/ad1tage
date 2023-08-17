@@ -36,10 +36,10 @@ const AdminManageCategories = () => {
             </div>
           </div>
         </div>
-
         {/* Categories Table */}
-        <CategoriesTable />
-
+        <div className="w-screen overflow-x-scroll">
+          <CategoriesTable />
+        </div>
         <div className="mt-10">
           <p
             className={`mt-4 mb-3 text-2xl font-semibold leading-6 text-black ${josefin.className}`}

@@ -52,7 +52,7 @@ const ListingData = [
 
 const ListingTable = (props: any) => {
   return (
-    <table className="text-sm w-full">
+    <table className="text-sm w-fit">
       <thead>
         <tr className="my-5 border border-solid rounded-lg text-center">
           <th className="flex py-5 px-3">
@@ -89,7 +89,9 @@ const ListingTable = (props: any) => {
                 alt=""
                 className="w-14 h-auto rounded-lg m-3"
               />
-              <p className="flex items-center justify-center ml-3 font-semibold">{data.listing}</p>
+              <p className="flex items-center justify-center ml-3 font-semibold">
+                {data.listing}
+              </p>
             </td>
             <td className="py-5 px-3">
               <p

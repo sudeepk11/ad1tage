@@ -10,12 +10,12 @@ const Admin = () => {
   const [currTab, setcurrTab] = useState(1);
   return (
     <React.Fragment>
-      <div className="flex w-max text-center h-[80px] mx-auto md:-mt-[80px] lg:sticky lg:z-20 cursor-pointer items-center lg:top-0">
+      <div className="flex w-screen text-center h-[80px] mx-auto md:-mt-[80px] lg:sticky lg:z-20 cursor-pointer items-center lg:top-0 overflow-x-scroll scrollbar-hide">
         <h3
           className={`${
             josefin.className
-          } max-md:px-2 md:px-5 md:mx-4 max-md:mx-2 h-full flex items-center border-b-[3px] rounded-sm transition-all ${
-            currTab === 1 ? "text-primary border-primary" : "border-transparent"
+          } max-md:px-2 md:px-5 md:mx-4 max-md:mx-2 h-full flex items-center rounded-sm transition-all ${
+            currTab === 1 ? "text-primary font-semibold" : ""
           }`}
           onClick={() => setcurrTab(1)}
         >
@@ -24,8 +24,8 @@ const Admin = () => {
         <h3
           className={` ${
             josefin.className
-          } max-md:px-2 md:px-5 md:mx-4 max-md:mx-2 h-full flex items-center border-b-[3px] rounded-sm transition-all ${
-            currTab === 2 ? "text-primary border-primary" : "border-transparent"
+          } max-md:px-2 md:px-5 md:mx-4 max-md:mx-2 h-full flex items-center rounded-sm transition-all ${
+            currTab === 2 ? "text-primary font-semibold" : ""
           }`}
           onClick={() => setcurrTab(2)}
         >
@@ -34,8 +34,8 @@ const Admin = () => {
         <h3
           className={` ${
             josefin.className
-          } max-md:px-2 md:px-5 md:mx-4 max-md:mx-2 h-full flex items-center border-b-[3px] rounded-sm transition-all ${
-            currTab === 3 ? "text-primary border-primary" : "border-transparent"
+          } max-md:px-2 md:px-5 md:mx-4 max-md:mx-2 h-full flex items-center rounded-sm transition-all ${
+            currTab === 3 ? "text-primary font-semibold" : ""
           }`}
           onClick={() => setcurrTab(3)}
         >
@@ -44,18 +44,20 @@ const Admin = () => {
         <h3
           className={` ${
             josefin.className
-          } max-md:px-2 md:px-5 md:mx-4 max-md:mx-2 h-full flex items-center border-b-[3px] rounded-sm transition-all ${
-            currTab === 4 ? "text-primary border-primary" : "border-transparent"
+          } max-md:px-2 md:px-5 md:mx-4 max-md:mx-2 h-full flex items-center rounded-sm transition-all ${
+            currTab === 4 ? "text-primary font-semibold" : ""
           }`}
           onClick={() => setcurrTab(4)}
         >
           Add Services
         </h3>
       </div>
-      {currTab === 1 && <AdminInsights />}
-      {currTab === 2 && <AdminListing />}
-      {currTab === 3 && <AdminManageCategories />}
-      {currTab === 4 && <AdminAddService />}
+      <div>
+        {currTab === 1 && <AdminInsights />}
+        {currTab === 2 && <AdminListing />}
+        {currTab === 3 && <AdminManageCategories />}
+        {currTab === 4 && <AdminAddService />}
+      </div>
     </React.Fragment>
   );
 };
