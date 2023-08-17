@@ -95,7 +95,7 @@ const Navbar = () => {
               <Image className="w-[20px] pl-2" src={arrowDown} alt="" />
             </div>
             {userSettingDropdown && (
-              <div className="p-4 rounded grid grid-cols-2 bg-white mt-4 absolute z-[1] bg-white w-full top-[100%]">
+              <div className="p-4 rounded grid grid-cols-2 mt-4 absolute z-[1] bg-white w-full top-[100%]">
                 <ul>
                   <li className="my-2 text-base">
                     <Link href="/admin/setting">Setting</Link>
@@ -113,7 +113,10 @@ const Navbar = () => {
               href={"/signup"}
               className="lg:text-sm laptopScreen:text-base"
             >
-              Business Owner? <span className="text-primary cursor-pointer font-medium">Join Us</span> 
+              Business Owner?{" "}
+              <span className="text-primary cursor-pointer font-medium">
+                Join Us
+              </span>
             </Link>
             <Link
               className={`bg-primary rounded-[8px] px-[31px] py-2  laptopScreen:text-base text-white`}

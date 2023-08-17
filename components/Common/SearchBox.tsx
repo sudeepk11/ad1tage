@@ -9,16 +9,16 @@ const SearchBox = ({ searchClasses }) => {
     <div
       className={`bg-white p-[20px] mb-10 rounded-xl shadow-md max-w-[1190px] w-full m-auto relative z-1 ${searchClasses} h-fit`}
     >
-      <div className="flex justify-between gap-4 relative max-xl:grid max-xl:grid-cols-3 max-md:grid-cols-1">
+      <div className="grid grid-cols-8 gap-4 relative">
         <input
           type="text"
           placeholder="Search..."
-          className="py-[10px] px-6 border border-greyishBrown rounded-[8px] w-full"
+          className=" md:col-span-5 sm:col-span-4 col-span-8 py-[10px] px-6 border border-greyishBrown rounded-[8px] w-full"
         />
         <Button
           ButtonText={"Search"}
           ButtonClasses={
-            "w-max flex items-center font-semibold text-white justify-center max-h-[58px] max-xl:w-full max-md:py-3"
+            "sm:col-span-1 col-span-3 w-max flex items-center font-semibold text-white justify-center max-h-[58px] max-xl:w-full max-md:py-3"
           }
         ></Button>
         <Button
@@ -26,7 +26,7 @@ const SearchBox = ({ searchClasses }) => {
           icon={locationIcon}
           logo={locationIcon}
           ButtonClasses={
-            "!bg-blue-100 text-[#2A86DB] font-semibold w-fit flex items-center justify-center max-h-[58px] max-xl:w-full max-md:py-3"
+            " md:col-span-2 sm:col-span-3 col-span-5 !bg-blue-100 text-[#2A86DB] font-semibold w-fit flex items-center justify-center max-h-[58px] max-xl:w-full max-md:py-3"
           }
         ></Button>
       </div>

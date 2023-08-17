@@ -13,10 +13,10 @@ var settings = {
 };
 const CategoryCard = (props) => {
   return (
-    <div className="bg-white rounded-[16px] overflow-hidden hotel-card-design shadow-lg">
-      <div className="relative before:bg-slider-overlay before:absolute before:h-full before:w-full before:top-0 before:left-0">
+    <div className="bg-white rounded-[16px] hotel-card-design shadow-lg">
+      <div className="relative before:bg-slider-overlay before:absolute before:h-fit before:w-full before:top-0 before:left-0">
         <Image
-          className="w-full h-[240px] object-cover"
+          className="w-full h-full object-contain"
           src={sliderImg}
           alt=""
         />
