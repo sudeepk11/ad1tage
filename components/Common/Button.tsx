@@ -9,7 +9,7 @@ const Button = ({ ButtonText, ButtonClasses, ButtonClicked, icon }: any) => {
     >
       {icon && <Image src={icon} alt="icon" width={20} height={20} />}
       {/* P tag with text in a single line */}
-      <p className=" whitespace-nowrap">{ButtonText}</p>
+      <p className=" whitespace-nowrap px-2">{ButtonText}</p>
     </div>
   );
 };

@@ -9,20 +9,16 @@ import sliderImg1 from "../../images/property-detail-img-2.png";
 import sliderImg2 from "../../images/hero.png";
 import sliderImg3 from "../../images/login-form-img-1.png";
 import Link from "next/link";
-import heartImg from "../../images/heart-icon-outline.png";
-import multiPerson from "../../images/multi-person.png";
-import bedRoomIcon from "../../images/bedroom-icon.png";
-import bathTubIcon from "../../images/bathtub-icon.png";
-import spaceIcon from "../../images/space-in-ft.png";
-import floorIcon from "../../images/floor.png";
 import map from "../../images/map.png";
 import starImg from "../../images/star-icon.png";
 import starOutlineImg from "../../images/Star-outline.png";
 import userImg from "../../images/user-img.png";
-
+import callIcon from "../../Assets/Icons/call.png";
+import verifiedIcon from "../../Assets/Icons/verified.png";
+import locationIcon from "../../Assets/Icons/location.png";
+import arrowIcon from "../../Assets/Icons/arrow.png";
 import { josefin } from "../../utils/utilsFonts";
 import Button from "../Common/Button";
-import Amenities from "./amenities";
 import CustomModal from "../Common/CustomModal";
 import DatePicker from "../Common/DatePicker";
 
@@ -43,118 +39,81 @@ const PropertyDetails = () => {
 
   return (
     <div>
-      <div className="relative overflow-hidden property-detail hotel-suggestion">
-        <Slider {...settings} className="h-[450px]">
+      <div className="grid grid-cols-12 gap-6 relative overflow-hidden property-detail hotel-suggestion w-[98%] mx-auto my-5">
+        <Slider {...settings} className="h-fit md:col-span-7 col-span-12">
           <Image
-            className="w-full object-cover h-[450px] md:!w-[60vw]"
+            className="w-full object-cover h-[450px] md:!w-[60vw] rounded-lg"
             src={sliderImg}
             alt=""
           />
           <Image
-            className="w-full object-cover h-[450px] md:!w-[40vw]"
+            className="w-full object-cover h-[450px] md:!w-[40vw] rounded-lg"
             src={sliderImg1}
             alt=""
           />
           <Image
-            className="w-full object-cover h-[450px] md:!w-[60vw]"
+            className="w-full object-cover h-[450px] md:!w-[60vw] rounded-lg"
             src={sliderImg2}
             alt=""
           />
           <Image
-            className="w-full object-cover h-[450px]  md:!w-[40vw]"
+            className="w-full object-cover h-[450px]  md:!w-[40vw] rounded-lg"
             src={sliderImg3}
             alt=""
           />
         </Slider>
-
-        <div className="absolute bottom-[40px] left-[50px] flex gap-5 max-md:flex-wrap max-md:bottom-5 max-md:gap-3 max-md:pr-4">
-          <span className="px-3 py-2 text-white rounded-lg bg-black/50">
-            East Austin, Austin
-          </span>
-          <span className="px-3 py-2 text-white rounded-lg bg-black/50">
-            Available from: 18 May 2023
-          </span>
-          <span className="px-3 py-2 text-white rounded-lg bg-black/50">
-            See All
-          </span>
-        </div>
+        <Image
+          src={map}
+          alt=""
+          className=" md:col-span-5 col-span-12 h-full object-cover rounded-lg"
+        />
       </div>
 
       <div className="container-2xl max-lg:px-4 lg:px-[50px] flex max-lg:flex-col gap-4">
-        <div className="w-[62%] max-lg:w-full">
+        <div className="w-[62%] max-lg:w-full md:order-1 order-2">
           <div className="flex justify-between py-5 mt-4">
-            <h1 className={`text-3xl ${josefin.className}`}>
+            <h1
+              className={`text-3xl flex md:flex-row flex-col w-full ${josefin.className}`}
+            >
               The Arnold, 1621 E 6th St
+              <div className="flex md:mx-5">
+                <Image src={verifiedIcon} alt="" className="object-contain" />
+                <span className="text-[15px] text-primary bg-blue-100 mx-4 px-4 border-primary border-solid border-2 rounded-full">
+                  SeniorSpot Recommended
+                </span>
+              </div>
             </h1>
-            <Link href="/">
-              <Image src={heartImg} alt="" className="w-[36px] h-[36px]" />
-            </Link>
           </div>
           <div className="room-details flex gap-2 mt-[12px] justify-between flex-wrap mb-6">
             <div className="pb-[54px] w-full">
-              <div className="flex w-full sm:items-center sm:justify-between max-sm:flex-col max-sm-items-start">
-                <div className="flex pb-6">
-                  <div className="flex text-sm text-primary">
-                    <Image
-                      className="object-contain mr-1"
-                      src={multiPerson}
-                      alt=""
-                    />
-                    <span className="text-base text-black capitalize">
-                      {"2 sleeps"}
-                    </span>
-                  </div>
-                  <span className="px-4 text-greyishBrown">|</span>
-                  <div className="flex text-sm text-primary">
-                    <Image
-                      className="object-contain mr-1"
-                      src={bedRoomIcon}
-                      alt=""
-                    />
-                    <span className="text-base text-black capitalize">
-                      {"1 Bedroom"}
-                    </span>
-                  </div>
-                  <span className="px-4 text-greyishBrown">|</span>
-                  <div className="flex text-sm text-primary">
-                    <Image
-                      className="object-contain mr-1"
-                      src={bathTubIcon}
-                      alt=""
-                    />
-                    <span className="text-base text-black capitalize">
-                      {"1 Bath"}
-                    </span>
-                  </div>
-                </div>
-                <div className="text-base bg-secondary rounded-[20px] px-5 flex items-center text-white py-[2px] w-max">
+              <div className="flex w-full justify-between my-5">
+                <Link href="#">
+                  <span className="text-primary">View Reviews(21)</span>
+                </Link>
+                <div className="text-base bg-primary rounded-[20px] px-5 flex items-center text-white py-[2px] w-max">
                   ID: 1F2315
                 </div>
               </div>
-
-              <div className="flex items-center justify-between max-sm:flex-wrap">
-                <div className="flex ">
-                  <div className="flex text-sm text-primary">
+              <div className="flex w-full justify-between my-5">
+                <div className="flex flex-col gap-2">
+                  <div className="flex gap-2">
                     <Image
-                      className="object-contain mr-1"
-                      src={spaceIcon}
+                      src={locationIcon}
                       alt=""
+                      className="object-contain"
                     />
-                    <span className="text-base text-black capitalize">
-                      {"447 ft²"}
-                    </span>
+                    <p>Mysore</p>
                   </div>
-                  <span className="px-4 text-greyishBrown">|</span>
-
-                  <div className="flex text-sm text-primary">
-                    <Image
-                      className="object-contain mr-1"
-                      src={floorIcon}
-                      alt=""
-                    />
-                    <span className="text-base text-black capitalize">
-                      {"3rd Floor"}
-                    </span>
+                  <div className="flex gap-2">
+                    <Image src={arrowIcon} alt="" className="object-contain" />
+                    <p>4 km</p>
+                  </div>
+                </div>
+                <div className="flex gap-2 bg-blue-100 rounded-lg p-3">
+                  <Image src={userImg} alt="" className="object-contain" />
+                  <div>
+                    <p>Meena K.</p>
+                    <span className="text-base text-primary">Owner</span>
                   </div>
                 </div>
               </div>
@@ -211,10 +170,9 @@ const PropertyDetails = () => {
               ButtonClasses="text-primary border-primary border bg-transparent after:bg-primary-color-arrow-up after:w-[9px]"
             />
           </div>
-          <Amenities />
 
           <div>
-            <p className="mb-5 text-base font-medium">About the Neighborhood</p>
+            <p className="mb-5 text-base font-medium">About the Location</p>
             <p className="mb-5 text-base">
               This furnished apartment is located in East Austin, one of the
               city’s hippest and most diverse neighborhoods. The area is home to
@@ -230,17 +188,109 @@ const PropertyDetails = () => {
               ButtonText="See Less"
               ButtonClasses="text-primary border-primary border bg-transparent after:bg-primary-color-arrow-up after:w-[9px] w-max mb-10"
             />
-            <Image src={map} alt="" className="mb-[50px]" />
           </div>
+
+          {/* add reviews  */}
+          <div className="flex flex-col items-left my-3">
+            <h3 className="mb-5 text-xl font-medium">Reviews</h3>
+            {/* Add reviews */}
+            <p className="font-semibold">Add Reviews</p>
+
+            {/* Rating inputs with stars */}
+            <div className="flex gap-2 my-2">
+              <Image
+                src={starOutlineImg}
+                alt=""
+                className="object-contain mx-[2px]"
+              />
+              <Image
+                src={starOutlineImg}
+                alt=""
+                className="object-contain mx-[2px]"
+              />
+              <Image
+                src={starOutlineImg}
+                alt=""
+                className="object-contain mx-[2px]"
+              />
+              <Image
+                src={starOutlineImg}
+                alt=""
+                className="object-contain mx-[2px]"
+              />
+              <Image
+                src={starOutlineImg}
+                alt=""
+                className="object-contain mx-[2px]"
+              />
+              <span> 0.0 </span>
+            </div>
+
+            {/* Text area */}
+            <textarea
+              name=""
+              id=""
+              rows={5}
+              className="w-full border border-solid border-primary rounded-lg my-3"
+            ></textarea>
+
+            {/* Submit button */}
+            <Button
+              ButtonText="Publish"
+              ButtonClasses="text-white !bg-primary w-fit self-end"
+            />
+          </div>
+          {/* Reviews from users */}
+          {Array.from(Array(3), (e, i) => {
+            return (
+              <div className="flex flex-col items-left my-3">
+                <div>
+                  {/* User details */}
+                  <div className="flex items-center gap-2">
+                    <Image src={userImg} alt="" className="object-contain" />
+                    <p>John Doe</p>
+                  </div>
+                  <div className="flex my-2">
+                    <Image
+                      src={starImg}
+                      alt=""
+                      className="object-contain mx-[2px]"
+                    />
+                    <Image
+                      src={starImg}
+                      alt=""
+                      className="object-contain mx-[2px]"
+                    />
+                    <Image
+                      src={starImg}
+                      alt=""
+                      className="object-contain mx-[2px]"
+                    />
+                    <Image
+                      src={starImg}
+                      alt=""
+                      className="object-contain mx-[2px]"
+                    />
+                    <Image
+                      src={starOutlineImg}
+                      alt=""
+                      className="object-contain mx-[2px]"
+                    />
+                    <span className="text-md">4.0</span>
+                  </div>
+                  <p className="my-2">
+                    Lorem ipsum dolor sit amet, consectetur adipisicing elit.
+                    Unde temporibus reprehenderit consectetur, animi enim
+                    explicabo repudiandae officiis ipsum amet veniam incidunt
+                    excepturi beatae facilis voluptas dolores odio laudantium
+                    iusto! Laboriosam!
+                  </p>
+                </div>
+              </div>
+            );
+          })}
         </div>
-        <div className="w-[38%] bg-[#FAFAFA] rounded-[16px] mt-10 px-[30px] py-[20px] h-max max-lg:w-full sticky top-[80px] right-0">
-          <span className="text-[#FF7676]">
-            <del>$16.00</del>
-          </span>
-          <p className="text-3xl">
-            12.00 AED
-            <span className="text-secondary ">/Month</span>
-          </p>
+        <div className="w-[38%] bg-[#FAFAFA] rounded-[16px] mt-10 px-[30px] py-[20px] h-max max-lg:w-full md:sticky top-[80px] right-0 md:order-2 order-1">
           <div className="flex justify-between">
             <div className="flex">
               <Image src={starImg} alt="" className="object-contain mx-[2px]" />
@@ -257,72 +307,19 @@ const PropertyDetails = () => {
 
             <div className="text-base text-darkGrey">(21 Reviews) </div>
           </div>
-          <Button
-            ButtonClicked={() => setShowCalenderModal(true)}
-            ButtonText="Buy Now"
-            ButtonClasses="text-white mt-[36px] text-center"
-          />
-
-          <div className="px-4 my-4 text-sm bg-white rounded-lg">
-            <div className="py-2 mt-2">
-              <div className="flex justify-between my-2 ">
-                <p>Rent per month</p>
-                <p>AED 61,450.00</p>
-              </div>
-              <div className="flex justify-between my-2 ">
-                <p>Utilities per month</p>
-                <p>AED 2,370.00</p>
-              </div>
-              <div className="flex justify-between my-2 ">
-                <p className="font-medium">Monthly subtotal</p>
-                <p>AED 59,080.00</p>
-              </div>
-            </div>
-
-            <div className="w-full h-px mb-2 bg-primary/50"></div>
-            <div className="flex items-center justify-between">
-              <p className="text-sm font-semibold">
-                Add Pets
-                <span className="ml-1 text-xs text-secondary">Extra Fee</span>
-              </p>
-              <p className="text-sm px-3 py-2 bg-secondary text-white rounded-[50px]">
-                +
-              </p>
-            </div>
-            <p className="text-sm text-darkGrey">
-              (Pet fee: MXN940/mo per pet)
-            </p>
-            <div className="w-full h-px my-4 bg-primary/50"></div>
-            <div>
-              <div className="flex justify-between my-2 ">
-                <p>Fees & insurance</p>
-                <p>AED 8,304.00</p>
-              </div>
-              <div className="flex justify-between my-2 ">
-                <p className="font-medium">
-                  Total charges
-                  <span className="ml-2 text-darkGrey">(Single payment)</span>
-                </p>
-                <p>AED 71,736.26</p>
-              </div>
-              <div className="flex justify-between my-2 ">
-                <p className="text-sm">Refundable security deposit</p>
-                <p>AED 29,540.00</p>
-              </div>
-            </div>
-            <div className="w-full h-px my-4 bg-primary/50"></div>
-            <div className="flex justify-between">
-              <p className="font-medium">
-                Total <span className="text-darkGrey">(1 month & 1 day)</span>
-              </p>
-              <p>AED 101,276.26</p>
-            </div>
+          <div className="flex my-5">
+            <Image src={verifiedIcon} alt="" className="object-contain" />
+            <span
+              className={`${josefin.className} text-[15px] text-primary bg-blue-100 mx-4 px-4 border-primary border-solid border-2 rounded-full`}
+            >
+              SeniorSpot Recommended
+            </span>
           </div>
-
           <Button
             ButtonClicked={() => setShowCalenderModal(true)}
-            ButtonText="Reserve"
-            ButtonClasses="bg-primary text-white mt-[36px] text-center py-4 items-center"
+            ButtonText="Call"
+            icon={callIcon}
+            ButtonClasses="!bg-primary text-white font-semibold w-full flex items-center justify-center max-h-[58px] my-5"
           />
         </div>
       </div>
