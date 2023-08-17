@@ -14,11 +14,19 @@ import { josefin } from "../../utils/utilsFonts";
 const CategoriesListing = () => {
   return (
     <div className="hotel-suggestion py-5">
-      <h2
-        className={` ${josefin.className} text-[32px] text-black max-lg:text-[32px] max-lg:leading-[35px] mb-[30px] font-semibold`}
-      >
-        Categories
-      </h2>
+      <div className="flex justify-between">
+        <h2
+          className={` ${josefin.className} text-[32px] text-black max-lg:text-[32px] max-lg:leading-[35px] mb-[30px] font-semibold`}
+        >
+          Categories
+        </h2>
+        <Button
+          ButtonText={"Showing Near Bangalore"}
+          ButtonClasses={
+            "!bg-white text-[#2A86DB] font-semibold w-fit flex items-center justify-center max-w-fit max-h-[38px] max-xl:w-full"
+          }
+        ></Button>
+      </div>
       <div className="grid lg:grid-cols-6 md:grid-cols-4 sm:grid-cols-2 gap-6 hotel-card-design max-lg:grid-cols-1">
         {Array.from(Array(18), (e, i) => (
           <CategoryCard key={i} id={i} paraText={`Category ${i}`} />
