@@ -127,8 +127,8 @@ const AdminDashboard = () => {
                 ad1tage Reviews
               </p>
               <div className="flex flex-wrap content-center max-md:justify-end">
-                <Rating />
-                <p className="text-2xl font-medium leading-9 text-black">4.0</p>
+                <Rating rating={2} />
+
                 <p className="ml-1 text-base font-normal leading-9 text-darkGrey">
                   (21 Reviews)
                 </p>

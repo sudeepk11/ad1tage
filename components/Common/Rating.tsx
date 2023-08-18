@@ -6,6 +6,7 @@ const Rating = ({ rating, hideRating = false }) => {
       {Array.from(Array(5), (e, i) => {
         return (
           <svg
+          key={i}
             className={`w-4 h-4 mr-1 ${
               rating >= i ? "text-primary " : "text-gray-300 dark:text-gray-500"
             }`}
@@ -20,7 +21,7 @@ const Rating = ({ rating, hideRating = false }) => {
       })}
       {!hideRating && (
         <p className="ml-2 text-sm font-medium text-gray-500 dark:text-gray-400">
-          {rating.toFixed(1)}
+          {rating?.toFixed(1)}
         </p>
       )}
     </div>
