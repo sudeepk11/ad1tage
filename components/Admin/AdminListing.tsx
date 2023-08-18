@@ -10,7 +10,7 @@ const AdminListing = () => {
   return (
     <React.Fragment>
       <div className="container-2xl max-lg:px-4 lg:px-[50px] py-5">
-        <div className="flex items-center justify-between gap-4 max-xl:flex-col max-xl:justify-start max-xl:items-start w-fit">
+        <div className="flex items-center justify-between gap-4 max-xl:flex-col max-xl:justify-start max-xl:items-start w-full">
           <div className="flex justify-between w-full">
             <p
               className={`mt-4 mb-3 text-2xl font-semibold leading-6 text-black ${josefin.className}`}
@@ -20,7 +20,7 @@ const AdminListing = () => {
             <Button
               ButtonText={"+ Create Listing"}
               ButtonClasses={
-                "w-max flex items-center text-white justify-center max-h-[58px] max-xl:w-full max-md:py-3"
+                "text-white justify-center max-h-[58px] max-md:py-3"
               }
             ></Button>
           </div>
@@ -48,7 +48,7 @@ const AdminListing = () => {
         </div>
 
         {/* Listing Table */}
-        <div className="w-screen overflow-x-scroll">
+        <div className="w-full overflow-x-scroll">
           <ListingTable />
         </div>
       </div>

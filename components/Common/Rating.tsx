@@ -1,6 +1,6 @@
 import React from "react";
 
-const Rating = ({ rating, hideRating = false }) => {
+const Rating = ({ rating = 0, hideRating = false }) => {
   return (
     <div className="flex items-center">
       {Array.from(Array(5), (e, i) => {
