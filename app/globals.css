@@ -184,6 +184,29 @@ div .react-calendar--selectRange {
   background-color: #e6e6e6 !important;
 }
 
+.arrow-left:before {
+  content: "\25c4";
+  padding-right: 0.5em;
+}
+
+.arrow-right:after {
+  content: "\25ba";
+  padding-left: 0.5em;
+}
+
+.arrow-down:after {
+  content: "\25bc";
+  padding-left: 0.5em;
+  margin: auto 0;
+  font-size: 10px;
+}
+
+.arrow-up:after {
+  content: "\25b2";
+  padding-left: 0.5em;
+  margin: auto 0;
+  font-size: 10px;
+}
 /* For Webkit-based browsers (Chrome, Safari and Opera) */
 .scrollbar-hide::-webkit-scrollbar {
   display: none;

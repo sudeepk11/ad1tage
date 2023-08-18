@@ -8,7 +8,7 @@ const Services = ({ title }) => {
     <div className=" py-16 px-[50px] max-lg:px-4 max-lg:py-10  hotel-suggestion">
       <div className="flex gap-2 justify-between">
         <h2
-          className={` ${josefin.className} text-black max-lg:text-[32px] max-lg:leading-[35px] max-md:text-[22px] mb-[30px] font-semibold`}
+          className={` ${josefin.className} text-[32px] text-black max-lg:text-[32px] max-md:text-[22px] max-lg:leading-[35px] mb-[30px] font-semibold`}
         >
           {title}
         </h2>

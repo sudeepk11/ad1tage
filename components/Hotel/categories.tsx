@@ -60,7 +60,7 @@ const CategoriesListing = () => {
                 return (
                   <CardWithSlider
                     paraText={" 1 Bed Apartment with Stunning View"}
-                    rating={"5.0"}
+                    rating={"4.3"}
                     id={i}
                     perRoomUserCount={"2 sleeps"}
                     bedCount={"1 Bedroom"}

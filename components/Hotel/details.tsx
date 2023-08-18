@@ -21,6 +21,7 @@ import { josefin } from "../../utils/utilsFonts";
 import Button from "../Common/Button";
 import CustomModal from "../Common/CustomModal";
 import DatePicker from "../Common/DatePicker";
+import Rating from "../Common/Rating";
 
 var settings = {
   dots: false,
@@ -167,7 +168,7 @@ const PropertyDetails = () => {
 
             <Button
               ButtonText="See Less"
-              ButtonClasses="text-primary border-primary border bg-transparent after:bg-primary-color-arrow-up after:w-[9px]"
+              ButtonClasses="text-primary border-primary border bg-transparent arrow-up"
             />
           </div>
 
@@ -185,8 +186,8 @@ const PropertyDetails = () => {
               to be the best BBQ in the US.
             </p>
             <Button
-              ButtonText="See Less"
-              ButtonClasses="text-primary border-primary border bg-transparent after:bg-primary-color-arrow-up after:w-[9px] w-max mb-10"
+              ButtonText="See More"
+              ButtonClasses="text-primary border-primary border bg-transparent arrow-down w-fit"
             />
           </div>
 
@@ -251,32 +252,7 @@ const PropertyDetails = () => {
                     <p>John Doe</p>
                   </div>
                   <div className="flex my-2">
-                    <Image
-                      src={starImg}
-                      alt=""
-                      className="object-contain mx-[2px]"
-                    />
-                    <Image
-                      src={starImg}
-                      alt=""
-                      className="object-contain mx-[2px]"
-                    />
-                    <Image
-                      src={starImg}
-                      alt=""
-                      className="object-contain mx-[2px]"
-                    />
-                    <Image
-                      src={starImg}
-                      alt=""
-                      className="object-contain mx-[2px]"
-                    />
-                    <Image
-                      src={starOutlineImg}
-                      alt=""
-                      className="object-contain mx-[2px]"
-                    />
-                    <span className="text-md">4.0</span>
+                    <Rating rating={3.2} />
                   </div>
                   <p className="my-2 text-justify">
                     Lorem ipsum dolor sit amet, consectetur adipisicing elit.
@@ -292,18 +268,7 @@ const PropertyDetails = () => {
         </div>
         <div className="w-[38%] bg-[#FAFAFA] rounded-[16px] mt-10 px-[30px] py-[20px] h-max max-lg:w-full md:sticky top-[80px] right-0 md:order-2 order-1">
           <div className="flex justify-between">
-            <div className="flex">
-              <Image src={starImg} alt="" className="object-contain mx-[2px]" />
-              <Image src={starImg} alt="" className="object-contain mx-[2px]" />
-              <Image src={starImg} alt="" className="object-contain mx-[2px]" />
-              <Image src={starImg} alt="" className="object-contain mx-[2px]" />
-              <Image
-                src={starOutlineImg}
-                alt=""
-                className="object-contain mx-[2px]"
-              />
-              <span className="text-2xl">4.0</span>
-            </div>
+            <Rating rating={2.5} />
 
             <div className="text-base text-darkGrey">(21 Reviews) </div>
           </div>
@@ -323,6 +288,7 @@ const PropertyDetails = () => {
           />
         </div>
       </div>
+
       <CustomModal
         isBackground={false}
         showModal={showModal}
