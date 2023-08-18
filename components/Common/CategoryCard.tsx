@@ -23,8 +23,12 @@ const CategoryCard = (props) => {
           />
         </div>
 
-        <p className={`text-base ${josefin.className} mx-3 my-2`}>
+        <p className={`text-lg ${josefin.className} mx-3 my-2`}>
           {props.paraText}
+        </p>
+
+        <p className={`text-sm ${josefin.className} text-primary mx-3 my-2`}>
+          {props.descText}
         </p>
       </Link>
     </div>

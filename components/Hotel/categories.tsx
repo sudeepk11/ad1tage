@@ -12,8 +12,37 @@ import CategoryCard from "../Common/CategoryCard";
 import { josefin } from "../../utils/utilsFonts";
 
 const CategoriesListing = () => {
+
+  const categories = [
+    {
+      name: 'Health Care',
+      description: 'Services and resources related to medical care, health insurance, specialists, and wellness programs for senior citizens.'
+    },
+    {
+      name: 'Social Activities',
+      description: 'Opportunities for senior citizens to engage in social interactions, join clubs, participate in recreational activities, and attend events.'
+    },
+    {
+      name: 'Financial Planning',
+      description: 'Guidance and advice on managing finances during retirement, investments, estate planning, and pension-related information.'
+    },
+    {
+      name: 'Housing Options',
+      description: 'Information about various housing choices for senior citizens, including retirement communities, assisted living, and nursing homes.'
+    },
+    {
+      name: 'Transportation',
+      description: 'Transportation services catering to senior citizens, such as accessible public transportation, senior discounts, and specialized shuttle services.'
+    },
+    {
+      name: 'Caregiver Support',
+      description: 'Resources and assistance for family members and caregivers of senior citizens, including respite care, support groups, and training.'
+    }
+
+  ];
+  
   return (
-    <div className="hotel-suggestion py-5">
+    <div className="hotel-suggestion py-16">
       <div className="flex justify-between">
         <h2
           className={` ${josefin.className} text-[32px] text-black max-lg:text-[32px] max-md:text-[22px] max-lg:leading-[35px] mb-[30px] font-semibold`}
@@ -27,29 +56,31 @@ const CategoriesListing = () => {
           }
         ></Button>
       </div>
-      <div className="grid lg:grid-cols-6 md:grid-cols-4 sm:grid-cols-2 gap-6 hotel-card-design max-lg:grid-cols-1">
-        {Array.from(Array(18), (e, i) => (
-          <CategoryCard key={i} id={i} paraText={`Category ${i}`} />
+      <div className="grid lg:grid-cols-4 md:grid-cols-4 sm:grid-cols-2 gap-6 hotel-card-design max-lg:grid-cols-1">
+        {categories.map((category , i) => (
+          <CategoryCard key={i} id={i} paraText={`${category.name}`} descText = {category.description}  />
         ))}
       </div>
 
       {/* Top Categories */}
       <h2
-        className={` ${josefin.className} text-[32px] text-primary  max-lg:text-[32px] max-lg:leading-[35px] mt-[50px] font-semibold`}
+        className={`mb-4 ${josefin.className} text-[32px] text-primary  max-lg:text-[32px] max-lg:leading-[35px] mt-[50px] font-semibold`}
       >
         Top Services Across Categories
       </h2>
-      {Array.from(Array(3), (category, index) => {
+      {categories.map((category, index) => {
         return (
-          <div className="hotel-suggestion py-5">
+          <div key={index} className="hotel-suggestion py-5">
             <div className="flex justify-between">
               <h2
                 className={` ${josefin.className} text-[32px] text-black max-lg:text-[32px] max-md:text-[22px] max-lg:leading-[35px] mb-[30px] font-semibold`}
               >
-                Category {index + 1}
+                {category.name}
               </h2>
+              
               <Button
                 ButtonText={"Show All"}
+               
                 ButtonClasses={
                   "!bg-blue-100 text-[#2A86DB] font-semibold w-fit flex items-center justify-center max-w-fit max-h-[38px] max-xl:w-full"
                 }
@@ -65,7 +96,7 @@ const CategoriesListing = () => {
                     perRoomUserCount={"2 sleeps"}
                     bedCount={"1 Bedroom"}
                     bathCount={"1 Bath"}
-                    likeButton={"unfilled"}
+                    likeButton={false}
                     key={`slider-${i}`}
                   />
                 );

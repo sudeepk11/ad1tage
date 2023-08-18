@@ -4,10 +4,9 @@ import Slider from "react-slick";
 import "slick-carousel/slick/slick.css";
 import "slick-carousel/slick/slick-theme.css";
 import Image from "next/image";
-import sliderImg from "../../images/property-detail-img-1.png";
-import sliderImg1 from "../../images/property-detail-img-2.png";
-import sliderImg2 from "../../images/hero.png";
-import sliderImg3 from "../../images/login-form-img-1.png";
+import sliderImg from "../../images/sliderImg.png"
+import sliderImg1 from "../../images/sliderImg2.png"
+
 import Link from "next/link";
 import map from "../../images/map.png";
 import starImg from "../../images/star-icon.png";
@@ -27,9 +26,8 @@ var settings = {
   dots: false,
   infinite: true,
   speed: 500,
-  // slidesToShow: 1,
-  // slidesToShow: 2,
-  slidesToScroll: 2,
+  slidesToShow: 1,
+
   variableWidth: true,
   // centerMode: true,
 };
@@ -52,34 +50,20 @@ const PropertyDetails = () => {
             src={sliderImg1}
             alt=""
           />
-          <Image
-            className="w-full object-cover h-[450px] md:!w-[60vw] rounded-lg"
-            src={sliderImg2}
-            alt=""
-          />
-          <Image
-            className="w-full object-cover h-[450px]  md:!w-[40vw] rounded-lg"
-            src={sliderImg3}
-            alt=""
-          />
         </Slider>
-        <Image
-          src={map}
-          alt=""
-          className=" md:col-span-5 col-span-12 h-full object-cover rounded-lg"
-        />
+    {/* MAPBOX CODE */}
       </div>
 
-      <div className="container-2xl max-lg:px-4 lg:px-[50px] flex max-lg:flex-col gap-4">
-        <div className="w-[62%] max-lg:w-full md:order-1 order-2">
+      <div className="grid grid-cols-12 max-lg:px-4 lg:px-[50px] flex max-lg:flex-col gap-4">
+        <div className="col-span-7 max-lg:w-full md:order-1 order-2">
           <div className="flex justify-between py-5 mt-4">
             <h1
               className={`text-3xl flex md:flex-row flex-col w-full ${josefin.className}`}
             >
-              The Arnold, 1621 E 6th St
-              <div className="flex md:mx-5">
+              KLE Medical Hospital , JNMC
+              <div className="flex md:mx-5 ">
                 <Image src={verifiedIcon} alt="" className="object-contain" />
-                <span className="text-[15px] text-primary bg-blue-100 mx-4 px-4 border-primary border-solid border-2 rounded-full">
+                <span className=" flex items-center justify-center text-[15px] text-primary bg-blue-100 mx-4 px-4 border-primary border-solid border-2 rounded-full">
                   SeniorSpot Recommended
                 </span>
               </div>
@@ -244,13 +228,14 @@ const PropertyDetails = () => {
           {/* Reviews from users */}
           {Array.from(Array(3), (e, i) => {
             return (
-              <div className="flex flex-col items-left my-3">
+              <div key = {i} className="border border-gray-300 shadow-sm rounded-lg p-4 flex flex-col items-left my-3">
                 <div>
-                  {/* User details */}
+               
                   <div className="flex items-center gap-2">
                     <Image src={userImg} alt="" className="object-contain" />
                     <p>John Doe</p>
                   </div>
+
                   <div className="flex my-2">
                     <Rating rating={3.2} />
                   </div>
@@ -266,7 +251,7 @@ const PropertyDetails = () => {
             );
           })}
         </div>
-        <div className="w-[38%] bg-[#FAFAFA] rounded-[16px] mt-10 px-[30px] py-[20px] h-max max-lg:w-full md:sticky top-[80px] right-0 md:order-2 order-1">
+        <div className="col-span-5 bg-[#FAFAFA] rounded-[16px] mt-10 px-[30px] py-[20px] h-max max-lg:w-full md:sticky top-[80px] right-0 md:order-2 order-1">
           <div className="flex justify-between">
             <Rating rating={2.5} />
 
@@ -289,42 +274,8 @@ const PropertyDetails = () => {
         </div>
       </div>
 
-      <CustomModal
-        isBackground={false}
-        showModal={showModal}
-        setShowModal={setShowModal}
-      >
-        <div className="grid gap-[25px] grid-cols-3 max-md:grid-cols-2 max-sm:grid-cols-1 mb-12">
-          <Image
-            className="w-full h-[240px] object-cover"
-            src={sliderImg}
-            alt=""
-          />
-          <Image
-            className="w-full h-[240px] object-cover"
-            src={sliderImg1}
-            alt=""
-          />
-          <Image
-            className="w-full h-[240px] object-cover"
-            src={sliderImg2}
-            alt=""
-          />
-          <Image
-            className="w-full h-[240px] object-cover"
-            src={sliderImg3}
-            alt=""
-          />
-        </div>
-      </CustomModal>
 
-      <CustomModal
-        isBackground={false}
-        showModal={showCalenderModal}
-        setShowModal={setShowCalenderModal}
-      >
-        <DatePicker />
-      </CustomModal>
+     
     </div>
   );
 };
