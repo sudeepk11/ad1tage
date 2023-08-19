@@ -4,8 +4,8 @@ import Slider from "react-slick";
 import "slick-carousel/slick/slick.css";
 import "slick-carousel/slick/slick-theme.css";
 import Image from "next/image";
-import sliderImg from "../../images/sliderImg.png"
-import sliderImg1 from "../../images/sliderImg2.png"
+import sliderImg from "../../images/fujairah.png"
+import sliderImg1 from "../../images/fujairah.png"
 
 import Link from "next/link";
 import map from "../../images/map.png";
