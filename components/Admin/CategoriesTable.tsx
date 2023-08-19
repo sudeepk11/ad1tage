@@ -33,7 +33,7 @@ const CategoriesTable = (props: any) => {
     <table className="text-sm w-full">
       <thead>
         <tr className="my-5 border border-solid rounded-lg text-center">
-          <th className="flex py-5 px-3">
+          <th className="flex py-5 px-3 w-60">
             <input type="checkbox" name="" id="" />
             <p className="mx-3">Category Name</p>
           </th>

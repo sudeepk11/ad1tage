@@ -16,7 +16,7 @@ const AdminManageCategories = () => {
           </p>
         </div>
         <div className="flex content-center justify-between gap-4 mt-4 mb-6 max-md:flex-col md:flex-wrap">
-          <div className="flex justify-center items-start w-full">
+          <div className="flex max-md:flex-col justify-center items-start w-full">
             <div className="relative top-0 left-0 search-bar max-md:w-[100%] w-full ">
               <input
                 className="pl-12 w-full h-[52px] border border-solid border-greyishBrown rounded-lg"
@@ -29,15 +29,15 @@ const AdminManageCategories = () => {
                 alt={""}
               />
             </div>
-            <div className="search-button mx-2">
-              <button className="w-[116px] max-md:w-full h-[52px] bg-primary rounded-lg text-white text-base">
+            <div className="search-button md:mx-2 max-md:mt-3 w-full">
+              <button className="w-full h-[52px] bg-primary rounded-lg text-white text-base">
                 Search
               </button>
             </div>
           </div>
         </div>
         {/* Categories Table */}
-        <div className="w-screen overflow-x-scroll">
+        <div className="w-full overflow-x-scroll">
           <CategoriesTable />
         </div>
         <div className="mt-10">

@@ -13,15 +13,12 @@ import BarChartCommon from "../Common/BarChartCommon";
 const reviewArr = [
   {
     headingName: "By Sriharan",
-    headingDetails:
-      "ABC Caterers , Udupi",
-    review:
-      "I give 4 star highly recommended",
+    headingDetails: "ABC Caterers , Udupi",
+    review: "I give 4 star highly recommended",
   },
   {
     headingName: "By Sanjeev H",
-    headingDetails:
-      "KLE Hospital, Belgaum",
+    headingDetails: "KLE Hospital, Belgaum",
     review:
       "The hospital was very clean and the whole service was was very smooth and organized and it was really easy to reach out to mohan",
   },
@@ -127,8 +124,8 @@ const AdminDashboard = () => {
                 ad1tage Reviews
               </p>
               <div className="flex flex-wrap content-center max-md:justify-end">
-                <Rating rating={2} />
-
+                <Rating rating={3.2} hideRating />
+                <p className="text-2xl font-medium leading-9 text-black">4.0</p>
                 <p className="ml-1 text-base font-normal leading-9 text-darkGrey">
                   (21 Reviews)
                 </p>
@@ -139,7 +136,7 @@ const AdminDashboard = () => {
               reviewArr.map((data, idx) => {
                 return (
                   <div key={idx} className="my-4">
-                    <Rating />
+                    <Rating rating={2.7} />
                     <Reviews data={data} />
                   </div>
                 );

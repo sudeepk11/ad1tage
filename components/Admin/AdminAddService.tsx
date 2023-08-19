@@ -112,7 +112,7 @@ const AdminAddService = () => {
               />
             </div>
 
-            <div className="w-full col-start-8 col-span-1">
+            <div className="w-full col-start-8 col-span-1 max-md:col-span-4 max-md:col-start-5">
               <button className="w-full h-[52px] bg-primary rounded-lg text-white text-base">
                 Add Service
               </button>

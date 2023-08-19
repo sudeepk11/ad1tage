@@ -10,7 +10,7 @@ const Admin = () => {
   const [currTab, setcurrTab] = useState(1);
   return (
     <React.Fragment>
-      <div className="flex w-screen text-center h-[80px] mx-auto md:-mt-[80px] lg:sticky lg:z-20 cursor-pointer items-center lg:top-0 overflow-x-scroll scrollbar-hide">
+      <div className="flex place-content-center w-screen text-center h-[80px] mx-auto md:-mt-[80px] lg:sticky lg:z-20 cursor-pointer items-center lg:top-0 overflow-x-scroll scrollbar-hide">
         <h3
           className={`${
             josefin.className
