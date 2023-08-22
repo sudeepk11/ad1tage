@@ -1,6 +1,6 @@
 "use client";
 import Image from "next/image";
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import CardWithSlider from "../Common/CardWithSlider";
 import Button from "../Common/Button";
 import SearchBox from "../Common/SearchBox";
@@ -10,9 +10,17 @@ import mapImg from "../../images/map-img-2.png";
 import mapOverlay from "../../images/appartment-icon.png";
 import CategoryCard from "../Common/CategoryCard";
 import { josefin } from "../../utils/utilsFonts";
-
+import {getUsers} from '../../service/service.js';
 const CategoriesListing = () => {
 
+  
+   useEffect(() => {
+    getUsers()
+    .then((res) => {
+      console.log(res)
+    })
+    
+   },[])
   const categories = [
     {
       name: 'Health Care',

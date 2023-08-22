@@ -5,8 +5,11 @@ import login_signup from "../../Assets/Images/login_signup.png";
 import Link from "next/link";
 import Button from "../Common/Button";
 import RightFormSection from "./RightFormSection";
-
+import { login } from "../../service/service";
+import setAuthToken from "../../service/api/setAuthToken";
 const Login = () => {
+
+  
 
   const [email, setEmail] = useState('')
   const [error, setError] = useState([]);
@@ -18,9 +21,10 @@ const Login = () => {
 
   const validatePassword = (password) => {
     return password.length >= 6;
-  };
+  }
 
-  const onLogin = () => {
+  const onLogin = async () => {
+    const username = 'sudeepk11'
 
     const newErrors = [];
     if (!validateEmail(email)) {
@@ -32,13 +36,17 @@ const Login = () => {
 
     if (newErrors.length === 0) {
       const payload = {
+        username,
         password,
-        email,
       };
-      // Send the payload to API
+      const res = await login(payload)
+      if(res.token) {
+        setAuthToken(res.token)
+        console.log(res.token)
+        localStorage.setItem("auth_token", res.token)
+      }
     } 
     setError(newErrors);
-
   }
 
   return (

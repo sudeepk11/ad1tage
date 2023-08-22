@@ -32,11 +32,11 @@ const Goals = () => {
       <div className="flex justify-between gap-[30px] md:mt-[100px] max-md:mt-[40px]">
         <Button
           ButtonText="Explore Now"
-          ButtonClasses="md:bg-primary max-md:bg-blackLight max-md:border-blackLight border md:border-primary text-white w-full text-center md:font-bold max-md:font-medium md:py-3 max-md:py-[10px]"
+          ButtonClasses="md:bg-primary max-md:bg-blackLight max-md:border-blackLight border md:border-primary text-white w-full flex justify-center text-center md:font-bold max-md:font-medium md:py-3 max-md:py-[10px]"
         />
         <Button
           ButtonText="Contact Us"
-          ButtonClasses="bg-white border md:border-primary max-md:border-blackLight max-md:text-blackLight md:text-primary w-full text-center md:font-bold max-md:font-medium md:py-3 max-md:py-[10px]"
+          ButtonClasses="bg-white border md:border-primary max-md:border-blackLight max-md:text-blackLight md:text-primary w-full flex justify-center text-center md:font-bold max-md:font-medium md:py-3 max-md:py-[10px]"
         />
       </div>
     </div>

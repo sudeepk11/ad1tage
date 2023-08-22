@@ -1,5 +1,5 @@
 "use client";
-import React from "react";
+import React , {useEffect} from "react";
 import Slider from "react-slick";
 import "slick-carousel/slick/slick.css";
 import "slick-carousel/slick/slick-theme.css";
@@ -8,7 +8,7 @@ import sliderImg from "../../images/fujairah.png"
 import sliderImg1 from "../../images/fujairah.png"
 
 import Link from "next/link";
-import map from "../../images/map.png";
+
 import starImg from "../../images/star-icon.png";
 import starOutlineImg from "../../images/Star-outline.png";
 import userImg from "../../images/user-img.png";
@@ -21,20 +21,80 @@ import Button from "../Common/Button";
 import CustomModal from "../Common/CustomModal";
 import DatePicker from "../Common/DatePicker";
 import Rating from "../Common/Rating";
+import mapboxgl from 'mapbox-gl';
+import 'mapbox-gl/dist/mapbox-gl.css'; // Import Mapbox styles
+mapboxgl.accessToken = 'pk.eyJ1Ijoic3VkZWVwazExIiwiYSI6ImNsbGlkbTZmczFmdjgzaG8zbHJoanJ1bjgifQ.YIDUFnb8f9uYhq2PJm30yQ';
+
 
 var settings = {
   dots: false,
   infinite: true,
   speed: 500,
   slidesToShow: 1,
-
   variableWidth: true,
-  // centerMode: true,
 };
+
 const PropertyDetails = () => {
-  const [showModal, setShowModal] = React.useState<boolean>(false);
-  const [showCalenderModal, setShowCalenderModal] =
-    React.useState<boolean>(false);
+
+  useEffect(() => {
+ 
+    const map = new mapboxgl.Map({
+      container: 'map-container',
+      style: 'mapbox://styles/mapbox/streets-v12',
+      center: [ 74.535680,15.881020], 
+      zoom: 13,
+    });
+
+    const targetLocation = [74.548917,15.887777]; 
+
+    const geojson = {
+      type: 'Feature',
+      geometry: {
+        type: 'LineString',
+        coordinates: [
+          [ 74.535680,15.881020],
+          targetLocation,
+        ],
+      },
+    };
+
+    map.on('load', () => {
+      map.addSource('route', {
+        type: 'geojson',
+        data: geojson,
+      });
+
+      map.addLayer({
+        id: 'route',
+        type: 'line',
+        source: 'route',
+        layout: {
+          'line-join': 'round',
+          'line-cap': 'round',
+        },
+        paint: {
+          'line-color': '#2A86DB',
+          'line-width': 1.5,
+        },
+      });
+    });
+
+     new mapboxgl.Marker({ color: '#2A86DB' }) // You can customize the marker color
+      .setLngLat([74.535680, 15.881020])
+      .setPopup(new mapboxgl.Popup().setHTML('<h3>Your Location</h3>'))
+      .addTo(map);
+
+    // Add a marker for the destination
+    new mapboxgl.Marker({ color: 'red'  }) 
+      .setLngLat([74.548917, 15.887777])
+      .setPopup(new mapboxgl.Popup().setHTML('<h3>KLE Hospital</h3>'))
+      .addTo(map);
+
+    return () => {
+      map.remove();
+    };
+  }, []);
+
 
   return (
     <div>
@@ -51,10 +111,10 @@ const PropertyDetails = () => {
             alt=""
           />
         </Slider>
-    {/* MAPBOX CODE */}
+        <div id="map-container" className=" md:sticky right-0 md:order-2 order-1 sw-full h-[450px] rounded-lg col-span-5 " />
       </div>
 
-      <div className="grid grid-cols-12 max-lg:px-4 lg:px-[50px] flex max-lg:flex-col gap-4">
+      <div className="grid grid-cols-12 max-lg:px-4 lg:px-[50px]  max-lg:flex-col gap-4">
         <div className="col-span-7 max-lg:w-full md:order-1 order-2">
           <div className="flex justify-between py-5 mt-4">
             <h1
@@ -266,7 +326,7 @@ const PropertyDetails = () => {
             </span>
           </div>
           <Button
-            ButtonClicked={() => setShowCalenderModal(true)}
+
             ButtonText="Call"
             icon={callIcon}
             ButtonClasses="!bg-primary text-white font-semibold w-full flex items-center justify-center max-h-[58px] my-5"
