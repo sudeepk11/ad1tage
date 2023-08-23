@@ -1,7 +1,11 @@
-import React from "react";
+import React, { useRef, useTransition } from "react";
 import { josefin } from "../../utils/utilsFonts";
+import Button from "../Common/Button";
+import addService from "../../service/services/addService";
 
 const AdminAddService = () => {
+  const formRef = useRef<HTMLFormElement>();
+  const [isPending, startTransition] = useTransition();
   return (
     <React.Fragment>
       <div className="container-2xl max-lg:px-4 lg:px-[50px] py-5">
@@ -13,7 +17,18 @@ const AdminAddService = () => {
           </p>
         </div>
         <div className="flex justify-between gap-4 max-md:flex-col md:flex-wrap">
-          <div className="grid grid-cols-8 w-full place-items-end gap-3">
+          <form
+            ref={(ref) => ref && (formRef.current = ref)}
+            action={(props) =>
+              startTransition(async () => {
+                const resp = await addService(props);
+                if (resp.status === "success") {
+                  formRef.current.reset();
+                }
+              })
+            }
+            className="grid grid-cols-8 w-full place-items-end gap-3"
+          >
             <div className="w-full col-span-2">
               <label
                 className={`block mb-2 text-sm font-bold text-black ${josefin.className}`}
@@ -23,7 +38,8 @@ const AdminAddService = () => {
               <input
                 className="w-full h-[52px] border border-solid border-greyishBrown rounded-lg p-3"
                 type="text"
-                placeholder="Enter Category Name"
+                placeholder="Enter Name"
+                name="name"
               />
             </div>
             <div className="w-full col-span-6">
@@ -36,6 +52,7 @@ const AdminAddService = () => {
                 className="w-full h-[52px] border border-solid border-greyishBrown rounded-lg p-3"
                 type="text"
                 placeholder="Enter Category Description"
+                name="desc"
               />
             </div>
 
@@ -49,6 +66,7 @@ const AdminAddService = () => {
                 className="w-full h-[52px] border border-solid border-greyishBrown rounded-lg p-3"
                 type="text"
                 placeholder="Enter Label 1"
+                name="label-1"
               />
             </div>
             <div className="w-full col-span-2">
@@ -61,6 +79,7 @@ const AdminAddService = () => {
                 className="w-full h-[52px] border border-solid border-greyishBrown rounded-lg p-3"
                 type="text"
                 placeholder="Enter Category"
+                name="category"
               />
             </div>
             <div className="w-full col-span-2">
@@ -73,6 +92,7 @@ const AdminAddService = () => {
                 className="w-full h-[52px] border border-solid border-greyishBrown rounded-lg p-3"
                 type="text"
                 placeholder="Enter Label 2"
+                name="label-2"
               />
             </div>
             <div className="w-full col-span-2">
@@ -85,6 +105,7 @@ const AdminAddService = () => {
                 className="w-full h-[52px] border border-solid border-greyishBrown rounded-lg p-3"
                 type="text"
                 placeholder="Enter Label 3"
+                name="label-3"
               />
             </div>
             <div className="w-full col-span-2">
@@ -97,6 +118,7 @@ const AdminAddService = () => {
                 className="w-full h-[52px] border border-solid border-greyishBrown rounded-lg p-3"
                 type="text"
                 placeholder="Enter Label 4"
+                name="label-4"
               />
             </div>
             <div className="w-full col-span-6">
@@ -109,15 +131,18 @@ const AdminAddService = () => {
                 className="w-full h-[52px] border border-solid border-greyishBrown rounded-lg p-3"
                 type="text"
                 placeholder="Enter Label 5"
+                name="label-5"
               />
             </div>
 
             <div className="w-full col-start-8 col-span-1 max-md:col-span-4 max-md:col-start-5">
-              <button className="w-full h-[52px] bg-primary rounded-lg text-white text-base">
-                Add Service
-              </button>
+              <Button
+                ButtonClasses="text-white w-full py-3 flex justify-center items-center"
+                ButtonText={isPending ? "Loading..." : "Add Service"}
+                disabled={isPending}
+              />
             </div>
-          </div>
+          </form>
         </div>
       </div>
     </React.Fragment>

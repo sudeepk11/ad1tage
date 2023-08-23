@@ -4,17 +4,10 @@ import sliderImg from "../../images/slider-img.png";
 import Link from "next/link";
 import { josefin } from "../../utils/utilsFonts";
 
-var settings = {
-  dots: true,
-  infinite: true,
-  speed: 500,
-  slidesToShow: 1,
-  slidesToScroll: 1,
-};
 const CategoryCard = (props) => {
   return (
     <div className="bg-white rounded-[16px] hotel-card-design shadow-lg">
-      <Link href={`/category`}>
+      <Link href={`/categories/${props.id}`}>
         <div className="relative before:bg-slider-overlay before:absolute before:h-fit before:w-full before:top-0 before:left-0">
           <Image
             className="w-full h-full object-contain"

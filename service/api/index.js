@@ -6,9 +6,10 @@ export const getApi = async (action, url) => {
   try {
     let token = localStorage.getItem("auth_token");
     if (token) {
-      setAuthToken(localStorage.getItem("auth_token"));
+      setAuthToken(token);
     }
     let apiUrl = `${config.serverURL + config.version}${action}`;
+    console.log(apiUrl);
     const response = await Axios.get(apiUrl);
 
     return response?.data;

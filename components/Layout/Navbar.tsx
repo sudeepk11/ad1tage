@@ -1,5 +1,5 @@
 import Link from "next/link";
-import React, { useState } from "react";
+import React, { useContext, useState, useTransition } from "react";
 import Image from "next/image";
 import logoLionImage from "../../images/logo.png";
 import profileImage from "../../images/profile.png";
@@ -8,6 +8,8 @@ import arrowDown from "../../images/arrow-down.png";
 import logoText from "../../images/logo-text.png";
 import { navbarItems } from "../../utils/utilsItems";
 import { usePathname } from "next/navigation";
+import { AuthContext } from "../../providers/AuthProvider";
+import logOut from "../../service/auth/logOut";
 const withLogin = [
   "/tenent",
   "/booking-history",
@@ -25,13 +27,14 @@ const withAdmin = [
 ];
 const Navbar = () => {
   const router = usePathname();
-  const isLogin = withLogin.includes(router);
-  const isAdmin = withAdmin.includes(router);
+  const [isPending, startTransition] = useTransition();
+  const { user, token, logOut: signOut } = useContext(AuthContext);
+  const isAdmin = !!(token && user.role === "admin");
   const [userSettingDropdown, setUserSettingDropdown] = useState(false);
   return (
     <div
       className={`sticky top-0 left-0 z-20 w-full h-auto shadow-md s bg-white ${
-        isLogin || isAdmin ? "shadow-md" : ""
+        token ? "shadow-md" : ""
       } `}
     >
       <div className="flex items-center justify-between max-w-full py-[13px] mx-auto px-5 lg:px-[50px] ">
@@ -40,7 +43,7 @@ const Navbar = () => {
             <Image className="w-[80px]" src={logoLionImage} alt="" />
           </Link>
           <input type="checkbox" className="hidden peer" id="nav-check" />
-          {!isLogin && (
+          {!isAdmin && (
             <div
               className="nav-links max-lg:hidden max-lg:peer-checked:block max-lg:fixed max-lg:top-[72px] max-lg:left-0 max-lg:w-full max-lg:h-full z-20 max-lg:bg-white
            max-lg:text-primary 
@@ -66,7 +69,7 @@ const Navbar = () => {
               </ul>
             </div>
           )}
-          {/* {isAdmin && (
+          {isAdmin && (
             <div
               className="nav-links max-lg:hidden max-lg:peer-checked:block max-lg:fixed max-lg:top-[72px] max-lg:left-0 max-lg:w-full max-lg:h-full z-20 max-lg:bg-white
        max-lg:text-primary 
@@ -81,10 +84,10 @@ const Navbar = () => {
                 </li>
               </ul>
             </div>
-          )} */}
+          )}
         </div>
 
-        {isLogin ? (
+        {token ? (
           <div className="relative cursor-pointer">
             <div
               className="flex items-center max-lg:hidden"
@@ -101,7 +104,25 @@ const Navbar = () => {
                     <Link href="/admin/setting">Setting</Link>
                   </li>
                   <li className="my-2 text-base">
-                    <Link href="/">Logout</Link>
+                    <form
+                      action={() =>
+                        startTransition(async () => {
+                          const resp = await logOut();
+                          if (resp.status === "success") {
+                            signOut();
+                          }
+                        })
+                      }
+                    >
+                      <button
+                        disabled={isPending}
+                        className={`${
+                          isPending ? "opacity-60" : "opacity-100"
+                        } transition-opacity w-max`}
+                      >
+                        {isPending ? "Loading..." : "Log Out"}
+                      </button>
+                    </form>
                   </li>
                 </ul>
               </div>
@@ -128,7 +149,7 @@ const Navbar = () => {
           </div>
         )}
         <div className="flex items-center gap-4 nav-button lg:hidden">
-          {!isLogin && (
+          {!token && (
             <Link
               href={"/login"}
               className={`bg-blackLight rounded-[8px] px-[31px] py-2  laptopScreen:text-base text-white`}
