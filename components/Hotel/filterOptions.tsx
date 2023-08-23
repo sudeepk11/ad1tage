@@ -1,27 +1,26 @@
 import Image from "next/image";
-import React, { useState } from "react";
+import { Dispatch, SetStateAction } from "react";
 import listIcon from "../../images/list-icon.png";
 import listBlackIcon from "../../images/menu-icon-black.png";
 import mapIcon from "../../images/map-icon.png";
 import mapWhiteIcon from "../../images/map-icon-white.png";
 import Dropdown from "../Common/Dropdown";
 
-const FilterOptions = ({ listOrMapView }: any) => {
-  const [mapView, setMapView] = useState(false);
-  const handleMapView = () => {
-    setMapView(!mapView);
-  };
+type Props = {
+  mapView: boolean;
+  changeMapView: Dispatch<SetStateAction<boolean>>;
+};
+
+const FilterOptions = ({ mapView, changeMapView }: Props) => {
   return (
     <div className="flex items-center justify-between mb-10 flex-wrap gap-5">
       <Dropdown />
       <div
         className="flex border rounded-lg border-greyishBrown cursor-pointer"
-        onClick={() => {
-          handleMapView(), listOrMapView();
-        }}
+        onClick={() => changeMapView((prev) => !prev)}
       >
         <div
-          className={`flex rounded-lg h-max p-[14px] items-center transition-all ${
+          className={`flex rounded-lg h-max p-[14px] items-center transition-colors ${
             mapView === false
               ? "bg-primary text-white"
               : "bg-transparent text-black"

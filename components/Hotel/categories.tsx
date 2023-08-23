@@ -10,45 +10,49 @@ import mapImg from "../../images/map-img-2.png";
 import mapOverlay from "../../images/appartment-icon.png";
 import CategoryCard from "../Common/CategoryCard";
 import { josefin } from "../../utils/utilsFonts";
-import {getUsers} from '../../service/service.js';
+import { getUsers } from "../../service/service.js";
+import { getApi } from "../../service/api";
 const CategoriesListing = () => {
-
-  
-   useEffect(() => {
-    getUsers()
-    .then((res) => {
-      console.log(res)
-    })
-    
-   },[])
+  useEffect(() => {
+    async function fetchCategories() {
+      const resp = await getApi("/categories");
+      console.log(resp);
+    }
+    fetchCategories();
+  }, []);
   const categories = [
     {
-      name: 'Health Care',
-      description: 'Services and resources related to medical care, health insurance, specialists, and wellness programs for senior citizens.'
+      name: "Health Care",
+      description:
+        "Services and resources related to medical care, health insurance, specialists, and wellness programs for senior citizens.",
     },
     {
-      name: 'Social Activities',
-      description: 'Opportunities for senior citizens to engage in social interactions, join clubs, participate in recreational activities, and attend events.'
+      name: "Social Activities",
+      description:
+        "Opportunities for senior citizens to engage in social interactions, join clubs, participate in recreational activities, and attend events.",
     },
     {
-      name: 'Financial Planning',
-      description: 'Guidance and advice on managing finances during retirement, investments, estate planning, and pension-related information.'
+      name: "Financial Planning",
+      description:
+        "Guidance and advice on managing finances during retirement, investments, estate planning, and pension-related information.",
     },
     {
-      name: 'Housing Options',
-      description: 'Information about various housing choices for senior citizens, including retirement communities, assisted living, and nursing homes.'
+      name: "Housing Options",
+      description:
+        "Information about various housing choices for senior citizens, including retirement communities, assisted living, and nursing homes.",
     },
     {
-      name: 'Transportation',
-      description: 'Transportation services catering to senior citizens, such as accessible public transportation, senior discounts, and specialized shuttle services.'
+      name: "Transportation",
+      description:
+        "Transportation services catering to senior citizens, such as accessible public transportation, senior discounts, and specialized shuttle services.",
     },
     {
-      name: 'Caregiver Support',
-      description: 'Resources and assistance for family members and caregivers of senior citizens, including respite care, support groups, and training.'
-    }
-
+      name: "Caregiver Support",
+      description:
+        "Resources and assistance for family members and caregivers of senior citizens, including respite care, support groups, and training.",
+    },
   ];
-  
+
   return (
     <div className="hotel-suggestion py-16">
       <div className="flex justify-between">
@@ -65,8 +69,13 @@ const CategoriesListing = () => {
         ></Button>
       </div>
       <div className="grid lg:grid-cols-4 md:grid-cols-4 sm:grid-cols-2 gap-6 hotel-card-design max-lg:grid-cols-1">
-        {categories.map((category , i) => (
-          <CategoryCard key={i} id={i} paraText={`${category.name}`} descText = {category.description}  />
+        {categories.map((category, i) => (
+          <CategoryCard
+            key={i}
+            id={i}
+            paraText={`${category.name}`}
+            descText={category.description}
+          />
         ))}
       </div>
 
@@ -85,10 +94,9 @@ const CategoriesListing = () => {
               >
                 {category.name}
               </h2>
-              
+
               <Button
                 ButtonText={"Show All"}
-               
                 ButtonClasses={
                   "!bg-blue-100 text-[#2A86DB] font-semibold w-fit flex items-center justify-center max-w-fit max-h-[38px] max-xl:w-full"
                 }

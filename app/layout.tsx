@@ -1,6 +1,7 @@
 import "./globals.css";
 import { Inter, Poppins } from "next/font/google";
 import Layout from "../components/Layout";
+import AuthProvider from "../providers/AuthProvider";
 
 // const inter = Inter({ subsets: ["latin"] });
 const poppins = Poppins({
@@ -20,7 +21,6 @@ export default function RootLayout({
 }) {
   return (
     <html lang="en">
-    <link href='https://api.mapbox.com/mapbox-gl-js/v2.8.1/mapbox-gl.css' rel='stylesheet' />
       {/* <link
         rel="stylesheet"
         type="text/css"
@@ -33,9 +33,11 @@ export default function RootLayout({
         href="https://cdnjs.cloudflare.com/ajax/libs/slick-carousel/1.6.0/slick-theme.min.css"
       /> */}
       <body className={`${poppins.className}`}>
-        <Layout>
-          <div>{children}</div>
-        </Layout>
+        <AuthProvider>
+          <Layout>
+            <div>{children}</div>
+          </Layout>
+        </AuthProvider>
       </body>
     </html>
   );

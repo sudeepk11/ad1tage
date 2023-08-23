@@ -1,53 +1,34 @@
-"use client"
+"use client";
 import Image from "next/image";
-import React, { useState } from "react";
+import React, { useState, useMemo, useTransition, useContext } from "react";
 import login_signup from "../../Assets/Images/login_signup.png";
 import Link from "next/link";
 import Button from "../Common/Button";
 import RightFormSection from "./RightFormSection";
-import { login } from "../../service/service";
-import setAuthToken from "../../service/api/setAuthToken";
+import logIn from "../../service/auth/logIn";
+import { useRouter } from "next/navigation";
+import { AuthContext } from "../../providers/AuthProvider";
+
 const Login = () => {
+  const { logIn: signIn } = useContext(AuthContext);
+  const [isPending, startTransition] = useTransition();
+  const [email, setEmail] = useState("");
+  const [error, setError] = useState("");
+  const [password, setPassword] = useState("");
+  const { push } = useRouter();
 
-  
-
-  const [email, setEmail] = useState('')
-  const [error, setError] = useState([]);
-  const [password, setPassword] = useState('')
-
-  const validateEmail = (email) => {
+  const validateEmail = (email: string) => {
     return /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email);
   };
 
-  const validatePassword = (password) => {
+  const validatePassword = (password: string) => {
     return password.length >= 6;
-  }
+  };
 
-  const onLogin = async () => {
-    const username = 'sudeepk11'
-
-    const newErrors = [];
-    if (!validateEmail(email)) {
-      newErrors.push('Invalid email format.');
-    }
-    if (!validatePassword(password)) {
-      newErrors.push('Password must be at least 6 characters long.');
-    }
-
-    if (newErrors.length === 0) {
-      const payload = {
-        username,
-        password,
-      };
-      const res = await login(payload)
-      if(res.token) {
-        setAuthToken(res.token)
-        console.log(res.token)
-        localStorage.setItem("auth_token", res.token)
-      }
-    } 
-    setError(newErrors);
-  }
+  const isValid = useMemo<boolean>(
+    () => validateEmail(email) && validatePassword(password),
+    [email, password]
+  );
 
   return (
     <div className="lg:flex m-[20px] md:m-0 items-center justify-center h-screen bg-white rounded-2xl overflow-hidden">
@@ -65,40 +46,66 @@ const Login = () => {
         authLinkText={"Register"}
         authLink={"/signup"}
       >
-        <form className="flex flex-col justify-center items-center pt-6 max-w-[384px] mx-auto w-full">
+        <form
+          action={(props) =>
+            startTransition(async () => {
+              const resp = await logIn(props);
+              if (resp.status === "success") {
+                signIn(resp.data);
+                push(
+                  resp.data.role === "user"
+                    ? "/categories"
+                    : resp.data.role === "owner"
+                    ? "/categories"
+                    : "/admin"
+                );
+              } else setError(resp.message);
+            })
+          }
+          method={"POST"}
+          className="flex flex-col justify-center items-center pt-6 max-w-[384px] mx-auto w-full"
+        >
           <div className="w-full">
             <input
               type="text"
               placeholder="Email"
+              name="email"
               value={email}
-              onChange={(e) => { setEmail(e.target.value) }}
+              onChange={(e) => {
+                setEmail(e.target.value);
+              }}
               className="py-[18px] mb-[10px] px-6 border border-greyishBrown rounded-[8px] w-full"
             />
 
             {email && !validateEmail(email) && (
-              <p className="text-red-600 text-sm mb-2 flex justify-end">Invalid email format.</p>
+              <p className="text-red-600 text-sm mb-2 flex justify-end">
+                Invalid email format.
+              </p>
             )}
-
           </div>
           <div className="w-full">
             <input
               type="password"
               placeholder="Password"
+              name="password"
               value={password}
-              onChange={(e) => { setPassword(e.target.value) }}
+              onChange={(e) => {
+                setPassword(e.target.value);
+              }}
               className="py-[18px] px-6 border border-greyishBrown rounded-[8px] w-full"
             />
           </div>
 
           <div>
             {error.length > 0 && (
-              <div className="mt-3 bg-red-100 border border-red-400 text-red-600 px-4 py-3 mb-2 rounded relative" role="alert">
-                <strong className="font-semibold">Error Couldnt Login:</strong>
-                <ul className="list-disc ml-5 mt-1">
-                  {error.map((errorMessage, index) => (
-                    <li key={index}>{errorMessage}</li>
-                  ))}
-                </ul>
+              <div
+                className="mt-3 bg-red-100 border border-red-400 text-red-600 px-4 py-3 mb-2 rounded relative"
+                role="alert"
+              >
+                <strong className="font-semibold">
+                  Error, Could not Login:
+                </strong>{" "}
+                {error}
               </div>
             )}
           </div>
@@ -110,8 +117,8 @@ const Login = () => {
             Forgot Password?
           </Link>
           <Button
-            ButtonText={"Login"}
-            ButtonClicked={onLogin}
+            disabled={!isValid || isPending}
+            ButtonText={isPending ? "Loading..." : "Log in"}
             ButtonClasses={"w-full bg-primary text-center text-white py-4 "}
           ></Button>
         </form>
