@@ -36,6 +36,7 @@ export default async function Services() {
               perRoomUserCount={"2 sleeps"}
               bedCount={"1 Bedroom"}
               bathCount={"1 Bath"}
+              photos={item.photos}
               likeButton={"unfilled"}
               id={item._id}
               key={item._id}

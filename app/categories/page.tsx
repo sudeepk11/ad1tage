@@ -53,6 +53,7 @@ export default async function Categories() {
               id={category._id}
               paraText={`${category.category}`}
               descText={category.desc}
+              photo={category.imageUrl}
             />
           ))}
         </div>
