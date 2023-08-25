@@ -52,13 +52,7 @@ const Login = () => {
               const resp = await logIn(props);
               if (resp.status === "success") {
                 signIn(resp.data);
-                push(
-                  resp.data.role === "user"
-                    ? "/categories"
-                    : resp.data.role === "owner"
-                    ? "/categories"
-                    : "/admin"
-                );
+                push(resp.data.role === "user" ? "/categories" : "/admin");
               } else setError(resp.message);
             })
           }

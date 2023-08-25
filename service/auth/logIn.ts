@@ -15,6 +15,8 @@ export default async function logIn(data: FormData): Promise<APIResponse<User>> 
             }
         })
         cookies().set("access_token", (data as APIResponse<User>).data.token)
+        cookies().set("role", (data as APIResponse<User>).data.role)
+        cookies().set("_id", (data as APIResponse<User>).data._id)
         return data;
     } catch(err) {
         console.log(err.response.data)

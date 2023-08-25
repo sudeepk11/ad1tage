@@ -8,6 +8,7 @@ export default async function logOut(): Promise<APIResponse<any>> {
     try {
         const { data } = await axios.post(`${process.env.NEXT_PUBLIC_API_URL}/auth/logout`)
         cookies().delete("access_token")
+        cookies().delete("role")
         return data
     } catch(err) {
         return err.response.data

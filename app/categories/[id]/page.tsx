@@ -43,10 +43,11 @@ export default async function CategoryId({
             <CardWithSlider
               paraText={item.name}
               location={item.city}
-              subParaText={item.desc}
-              rating={item.rating}
+              subParaText={item.category.category}
+              rating={item.rating.toPrecision(2)}
               perRoomUserCount={"2 sleeps"}
               bedCount={"1 Bedroom"}
+              photos={item.photos}
               bathCount={"1 Bath"}
               likeButton={"unfilled"}
               id={item._id}

@@ -149,6 +149,7 @@ const SignUp = () => {
                 Passwords do not match.
               </p>
             )}
+            <input type="hidden" name="role" value="user" />
           </div>
 
           <div>
