@@ -18,7 +18,6 @@ export default async function Page() {
   } catch (err) {
     return notFound();
   }
-  console.log(listings);
   return (
     <div className="container-2xl max-lg:px-4 lg:px-[50px] py-5">
       <div className="flex items-center justify-between gap-4 max-xl:flex-col max-xl:justify-start max-xl:items-start w-full">

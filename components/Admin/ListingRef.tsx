@@ -2,7 +2,7 @@
 
 import Image from "next/image";
 import { Service } from "../../types/services";
-import { ChangeEvent, useContext, useState } from "react";
+import { ChangeEvent, MouseEvent, useContext, useState } from "react";
 import axios from "axios";
 import { toast } from "react-hot-toast";
 import { AuthContext } from "../../providers/AuthProvider";
@@ -15,11 +15,15 @@ export default function ListingRef({
   featured,
   city,
   isApproved,
+  rating,
+  views,
 }: Service) {
   const { token } = useContext(AuthContext);
+  const [approved, setApproved] = useState(isApproved);
   const [isFeatured, setIsFeatured] = useState(featured);
   const [isLoading, setIsLoading] = useState({
     featured: false,
+    approve: false,
   });
   const onChange = async (e: ChangeEvent<HTMLInputElement>) => {
     setIsFeatured(e.target.checked);
@@ -28,8 +32,7 @@ export default function ListingRef({
       const { data } = await axios.put(
         `${process.env.NEXT_PUBLIC_API_URL}/services/${_id}`,
         JSON.stringify({
-          property: "featured",
-          description: e.target.checked,
+          featured: e.target.checked,
         }),
         {
           headers: {
@@ -50,6 +53,33 @@ export default function ListingRef({
     }
   };
 
+  const onClick = async (e: MouseEvent<HTMLButtonElement>) => {
+    e.preventDefault();
+    setIsLoading((prev) => ({ ...prev, approve: true }));
+    try {
+      const { data } = await axios.put(
+        `${process.env.NEXT_PUBLIC_API_URL}/services/${_id}`,
+        JSON.stringify({
+          isApproved: true,
+        }),
+        {
+          headers: {
+            "Content-Type": "application/json",
+            Authorization: `Bearer ${token}`,
+            Cookie: `access_token=${token}`,
+          },
+        }
+      );
+      if (data.status === "success") {
+        toast.success("Successfully changed!");
+      }
+    } catch (err) {
+      toast.error(err.response.data.message);
+    } finally {
+      setIsLoading((prev) => ({ ...prev, approve: false }));
+    }
+  };
+
   return (
     <tr className="my-3 border-b border-solid text-center">
       <td className="flex py-5 px-3 w-60">
@@ -66,9 +96,17 @@ export default function ListingRef({
         </p>
       </td>
       <td className="py-5 px-3">
-        <p className={`mx-3 ${isApproved ? "text-green-500" : "text-red-500"}`}>
-          {isApproved ? "Approved" : "Not Approved"}
-        </p>
+        {approved ? (
+          <p className={`mx-3 text-green-500`}>Approved</p>
+        ) : (
+          <button
+            onClick={onClick}
+            disabled={isLoading.approve}
+            className={isLoading.approve ? "opacity-60" : "opacity-100"}
+          >
+            Approve
+          </button>
+        )}
       </td>
       <td className="py-5 px-3">
         <p className="mx-3 p-3 h-fit rounded-lg bg-blue-100 text-primary">
@@ -94,10 +132,10 @@ export default function ListingRef({
         </label>
       </td>
       <td className="py-5 px-3">
-        <p className="mx-3">20</p>
+        <p className="mx-3">{views}</p>
       </td>
       <td className="py-5 px-3">
-        <p className="mx-3">4</p>
+        <p className="mx-3">{rating.toPrecision(2)}</p>
       </td>
       <td className="py-5 px-3">
         <p className="mx-3">{city}</p>

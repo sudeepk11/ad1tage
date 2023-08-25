@@ -32,6 +32,7 @@ export default function FormWrapper({
           const resp = await callback(props);
           console.log(resp);
           if (resp.status === "success") {
+            toast.success("Success!");
             formRef.current.reset();
           } else {
             toast.error(resp.message || "An error occured");

@@ -5,6 +5,7 @@ import { APIResponse } from "../../types/general";
 import { User } from "../../types/auth";
 import { cookies } from "next/headers";
 import { redirect } from "next/navigation";
+import { revalidatePath } from "next/cache";
 
 export default async function addService(
   data: FormData
@@ -27,6 +28,7 @@ export default async function addService(
         },
       }
     );
+    revalidatePath("/admin/listings");
     return data;
   } catch (err) {
     return err.response.data;
