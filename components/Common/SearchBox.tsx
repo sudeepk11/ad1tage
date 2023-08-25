@@ -1,35 +1,133 @@
 "use client";
-import React, { useState } from "react";
-import { josefin } from "../../utils/utilsFonts";
+import React, { useEffect, useRef, useState } from "react";
 import Button from "./Button";
 import locationIcon from "../../Assets/Icons/location.png";
+import mapboxgl from "mapbox-gl";
+import { Coords, Result } from "../../types/general";
+import { GeolocateControl, Map } from "react-map-gl";
+import axios from "axios";
+import ResultRef from "./ResultRef";
+import useDebounce from "../../hooks/useDebounce";
+import { useRouter } from "next/navigation";
 
 const SearchBox = ({ searchClasses }) => {
+  const { push } = useRouter();
+  const wrapperRef = useRef<HTMLDivElement>(null!);
+  const geolocationRef = useRef<mapboxgl.GeolocateControl>(null!);
+  const [userCoords, setUserCoords] = useState<Coords | null>(null);
+  const [isLoading, setIsLoading] = useState(false);
+  const [input, setInput] = useState("");
+  const [isFocused, setIsFocused] = useState(false);
+  const [results, setResults] = useState<Result[]>([]);
+  const debounce = useDebounce(input, 400);
+
+  function geolocate() {
+    setIsLoading(true);
+  }
+
+  useEffect(() => {
+    if (!geolocationRef.current) return;
+    geolocationRef.current.trigger();
+  }, [geolocationRef.current]);
+
+  useEffect(() => {
+    if (!debounce) return;
+    async function fetchResults() {
+      const { data } = await axios
+        .get(`${process.env.NEXT_PUBLIC_API_URL}/global-search/`)
+        .finally(() => setIsLoading(false));
+      setResults(
+        (data.data as Result[]).filter((item) =>
+          item.name
+            .toLowerCase()
+            .split(" ")
+            .join("")
+            .includes(debounce.toLowerCase().split(" ").join(""))
+        )
+      );
+    }
+    fetchResults();
+  }, [debounce]);
+
+  useEffect(() => {
+    function onBlur(e: MouseEvent) {
+      if (
+        !wrapperRef.current ||
+        !wrapperRef.current.contains(e.target as Node)
+      ) {
+        setIsFocused(false);
+      }
+    }
+    window.addEventListener("mousedown", onBlur);
+    return () => {
+      window.removeEventListener("mousedown", onBlur);
+    };
+  }, [wrapperRef.current]);
+
   return (
     <div
       className={`bg-white p-[20px] mb-10 rounded-xl shadow-md max-w-[1190px] w-full m-auto relative z-1 ${searchClasses} h-fit`}
     >
-      <div className="grid grid-cols-8 md:gap-4 gap-2 relative">
-        <input
-          type="text"
-          placeholder="Search..."
-          className=" md:col-span-5 sm:col-span-4 col-span-8 py-[10px] px-6 border border-greyishBrown rounded-[8px] w-full"
-        />
-        <Button
+      <div className="flex flex-col lg:flex-row lg:items-center md:gap-4 gap-2 relative">
+        <div className="relative flex-1" ref={wrapperRef}>
+          <input
+            type="text"
+            placeholder="Search..."
+            className="py-[10px] px-6 border border-greyishBrown rounded-[8px] w-full flex-1"
+            onFocus={() => setIsFocused(true)}
+            value={input}
+            onChange={(e) => {
+              setInput(e.target.value);
+              setIsLoading(true);
+            }}
+          />
+          {input && isFocused && (
+            <div className="w-full absolute top-full left-0 right-0 flex flex-col bg-white border-greyishBrown border-[1px] rounded-b-md z-10">
+              {isLoading ? (
+                <span className="py-3 px-6">Loading...</span>
+              ) : results.length > 0 ? (
+                results.map((item) => <ResultRef {...item} key={item.id} />)
+              ) : (
+                <span className="py-3 px-6">Nothing has been found</span>
+              )}
+            </div>
+          )}
+        </div>
+        {/* <Button
           ButtonText={"Search"}
           ButtonClasses={
             "sm:col-span-1 col-span-3 w-full flex items-center font-semibold text-white justify-center max-h-[58px] max-xl:w-full max-md:py-3"
           }
-        ></Button>
+        ></Button> */}
         <Button
           ButtonText={"Find Services near me"}
           icon={locationIcon}
           logo={locationIcon}
+          ButtonClicked={() => push("/services")}
           ButtonClasses={
-            " md:col-span-2 sm:col-span-3 col-span-5 !bg-blue-100 text-[#2A86DB] font-semibold w-full flex items-center justify-center max-h-[58px] max-xl:w-full max-md:py-3"
+            "lg:w-max !bg-blue-100 text-[#2A86DB] font-semibold w-full flex items-center justify-center py-3"
           }
         ></Button>
       </div>
+      <Map
+        mapLib={import("mapbox-gl")}
+        mapboxAccessToken={process.env.NEXT_PUBLIC_MAPBOX_KEY}
+        style={{ width: 0, height: 0 }}
+      >
+        <GeolocateControl
+          trackUserLocation
+          positionOptions={{ enableHighAccuracy: true }}
+          showUserHeading
+          onGeolocate={(e) =>
+            setUserCoords({
+              latitude: e.coords.latitude,
+              longitude: e.coords.longitude,
+            })
+          }
+          ref={(ref) => ref && (geolocationRef.current = ref)}
+        />
+      </Map>
+      <div className="w-0 h-0 opacity-0 pointer-events-none" id="map"></div>
     </div>
   );
 };

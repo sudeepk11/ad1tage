@@ -1,4 +1,5 @@
 import { User } from "./auth";
+import { Category } from "./categories";
 
 export type Service = {
     _id: string;
@@ -14,9 +15,13 @@ export type Service = {
     featured: boolean;
     isApproved: boolean;
     desc: string;
-    owner: User;
+    Owner: User;
+    category: Category
 }
 
 export type Review = {
     _id: string;
+    place: string;
+    rating: number;
+    comment: string
 }

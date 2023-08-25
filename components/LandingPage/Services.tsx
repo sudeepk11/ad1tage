@@ -1,7 +1,7 @@
 import React from "react";
-import Button from "../Common/Button";
 import { josefin } from "../../utils/utilsFonts";
 import CardWithSlider from "../Common/CardWithSlider";
+import ShowMore from "./ShowMore";
 
 const Services = ({ title }) => {
   return (
@@ -12,12 +12,7 @@ const Services = ({ title }) => {
         >
           {title}
         </h2>
-        <Button
-          ButtonText={"Show All"}
-          ButtonClasses={
-            "!bg-blue-100 text-[#2A86DB] font-semibold w-fit flex items-center justify-center max-w-fit max-h-[38px] max-xl:w-full"
-          }
-        ></Button>
+        <ShowMore />
       </div>
       <div className="grid lg:grid-cols-4 md:grid-cols-2 gap-6 max-md:grid-cols-1 max-lg:grid-cols-2">
         <CardWithSlider

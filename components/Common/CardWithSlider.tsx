@@ -1,6 +1,5 @@
 "use client";
 import Image from "next/image";
-import React, { useState } from "react";
 import sliderImg from "../../images/slider-img.png";
 import sliderImg1 from "../../images/kitchen-img-2.png";
 import sliderImg2 from "../../images/hero.png";
@@ -18,9 +17,6 @@ var settings = {
 };
 
 const CardWithSlider = (props) => {
-  const [filled, setFilled] = useState(props.likeButton);
-  console.log(props.photos);
-
   return (
     <div className="bg-white rounded-[16px] overflow-hidden hotel-card-design shadow-lg h-max">
       {props.photos ? (
@@ -80,14 +76,15 @@ const CardWithSlider = (props) => {
       <div className="px-4 py-6">
         <div className="flex items-center justify-between rating-like ">
           <div className="flex gap-1 mb-2 starts">
-            {props.rating === "5.0" ? (
-              <>
+            {Array.from(Array(Math.round(parseFloat(props.rating)))).map(
+              (_, i) => (
                 <svg
                   width="22"
                   height="22"
                   viewBox="0 0 22 22"
                   fill="none"
                   xmlns="http://www.w3.org/2000/svg"
+                  key={i}
                 >
                   <path
                     d="M11 1L14.09 7.26L21 8.27L16 13.14L17.18 20.02L11 16.77L4.82 20.02L6 13.14L1 8.27L7.91 7.26L11 1Z"
@@ -98,73 +95,27 @@ const CardWithSlider = (props) => {
                     stroke-linejoin="round"
                   />
                 </svg>
+              )
+            )}
+            {Array.from(Array(5 - Math.round(parseFloat(props.rating)))).map(
+              (_, i) => (
                 <svg
                   width="22"
                   height="22"
                   viewBox="0 0 22 22"
                   fill="none"
                   xmlns="http://www.w3.org/2000/svg"
+                  key={i}
                 >
                   <path
                     d="M11 1L14.09 7.26L21 8.27L16 13.14L17.18 20.02L11 16.77L4.82 20.02L6 13.14L1 8.27L7.91 7.26L11 1Z"
-                    fill="#2A86DB"
                     stroke="#2A86DB"
                     stroke-width="2"
                     stroke-linecap="round"
                     stroke-linejoin="round"
                   />
                 </svg>
-                <svg
-                  width="22"
-                  height="22"
-                  viewBox="0 0 22 22"
-                  fill="none"
-                  xmlns="http://www.w3.org/2000/svg"
-                >
-                  <path
-                    d="M11 1L14.09 7.26L21 8.27L16 13.14L17.18 20.02L11 16.77L4.82 20.02L6 13.14L1 8.27L7.91 7.26L11 1Z"
-                    fill="#2A86DB"
-                    stroke="#2A86DB"
-                    stroke-width="2"
-                    stroke-linecap="round"
-                    stroke-linejoin="round"
-                  />
-                </svg>
-                <svg
-                  width="22"
-                  height="22"
-                  viewBox="0 0 22 22"
-                  fill="none"
-                  xmlns="http://www.w3.org/2000/svg"
-                >
-                  <path
-                    d="M11 1L14.09 7.26L21 8.27L16 13.14L17.18 20.02L11 16.77L4.82 20.02L6 13.14L1 8.27L7.91 7.26L11 1Z"
-                    fill="#2A86DB"
-                    stroke="#2A86DB"
-                    stroke-width="2"
-                    stroke-linecap="round"
-                    stroke-linejoin="round"
-                  />
-                </svg>
-                <svg
-                  width="22"
-                  height="22"
-                  viewBox="0 0 22 22"
-                  fill="none"
-                  xmlns="http://www.w3.org/2000/svg"
-                >
-                  <path
-                    d="M11 1L14.09 7.26L21 8.27L16 13.14L17.18 20.02L11 16.77L4.82 20.02L6 13.14L1 8.27L7.91 7.26L11 1Z"
-                    fill="#2A86DB"
-                    stroke="#2A86DB"
-                    stroke-width="2"
-                    stroke-linecap="round"
-                    stroke-linejoin="round"
-                  />
-                </svg>
-              </>
-            ) : (
-              ""
+              )
             )}
             <span className="ml-2 font-medium">{props.rating}</span>
           </div>

@@ -16,7 +16,6 @@ const CategoriesListing = () => {
   useEffect(() => {
     async function fetchCategories() {
       const resp = await getApi("/categories");
-      console.log(resp);
     }
     fetchCategories();
   }, []);

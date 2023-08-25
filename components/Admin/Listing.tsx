@@ -1,17 +1,22 @@
 import Image from "next/image";
 import React from "react";
 import { josefin } from "../../utils/utilsFonts";
+import { Service } from "../../types/services";
+import Link from "next/link";
+import img from "../../images/about-img-2.png";
 
-const Listing = (props: any) => {
+const Listing = ({ _id, name, city }: Service) => {
   return (
-    <>
-      <div className="flex">
-        <Image src={props.data.bannerImg} alt="" />
-        <div className="w-full ml-5 my-auto">
-          <p className={`${josefin.className}`}>{props.data.headingName}</p>
-        </div>
-      </div>
-    </>
+    <Link href={`/service-details/${_id}`} className="flex items-center gap-4">
+      <Image
+        className="h-[1.5in] w-[1.5in] rounded-xl object-cover"
+        src={img}
+        alt=""
+      />
+      <p className={`${josefin.className}`}>
+        {name}, {city}
+      </p>
+    </Link>
   );
 };
 

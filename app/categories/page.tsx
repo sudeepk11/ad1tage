@@ -15,6 +15,7 @@ export default async function Categories() {
     const { data } = await axios.get(`${API_URL}/categories`);
     categories = data.data;
   } catch (err) {
+    console.log(err.response);
     return notFound();
   }
   return (

@@ -5,3 +5,10 @@ export type APIResponse<T> = {
 }
 
 export type Coords = { latitude: number; longitude: number };
+
+export type Result = {
+    type: "services" | "categories";
+    id: string;
+    name: string;
+    rating: number;
+  };

@@ -21,6 +21,7 @@ export default async function CategoryId({
   } catch (err) {
     return notFound();
   }
+  console.log(services);
   return (
     <div className="container-2xl max-lg:px-4 lg:px-[50px]">
       <div className="hotel-suggestion py-16">
@@ -41,14 +42,15 @@ export default async function CategoryId({
           {services.map((item, i) => (
             <CardWithSlider
               paraText={item.name}
+              location={item.city}
+              subParaText={item.desc}
               rating={item.rating}
-              id={item._id}
               perRoomUserCount={"2 sleeps"}
               bedCount={"1 Bedroom"}
               bathCount={"1 Bath"}
               likeButton={"unfilled"}
-              key={`slider-${i}`}
-              photos={item.photos}
+              id={item._id}
+              key={i}
             />
           ))}
         </GridProvider>

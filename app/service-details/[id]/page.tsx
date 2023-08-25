@@ -17,6 +17,8 @@ import { notFound, redirect } from "next/navigation";
 import { cookies } from "next/headers";
 import { APIResponse } from "../../../types/general";
 import ReviewRef from "../../../components/Hotel/ReviewRef";
+import FormWrapper from "../../../components/Admin/add-services/FormWrapper";
+import addReview from "../../../service/services/addReview";
 
 export default async function ServiceDetails({
   params,
@@ -30,13 +32,12 @@ export default async function ServiceDetails({
     );
     details = data.data;
   } catch (err) {
-    console.log(err.response);
     return notFound();
   }
 
   async function addOneToCall(): Promise<APIResponse<any>> {
     "use server";
-    const authToken = cookies().get("auth-token");
+    const authToken = cookies().get("access_token")?.value;
     if (!authToken) return redirect("/login");
     try {
       const { data } = await axios.put(
@@ -45,6 +46,7 @@ export default async function ServiceDetails({
         {
           headers: {
             Authorization: `Bearer ${authToken}`,
+            Cookie: `access_token=${authToken}`,
           },
         }
       );
@@ -54,9 +56,18 @@ export default async function ServiceDetails({
     }
   }
 
-  const { name, desc, lattitude, longitude, photos, address, rating, reviews } =
-    details;
-  console.log(details);
+  const {
+    _id,
+    name,
+    desc,
+    lattitude,
+    longitude,
+    photos,
+    address,
+    rating,
+    reviews,
+    Owner,
+  } = details;
   return (
     <div>
       <VisualHeader
@@ -109,7 +120,7 @@ export default async function ServiceDetails({
                 <div className="flex gap-2 bg-blue-100 rounded-lg p-3">
                   <Image src={userImg} alt="" className="object-contain" />
                   <div>
-                    <p>Meena K.</p>
+                    <p>{Owner.username}</p>
                     <span className="text-base text-primary">Owner</span>
                   </div>
                 </div>
@@ -189,7 +200,12 @@ export default async function ServiceDetails({
           </div> */}
 
           {/* add reviews  */}
-          <div className="flex flex-col items-left my-3">
+          <FormWrapper
+            formClassName="flex flex-col items-left my-3"
+            buttonClassName="text-white !bg-primary w-fit"
+            buttonWrapperClassName="self-end"
+            callback={addReview}
+          >
             <h3 className="mb-5 text-xl font-medium">Reviews</h3>
             {/* Add reviews */}
             <p className="font-semibold">Add Reviews</p>
@@ -226,21 +242,16 @@ export default async function ServiceDetails({
 
             {/* Text area */}
             <textarea
-              name=""
+              name="comment"
               id=""
               rows={5}
-              className="w-full border border-solid border-primary rounded-lg my-3"
+              className="w-full border border-solid border-primary rounded-lg my-3 py-3 px-6"
             ></textarea>
-
-            {/* Submit button */}
-            <Button
-              ButtonText="Publish"
-              ButtonClasses="text-white !bg-primary w-fit self-end"
-            />
-          </div>
+            <input type="hidden" value={_id} name="place_id" />
+          </FormWrapper>
           {/* Reviews from users */}
           {reviews.map((item) => (
-            <ReviewRef key={item._id} />
+            <ReviewRef {...item} key={item._id} />
           ))}
         </div>
         <div className="col-span-5 bg-[#FAFAFA] rounded-[16px] mt-10 px-[30px] py-[20px] h-max max-lg:w-full md:sticky top-[80px] right-0 md:order-2 order-1">
