@@ -1,0 +1,53 @@
+"use client";
+
+import { useRef, useTransition } from "react";
+import Button from "../../Common/Button";
+import { toast } from "react-hot-toast";
+import { APIResponse } from "../../../types/general";
+
+type Props = {
+  children: JSX.Element[];
+  buttonClassName?: string;
+  buttonWrapperClassName?: string;
+  formClassName?: string;
+  buttonText?: string;
+  callback: (props: FormData) => Promise<APIResponse<any>>;
+};
+
+export default function FormWrapper({
+  children,
+  formClassName,
+  buttonClassName,
+  buttonWrapperClassName,
+  buttonText = "Submit",
+  callback,
+}: Props) {
+  const [isPending, startTransition] = useTransition();
+  const formRef = useRef<HTMLFormElement>();
+  return (
+    <form
+      ref={(ref) => ref && (formRef.current = ref)}
+      action={(props) =>
+        startTransition(async () => {
+          const resp = await callback(props);
+          console.log(resp);
+          if (resp.status === "success") {
+            formRef.current.reset();
+          } else {
+            toast.error(resp.message || "An error occured");
+          }
+        })
+      }
+      className={formClassName}
+    >
+      {children}
+      <div className={buttonWrapperClassName}>
+        <Button
+          ButtonClasses={buttonClassName}
+          ButtonText={isPending ? "Loading..." : buttonText}
+          disabled={isPending}
+        />
+      </div>
+    </form>
+  );
+}

@@ -2,6 +2,7 @@ import "./globals.css";
 import { Inter, Poppins } from "next/font/google";
 import Layout from "../components/Layout";
 import AuthProvider from "../providers/AuthProvider";
+import { Toaster } from "react-hot-toast";
 
 // const inter = Inter({ subsets: ["latin"] });
 const poppins = Poppins({
@@ -38,6 +39,7 @@ export default function RootLayout({
             <div>{children}</div>
           </Layout>
         </AuthProvider>
+        <Toaster />
       </body>
     </html>
   );

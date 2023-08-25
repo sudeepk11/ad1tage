@@ -6,9 +6,9 @@ const Rating = ({ rating = 0, hideRating = false }) => {
       {Array.from(Array(5), (e, i) => {
         return (
           <svg
-          key={i}
+            key={i}
             className={`w-4 h-4 mr-1 ${
-              rating >= i ? "text-primary " : "text-gray-300 dark:text-gray-500"
+              rating > i ? "text-primary " : "text-gray-300 dark:text-gray-500"
             }`}
             aria-hidden="true"
             xmlns="http://www.w3.org/2000/svg"

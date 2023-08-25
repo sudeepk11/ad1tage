@@ -9,13 +9,20 @@ export default function useAuth(): AuthContextType {
     null
   );
 
+  console.log(user);
+
   function logIn(user: User) {
+    if (!user) return logOut();
     setUser(user);
     setToken(user.token);
     axios.defaults.headers.common.Authorization = `Bearer ${user.token}`;
     localStorage.setItem(
       "user",
-      JSON.stringify({ username: user.username, token: user.token })
+      JSON.stringify({
+        username: user.username,
+        token: user.token,
+        role: user.role,
+      })
     );
   }
 
@@ -29,7 +36,7 @@ export default function useAuth(): AuthContextType {
   useLayoutEffect(() => {
     const userFromStorage = localStorage.getItem("user");
     const user = userFromStorage ? JSON.parse(userFromStorage) : null;
-    setUser(user);
+    logIn(user);
   }, []);
 
   return {

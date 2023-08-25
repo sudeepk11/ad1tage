@@ -10,6 +10,7 @@ import { navbarItems } from "../../utils/utilsItems";
 import { usePathname } from "next/navigation";
 import { AuthContext } from "../../providers/AuthProvider";
 import logOut from "../../service/auth/logOut";
+import AdminNav from "../Admin/AdminNav";
 const withLogin = [
   "/tenent",
   "/booking-history",
@@ -40,7 +41,11 @@ const Navbar = () => {
       <div className="flex items-center justify-between max-w-full py-[13px] mx-auto px-5 lg:px-[50px] ">
         <div className="flex gap-[50px]">
           <Link className="flex items-center text-gray-600" href="/">
-            <Image className="w-[80px]" src={logoLionImage} alt="" />
+            <Image
+              className="w-[80px] min-w-[80px]"
+              src={logoLionImage}
+              alt=""
+            />
           </Link>
           <input type="checkbox" className="hidden peer" id="nav-check" />
           {!isAdmin && (
@@ -69,24 +74,8 @@ const Navbar = () => {
               </ul>
             </div>
           )}
-          {isAdmin && (
-            <div
-              className="nav-links max-lg:hidden max-lg:peer-checked:block max-lg:fixed max-lg:top-[72px] max-lg:left-0 max-lg:w-full max-lg:h-full z-20 max-lg:bg-white
-       max-lg:text-primary 
-      "
-            >
-              <ul className="flex items-center h-full max-lg:pb-20 max-lg:flex-col max-lg:justify-center max-lg:items-center md:-mr-7">
-                <li className="lg:mr-[20px] max-lg:text-2xl lg:text-sm xl:mr-[50px] xl:text-base text-black max-lg:leading-[] ">
-                  Listing
-                </li>
-                <li className="lg:mr-[20px] max-lg:text-2xl lg:text-sm xl:mr-[50px] xl:text-base text-black max-lg:leading-[] ">
-                  Insights
-                </li>
-              </ul>
-            </div>
-          )}
         </div>
-
+        {isAdmin && <AdminNav />}
         {token ? (
           <div className="relative cursor-pointer">
             <div
@@ -94,7 +83,9 @@ const Navbar = () => {
               onClick={() => setUserSettingDropdown(!userSettingDropdown)}
             >
               {/* <Image className="w-[44px] h-[44px]" src={} alt="" /> */}
-              <span className="pl-2 text-base font-normal">Mohan Kamat</span>
+              <span className="pl-2 text-base font-normal">
+                {user.username}
+              </span>
               <Image className="w-[20px] pl-2" src={arrowDown} alt="" />
             </div>
             {userSettingDropdown && (

@@ -14,9 +14,10 @@ export default async function logIn(data: FormData): Promise<APIResponse<User>> 
                 "Content-Type": "application/json"
             }
         })
-        cookies().set("auth-token", (data as APIResponse<User>).data.token)
+        cookies().set("access_token", (data as APIResponse<User>).data.token)
         return data;
     } catch(err) {
+        console.log(err.response.data)
         return err.response.data
     }
 }

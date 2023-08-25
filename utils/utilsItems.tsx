@@ -1,9 +1,3 @@
-import sharjahImg from "../images/sharjah.png";
-import ummalquwainImg from "../images/ummalquwain.png";
-import fujairahImg from "../images/fujairah.png";
-import ListingImg1 from "../images/admin-listing1.png";
-import ListingImg2 from "../images/admin-listing2.png";
-
 export const navbarItems = [
   {
     name: "Home",
@@ -15,7 +9,7 @@ export const navbarItems = [
   },
   {
     name: "Services",
-    link: "/service-details/1",
+    link: "/services",
   },
   {
     name: "About Us",

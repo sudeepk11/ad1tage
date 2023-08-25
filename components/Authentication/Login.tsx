@@ -97,7 +97,7 @@ const Login = () => {
           </div>
 
           <div>
-            {error.length > 0 && (
+            {error && (
               <div
                 className="mt-3 bg-red-100 border border-red-400 text-red-600 px-4 py-3 mb-2 rounded relative"
                 role="alert"
