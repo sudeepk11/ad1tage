@@ -14,6 +14,9 @@ export default function AdminNav() {
         <PageLink href="/admin/categories">Manage Categories</PageLink>
       )}
       <PageLink href="/admin/add-services">Add Services</PageLink>
+      {user.role === "admin" && (
+        <PageLink href="/admin/queries">Queries</PageLink>
+      )}
     </div>
   );
 }
