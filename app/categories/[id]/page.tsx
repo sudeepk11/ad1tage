@@ -23,6 +23,7 @@ export default async function CategoryId({
   } catch (err) {
     return notFound();
   }
+  console.log(services);
   return (
     <div className="container-2xl max-lg:px-4 lg:px-[50px]">
       <div className="hotel-suggestion py-16">

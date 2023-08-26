@@ -3,7 +3,14 @@
 import Image from "next/image";
 import Slider from "react-slick";
 import sliderImg from "../../images/fujairah.png";
-import { Map, GeolocateControl, MapRef, Layer, Source } from "react-map-gl";
+import {
+  Map,
+  GeolocateControl,
+  MapRef,
+  Layer,
+  Source,
+  Marker,
+} from "react-map-gl";
 import { useRef, useEffect, useState, useCallback } from "react";
 import { Coords } from "../../types/general";
 import { Service } from "../../types/services";
@@ -77,7 +84,9 @@ export default function VisualHeader({
         {photos.map((item) => (
           <Image
             className="w-full object-cover h-[450px] md:!w-[60vw] rounded-lg"
-            src={'https://www.thechennaihomes.in/wp-content/uploads/2019/10/best-retirement-homes-in-india.jpg'}
+            src={
+              "https://www.thechennaihomes.in/wp-content/uploads/2019/10/best-retirement-homes-in-india.jpg"
+            }
             alt="item"
             width={200}
             height={200}
@@ -148,6 +157,7 @@ export default function VisualHeader({
               />
             </Source>
           )}
+
           {route && (
             <Source type="geojson" data={route}>
               <Layer
