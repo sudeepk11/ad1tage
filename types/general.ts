@@ -11,4 +11,5 @@ export type Result = {
     id: string;
     name: string;
     rating: number;
+    count: number;
   };

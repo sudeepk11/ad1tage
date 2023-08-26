@@ -1,8 +1,9 @@
 import Link from "next/link";
 import { Result } from "../../types/general";
 import Rating from "./Rating";
+import { number } from "yup";
 
-export default function ResultRef({ rating, name, type, id }: Result) {
+export default function ResultRef({ rating, name, type, id, count }: Result) {
   return (
     <Link
       href={
@@ -15,7 +16,7 @@ export default function ResultRef({ rating, name, type, id }: Result) {
         <Rating rating={rating} />
       ) : (
         <span className="text-sm text-black font-medium min-w-max">
-          Number of services: 2
+          Number of services: {count}
         </span>
       )}
     </Link>
