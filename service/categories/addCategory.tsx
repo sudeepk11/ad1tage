@@ -13,6 +13,7 @@ export default async function addCategory(
   if (!authToken) return redirect("/login");
   const category = data.get("name").toString();
   const desc = data.get("desc").toString();
+  const imageUrl = data.get("imageUrl").toString();
 
   try {
     const { data } = await axios.post(
@@ -20,8 +21,8 @@ export default async function addCategory(
       JSON.stringify({
         category,
         desc,
-        imageUrl:
-          "https://media.istockphoto.com/id/157677909/photo/nurse-or-doctor-pushing-a-wheelchair-outdoors.jpg?s=612x612&w=0&k=20&c=t2H7lO8cuQ1pCeFJYk-on-G2J6AVujKnhF72yK_t0zM=",
+        imageUrl,
+        // imageUrl:"https://media.istockphoto.com/id/157677909/photo/nurse-or-doctor-pushing-a-wheelchair-outdoors.jpg?s=612x612&w=0&k=20&c=t2H7lO8cuQ1pCeFJYk-on-G2J6AVujKnhF72yK_t0zM=",
       }),
       {
         headers: {
