@@ -10,22 +10,39 @@ import { revalidatePath } from "next/cache";
 export default async function addService(
   data: FormData
 ): Promise<APIResponse<User>> {
-  const authToken = cookies().get('access_token')?.value
-  if(!authToken) return redirect("/login")
+  const authToken = cookies().get("access_token")?.value;
+  if (!authToken) return redirect("/login");
   const name = data.get("name").toString();
+  const city = data.get("city").toString();
+  const address = data.get("address").toString();
+  const lattitude = data.get("lattitude").toString();
+  const longitude = data.get("longitude").toString();
+  const phoneNumber = data.get("phone").toString();
   const category = data.get("category").toString();
   const desc = data.get("desc").toString();
-  const userId = data.get("user_id").toString()
+  const photos = data.get("photos").toString();
+  const userId = data.get("user_id").toString();
 
   try {
     const { data } = await axios.post(
       `${process.env.NEXT_PUBLIC_API_URL}/services`,
-      JSON.stringify({ name, category, desc, Owner: userId }),
+      JSON.stringify({
+        name,
+        city,
+        address,
+        lattitude,
+        longitude,
+        phoneNumber,
+        category,
+        desc,
+        Owner: userId,
+        photos: [photos],
+      }),
       {
         headers: {
           "Content-Type": "application/json",
           Cookie: `access_token=${authToken}`,
-          Authorization: `Bearer ${authToken}`
+          Authorization: `Bearer ${authToken}`,
         },
       }
     );

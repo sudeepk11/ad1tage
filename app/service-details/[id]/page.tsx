@@ -65,6 +65,8 @@ export default async function ServiceDetails({
     address,
     rating,
     reviews,
+    featured,
+    isApproved,
     Owner,
   } = details;
   return (
@@ -82,10 +84,14 @@ export default async function ServiceDetails({
             >
               {name}
               <div className="flex md:mx-5 ">
-                <Image src={verifiedIcon} alt="" className="object-contain" />
-                <span className=" flex items-center justify-center text-[15px] text-primary bg-blue-100 mx-4 px-4 border-primary border-solid border-2 rounded-full">
-                  # ad1tage recommended
-                </span>
+                {isApproved && (
+                  <Image src={verifiedIcon} alt="" className="object-contain" />
+                )}
+                {featured && (
+                  <span className=" flex items-center justify-center text-[15px] text-primary bg-blue-100 mx-4 px-4 border-primary border-solid border-2 rounded-full">
+                    # ad1tage recommended
+                  </span>
+                )}
               </div>
             </h1>
           </div>
@@ -234,12 +240,16 @@ export default async function ServiceDetails({
             </div>
           </div>
           <div className="flex my-5">
-            <Image src={verifiedIcon} alt="" className="object-contain" />
-            <span
-              className={`${josefin.className} p-1 text-[15px] text-primary bg-blue-100 md:mx-4 ml-2 px-4 border-primary border-solid border-2 rounded-full w-fit`}
-            >
-              #ad1tage recommended
-            </span>
+            {isApproved && (
+              <Image src={verifiedIcon} alt="" className="object-contain" />
+            )}
+            {featured && (
+              <span
+                className={`${josefin.className} p-1 text-[15px] text-primary bg-blue-100 md:mx-4 ml-2 px-4 border-primary border-solid border-2 rounded-full w-fit`}
+              >
+                #ad1tage recommended
+              </span>
+            )}
           </div>
           <form action={addOneToCall} className="w-full">
             <Button
