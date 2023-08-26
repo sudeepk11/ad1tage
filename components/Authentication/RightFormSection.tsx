@@ -23,7 +23,7 @@ const RightFormSection = ({
         {/* {logoText} */}
       </Link>
       <h3
-        className={`flex items-center justify-center pt-6 text-xl ${josefin.className}`}
+        className={`flex text-center items-center justify-center pt-6 text-xl ${josefin.className}`}
       >
         {titleText}
       </h3>
