@@ -9,11 +9,16 @@ import { useRouter } from "next/navigation";
 import axios from "axios";
 import { Service } from "../../types/services";
 
-export default function GridProvider({ children }) {
+type Props = {
+  children: any;
+  withMap?: boolean;
+};
+
+export default function GridProvider({ children, withMap }: Props) {
   const geolocateRef = useRef<mapboxgl.GeolocateControl>(null!);
   const [nearbyServices, setNearbyServices] = useState<Service[]>([]);
   const [userCoords, setUserCoords] = useState<Coords | null>(null);
-  const [mapView, setMapView] = useState(false);
+  const [mapView, setMapView] = useState(withMap || false);
   const { refresh } = useRouter();
 
   useEffect(() => {
@@ -32,15 +37,16 @@ export default function GridProvider({ children }) {
         `${process.env.NEXT_PUBLIC_MAPBOX_KEY}/services/get-nearby-services/?latitude=${userCoords.latitude}&longitude=${userCoords.longitude}`
       );
       setNearbyServices(data.data);
-      console.log(data);
     }
     fetchServices();
   }, [userCoords]);
 
   return (
     <Fragment>
-      <FilterOptions mapView={mapView} changeMapView={setMapView} />
-      {mapView ? (
+      {!withMap && (
+        <FilterOptions mapView={mapView} changeMapView={setMapView} />
+      )}
+      {mapView || withMap ? (
         <div className="grid grid-cols-2 gap-6 max-md:flex max-md:flex-col-reverse max-lg:grid-col-2">
           <div className="grid lg:grid-cols-2 gap-6">{children}</div>
           <div className="rounded-xl">
