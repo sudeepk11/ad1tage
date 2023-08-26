@@ -12,14 +12,15 @@ export default async function addService(
 ): Promise<APIResponse<User>> {
   const authToken = cookies().get('access_token')?.value
   if(!authToken) return redirect("/login")
-  const property = data.get("name").toString();
+  const name = data.get("name").toString();
   const category = data.get("category").toString();
-  const description = data.get("desc").toString();
+  const desc = data.get("desc").toString();
+  const userId = data.get("user_id").toString()
 
   try {
     const { data } = await axios.post(
       `${process.env.NEXT_PUBLIC_API_URL}/services`,
-      JSON.stringify({ property, category, description }),
+      JSON.stringify({ name, category, desc, Owner: userId }),
       {
         headers: {
           "Content-Type": "application/json",

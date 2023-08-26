@@ -6,7 +6,7 @@ import { toast } from "react-hot-toast";
 import { APIResponse } from "../../../types/general";
 
 type Props = {
-  children: JSX.Element[];
+  children: JSX.Element[] | JSX.Element;
   buttonClassName?: string;
   buttonWrapperClassName?: string;
   formClassName?: string;

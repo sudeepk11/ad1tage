@@ -7,7 +7,7 @@ import arrowDown from "../../images/arrow-down.png";
 // import logoText from "../../images/trophy-logo.png";
 import logoText from "../../images/logo-text.png";
 import { navbarItems } from "../../utils/utilsItems";
-import { usePathname } from "next/navigation";
+import { usePathname, useRouter } from "next/navigation";
 import { AuthContext } from "../../providers/AuthProvider";
 import logOut from "../../service/auth/logOut";
 import AdminNav from "../Admin/AdminNav";
@@ -28,9 +28,11 @@ const withAdmin = [
 ];
 const Navbar = () => {
   const router = usePathname();
+  const { push } = useRouter();
   const [isPending, startTransition] = useTransition();
   const { user, token, logOut: signOut } = useContext(AuthContext);
-  const isAdmin = !!(token && user.role === "admin");
+  const isAdmin =
+    !!(token && user.role === "admin") || !!(token && user.role === "owner");
   const [userSettingDropdown, setUserSettingDropdown] = useState(false);
   return (
     <div
@@ -101,6 +103,7 @@ const Navbar = () => {
                           const resp = await logOut();
                           if (resp.status === "success") {
                             signOut();
+                            push("/");
                           }
                         })
                       }
@@ -121,8 +124,9 @@ const Navbar = () => {
           </div>
         ) : (
           <div className="flex items-center gap-5 max-lg:hidden">
+       
             <Link
-              href={"/signup"}
+              href={"/signup/business-owner"}
               className="lg:text-sm laptopScreen:text-base"
             >
               Business Owner?{" "}
@@ -134,7 +138,7 @@ const Navbar = () => {
               className={`bg-primary rounded-[8px] px-[31px] py-2  laptopScreen:text-base text-white`}
               href={"/login"}
             >
-              Sign Up
+              Sign In
             </Link>
             {/* <Button /> */}
           </div>

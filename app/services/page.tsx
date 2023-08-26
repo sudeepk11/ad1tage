@@ -31,11 +31,12 @@ export default async function Services() {
             <CardWithSlider
               paraText={item.name}
               location={item.city}
-              subParaText={item.desc}
-              rating={item.rating}
+              subParaText={item.category.category}
+              rating={item.rating.toPrecision(2)}
               perRoomUserCount={"2 sleeps"}
               bedCount={"1 Bedroom"}
               bathCount={"1 Bath"}
+              photos={item.photos}
               likeButton={"unfilled"}
               id={item._id}
               key={item._id}

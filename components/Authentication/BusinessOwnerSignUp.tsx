@@ -6,10 +6,8 @@ import Button from "../Common/Button";
 import RightFormSection from "./RightFormSection";
 import signUp from "../../service/auth/signUp";
 import { useRouter } from "next/navigation";
-import Link from "next/link";
 
-
-const SignUp = () => {
+const BusinessOwnerSignUp = () => {
   const [isPending, startTransition] = useTransition();
   const [email, setEmail] = useState("");
   const [name, setName] = useState("");
@@ -58,7 +56,7 @@ const SignUp = () => {
         className="basis-3/6 md:w-1/2 sm:w-1/2 mx-auto hidden sm:block lg:w-1/2 xl:w-1/2"
       />
       <RightFormSection
-        titleText={"Register Your Account"}
+        titleText="Create a business owner account"
         googleText={"Continue with Google"}
         authText={"Already have an account?"}
         isAuthText={false}
@@ -85,7 +83,7 @@ const SignUp = () => {
                 Invalid email format.
               </p>
             )}
-            <input type="hidden" name="role" value="user" />
+            <input type="hidden" name="role" value="owner" />
             <input
               type="text"
               value={name}
@@ -165,20 +163,10 @@ const SignUp = () => {
             ButtonText={isPending ? "Loading..." : "Register"}
             ButtonClasses={"w-full bg-primary text-center text-white py-[15px]"}
           ></Button>
-
-          <Link
-            href={"/signup/business-owner "}
-            className="lg:text-sm laptopScreen:text-base mt-4"
-          >
-            Business Owner?{" "}
-            <span className="text-primary cursor-pointer font-medium">
-              Register Here
-            </span>
-          </Link>
         </form>
       </RightFormSection>
     </div>
   );
 };
 
-export default SignUp;
+export default BusinessOwnerSignUp;

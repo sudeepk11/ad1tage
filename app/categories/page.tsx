@@ -37,14 +37,14 @@ export default async function Categories() {
           <h2
             className={` ${josefin.className} text-[32px] text-black max-lg:text-[32px] max-md:text-[22px] max-lg:leading-[35px] mb-[30px] font-semibold`}
           >
-            Categories
+            Top Categories
           </h2>
-          <Button
+          {/* <Button
             ButtonText={"Showing Near Bangalore"}
             ButtonClasses={
               "!bg-white text-[#2A86DB] font-semibold w-fit flex items-center justify-center max-w-fit max-h-[38px] max-xl:w-full"
             }
-          ></Button>
+          ></Button> */}
         </div>
         <div className="grid lg:grid-cols-4 md:grid-cols-4 sm:grid-cols-2 gap-6 hotel-card-design max-lg:grid-cols-1">
           {categories.map((category, i) => (
@@ -53,12 +53,13 @@ export default async function Categories() {
               id={category._id}
               paraText={`${category.category}`}
               descText={category.desc}
+              photo={category.imageUrl}
             />
           ))}
         </div>
 
         {/* Top Categories */}
-        <h2
+        {/* <h2
           className={`mb-4 ${josefin.className} text-[32px] text-primary  max-lg:text-[32px] max-lg:leading-[35px] mt-[50px] font-semibold`}
         >
           Top Services Across Categories
@@ -96,7 +97,7 @@ export default async function Categories() {
               ))}
             </div>
           </div>
-        ))}
+        ))} */}
       </div>
     </div>
   );

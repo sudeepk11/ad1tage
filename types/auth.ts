@@ -7,3 +7,12 @@ export type User = {
     token: string;
     is_owner: boolean;
 }
+
+export type Query = {
+    _id: string;
+    name: string;
+    phone_number: string;
+    email: string;
+    body: string;
+    subject: string;
+}
