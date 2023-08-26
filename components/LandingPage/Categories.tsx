@@ -49,6 +49,7 @@ const Categories = () => {
                 key={category._id}
                 id={category._id}
                 paraText={category.category}
+                photo={category.imageUrl}
               />
             ))}
       </div>

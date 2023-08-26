@@ -10,18 +10,19 @@ import GridProvider from "../../../components/Layout/GridProvider";
 export default async function CategoryId({
   params,
 }: {
-  params: { id: number };
+  params: { id: string };
 }) {
   let services: Service[];
+  let categoryName = "";
   try {
     const { data } = await axios.get(
       `${process.env.NEXT_PUBLIC_API_URL}/services/services-by-category/${params.id}`
     );
-    services = data.data;
+    services = data.data.places;
+    categoryName = data.data.categoryName;
   } catch (err) {
     return notFound();
   }
-  console.log(services);
   return (
     <div className="container-2xl max-lg:px-4 lg:px-[50px]">
       <div className="hotel-suggestion py-16">
@@ -29,7 +30,7 @@ export default async function CategoryId({
           <h2
             className={` ${josefin.className} text-[32px] text-black max-lg:text-[32px] max-lg:leading-[35px] max-md:text-[22px] mb-[30px] font-semibold`}
           >
-            Category: HealthCare
+            Category: {categoryName || ""}
           </h2>
           <Button
             ButtonText={"Showing Near Bangalore"}
