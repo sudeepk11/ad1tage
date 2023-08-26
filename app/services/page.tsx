@@ -5,6 +5,7 @@ import Button from "../../components/Common/Button";
 import CardWithSlider from "../../components/Common/CardWithSlider";
 import { notFound } from "next/navigation";
 import { Service } from "../../types/services";
+import GridProvider from "../../components/Layout/GridProvider";
 
 const API_URL = process.env.NEXT_PUBLIC_API_URL;
 
@@ -26,7 +27,7 @@ export default async function Services() {
         >
           Top services nearby
         </h2>
-        <div className="grid lg:grid-cols-4 md:grid-cols-4 sm:grid-cols-2 gap-6 hotel-card-design max-lg:grid-cols-1">
+        <GridProvider withMap>
           {services.map((item) => (
             <CardWithSlider
               paraText={item.name}
@@ -42,7 +43,7 @@ export default async function Services() {
               key={item._id}
             />
           ))}
-        </div>
+        </GridProvider>
       </div>
     </div>
   );

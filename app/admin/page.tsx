@@ -137,15 +137,17 @@ export default async function Page() {
           <LineChartCommon color="#F2A5A0" dataKey="amt" />
         </div>
 
-        <div className="bg-offWhite w-full max-lg:mb-4 h-[185px] rounded-2xl overflow-hidden">
-          <p className="text-3xl font-semibold mt-5 text-center">
-            {totalQueries}
-          </p>
-          <p className="text-[14px] font-semibold mt-3 text-center">
-            Total Queries
-          </p>
-          <LineChartCommon color="#B39DDB" dataKey="amt" />
-        </div>
+        {role === "admin" && (
+          <div className="bg-offWhite w-full max-lg:mb-4 h-[185px] rounded-2xl overflow-hidden">
+            <p className="text-3xl font-semibold mt-5 text-center">
+              {totalQueries}
+            </p>
+            <p className="text-[14px] font-semibold mt-3 text-center">
+              Total Queries
+            </p>
+            <LineChartCommon color="#B39DDB" dataKey="amt" />
+          </div>
+        )}
       </div>
       <div className="grid justify-between gap-4 mt-6 mb-2 lg:grid-cols-3 max-lg:grid-cols-1">
         <div className="col-span-2 p-5 bg-offWhite rounded-xl max-md:p-3">

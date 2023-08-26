@@ -10,7 +10,7 @@ import GridProvider from "../../../components/Layout/GridProvider";
 export default async function CategoryId({
   params,
 }: {
-  params: { id: number };
+  params: { id: string };
 }) {
   let services: Service[];
   let name: String;
@@ -20,8 +20,6 @@ export default async function CategoryId({
     );
     services = data.data;
     name = data.message;
-
-    
   } catch (err) {
     return notFound();
   }

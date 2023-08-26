@@ -1,6 +1,5 @@
 import Image from "next/image";
 import React from "react";
-import sliderImg from "../../images/slider-img.png";
 import Link from "next/link";
 import { josefin } from "../../utils/utilsFonts";
 
