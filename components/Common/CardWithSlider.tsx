@@ -122,7 +122,7 @@ const CardWithSlider = (props) => {
             )}
             <span className="ml-2 font-medium">{props.rating}</span>
           </div>
-          <div className="cursor-pointer">
+          {/* <div className="cursor-pointer">
             {props.likeButton === "filled" ? (
               <svg
                 width="24"
@@ -157,7 +157,7 @@ const CardWithSlider = (props) => {
                 />
               </svg>
             )}
-          </div>
+          </div> */}
         </div>
         <Link href={`/service-details/${props.id}`}>
           <p className={`text-base mt-1`}>{props.paraText}</p>

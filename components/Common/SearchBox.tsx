@@ -4,7 +4,6 @@ import Button from "./Button";
 import locationIcon from "../../Assets/Icons/location.png";
 import mapboxgl from "mapbox-gl";
 import { Coords, Result } from "../../types/general";
-import { GeolocateControl, Map } from "react-map-gl";
 import axios from "axios";
 import ResultRef from "./ResultRef";
 import useDebounce from "../../hooks/useDebounce";
@@ -13,22 +12,11 @@ import { useRouter } from "next/navigation";
 const SearchBox = ({ searchClasses }) => {
   const { push } = useRouter();
   const wrapperRef = useRef<HTMLDivElement>(null!);
-  const geolocationRef = useRef<mapboxgl.GeolocateControl>(null!);
-  const [userCoords, setUserCoords] = useState<Coords | null>(null);
   const [isLoading, setIsLoading] = useState(false);
   const [input, setInput] = useState("");
   const [isFocused, setIsFocused] = useState(false);
   const [results, setResults] = useState<Result[]>([]);
   const debounce = useDebounce(input, 400);
-
-  function geolocate() {
-    setIsLoading(true);
-  }
-
-  useEffect(() => {
-    if (!geolocationRef.current) return;
-    geolocationRef.current.trigger();
-  }, [geolocationRef.current]);
 
   useEffect(() => {
     if (!debounce) return;
@@ -93,12 +81,6 @@ const SearchBox = ({ searchClasses }) => {
             </div>
           )}
         </div>
-        {/* <Button
-          ButtonText={"Search"}
-          ButtonClasses={
-            "sm:col-span-1 col-span-3 w-full flex items-center font-semibold text-white justify-center max-h-[58px] max-xl:w-full max-md:py-3"
-          }
-        ></Button> */}
         <Button
           ButtonText={"Find Services near me"}
           icon={locationIcon}
@@ -109,25 +91,6 @@ const SearchBox = ({ searchClasses }) => {
           }
         ></Button>
       </div>
-      <Map
-        mapLib={import("mapbox-gl")}
-        mapboxAccessToken={process.env.NEXT_PUBLIC_MAPBOX_KEY}
-        style={{ width: 0, height: 0 }}
-      >
-        <GeolocateControl
-          trackUserLocation
-          positionOptions={{ enableHighAccuracy: true }}
-          showUserHeading
-          onGeolocate={(e) =>
-            setUserCoords({
-              latitude: e.coords.latitude,
-              longitude: e.coords.longitude,
-            })
-          }
-          ref={(ref) => ref && (geolocationRef.current = ref)}
-        />
-      </Map>
-      <div className="w-0 h-0 opacity-0 pointer-events-none" id="map"></div>
     </div>
   );
 };
