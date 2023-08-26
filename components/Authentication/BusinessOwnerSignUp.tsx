@@ -6,6 +6,7 @@ import Button from "../Common/Button";
 import RightFormSection from "./RightFormSection";
 import signUp from "../../service/auth/signUp";
 import { useRouter } from "next/navigation";
+import { josefin } from "../../utils/utilsFonts";
 
 const BusinessOwnerSignUp = () => {
   const [isPending, startTransition] = useTransition();
@@ -49,12 +50,22 @@ const BusinessOwnerSignUp = () => {
     });
 
   return (
-    <div className="lg:flex md:m-[50px] m-[20px] bg-white rounded-2xl overflow-hidden">
-      <Image
+    <div className="lg:flex lg:items-center lg:justify-center md:m-[50px] m-[20px] bg-white rounded-2xl overflow-hidden">
+      {/* <Image
         src={login_signup}
         alt="loginImage"
         className="basis-3/6 md:w-1/2 sm:w-1/2 mx-auto hidden sm:block lg:w-1/2 xl:w-1/2"
-      />
+      /> */}
+      <div className="flex flex-col items-center justify-center pb-10 max-md:pb-5">
+        <h1 className="text-[42px] max-md:text-3xl max-md:text-center font-bold">
+          Are you a business owner ?
+        </h1>
+        <p
+          className={`flex items-center justify-center pt-2 text-xl max-md:text-lg ${josefin.className}`}
+        >
+          Register your business with us
+        </p>
+      </div>
       <RightFormSection
         titleText="Create a business owner account"
         googleText={"Continue with Google"}

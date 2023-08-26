@@ -21,6 +21,7 @@ export default async function Page() {
       }
     );
     queries = data.data;
+    console.log(queries);
   } catch (err) {
     return notFound();
   }
@@ -29,13 +30,18 @@ export default async function Page() {
       <div className="flex items-center justify-between gap-4 max-xl:flex-col max-xl:justify-start max-xl:items-start w-full mb-8">
         <div className="flex justify-between w-full">
           <p
-            className={`mt-4 mb-3 text-2xl font-semibold leading-6 text-black ${josefin.className}`}
+            className={`mt-4 text-2xl font-semibold leading-6 text-black ${josefin.className}`}
           >
             Queries
           </p>
         </div>
       </div>
-      <div className="w-full overflow-x-scroll">
+      <div className="w-full overflow-x-scroll my-5">
+        <p
+          className={`mb-5 text-xl font-semibold leading-6 text-black ${josefin.className}`}
+        >
+          Unresolved Queries:
+        </p>
         <table className="text-sm min-w-full max-w-fit">
           <thead>
             <tr className="my-5 border border-solid rounded-lg text-center">
@@ -55,12 +61,17 @@ export default async function Page() {
               <th className="px-3">
                 <p className="mx-3">Body</p>
               </th>
+              <th className="px-3">
+                <p className="mx-3"></p>
+              </th>
             </tr>
           </thead>
           <tbody>
-            {queries.map((item) => (
-              <QueryRef {...item} key={item._id} />
-            ))}
+            {queries.map((item: any) => {
+              return item.resolved === false ? (
+                <QueryRef {...item} key={item._id} />
+              ) : null;
+            })}
           </tbody>
         </table>
       </div>

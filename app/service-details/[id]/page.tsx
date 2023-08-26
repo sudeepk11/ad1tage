@@ -6,13 +6,12 @@ import VisualHeader from "../../../components/Hotel/VisualHeader";
 import { josefin } from "../../../utils/utilsFonts";
 import Link from "next/link";
 import Button from "../../../components/Common/Button";
-import starOutlineImg from "../../../images/Star-outline.png";
-import userImg from "../../../images/user-img.png";
 import callIcon from "../../../Assets/Icons/call.png";
 import verifiedIcon from "../../../Assets/Icons/verified.png";
 import locationIcon from "../../../Assets/Icons/location.png";
 import arrowIcon from "../../../Assets/Icons/arrow.png";
 import Rating from "../../../components/Common/Rating";
+import RatingInput from "../../../components/Common/RatingInput";
 import { notFound, redirect } from "next/navigation";
 import { cookies } from "next/headers";
 import { APIResponse } from "../../../types/general";
@@ -66,6 +65,8 @@ export default async function ServiceDetails({
     address,
     rating,
     reviews,
+    featured,
+    isApproved,
     Owner,
   } = details;
   return (
@@ -83,23 +84,27 @@ export default async function ServiceDetails({
             >
               {name}
               <div className="flex md:mx-5 ">
-                <Image src={verifiedIcon} alt="" className="object-contain" />
-                <span className=" flex items-center justify-center text-[15px] text-primary bg-blue-100 mx-4 px-4 border-primary border-solid border-2 rounded-full">
-                  # ad1tage recommended
-                </span>
+                {isApproved && (
+                  <Image src={verifiedIcon} alt="" className="object-contain" />
+                )}
+                {featured && (
+                  <span className=" flex items-center justify-center text-[15px] text-primary bg-blue-100 mx-4 px-4 border-primary border-solid border-2 rounded-full">
+                    # ad1tage recommended
+                  </span>
+                )}
               </div>
             </h1>
           </div>
           <div className="room-details flex gap-2 mt-[12px] justify-between flex-wrap mb-6">
             <div className="pb-[54px] w-full">
               <div className="flex w-full justify-between my-5">
-                <Link href="#">
+                <Link href="#service-reviews">
                   <span className="text-primary">
                     View Reviews {`(${reviews.length})`}
                   </span>
                 </Link>
                 <div className="text-base bg-primary rounded-[20px] px-5 flex items-center text-white py-[2px] w-max">
-                  ID: {_id.slice(0,4)}
+                  ID: {_id.slice(0, 4)}
                 </div>
               </div>
               <div className="flex w-full justify-between my-5">
@@ -118,11 +123,10 @@ export default async function ServiceDetails({
                   </div>
                 </div>
                 <div className="flex gap-2 bg-blue-100 rounded-lg p-3">
-            
-               
-                    <p><span className="text-base text-primary">Owner:</span> {Owner.username}</p>
-                    
-              
+                  <p>
+                    <span className="text-base text-primary">Owner:</span>{" "}
+                    {Owner.username}
+                  </p>
                 </div>
               </div>
             </div>
@@ -200,59 +204,32 @@ export default async function ServiceDetails({
           </div> */}
 
           {/* add reviews  */}
-          <FormWrapper
-            formClassName="flex flex-col items-left my-3"
-            buttonClassName="text-white !bg-primary w-fit"
-            buttonWrapperClassName="self-end"
-            callback={addReview}
-          >
-            <h3 className="mb-5 text-xl font-medium">Reviews</h3>
-            {/* Add reviews */}
-            <p className="font-semibold">Add Reviews</p>
+          <div id="service-reviews">
+            <FormWrapper
+              formClassName="flex flex-col items-left my-3"
+              buttonClassName="text-white !bg-primary w-fit"
+              buttonWrapperClassName="self-end"
+              callback={addReview}
+            >
+              <h3 className="mb-5 text-xl font-medium">Reviews</h3>
+              {/* Add reviews */}
+              <p className="font-semibold">Add Reviews</p>
+              <RatingInput />
 
-            {/* Rating inputs with stars */}
-            <div className="flex gap-2 my-2">
-              <Image
-                src={starOutlineImg}
-                alt=""
-                className="object-contain mx-[2px]"
-              />
-              <Image
-                src={starOutlineImg}
-                alt=""
-                className="object-contain mx-[2px]"
-              />
-              <Image
-                src={starOutlineImg}
-                alt=""
-                className="object-contain mx-[2px]"
-              />
-              <Image
-                src={starOutlineImg}
-                alt=""
-                className="object-contain mx-[2px]"
-              />
-              <Image
-                src={starOutlineImg}
-                alt=""
-                className="object-contain mx-[2px]"
-              />
-              <span> 0.0 </span>
-            </div>
-
-            {/* Text area */}
-            <textarea
-              name="comment"
-              id=""
-              rows={5}
-              className="w-full border border-solid border-primary rounded-lg my-3 py-3 px-6"
-            ></textarea>
-            <input type="hidden" value={_id} name="place_id" />
-          </FormWrapper>
-          {/* Reviews from users */}
-          {reviews.map((item) => (
-            <ReviewRef {...item} key={item._id} />
-          ))}
+              {/* Text area */}
+              <textarea
+                name="comment"
+                id=""
+                rows={5}
+                className="w-full border border-solid border-primary rounded-lg my-3 py-3 px-6"
+              ></textarea>
+              <input type="hidden" value={_id} name="place_id" />
+            </FormWrapper>
+            {/* Reviews from users */}
+            {reviews.map((item) => (
+              <ReviewRef {...item} key={item._id} />
+            ))}
+          </div>
         </div>
         <div className="col-span-5 bg-[#FAFAFA] rounded-[16px] mt-10 px-[30px] py-[20px] h-max max-lg:w-full md:sticky top-[80px] right-0 md:order-2 order-1">
           <div className="flex justify-between">
@@ -263,12 +240,16 @@ export default async function ServiceDetails({
             </div>
           </div>
           <div className="flex my-5">
-            <Image src={verifiedIcon} alt="" className="object-contain" />
-            <span
-              className={`${josefin.className} p-1 text-[15px] text-primary bg-blue-100 md:mx-4 ml-2 px-4 border-primary border-solid border-2 rounded-full w-fit`}
-            >
-              #ad1tage recommended
-            </span>
+            {isApproved && (
+              <Image src={verifiedIcon} alt="" className="object-contain" />
+            )}
+            {featured && (
+              <span
+                className={`${josefin.className} p-1 text-[15px] text-primary bg-blue-100 md:mx-4 ml-2 px-4 border-primary border-solid border-2 rounded-full w-fit`}
+              >
+                #ad1tage recommended
+              </span>
+            )}
           </div>
           <form action={addOneToCall} className="w-full">
             <Button

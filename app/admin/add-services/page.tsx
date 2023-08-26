@@ -64,19 +64,6 @@ export default async function Page() {
             <label
               className={`block mb-2 text-sm font-bold text-black ${josefin.className}`}
             >
-              Label 1
-            </label>
-            <input
-              className="w-full h-[52px] border border-solid border-greyishBrown rounded-lg p-3"
-              type="text"
-              placeholder="Enter Label 1"
-              name="label-1"
-            />
-          </div>
-          <div className="w-full col-span-2">
-            <label
-              className={`block mb-2 text-sm font-bold text-black ${josefin.className}`}
-            >
               Category
             </label>
             <select
@@ -95,52 +82,79 @@ export default async function Page() {
             <label
               className={`block mb-2 text-sm font-bold text-black ${josefin.className}`}
             >
-              Label 2
+              City
             </label>
             <input
               className="w-full h-[52px] border border-solid border-greyishBrown rounded-lg p-3"
               type="text"
-              placeholder="Enter Label 2"
-              name="label-2"
+              placeholder="Enter City"
+              name="city"
             />
           </div>
           <div className="w-full col-span-2">
             <label
               className={`block mb-2 text-sm font-bold text-black ${josefin.className}`}
             >
-              Label 3
+              Lattitude
             </label>
             <input
               className="w-full h-[52px] border border-solid border-greyishBrown rounded-lg p-3"
               type="text"
-              placeholder="Enter Label 3"
-              name="label-3"
+              placeholder="Enter Lattitude"
+              name="lattitude"
             />
           </div>
           <div className="w-full col-span-2">
             <label
               className={`block mb-2 text-sm font-bold text-black ${josefin.className}`}
             >
-              Label 4
+              Longitude
             </label>
             <input
               className="w-full h-[52px] border border-solid border-greyishBrown rounded-lg p-3"
               type="text"
-              placeholder="Enter Label 4"
-              name="label-4"
+              placeholder="Enter Longitude"
+              name="longitude"
             />
           </div>
-          <div className="w-full col-span-6">
+          <div className="w-full col-span-4">
             <label
               className={`block mb-2 text-sm font-bold text-black ${josefin.className}`}
             >
-              Label 5
+              Phone Number
             </label>
             <input
               className="w-full h-[52px] border border-solid border-greyishBrown rounded-lg p-3"
               type="text"
-              placeholder="Enter Label 5"
-              name="label-5"
+              placeholder="Enter Phone Number"
+              name="phone"
+            />
+          </div>
+          <div className="w-full col-span-4">
+            <label
+              className={`block mb-2 text-sm font-bold text-black ${josefin.className}`}
+            >
+              Image URL
+            </label>
+            <input
+              className="w-full h-[52px] border border-solid border-greyishBrown rounded-lg p-3"
+              type="text"
+              placeholder="Enter Image URL"
+              name="photos"
+            />
+          </div>
+          {/* Create a field to take multiple urls into a single field */}
+          <div className="w-full col-span-7">
+            <label
+              className={`block mb-2 text-sm font-bold text-black ${josefin.className}`}
+            >
+              Address
+            </label>
+            <input
+              className="w-full h-[52px] border border-solid border-greyishBrown rounded-lg p-3"
+              type="text"
+              placeholder="Enter Address"
+              name="address"
             />
           </div>
           <input type="hidden" name="user_id" value={userId} />
