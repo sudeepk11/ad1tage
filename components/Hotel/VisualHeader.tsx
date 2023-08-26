@@ -77,8 +77,10 @@ export default function VisualHeader({
         {photos.map((item) => (
           <Image
             className="w-full object-cover h-[450px] md:!w-[60vw] rounded-lg"
-            src={sliderImg}
-            alt=""
+            src={'https://www.thechennaihomes.in/wp-content/uploads/2019/10/best-retirement-homes-in-india.jpg'}
+            alt="item"
+            width={200}
+            height={200}
             key={item}
           />
         ))}

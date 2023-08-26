@@ -13,13 +13,13 @@ export default async function CategoryId({
   params: { id: string };
 }) {
   let services: Service[];
-  let categoryName = "";
+  let name: String;
   try {
     const { data } = await axios.get(
       `${process.env.NEXT_PUBLIC_API_URL}/services/services-by-category/${params.id}`
     );
-    services = data.data.places;
-    categoryName = data.data.categoryName;
+    services = data.data;
+    name = data.message;
   } catch (err) {
     return notFound();
   }
@@ -30,7 +30,7 @@ export default async function CategoryId({
           <h2
             className={` ${josefin.className} text-[32px] text-black max-lg:text-[32px] max-lg:leading-[35px] max-md:text-[22px] mb-[30px] font-semibold`}
           >
-            Category: {categoryName || ""}
+            Category: {name}
           </h2>
           <Button
             ButtonText={"Showing Near Bangalore"}

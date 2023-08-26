@@ -28,9 +28,11 @@ const CardWithSlider = (props) => {
             >
               <Image
                 className="w-full h-[240px] object-cover"
-                src={sliderImg}
+                src={item}
                 alt=""
                 key={item}
+                width={200}
+                height={200}
               />
             </div>
           ))}

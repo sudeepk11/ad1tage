@@ -6,6 +6,8 @@ import Button from "../Common/Button";
 import RightFormSection from "./RightFormSection";
 import signUp from "../../service/auth/signUp";
 import { useRouter } from "next/navigation";
+import Link from "next/link";
+
 
 const SignUp = () => {
   const [isPending, startTransition] = useTransition();
@@ -163,6 +165,16 @@ const SignUp = () => {
             ButtonText={isPending ? "Loading..." : "Register"}
             ButtonClasses={"w-full bg-primary text-center text-white py-[15px]"}
           ></Button>
+
+          <Link
+            href={"/signup/business-owner "}
+            className="lg:text-sm laptopScreen:text-base mt-4"
+          >
+            Business Owner?{" "}
+            <span className="text-primary cursor-pointer font-medium">
+              Register Here
+            </span>
+          </Link>
         </form>
       </RightFormSection>
     </div>

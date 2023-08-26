@@ -115,6 +115,16 @@ const Login = () => {
             ButtonText={isPending ? "Loading..." : "Log in"}
             ButtonClasses={"w-full bg-primary text-center text-white py-4 "}
           ></Button>
+
+          <Link
+            href={"/signup"}
+            className="lg:text-sm laptopScreen:text-base mt-4"
+          >
+            Don't have an account  
+            <span className="ml-1 mt-3 text-primary cursor-pointer font-medium">
+            Register?
+            </span>
+          </Link>
         </form>
       </RightFormSection>
     </div>

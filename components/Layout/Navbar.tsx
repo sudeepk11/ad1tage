@@ -124,15 +124,7 @@ const Navbar = () => {
           </div>
         ) : (
           <div className="flex items-center gap-5 max-lg:hidden">
-            <Link
-              href={"/signup"}
-              className="lg:text-sm laptopScreen:text-base"
-            >
-              Looking for a service?
-              <span className="text-primary cursor-pointer font-medium">
-                Join Us
-              </span>
-            </Link>
+       
             <Link
               href={"/signup/business-owner"}
               className="lg:text-sm laptopScreen:text-base"
