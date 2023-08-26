@@ -120,7 +120,7 @@ const Login = () => {
             href={"/signup"}
             className="lg:text-sm laptopScreen:text-base mt-4"
           >
-            Don't have an account  
+            Don&apos;t have an account  
             <span className="ml-1 mt-3 text-primary cursor-pointer font-medium">
             Register?
             </span>
