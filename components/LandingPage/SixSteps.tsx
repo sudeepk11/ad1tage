@@ -13,12 +13,12 @@ import Button from "../Common/Button";
 const items = [
   {
     title: "News & Updates",
-    desc: "Stay current with ad1tage's latest updates on services and more, tailored to your needs.",
+    desc: "Stay current with ad1tage&apos;s latest updates on services and more, tailored to your needs.",
     icon: email,
   },
   {
     title: "Verified Services",
-    desc: "Trust in ad1tage's validated services, ensuring your peace of mind and satisfaction.",
+    desc: "Trust in ad1tage&apos;s validated services, ensuring your peace of mind and satisfaction.",
     icon: bolt,
   },
   {
@@ -38,7 +38,7 @@ const items = [
   },
   {
     title: "24/7 Support",
-    desc: "Feel supported around the clock with ad1tage's constant assistance for all your inquiries.",
+    desc: "Feel supported around the clock with ad1tage&apos;s constant assistance for all your inquiries.",
     icon: chat,
   },
 ];
@@ -51,7 +51,7 @@ const SixSteps = () => {
           Why ad1tage?
         </h2>
         <p className="text-[18px] font-light text-center">
-          Navigating Life's Next Chapter - Your Gateway to Tailored Services for Seniors.
+          Navigating Life&apos;s Next Chapter - Your Gateway to Tailored Services for Seniors.
         </p>
       </div>
 
