@@ -52,7 +52,7 @@ const Navbar = () => {
           <input type="checkbox" className="hidden peer" id="nav-check" />
           {!isAdmin && (
             <div
-              className="nav-links max-lg:hidden max-lg:peer-checked:block max-lg:fixed max-lg:top-[72px] max-lg:left-0 max-lg:w-full max-lg:h-full z-20 max-lg:bg-white
+              className="nav-links max-lg:hidden max-lg:peer-checked:block max-lg:fixed max-lg:top-[62px] max-lg:left-0 max-lg:w-full max-lg:h-full z-20 max-lg:bg-white
            max-lg:text-primary 
           "
             >
@@ -66,6 +66,9 @@ const Navbar = () => {
                           ? "text-primary font-semibold"
                           : ""
                       }`}
+                      onClick={() => {
+                        document.getElementById("nav-check")?.click();
+                      }}
                     >
                       <Link className="" href={`${items.link}`}>
                         {items.name}
@@ -76,8 +79,8 @@ const Navbar = () => {
               </ul>
             </div>
           )}
+          {isAdmin && <AdminNav />}
         </div>
-        {isAdmin && <AdminNav />}
         {token ? (
           <div className="relative cursor-pointer">
             <div
@@ -91,7 +94,7 @@ const Navbar = () => {
               <Image className="w-[20px] pl-2" src={arrowDown} alt="" />
             </div>
             {userSettingDropdown && (
-              <div className="p-4 rounded grid grid-cols-2 mt-4 absolute z-[1] bg-white w-full top-[100%]">
+              <div className="p-4 rounded grid grid-cols-2 mt-4 absolute z-[1] bg-white w-[130px] top-[100%] right-1 shadow-lg">
                 <ul>
                   <li className="my-2 text-base">
                     <Link href="/admin/setting">Setting</Link>
@@ -124,7 +127,6 @@ const Navbar = () => {
           </div>
         ) : (
           <div className="flex items-center gap-5 max-lg:hidden">
-       
             <Link
               href={"/signup/business-owner"}
               className="lg:text-sm laptopScreen:text-base"

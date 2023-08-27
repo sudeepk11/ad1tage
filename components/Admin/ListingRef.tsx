@@ -67,7 +67,7 @@ export default function ListingRef({
         </p>
       </td>
       <td
-        className={`py-5 px-3 ${
+        className={`py-5 px-3 relative ${
           isLoading.featured ? "opacity-60" : "opacity-100"
         }`}
       >

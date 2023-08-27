@@ -33,7 +33,7 @@ export default async function Page() {
           buttonText="Add Service"
           callback={addService}
         >
-          <div className="w-full col-span-2">
+          <div className="w-full col-span-2 max-md:col-span-8">
             <label
               className={`block mb-2 text-sm font-bold text-black ${josefin.className}`}
             >
@@ -46,7 +46,7 @@ export default async function Page() {
               name="name"
             />
           </div>
-          <div className="w-full col-span-6">
+          <div className="w-full col-span-6 max-md:col-span-8">
             <label
               className={`block mb-2 text-sm font-bold text-black ${josefin.className}`}
             >
@@ -60,7 +60,7 @@ export default async function Page() {
             />
           </div>
 
-          <div className="w-full col-span-2">
+          <div className="w-full col-span-2 max-md:col-span-4">
             <label
               className={`block mb-2 text-sm font-bold text-black ${josefin.className}`}
             >
@@ -78,7 +78,7 @@ export default async function Page() {
               ))}
             </select>
           </div>
-          <div className="w-full col-span-2">
+          <div className="w-full col-span-2 max-md:col-span-4">
             <label
               className={`block mb-2 text-sm font-bold text-black ${josefin.className}`}
             >
@@ -91,7 +91,7 @@ export default async function Page() {
               name="city"
             />
           </div>
-          <div className="w-full col-span-2">
+          <div className="w-full col-span-2 max-md:col-span-4">
             <label
               className={`block mb-2 text-sm font-bold text-black ${josefin.className}`}
             >
@@ -104,7 +104,7 @@ export default async function Page() {
               name="lattitude"
             />
           </div>
-          <div className="w-full col-span-2">
+          <div className="w-full col-span-2 max-md:col-span-4">
             <label
               className={`block mb-2 text-sm font-bold text-black ${josefin.className}`}
             >
@@ -117,7 +117,7 @@ export default async function Page() {
               name="longitude"
             />
           </div>
-          <div className="w-full col-span-4">
+          <div className="w-full col-span-4 max-md:col-span-8">
             <label
               className={`block mb-2 text-sm font-bold text-black ${josefin.className}`}
             >
@@ -130,7 +130,7 @@ export default async function Page() {
               name="phone"
             />
           </div>
-          <div className="w-full col-span-4">
+          <div className="w-full col-span-4 max-md:col-span-8">
             <label
               className={`block mb-2 text-sm font-bold text-black ${josefin.className}`}
             >
@@ -144,7 +144,7 @@ export default async function Page() {
             />
           </div>
           {/* Create a field to take multiple urls into a single field */}
-          <div className="w-full col-span-7">
+          <div className="w-full col-span-7 max-md:col-span-8">
             <label
               className={`block mb-2 text-sm font-bold text-black ${josefin.className}`}
             >
