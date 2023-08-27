@@ -81,13 +81,13 @@ export default function VisualHeader({
   }, [userCoords, latitude, longitude]);
 
   return (
-    <div className="grid grid-cols-12 gap-6 relative overflow-hidden property-detail hotel-suggestion w-[98%] mx-auto my-5">
+    <div className="grid grid-cols-12 gap-6 relative overflow-hidden property-detail hotel-suggestion w-[98%] mx-auto my-2 p-4">
       <Slider {...settings} className="h-[450px] md:col-span-7 col-span-12">
         {photos.map((item) => (
           <Image
             className="w-full object-cover h-[450px] md:!w-[60vw] rounded-lg"
             src={
-              "https://www.thechennaihomes.in/wp-content/uploads/2019/10/best-retirement-homes-in-india.jpg"
+              photos ? photos[0] : ''
             }
             alt="item"
             width={200}

@@ -9,6 +9,9 @@ import { useRouter } from "next/navigation";
 import axios from "axios";
 import { Service } from "../../types/services";
 import { toast } from "react-hot-toast";
+import CardWithSlider from "../../components/Common/CardWithSlider";
+import MapMarker from "../Common/MapMarker";
+
 
 type Props = {
   children: any;
@@ -16,6 +19,7 @@ type Props = {
 };
 
 export default function GridProvider({ children, withMap }: Props) {
+
   const geolocateRef = useRef<mapboxgl.GeolocateControl>(null!);
   const [nearbyServices, setNearbyServices] = useState<Service[]>([]);
   const [userCoords, setUserCoords] = useState<Coords | null>(null);
@@ -31,21 +35,16 @@ export default function GridProvider({ children, withMap }: Props) {
     geolocateRef.current.trigger();
   }, [geolocateRef.current]);
 
-
   useEffect(() => {
     if (!userCoords) return;
     async function fetchServices() {
-
       const { data } = await axios.get(
         `${process.env.NEXT_PUBLIC_API_URL}/services/get-nearby-services/?latitude=${userCoords.latitude}&longitude=${userCoords.longitude}`
       );
-
       setNearbyServices(data.data);
     }
     fetchServices();
   }, [userCoords]);
-
-
 
   return (
     <Fragment>
@@ -60,7 +59,7 @@ export default function GridProvider({ children, withMap }: Props) {
               mapLib={import("mapbox-gl")}
               mapboxAccessToken={process.env.NEXT_PUBLIC_MAPBOX_KEY}
               style={{ height: 512 }}
-              mapStyle="mapbox://styles/mapbox/streets-v9"
+              mapStyle="mapbox://styles/mapbox/streets-v11"
               initialViewState={{
                 latitude: 37.7577,
                 longitude: -122.4376,
@@ -89,6 +88,36 @@ export default function GridProvider({ children, withMap }: Props) {
                   color="red"
                 />
               )}
+              {nearbyServices.map((item) => (
+                <Marker
+                  key={item._id}
+                  latitude={parseFloat(item.lattitude)}
+                  longitude={parseFloat(item.longitude)}
+                >
+
+                  <div className="relative ">
+                    {/* <CardWithSlider
+                      paraText={item.name}
+                      location={item.city}
+                      subParaText={item.category.category}
+                      rating={item.rating.toPrecision(2)}
+                      photos={item.photos}
+                      likeButton={"unfilled"}
+                      id={item._id}
+                      key={item._id}
+                    /> */}
+
+                    <MapMarker
+                      key={item._id}
+                      id = {item._id}
+                      paraText={item.name}
+                      subParaText={item.category.category}
+                      rating={item.rating.toPrecision(2)}
+                      photos={item.photos}
+                    />
+                  </div>
+                </Marker>
+              ))}
             </Map>
           </div>
         </div>

@@ -76,11 +76,11 @@ export default async function ServiceDetails({
         latitude={parseFloat(lattitude)}
         longitude={parseFloat(longitude)}
       />
-      <div className="grid grid-cols-12 max-lg:px-4 lg:px-[50px]  max-lg:flex-col gap-4">
-        <div className="col-span-7 max-lg:w-full md:order-1 order-2">
+      <div className="grid grid-cols-12 px-4 lg:px-4 max-lg:flex-col gap-4">
+        <div className="col-span-7 max-lg:w-full md:order-1 order-2 px-4">
           <div className="flex justify-between py-5 mt-4">
             <h1
-              className={`text-3xl flex md:flex-row flex-col w-full ${josefin.className}`}
+              className={`text-3xl flex md:flex-row flex-col w-full ${josefin.className} font-semibold`}
             >
               {name}
               <div className="flex md:mx-5 ">
@@ -241,11 +241,14 @@ export default async function ServiceDetails({
           </div>
           <div className="flex my-5">
             {isApproved && (
+              <div className="flex justify-center items-center">
               <Image src={verifiedIcon} alt="" className="object-contain" />
+              <p className="text-sm font-semibold ml-1 mr-2">ad1tage verified</p>
+              </div>
             )}
-            {featured && (
+            {true && (
               <span
-                className={`${josefin.className} p-1 text-[15px] text-primary bg-blue-100 md:mx-4 ml-2 px-4 border-primary border-solid border-2 rounded-full w-fit`}
+                className={`${josefin.className} px-2 py-1  flex items-center justify-center text-[15px] text-blue-100 bg-primary  border-primary border-solid border-1.5 rounded-full w-fit`}
               >
                 #ad1tage recommended
               </span>
@@ -255,7 +258,7 @@ export default async function ServiceDetails({
             <Button
               ButtonText="Call"
               icon={callIcon}
-              ButtonClasses="!bg-primary text-white font-semibold w-full flex items-center justify-center max-h-[58px] my-5"
+              ButtonClasses="!bg-primary mt-6 text-white font-medium w-full flex items-center justify-center my-6 !py-3"
             />
           </form>
         </div>
