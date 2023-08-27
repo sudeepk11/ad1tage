@@ -29,11 +29,10 @@ const settings = {
 };
 
 export default function VisualHeader({
-  // latitude,
-  // longitude,
+  latitude,
+  longitude,
   photos,
 }: Coords & Pick<Service, "photos">) {
-  const [latitude, longitude] = [50.0563968, 22.265856];
   const router = useRouter();
   const mapRef = useRef<MapRef>(null!);
   const geolocationRef = useRef<mapboxgl.GeolocateControl>(null!);
