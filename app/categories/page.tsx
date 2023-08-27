@@ -37,7 +37,7 @@ export default async function Categories() {
           <h2
             className={` ${josefin.className} text-[32px] text-black max-lg:text-[32px] max-md:text-[22px] max-lg:leading-[35px] mb-[30px] font-semibold`}
           >
-            Top Categories
+            All Categories
           </h2>
           {/* <Button
             ButtonText={"Showing Near Bangalore"}

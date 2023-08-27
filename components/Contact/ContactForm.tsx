@@ -23,9 +23,9 @@ const ContactForm = () => {
           <option value="ChooseSubject" className="text-darkGrey">
             Choose Subject
           </option>
-          <option value="sub1">Subject</option>
-          <option value="sub2">Subject</option>
-          <option value="sub3">Subject</option>
+          <option value="sub1">Enquiry about services</option>
+          <option value="sub2">Regarding Joining ad1tage</option>
+          <option value="sub3">Others</option>
         </select>
         <Image
           src={arrowDropdown}

@@ -122,7 +122,7 @@ export default async function ServiceDetails({
                     <p>4 km</p>
                   </div>
                 </div>
-                <div className="flex gap-2 bg-blue-100 rounded-lg p-3">
+                <div className="flex items-center justify-center gap-2 bg-blue-100 rounded-md px-2 py-3">
                   <p>
                     <span className="text-base text-primary">Owner:</span>{" "}
                     {Owner.username}
@@ -178,10 +178,10 @@ export default async function ServiceDetails({
               </p> */}
             </div>
 
-            <Button
+            {/* <Button
               ButtonText="See Less"
               ButtonClasses="text-primary border-primary border bg-transparent arrow-up"
-            />
+            /> */}
           </div>
 
           {/* <div>

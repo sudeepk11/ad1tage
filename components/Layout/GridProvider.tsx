@@ -8,6 +8,7 @@ import mapboxgl from "mapbox-gl";
 import { useRouter } from "next/navigation";
 import axios from "axios";
 import { Service } from "../../types/services";
+import { toast } from "react-hot-toast";
 
 type Props = {
   children: any;
@@ -30,16 +31,21 @@ export default function GridProvider({ children, withMap }: Props) {
     geolocateRef.current.trigger();
   }, [geolocateRef.current]);
 
+
   useEffect(() => {
     if (!userCoords) return;
     async function fetchServices() {
+
       const { data } = await axios.get(
-        `${process.env.NEXT_PUBLIC_MAPBOX_KEY}/services/get-nearby-services/?latitude=${userCoords.latitude}&longitude=${userCoords.longitude}`
+        `${process.env.NEXT_PUBLIC_API_URL}/services/get-nearby-services/?latitude=${userCoords.latitude}&longitude=${userCoords.longitude}`
       );
+
       setNearbyServices(data.data);
     }
     fetchServices();
   }, [userCoords]);
+
+
 
   return (
     <Fragment>

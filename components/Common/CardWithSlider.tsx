@@ -28,7 +28,7 @@ const CardWithSlider = (props) => {
               key={item + "wrapper"}
             >
               <Image
-                className="w-full h-[240px] object-cover"
+                className="w-full h-[240px] object-cover rounded-[16px]"
                 src={item}
                 alt=""
                 key={item}
@@ -76,7 +76,7 @@ const CardWithSlider = (props) => {
       {/* <div className="text-white bg-black bg-opacity-50 px-[11px] py-[3px] -mt-[45px] relative z-1 w-max ml-4 rounded-2xl mb-[10px]">
         $12.00<span className="text-secondary">/Month</span>
       </div> */}
-      <div className="px-4 py-6">
+      <div className="px-4 py-4">
         <div className="flex items-center justify-between rating-like ">
           <div className="flex gap-1 mb-2 starts">
             {Array.from(Array(Math.round(parseFloat(props.rating)))).map(
