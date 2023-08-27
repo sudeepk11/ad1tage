@@ -5,7 +5,7 @@ import Image from "next/image";
 import Slider from "react-slick";
 import markerStartIcon from "../../Assets/Icons/marker_start.png";
 import markerFinishIcon from "../../Assets/Icons/marker_finish.png";
-import sliderImg from "../../images/fujairah.png";
+
 import {
   Map,
   GeolocateControl,
