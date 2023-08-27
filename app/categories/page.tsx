@@ -59,7 +59,7 @@ export default async function Categories() {
         </div>
 
         {/* Top Categories */}
-        {/* <h2
+        <h2
           className={`mb-4 ${josefin.className} text-[32px] text-primary  max-lg:text-[32px] max-lg:leading-[35px] mt-[50px] font-semibold`}
         >
           Top Services Across Categories
@@ -97,7 +97,7 @@ export default async function Categories() {
               ))}
             </div>
           </div>
-        ))} */}
+        ))}
       </div>
     </div>
   );
