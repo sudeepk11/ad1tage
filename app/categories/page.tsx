@@ -17,7 +17,7 @@ type TopCategories = {
   services: Service[];
 };
 
-export default async function Categories() {
+export default async function Categories({showTop = true}) {
   let categories: Category[] = [];
   let topCategories: TopCategories[] = [];
   try {
@@ -59,12 +59,12 @@ export default async function Categories() {
         </div>
 
         {/* Top Categories */}
-        <h2
+   {showTop && <>     <h2
           className={`mb-4 ${josefin.className} text-[32px] text-primary  max-lg:text-[32px] max-lg:leading-[35px] mt-[50px] font-semibold`}
         >
           Top Services Across Categories
         </h2>
-        {topCategories.map((item, index) => (
+        { topCategories.map((item, index) => (
           <div key={index} className="hotel-suggestion py-5">
             <div className="flex justify-between">
               <h2
@@ -97,7 +97,7 @@ export default async function Categories() {
               ))}
             </div>
           </div>
-        ))}
+        ))}</>}
       </div>
     </div>
   );
