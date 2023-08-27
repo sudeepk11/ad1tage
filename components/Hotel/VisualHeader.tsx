@@ -1,8 +1,11 @@
 "use client";
 
+import "mapbox-gl/dist/mapbox-gl.css";
 import Image from "next/image";
 import Slider from "react-slick";
-import sliderImg from "../../images/fujairah.png";
+import markerStartIcon from "../../Assets/Icons/marker_start.png";
+import markerFinishIcon from "../../Assets/Icons/marker_finish.png";
+
 import {
   Map,
   GeolocateControl,
@@ -26,11 +29,10 @@ const settings = {
 };
 
 export default function VisualHeader({
-  // latitude,
-  // longitude,
+  latitude,
+  longitude,
   photos,
 }: Coords & Pick<Service, "photos">) {
-  const [latitude, longitude] = [50.0563968, 22.265856];
   const router = useRouter();
   const mapRef = useRef<MapRef>(null!);
   const geolocationRef = useRef<mapboxgl.GeolocateControl>(null!);
@@ -108,7 +110,7 @@ export default function VisualHeader({
           initialViewState={{
             longitude: -122.4,
             latitude: 37.8,
-            zoom: 7,
+            zoom: 3.5,
           }}
           style={{
             width: "100%",
@@ -148,13 +150,29 @@ export default function VisualHeader({
                 ],
               }}
             >
-              <Layer
+              {/* <Layer
                 type="circle"
                 paint={{
-                  "circle-radius": 10,
+                  "circle-radius": 1,
                   "circle-color": "#3887be",
                 }}
-              />
+              /> */}
+
+              {userCoords && (
+                <Marker
+                  latitude={userCoords.latitude}
+                  longitude={userCoords.longitude}
+                  anchor="bottom"
+                >
+                  <Image
+                    src={markerStartIcon}
+                    alt="marker"
+                    width={30}
+                    height={30}
+                    className="rounded-full"
+                  />
+                </Marker>
+              )}
             </Source>
           )}
 
@@ -191,14 +209,25 @@ export default function VisualHeader({
               ],
             }}
           >
-            <Layer
+            {/* <Layer
               id="end"
               type="circle"
               paint={{
                 "circle-radius": 10,
                 "circle-color": "#f30",
               }}
-            />
+            /> */}
+            {latitude && (
+              <Marker latitude={latitude} longitude={longitude} anchor="bottom">
+                <Image
+                  src={markerFinishIcon}
+                  alt="marker"
+                  width={30}
+                  height={30}
+                  className="rounded-full"
+                />
+              </Marker>
+            )}
           </Source>
         </Map>
       </div>

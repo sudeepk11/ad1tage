@@ -1,20 +1,22 @@
-"use client"
-import { useState, useEffect } from 'react';
-import mapboxgl from 'mapbox-gl';
+"use client";
+import { useState, useEffect } from "react";
+import mapboxgl from "mapbox-gl";
+import "mapbox-gl/dist/mapbox-gl.css";
 
-mapboxgl.accessToken = 'pk.eyJ1Ijoic3VkZWVwazExIiwiYSI6ImNsbGlkbTZmczFmdjgzaG8zbHJoanJ1bjgifQ.YIDUFnb8f9uYhq2PJm30yQ'; // Replace with your Mapbox access token
+mapboxgl.accessToken =
+  "pk.eyJ1Ijoic3VkZWVwazExIiwiYSI6ImNsbGlkbTZmczFmdjgzaG8zbHJoanJ1bjgifQ.YIDUFnb8f9uYhq2PJm30yQ"; // Replace with your Mapbox access token
 
 const LocationForm = () => {
-  const [address, setAddress] = useState('');
-  const [city, setCity] = useState('');
-  const [country, setCountry] = useState('');
-  const [pincode, setPincode] = useState('');
+  const [address, setAddress] = useState("");
+  const [city, setCity] = useState("");
+  const [country, setCountry] = useState("");
+  const [pincode, setPincode] = useState("");
   const [selectedLocation, setSelectedLocation] = useState(null);
-  
+
   useEffect(() => {
     const map = new mapboxgl.Map({
-      container: 'map',
-      style: 'mapbox://styles/mapbox/streets-v11',
+      container: "map",
+      style: "mapbox://styles/mapbox/streets-v11",
       center: [78.8718, 21.7679],
       zoom: 11,
     });
@@ -25,16 +27,21 @@ const LocationForm = () => {
       .setLngLat([78.8718, 21.7679])
       .addTo(map);
 
-    marker.on('dragend', async () => {
+    marker.on("dragend", async () => {
       const lngLat = marker.getLngLat();
-      const response = await fetch(`https://api.mapbox.com/geocoding/v5/mapbox.places/${lngLat.lng},${lngLat.lat}.json?access_token=${mapboxgl.accessToken}`);
+      const response = await fetch(
+        `https://api.mapbox.com/geocoding/v5/mapbox.places/${lngLat.lng},${lngLat.lat}.json?access_token=${mapboxgl.accessToken}`
+      );
       const data = await response.json();
       const features = data.features[0];
-      const newAddress = features.place_name || '';
-      const newCity = features.context.find(ctx => ctx.id.includes('place')).text || '';
-      const newCountry = features.context.find(ctx => ctx.id.includes('country')).text || '';
-      const newPincode = features.context.find(ctx => ctx.id.includes('postcode')).text || '';
-      
+      const newAddress = features.place_name || "";
+      const newCity =
+        features.context.find((ctx) => ctx.id.includes("place")).text || "";
+      const newCountry =
+        features.context.find((ctx) => ctx.id.includes("country")).text || "";
+      const newPincode =
+        features.context.find((ctx) => ctx.id.includes("postcode")).text || "";
+
       setAddress(newAddress);
       setCity(newCity);
       setCountry(newCountry);
@@ -83,10 +90,10 @@ const LocationForm = () => {
           placeholder="Pincode"
           className="p-2 border rounded w-full"
         />
-    <div className="h-64">
+        <div className="h-64">
           <div id="map" className="h-full"></div>
         </div>
-      
+
         <button type="submit" className="bg-blue-500 text-white p-2 rounded">
           Submit
         </button>
