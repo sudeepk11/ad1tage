@@ -12,14 +12,12 @@ import { toast } from "react-hot-toast";
 import CardWithSlider from "../../components/Common/CardWithSlider";
 import MapMarker from "../Common/MapMarker";
 
-
 type Props = {
   children: any;
   withMap?: boolean;
 };
 
 export default function GridProvider({ children, withMap }: Props) {
-
   const geolocateRef = useRef<mapboxgl.GeolocateControl>(null!);
   const [nearbyServices, setNearbyServices] = useState<Service[]>([]);
   const [userCoords, setUserCoords] = useState<Coords | null>(null);
@@ -94,7 +92,6 @@ export default function GridProvider({ children, withMap }: Props) {
                   latitude={parseFloat(item.lattitude)}
                   longitude={parseFloat(item.longitude)}
                 >
-
                   <div className="relative ">
                     {/* <CardWithSlider
                       paraText={item.name}
@@ -109,7 +106,7 @@ export default function GridProvider({ children, withMap }: Props) {
 
                     <MapMarker
                       key={item._id}
-                      id = {item._id}
+                      id={item._id}
                       paraText={item.name}
                       subParaText={item.category.category}
                       rating={item.rating.toPrecision(2)}
