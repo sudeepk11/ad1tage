@@ -6,14 +6,13 @@ import { Service } from "../../types/services";
 import { notFound } from "next/navigation";
 import axios from "axios";
 
-
-export default async function Services({title}) {
+export default async function Services({ title }) {
   let services: Service[] = [];
   try {
     const { data } = await axios.get(
       `${process.env.NEXT_PUBLIC_API_URL}/services`
     );
-    services = data.data?.slice(0,4);
+    services = data.data?.slice(0, 4);
   } catch (err) {
     return notFound();
   }
@@ -26,27 +25,25 @@ export default async function Services({title}) {
         >
           {title}
         </h2>
-        <ShowMore />
+        <ShowMore url={"/services/top-services"} />
       </div>
       <div className="grid lg:grid-cols-4 md:grid-cols-2 gap-6 max-md:grid-cols-1 max-lg:grid-cols-2">
-      {services.map((item) => (
-            <CardWithSlider
-              paraText={item.name}
-              location={item.city}
-              subParaText={item.category.category}
-              rating={item.rating.toPrecision(2)}
-              perRoomUserCount={"2 sleeps"}
-              bedCount={"1 Bedroom"}
-              bathCount={"1 Bath"}
-              photos={item.photos}
-              likeButton={"unfilled"}
-              id={item._id}
-              key={item._id}
-            />
-          ))}
+        {services.map((item) => (
+          <CardWithSlider
+            paraText={item.name}
+            location={item.city}
+            subParaText={item.category.category}
+            rating={item.rating.toPrecision(2)}
+            perRoomUserCount={"2 sleeps"}
+            bedCount={"1 Bedroom"}
+            bathCount={"1 Bath"}
+            photos={item.photos}
+            likeButton={"unfilled"}
+            id={item._id}
+            key={item._id}
+          />
+        ))}
       </div>
     </div>
   );
-};
-
-
+}

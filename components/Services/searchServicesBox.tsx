@@ -1,8 +1,8 @@
 "use client";
 import React, { useEffect, useRef, useState } from "react";
-import Button from "./Button";
+import Button from "../Common/Button";
 import useDebounce from "../../hooks/useDebounce";
-import CardWithSlider from "./CardWithSlider";
+import CardWithSlider from "../Common/CardWithSlider";
 import { Service } from "../../types/services";
 
 const SearchServicesBox = ({ services }) => {
@@ -13,7 +13,8 @@ const SearchServicesBox = ({ services }) => {
   const [isFocused, setIsFocused] = useState(false);
   const debounce = useDebounce(input, 400);
 
-  const handleSearch = () => {
+  const handleSearch = (e) => {
+    e.preventDefault();
     let query = debounce.toLowerCase().split(" ").join("");
     let newServices = (services as Service[]).filter(
       (item) =>
@@ -27,6 +28,7 @@ const SearchServicesBox = ({ services }) => {
     );
     setServicesList(newServices);
   };
+
   useEffect(() => {
     function onBlur(e: MouseEvent) {
       if (
@@ -47,17 +49,19 @@ const SearchServicesBox = ({ services }) => {
       <div className="bg-white p-[20px] mb-10 rounded-xl shadow-md max-w-[1190px] w-full m-auto relative z-1 h-fit">
         <div className="flex flex-col lg:flex-row lg:items-center md:gap-4 gap-2 relative">
           <div className="relative flex-1" ref={wrapperRef}>
-            <input
-              type="text"
-              placeholder="Search by name, category or city..."
-              className="py-[10px] px-6 border border-greyishBrown rounded-[8px] w-full flex-1"
-              onFocus={() => setIsFocused(true)}
-              value={input}
-              onChange={(e) => {
-                setInput(e.target.value);
-                setIsLoading(true);
-              }}
-            />
+            <form onSubmit={handleSearch}>
+              <input
+                type="text"
+                placeholder="Search by name, category or city..."
+                className="py-[10px] px-6 border border-greyishBrown rounded-[8px] w-full flex-1"
+                onFocus={() => setIsFocused(true)}
+                value={input}
+                onChange={(e) => {
+                  setInput(e.target.value);
+                  setIsLoading(true);
+                }}
+              />
+            </form>
           </div>
           <Button
             ButtonText={"Search"}

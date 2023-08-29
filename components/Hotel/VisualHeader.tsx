@@ -86,9 +86,7 @@ export default function VisualHeader({
         {photos.map((item) => (
           <Image
             className="w-full object-cover h-[450px] md:!w-[60vw] rounded-lg"
-            src={
-              photos ? photos[0] : ''
-            }
+            src={photos ? photos[0] : ""}
             alt="item"
             width={200}
             height={200}
@@ -108,8 +106,8 @@ export default function VisualHeader({
         <Map
           mapboxAccessToken={process.env.NEXT_PUBLIC_MAPBOX_KEY}
           initialViewState={{
-            longitude: -122.4,
-            latitude: 37.8,
+            latitude: 20.5937,
+            longitude: 78.9629,
             zoom: 3.5,
           }}
           style={{

@@ -6,6 +6,7 @@ import CardWithSlider from "../../../components/Common/CardWithSlider";
 import { josefin } from "../../../utils/utilsFonts";
 import Button from "../../../components/Common/Button";
 import GridProvider from "../../../components/Layout/GridProvider";
+import SearchServicesBox from "../../../components/Services/searchServicesBox";
 
 export default async function CategoryId({
   params,
@@ -23,7 +24,7 @@ export default async function CategoryId({
   } catch (err) {
     return notFound();
   }
-  console.log(services);
+
   return (
     <div className="container-2xl max-lg:px-4 lg:px-[50px]">
       <div className="hotel-suggestion py-16">
@@ -40,7 +41,8 @@ export default async function CategoryId({
             }
           ></Button>
         </div>
-        <GridProvider>
+        <SearchServicesBox services={services} />
+        {/* <GridProvider>
           {services.map((item, i) => (
             <CardWithSlider
               paraText={item.name}
@@ -56,7 +58,7 @@ export default async function CategoryId({
               key={i}
             />
           ))}
-        </GridProvider>
+        </GridProvider> */}
       </div>
     </div>
   );
