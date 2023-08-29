@@ -85,7 +85,7 @@ const SearchBox = ({ searchClasses = "" }) => {
           ButtonText={"Find Services near me"}
           icon={locationIcon}
           logo={locationIcon}
-          ButtonClicked={() => push("/services")}
+          ButtonClicked={() => push("/services/top-services")}
           ButtonClasses={
             "lg:w-max !bg-blue-100 text-[#2A86DB] font-semibold w-full flex items-center justify-center py-3"
           }

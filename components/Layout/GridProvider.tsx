@@ -46,9 +46,9 @@ export default function GridProvider({ children, withMap }: Props) {
 
   return (
     <Fragment>
-      {!withMap && (
+      {/* {!withMap && (
         <FilterOptions mapView={mapView} changeMapView={setMapView} />
-      )}
+      )} */}
       {mapView || withMap ? (
         <div className="grid grid-cols-2 gap-6 max-md:flex max-md:flex-col-reverse max-lg:grid-col-2">
           <div className="grid lg:grid-cols-2 gap-6">{children}</div>

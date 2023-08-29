@@ -67,6 +67,7 @@ export default async function ServiceDetails({
     reviews,
     featured,
     isApproved,
+    phoneNumber,
     Owner,
   } = details;
   return (
@@ -242,8 +243,10 @@ export default async function ServiceDetails({
           <div className="flex my-5">
             {isApproved && (
               <div className="flex justify-center items-center">
-              <Image src={verifiedIcon} alt="" className="object-contain" />
-              <p className="text-sm font-semibold ml-1 mr-2">ad1tage verified</p>
+                <Image src={verifiedIcon} alt="" className="object-contain" />
+                <p className="text-sm font-semibold ml-1 mr-2">
+                  ad1tage verified
+                </p>
               </div>
             )}
             {true && (
@@ -255,11 +258,13 @@ export default async function ServiceDetails({
             )}
           </div>
           <form action={addOneToCall} className="w-full">
+            {/* <Link href={`tel:${phoneNumber}`}> */}
             <Button
               ButtonText="Call"
               icon={callIcon}
               ButtonClasses="!bg-primary mt-6 text-white font-medium w-full flex items-center justify-center my-6 !py-3"
             />
+            {/* </Link> */}
           </form>
         </div>
       </div>

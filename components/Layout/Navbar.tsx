@@ -94,8 +94,11 @@ const Navbar = () => {
               <Image className="w-[20px] pl-2" src={arrowDown} alt="" />
             </div>
             {userSettingDropdown && (
-              <div className="p-4 shadow rounded-lg grid grid-cols-2 mt-1 absolute z-[1] bg-white w-full top-[100%]">
+              <div className="p-4 shadow rounded-lg mt-1 absolute z-[1] bg-white w-full top-[100%] right-2">
                 <ul>
+                  <li className="my-2 text-base">
+                    <Link href="/tenent">My Profile</Link>
+                  </li>
                   <li className="my-2 text-base">
                     <form
                       action={() =>

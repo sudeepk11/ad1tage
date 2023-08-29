@@ -3,7 +3,7 @@ import axios from "axios";
 import { josefin } from "../../utils/utilsFonts";
 import { notFound } from "next/navigation";
 import { Service } from "../../types/services";
-import SearchServicesBox from "../../components/Common/searchServicesBox";
+import SearchServicesBox from "../../components/Services/searchServicesBox";
 const API_URL = process.env.NEXT_PUBLIC_API_URL;
 
 export default async function Services() {
