@@ -70,6 +70,13 @@ const SearchServicesBox = ({ services }) => {
       </div>
       <div className="max-md:flex max-md:flex-col-reverse max-lg:grid-col-2">
         <div className="grid lg:grid-cols-4 gap-6">
+          {servicesList.length === 0 && (
+            <div className="flex flex-col items-center">
+              <h2 className="text-2xl font-semibold text-center">
+                No services found for "{input}"
+              </h2>
+            </div>
+          )}
           {servicesList.map((item) => (
             <CardWithSlider
               paraText={item.name}
