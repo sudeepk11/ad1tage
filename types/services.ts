@@ -16,7 +16,8 @@ export type Service = {
     isApproved: boolean;
     desc: string;
     Owner: User;
-    category: Category
+    category: Category,
+    views: number;
 }
 
 export type Review = {
@@ -24,4 +25,5 @@ export type Review = {
     place: string;
     rating: number;
     comment: string
+    user: User
 }

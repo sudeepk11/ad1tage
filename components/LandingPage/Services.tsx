@@ -2,8 +2,22 @@ import React from "react";
 import { josefin } from "../../utils/utilsFonts";
 import CardWithSlider from "../Common/CardWithSlider";
 import ShowMore from "./ShowMore";
+import { Service } from "../../types/services";
+import { notFound } from "next/navigation";
+import axios from "axios";
 
-const Services = ({ title }) => {
+
+export default async function Services({title}) {
+  let services: Service[] = [];
+  try {
+    const { data } = await axios.get(
+      `${process.env.NEXT_PUBLIC_API_URL}/services`
+    );
+    services = data.data?.slice(0,4);
+  } catch (err) {
+    return notFound();
+  }
+
   return (
     <div className=" py-16 px-[50px] max-lg:px-4 max-lg:py-10  hotel-suggestion">
       <div className="flex gap-2 justify-between">
@@ -15,49 +29,24 @@ const Services = ({ title }) => {
         <ShowMore />
       </div>
       <div className="grid lg:grid-cols-4 md:grid-cols-2 gap-6 max-md:grid-cols-1 max-lg:grid-cols-2">
-        <CardWithSlider
-          paraText={"Kle Hospital"}
-          location={"Belgaum"}
-          subParaText={"Hospitality Service"}
-          rating={"5.0"}
-          perRoomUserCount={"2 sleeps"}
-          bedCount={"1 Bedroom"}
-          bathCount={"1 Bath"}
-          likeButton={"unfilled"}
-        />
-        <CardWithSlider
-          paraText={"Katti Caterers"}
-          location={"Mysore"}
-          subParaText={"Caterining Service"}
-          rating={"5.0"}
-          perRoomUserCount={"2 sleeps"}
-          bedCount={"1 Bedroom"}
-          bathCount={"1 Bath"}
-          likeButton={"filled"}
-        />
-        <CardWithSlider
-          paraText={"One Stop Caretakers"}
-          location={"Bengaluru"}
-          subParaText={"Caretaking Service"}
-          rating={"5.0"}
-          perRoomUserCount={"2 sleeps"}
-          bedCount={"1 Bedroom"}
-          bathCount={"1 Bath"}
-          likeButton={"filled"}
-        />
-        <CardWithSlider
-          paraText={"A.K Medicals"}
-          location={"Hubli"}
-          subParaText={"Medical Service"}
-          rating={"5.0"}
-          perRoomUserCount={"2 sleeps"}
-          bedCount={"1 Bedroom"}
-          bathCount={"1 Bath"}
-          likeButton={"unfilled"}
-        />
+      {services.map((item) => (
+            <CardWithSlider
+              paraText={item.name}
+              location={item.city}
+              subParaText={item.category.category}
+              rating={item.rating.toPrecision(2)}
+              perRoomUserCount={"2 sleeps"}
+              bedCount={"1 Bedroom"}
+              bathCount={"1 Bath"}
+              photos={item.photos}
+              likeButton={"unfilled"}
+              id={item._id}
+              key={item._id}
+            />
+          ))}
       </div>
     </div>
   );
 };
 
-export default Services;
+

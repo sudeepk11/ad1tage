@@ -27,8 +27,8 @@ const Review = () => {
           reviewArr.map((data) => {
             return (
               <div key={data.id} className="my-6">
-                <Rating />
-                <Reviews data={data} />
+                {/* <Rating />
+                <Reviews data={data} /> */}
               </div>
             );
           })}

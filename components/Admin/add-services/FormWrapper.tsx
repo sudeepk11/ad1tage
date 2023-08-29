@@ -6,7 +6,7 @@ import { toast } from "react-hot-toast";
 import { APIResponse } from "../../../types/general";
 
 type Props = {
-  children: JSX.Element[];
+  children: JSX.Element[] | JSX.Element;
   buttonClassName?: string;
   buttonWrapperClassName?: string;
   formClassName?: string;
@@ -32,6 +32,7 @@ export default function FormWrapper({
           const resp = await callback(props);
           console.log(resp);
           if (resp.status === "success") {
+            toast.success("Success!");
             formRef.current.reset();
           } else {
             toast.error(resp.message || "An error occured");

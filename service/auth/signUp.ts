@@ -9,10 +9,11 @@ export default async function signUp(data: FormData): Promise<APIResponse<Omit<U
   const email = data.get("email").toString()
   const password = data.get("password").toString()
   const phoneNumber = data.get("phoneNumber").toString()
+  const role = data.get("role").toString()
   try {
     const { data } = await axios.post(
-      `${process.env.NEXT_PUBLIC_API_URL}/auth/register`,
-      JSON.stringify({ username, email, password, phoneNumber, is_owner: false }),
+      `${process.env.NEXT_PUBLIC_API_URL}/auth/register${role === 'owner' ? '?is_owner=True' : ""}`,
+      JSON.stringify({ username, email, password, phoneNumber, role, is_owner: role === 'owner' }),
       {
         headers: {
           "Content-Type": "application/json",
@@ -21,6 +22,7 @@ export default async function signUp(data: FormData): Promise<APIResponse<Omit<U
     );
     return data
   } catch (err) {
-    return err.response.data;
+    console.log(err)
+    return err ? err.response.data : { message: "Error"};
   }
 }

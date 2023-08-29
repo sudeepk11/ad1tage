@@ -1,8 +1,21 @@
 import { josefin } from "../../../utils/utilsFonts";
 import FormWrapper from "../../../components/Admin/add-services/FormWrapper";
 import addService from "../../../service/services/addService";
+import axios from "axios";
+import { Category } from "../../../types/categories";
+import { cookies } from "next/headers";
 
-export default function Page() {
+export default async function Page() {
+  let categories: Category[] = [];
+  const userId = cookies().get("_id")?.value;
+  try {
+    const { data } = await axios.get(
+      `${process.env.NEXT_PUBLIC_API_URL}/categories`
+    );
+    categories = data.data;
+  } catch (err) {
+    console.log(err.response.data);
+  }
   return (
     <div className="container-2xl max-lg:px-4 lg:px-[50px] py-5">
       <div className="flex items-center justify-between gap-4 max-xl:flex-col max-xl:justify-start max-xl:items-start">
@@ -20,7 +33,7 @@ export default function Page() {
           buttonText="Add Service"
           callback={addService}
         >
-          <div className="w-full col-span-2">
+          <div className="w-full col-span-2 max-md:col-span-8">
             <label
               className={`block mb-2 text-sm font-bold text-black ${josefin.className}`}
             >
@@ -33,7 +46,7 @@ export default function Page() {
               name="name"
             />
           </div>
-          <div className="w-full col-span-6">
+          <div className="w-full col-span-6 max-md:col-span-8">
             <label
               className={`block mb-2 text-sm font-bold text-black ${josefin.className}`}
             >
@@ -47,84 +60,104 @@ export default function Page() {
             />
           </div>
 
-          <div className="w-full col-span-2">
-            <label
-              className={`block mb-2 text-sm font-bold text-black ${josefin.className}`}
-            >
-              Label 1
-            </label>
-            <input
-              className="w-full h-[52px] border border-solid border-greyishBrown rounded-lg p-3"
-              type="text"
-              placeholder="Enter Label 1"
-              name="label-1"
-            />
-          </div>
-          <div className="w-full col-span-2">
+          <div className="w-full col-span-2 max-md:col-span-4">
             <label
               className={`block mb-2 text-sm font-bold text-black ${josefin.className}`}
             >
               Category
             </label>
-            <input
-              className="w-full h-[52px] border border-solid border-greyishBrown rounded-lg p-3"
-              type="text"
+            <select
+              className="w-full h-[52px] border border-solid bg-white border-greyishBrown rounded-lg p-3"
               placeholder="Enter Category"
               name="category"
-            />
+            >
+              {categories.map((opt) => (
+                <option value={opt._id} key={opt._id}>
+                  {opt.category}
+                </option>
+              ))}
+            </select>
           </div>
-          <div className="w-full col-span-2">
+          <div className="w-full col-span-2 max-md:col-span-4">
             <label
               className={`block mb-2 text-sm font-bold text-black ${josefin.className}`}
             >
-              Label 2
+              City
             </label>
             <input
               className="w-full h-[52px] border border-solid border-greyishBrown rounded-lg p-3"
               type="text"
-              placeholder="Enter Label 2"
-              name="label-2"
+              placeholder="Enter City"
+              name="city"
             />
           </div>
-          <div className="w-full col-span-2">
+          <div className="w-full col-span-2 max-md:col-span-4">
             <label
               className={`block mb-2 text-sm font-bold text-black ${josefin.className}`}
             >
-              Label 3
+              Lattitude
             </label>
             <input
               className="w-full h-[52px] border border-solid border-greyishBrown rounded-lg p-3"
               type="text"
-              placeholder="Enter Label 3"
-              name="label-3"
+              placeholder="Enter Lattitude"
+              name="lattitude"
             />
           </div>
-          <div className="w-full col-span-2">
+          <div className="w-full col-span-2 max-md:col-span-4">
             <label
               className={`block mb-2 text-sm font-bold text-black ${josefin.className}`}
             >
-              Label 4
+              Longitude
             </label>
             <input
               className="w-full h-[52px] border border-solid border-greyishBrown rounded-lg p-3"
               type="text"
-              placeholder="Enter Label 4"
-              name="label-4"
+              placeholder="Enter Longitude"
+              name="longitude"
             />
           </div>
-          <div className="w-full col-span-6">
+          <div className="w-full col-span-4 max-md:col-span-8">
             <label
               className={`block mb-2 text-sm font-bold text-black ${josefin.className}`}
             >
-              Label 5
+              Phone Number
             </label>
             <input
               className="w-full h-[52px] border border-solid border-greyishBrown rounded-lg p-3"
               type="text"
-              placeholder="Enter Label 5"
-              name="label-5"
+              placeholder="Enter Phone Number"
+              name="phone"
             />
           </div>
+          <div className="w-full col-span-4 max-md:col-span-8">
+            <label
+              className={`block mb-2 text-sm font-bold text-black ${josefin.className}`}
+            >
+              Image URL
+            </label>
+            <input
+              className="w-full h-[52px] border border-solid border-greyishBrown rounded-lg p-3"
+              type="text"
+              placeholder="Enter Image URL"
+              name="photos"
+            />
+          </div>
+          {/* Create a field to take multiple urls into a single field */}
+          <div className="w-full col-span-7 max-md:col-span-8">
+            <label
+              className={`block mb-2 text-sm font-bold text-black ${josefin.className}`}
+            >
+              Address
+            </label>
+            <input
+              className="w-full h-[52px] border border-solid border-greyishBrown rounded-lg p-3"
+              type="text"
+              placeholder="Enter Address"
+              name="address"
+            />
+          </div>
+          <input type="hidden" name="user_id" value={userId} />
         </FormWrapper>
       </div>
     </div>

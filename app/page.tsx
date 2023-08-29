@@ -13,7 +13,7 @@ export default function Home() {
       </div>
 
       <Services title="Find Top Services Nearby" />
-      <Categories />
+      <Categories showTop={false}/>
       <SixSteps />
     </div>
   );

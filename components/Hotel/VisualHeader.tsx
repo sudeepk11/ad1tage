@@ -1,9 +1,19 @@
 "use client";
 
+import "mapbox-gl/dist/mapbox-gl.css";
 import Image from "next/image";
 import Slider from "react-slick";
-import sliderImg from "../../images/fujairah.png";
-import { Map, GeolocateControl, MapRef, Layer, Source } from "react-map-gl";
+import markerStartIcon from "../../Assets/Icons/marker_start.png";
+import markerFinishIcon from "../../Assets/Icons/marker_finish.png";
+
+import {
+  Map,
+  GeolocateControl,
+  MapRef,
+  Layer,
+  Source,
+  Marker,
+} from "react-map-gl";
 import { useRef, useEffect, useState, useCallback } from "react";
 import { Coords } from "../../types/general";
 import { Service } from "../../types/services";
@@ -19,11 +29,10 @@ const settings = {
 };
 
 export default function VisualHeader({
-  // latitude,
-  // longitude,
+  latitude,
+  longitude,
   photos,
 }: Coords & Pick<Service, "photos">) {
-  const [latitude, longitude] = [50.0563968, 22.265856];
   const router = useRouter();
   const mapRef = useRef<MapRef>(null!);
   const geolocationRef = useRef<mapboxgl.GeolocateControl>(null!);
@@ -72,13 +81,17 @@ export default function VisualHeader({
   }, [userCoords, latitude, longitude]);
 
   return (
-    <div className="grid grid-cols-12 gap-6 relative overflow-hidden property-detail hotel-suggestion w-[98%] mx-auto my-5">
+    <div className="grid grid-cols-12 gap-6 relative overflow-hidden property-detail hotel-suggestion w-[98%] mx-auto my-2 p-4">
       <Slider {...settings} className="h-[450px] md:col-span-7 col-span-12">
         {photos.map((item) => (
           <Image
             className="w-full object-cover h-[450px] md:!w-[60vw] rounded-lg"
-            src={sliderImg}
-            alt=""
+            src={
+              photos ? photos[0] : ''
+            }
+            alt="item"
+            width={200}
+            height={200}
             key={item}
           />
         ))}
@@ -97,7 +110,7 @@ export default function VisualHeader({
           initialViewState={{
             longitude: -122.4,
             latitude: 37.8,
-            zoom: 7,
+            zoom: 3.5,
           }}
           style={{
             width: "100%",
@@ -137,15 +150,32 @@ export default function VisualHeader({
                 ],
               }}
             >
-              <Layer
+              {/* <Layer
                 type="circle"
                 paint={{
-                  "circle-radius": 10,
+                  "circle-radius": 1,
                   "circle-color": "#3887be",
                 }}
-              />
+              /> */}
+
+              {userCoords && (
+                <Marker
+                  latitude={userCoords.latitude}
+                  longitude={userCoords.longitude}
+                  anchor="bottom"
+                >
+                  <Image
+                    src={markerStartIcon}
+                    alt="marker"
+                    width={30}
+                    height={30}
+                    className="rounded-full"
+                  />
+                </Marker>
+              )}
             </Source>
           )}
+
           {route && (
             <Source type="geojson" data={route}>
               <Layer
@@ -179,14 +209,25 @@ export default function VisualHeader({
               ],
             }}
           >
-            <Layer
+            {/* <Layer
               id="end"
               type="circle"
               paint={{
                 "circle-radius": 10,
                 "circle-color": "#f30",
               }}
-            />
+            /> */}
+            {latitude && (
+              <Marker latitude={latitude} longitude={longitude} anchor="bottom">
+                <Image
+                  src={markerFinishIcon}
+                  alt="marker"
+                  width={30}
+                  height={30}
+                  className="rounded-full"
+                />
+              </Marker>
+            )}
           </Source>
         </Map>
       </div>

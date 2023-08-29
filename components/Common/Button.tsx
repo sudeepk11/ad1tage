@@ -21,7 +21,7 @@ const Button = ({
     >
       {icon && <Image src={icon} alt="icon" width={20} height={20} />}
       {/* P tag with text in a single line */}
-      {children ? children : <p className=" whitespace-nowrap">{ButtonText}</p>}
+      {children ? children : <p className="ml-2 whitespace-nowrap">{ButtonText}</p>}
     </button>
   );
 };

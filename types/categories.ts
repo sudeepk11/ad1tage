@@ -3,4 +3,5 @@ export type Category = {
     category: string;
     desc: string;
     count?: number;
+    imageUrl: string
 }

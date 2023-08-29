@@ -1,5 +1,3 @@
-import React from "react";
-
 const Rating = ({ rating = 0, hideRating = false }) => {
   return (
     <div className="flex items-center">

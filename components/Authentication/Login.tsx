@@ -52,13 +52,7 @@ const Login = () => {
               const resp = await logIn(props);
               if (resp.status === "success") {
                 signIn(resp.data);
-                push(
-                  resp.data.role === "user"
-                    ? "/categories"
-                    : resp.data.role === "owner"
-                    ? "/categories"
-                    : "/admin"
-                );
+                push(resp.data.role === "user" ? "/categories" : "/admin");
               } else setError(resp.message);
             })
           }
@@ -121,6 +115,16 @@ const Login = () => {
             ButtonText={isPending ? "Loading..." : "Log in"}
             ButtonClasses={"w-full bg-primary text-center text-white py-4 "}
           ></Button>
+
+          <Link
+            href={"/signup"}
+            className="lg:text-sm laptopScreen:text-base mt-4"
+          >
+            Don&apos;t have an account  
+            <span className="ml-1 mt-3 text-primary cursor-pointer font-medium">
+            Register?
+            </span>
+          </Link>
         </form>
       </RightFormSection>
     </div>

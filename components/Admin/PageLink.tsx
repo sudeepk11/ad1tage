@@ -14,9 +14,12 @@ export default function PageLink({
       href={href}
       className={`${
         josefin.className
-      } max-md:px-2 md:px-5 md:mx-4 max-md:mx-2 h-full flex items-center rounded-sm transition-all ${
+      } max-md:px-2 md:px-5 md:mx-4 max-md:mx-2 h-full max-lg:my-3 text-black max-lg:h-fit max-lg:text-2xl lg:text-sm flex items-center rounded-sm transition-all ${
         href === pathname ? "text-primary font-semibold" : ""
       }`}
+      onClick={() => {
+        document.getElementById("nav-check")?.click();
+      }}
     >
       {children}
     </Link>

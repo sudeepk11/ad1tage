@@ -34,6 +34,7 @@ body {
   width: 100%;
   margin: 0 auto;
 }
+
 .hotel-suggestion .slick-arrow.slick-next,
 .hotel-suggestion .slick-arrow.slick-prev {
   background-size: 30px;
@@ -46,14 +47,14 @@ body {
 .hotel-suggestion .slick-prev:hover,
 .hotel-suggestion .slick-prev:focus {
   left: 16px;
-  background: url("../images/slider-arrow.png") no-repeat center;
+  background: url("../Assets/Icons/arrow-left.png") no-repeat center;
 }
 .hotel-suggestion .slick-arrow.slick-next,
 .hotel-suggestion .slick-arrow.slick-next,
 .hotel-suggestion .slick-next:hover,
 .hotel-suggestion .slick-next:focus {
   right: 16px;
-  background: url("../images/slider-arrow-right.png") no-repeat center;
+  background: url("../Assets/Icons/arrow-right.png") no-repeat center;
 }
 .hotel-suggestion .slick-arrow.slick-next:before,
 .hotel-suggestion .slick-arrow.slick-prev:before {

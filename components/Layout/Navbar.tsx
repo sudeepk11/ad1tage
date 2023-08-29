@@ -7,7 +7,7 @@ import arrowDown from "../../images/arrow-down.png";
 // import logoText from "../../images/trophy-logo.png";
 import logoText from "../../images/logo-text.png";
 import { navbarItems } from "../../utils/utilsItems";
-import { usePathname } from "next/navigation";
+import { usePathname, useRouter } from "next/navigation";
 import { AuthContext } from "../../providers/AuthProvider";
 import logOut from "../../service/auth/logOut";
 import AdminNav from "../Admin/AdminNav";
@@ -28,9 +28,11 @@ const withAdmin = [
 ];
 const Navbar = () => {
   const router = usePathname();
+  const { push } = useRouter();
   const [isPending, startTransition] = useTransition();
   const { user, token, logOut: signOut } = useContext(AuthContext);
-  const isAdmin = !!(token && user.role === "admin");
+  const isAdmin =
+    !!(token && user.role === "admin") || !!(token && user.role === "owner");
   const [userSettingDropdown, setUserSettingDropdown] = useState(false);
   return (
     <div
@@ -50,7 +52,7 @@ const Navbar = () => {
           <input type="checkbox" className="hidden peer" id="nav-check" />
           {!isAdmin && (
             <div
-              className="nav-links max-lg:hidden max-lg:peer-checked:block max-lg:fixed max-lg:top-[72px] max-lg:left-0 max-lg:w-full max-lg:h-full z-20 max-lg:bg-white
+              className="nav-links max-lg:hidden max-lg:peer-checked:block max-lg:fixed max-lg:top-[62px] max-lg:left-0 max-lg:w-full max-lg:h-full z-20 max-lg:bg-white
            max-lg:text-primary 
           "
             >
@@ -64,6 +66,9 @@ const Navbar = () => {
                           ? "text-primary font-semibold"
                           : ""
                       }`}
+                      onClick={() => {
+                        document.getElementById("nav-check")?.click();
+                      }}
                     >
                       <Link className="" href={`${items.link}`}>
                         {items.name}
@@ -74,8 +79,8 @@ const Navbar = () => {
               </ul>
             </div>
           )}
+          {isAdmin && <AdminNav />}
         </div>
-        {isAdmin && <AdminNav />}
         {token ? (
           <div className="relative cursor-pointer">
             <div
@@ -89,11 +94,8 @@ const Navbar = () => {
               <Image className="w-[20px] pl-2" src={arrowDown} alt="" />
             </div>
             {userSettingDropdown && (
-              <div className="p-4 rounded grid grid-cols-2 mt-4 absolute z-[1] bg-white w-full top-[100%]">
+              <div className="p-4 shadow rounded-lg grid grid-cols-2 mt-1 absolute z-[1] bg-white w-full top-[100%]">
                 <ul>
-                  <li className="my-2 text-base">
-                    <Link href="/admin/setting">Setting</Link>
-                  </li>
                   <li className="my-2 text-base">
                     <form
                       action={() =>
@@ -101,6 +103,7 @@ const Navbar = () => {
                           const resp = await logOut();
                           if (resp.status === "success") {
                             signOut();
+                            push("/");
                           }
                         })
                       }
@@ -122,7 +125,7 @@ const Navbar = () => {
         ) : (
           <div className="flex items-center gap-5 max-lg:hidden">
             <Link
-              href={"/signup"}
+              href={"/signup/business-owner"}
               className="lg:text-sm laptopScreen:text-base"
             >
               Business Owner?{" "}
@@ -134,7 +137,7 @@ const Navbar = () => {
               className={`bg-primary rounded-[8px] px-[31px] py-2  laptopScreen:text-base text-white`}
               href={"/login"}
             >
-              Sign Up
+              Sign In
             </Link>
             {/* <Button /> */}
           </div>

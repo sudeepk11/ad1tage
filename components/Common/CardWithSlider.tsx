@@ -8,6 +8,7 @@ import Link from "next/link";
 import Slider from "react-slick";
 import "slick-carousel/slick/slick.css";
 import "slick-carousel/slick/slick-theme.css";
+
 var settings = {
   dots: true,
   infinite: true,
@@ -27,10 +28,12 @@ const CardWithSlider = (props) => {
               key={item + "wrapper"}
             >
               <Image
-                className="w-full h-[240px] object-cover"
-                src={sliderImg}
+                className="w-full h-[240px] object-cover rounded-[16px]"
+                src={item}
                 alt=""
                 key={item}
+                width={200}
+                height={200}
               />
             </div>
           ))}
@@ -73,7 +76,7 @@ const CardWithSlider = (props) => {
       {/* <div className="text-white bg-black bg-opacity-50 px-[11px] py-[3px] -mt-[45px] relative z-1 w-max ml-4 rounded-2xl mb-[10px]">
         $12.00<span className="text-secondary">/Month</span>
       </div> */}
-      <div className="px-4 py-6">
+      <div className="px-4 py-4">
         <div className="flex items-center justify-between rating-like ">
           <div className="flex gap-1 mb-2 starts">
             {Array.from(Array(Math.round(parseFloat(props.rating)))).map(
@@ -119,7 +122,7 @@ const CardWithSlider = (props) => {
             )}
             <span className="ml-2 font-medium">{props.rating}</span>
           </div>
-          <div className="cursor-pointer">
+          {/* <div className="cursor-pointer">
             {props.likeButton === "filled" ? (
               <svg
                 width="24"
@@ -154,7 +157,7 @@ const CardWithSlider = (props) => {
                 />
               </svg>
             )}
-          </div>
+          </div> */}
         </div>
         <Link href={`/service-details/${props.id}`}>
           <p className={`text-base mt-1`}>{props.paraText}</p>

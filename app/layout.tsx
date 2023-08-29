@@ -3,6 +3,7 @@ import { Inter, Poppins } from "next/font/google";
 import Layout from "../components/Layout";
 import AuthProvider from "../providers/AuthProvider";
 import { Toaster } from "react-hot-toast";
+import TopLoader from "nextjs-toploader";
 
 // const inter = Inter({ subsets: ["latin"] });
 const poppins = Poppins({
@@ -34,6 +35,7 @@ export default function RootLayout({
         href="https://cdnjs.cloudflare.com/ajax/libs/slick-carousel/1.6.0/slick-theme.min.css"
       /> */}
       <body className={`${poppins.className}`}>
+        <TopLoader color="#000" />
         <AuthProvider>
           <Layout>
             <div>{children}</div>

@@ -10,12 +10,14 @@ import { revalidatePath } from "next/cache";
 export default async function addReview(
   data: FormData
 ): Promise<APIResponse<User>> {
-  const authToken = cookies().get("access_token")
-  if(!authToken) return redirect("/login")
-  const comment = data.get("comment").toString()
-  const placeId = data.get("place_id").toString()
+  const authToken = cookies().get("access_token");
+  if (!authToken) return redirect("/login");
+  const comment = data.get("comment").toString();
+  const placeId = data.get("place_id").toString();
+  const rating = data.get("rating").toString();
 
-  const formData = { comment, rating: 4, place: placeId }
+  const formData = { comment, rating, place: placeId };
+  console.log(data);
 
   try {
     const { data } = await axios.post(
@@ -25,11 +27,11 @@ export default async function addReview(
         headers: {
           "Content-Type": "application/json",
           Cookie: `access_token=${authToken.value}`,
-          Authorization: `Bearer ${authToken.value}`
+          Authorization: `Bearer ${authToken.value}`,
         },
       }
     );
-    revalidatePath("/service-details/[id]")
+    revalidatePath("/service-details/[id]");
     return data;
   } catch (err) {
     return err.response.data;
