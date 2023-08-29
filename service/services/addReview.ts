@@ -17,7 +17,6 @@ export default async function addReview(
   const rating = data.get("rating").toString();
 
   const formData = { comment, rating, place: placeId };
-  console.log(data);
 
   try {
     const { data } = await axios.post(

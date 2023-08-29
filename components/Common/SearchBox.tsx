@@ -9,7 +9,7 @@ import ResultRef from "./ResultRef";
 import useDebounce from "../../hooks/useDebounce";
 import { useRouter } from "next/navigation";
 
-const SearchBox = ({ searchClasses }) => {
+const SearchBox = ({ searchClasses = "" }) => {
   const { push } = useRouter();
   const wrapperRef = useRef<HTMLDivElement>(null!);
   const [isLoading, setIsLoading] = useState(false);

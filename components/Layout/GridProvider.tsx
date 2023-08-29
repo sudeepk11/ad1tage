@@ -1,5 +1,4 @@
 "use client";
-
 import { Fragment, useEffect, useRef, useState } from "react";
 import FilterOptions from "../Hotel/filterOptions";
 import Map, { GeolocateControl, Marker } from "react-map-gl";
@@ -11,7 +10,7 @@ import { Service } from "../../types/services";
 import { toast } from "react-hot-toast";
 import CardWithSlider from "../../components/Common/CardWithSlider";
 import MapMarker from "../Common/MapMarker";
-
+import { useNearbyServices } from "../../providers/NearbyServicesProvider";
 
 type Props = {
   children: any;
@@ -19,9 +18,8 @@ type Props = {
 };
 
 export default function GridProvider({ children, withMap }: Props) {
-
   const geolocateRef = useRef<mapboxgl.GeolocateControl>(null!);
-  const [nearbyServices, setNearbyServices] = useState<Service[]>([]);
+  const { nearbyServices, setNearbyServices } = useNearbyServices();
   const [userCoords, setUserCoords] = useState<Coords | null>(null);
   const [mapView, setMapView] = useState(withMap || false);
   const { refresh } = useRouter();
@@ -61,8 +59,8 @@ export default function GridProvider({ children, withMap }: Props) {
               style={{ height: 512 }}
               mapStyle="mapbox://styles/mapbox/streets-v11"
               initialViewState={{
-                latitude: 37.7577,
-                longitude: -122.4376,
+                latitude: 20.5937,
+                longitude: 78.9629,
                 zoom: 6,
               }}
             >
@@ -88,15 +86,15 @@ export default function GridProvider({ children, withMap }: Props) {
                   color="red"
                 />
               )}
-              {nearbyServices.map((item) => (
-                <Marker
-                  key={item._id}
-                  latitude={parseFloat(item.lattitude)}
-                  longitude={parseFloat(item.longitude)}
-                >
-
-                  <div className="relative ">
-                    {/* <CardWithSlider
+              {nearbyServices &&
+                nearbyServices.map((item) => (
+                  <Marker
+                    key={item._id}
+                    latitude={parseFloat(item.lattitude)}
+                    longitude={parseFloat(item.longitude)}
+                  >
+                    <div className="relative ">
+                      {/* <CardWithSlider
                       paraText={item.name}
                       location={item.city}
                       subParaText={item.category.category}
@@ -107,17 +105,17 @@ export default function GridProvider({ children, withMap }: Props) {
                       key={item._id}
                     /> */}
 
-                    <MapMarker
-                      key={item._id}
-                      id = {item._id}
-                      paraText={item.name}
-                      subParaText={item.category.category}
-                      rating={item.rating.toPrecision(2)}
-                      photos={item.photos}
-                    />
-                  </div>
-                </Marker>
-              ))}
+                      <MapMarker
+                        key={item._id}
+                        id={item._id}
+                        paraText={item.name}
+                        subParaText={item.category.category}
+                        rating={item.rating.toPrecision(2)}
+                        photos={item.photos}
+                      />
+                    </div>
+                  </Marker>
+                ))}
             </Map>
           </div>
         </div>

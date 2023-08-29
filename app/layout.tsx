@@ -2,6 +2,7 @@ import "./globals.css";
 import { Inter, Poppins } from "next/font/google";
 import Layout from "../components/Layout";
 import AuthProvider from "../providers/AuthProvider";
+import { NearbyServicesProvider } from "../providers/NearbyServicesProvider";
 import { Toaster } from "react-hot-toast";
 import TopLoader from "nextjs-toploader";
 
@@ -37,9 +38,11 @@ export default function RootLayout({
       <body className={`${poppins.className}`}>
         <TopLoader color="#000" />
         <AuthProvider>
-          <Layout>
-            <div>{children}</div>
-          </Layout>
+          <NearbyServicesProvider>
+            <Layout>
+              <div>{children}</div>
+            </Layout>
+          </NearbyServicesProvider>
         </AuthProvider>
         <Toaster />
       </body>
