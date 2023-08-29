@@ -1,104 +1,167 @@
 "use client";
-import { useState, useEffect } from "react";
+import { useState } from "react";
 import mapboxgl from "mapbox-gl";
 import "mapbox-gl/dist/mapbox-gl.css";
-
-mapboxgl.accessToken =
-  "pk.eyJ1Ijoic3VkZWVwazExIiwiYSI6ImNsbGlkbTZmczFmdjgzaG8zbHJoanJ1bjgifQ.YIDUFnb8f9uYhq2PJm30yQ"; // Replace with your Mapbox access token
+import { Layer, Map, Source } from "react-map-gl";
+import { Coords } from "../../types/general";
+import axios from "axios";
+import { josefin } from "../../utils/utilsFonts";
 
 const LocationForm = () => {
   const [address, setAddress] = useState("");
   const [city, setCity] = useState("");
   const [country, setCountry] = useState("");
   const [pincode, setPincode] = useState("");
-  const [selectedLocation, setSelectedLocation] = useState(null);
+  const [selectedLocation, setSelectedLocation] = useState<Coords | null>(null);
 
-  useEffect(() => {
-    const map = new mapboxgl.Map({
-      container: "map",
-      style: "mapbox://styles/mapbox/streets-v11",
-      center: [78.8718, 21.7679],
-      zoom: 11,
-    });
-
-    const marker = new mapboxgl.Marker({
-      draggable: true,
-    })
-      .setLngLat([78.8718, 21.7679])
-      .addTo(map);
-
-    marker.on("dragend", async () => {
-      const lngLat = marker.getLngLat();
-      const response = await fetch(
-        `https://api.mapbox.com/geocoding/v5/mapbox.places/${lngLat.lng},${lngLat.lat}.json?access_token=${mapboxgl.accessToken}`
-      );
-      const data = await response.json();
-      const features = data.features[0];
-      const newAddress = features.place_name || "";
-      const newCity =
-        features.context.find((ctx) => ctx.id.includes("place")).text || "";
-      const newCountry =
-        features.context.find((ctx) => ctx.id.includes("country")).text || "";
-      const newPincode =
-        features.context.find((ctx) => ctx.id.includes("postcode")).text || "";
-
-      setAddress(newAddress);
-      setCity(newCity);
-      setCountry(newCountry);
-      setPincode(newPincode);
-
-      setSelectedLocation(lngLat);
-    });
-
-    // Clean up the map on component unmount
-    return () => map.remove();
-  }, []);
-
-  const handleSubmit = (e) => {
-    e.preventDefault();
-    // Process form data as needed
-  };
+  async function search(e: mapboxgl.MapLayerMouseEvent) {
+    const { lat, lng } = e.lngLat;
+    setSelectedLocation({ latitude: lat, longitude: lng });
+    const { data } = await axios.get(
+      `https://api.mapbox.com/geocoding/v5/mapbox.places/${lng},${lat}.json?access_token=${process.env.NEXT_PUBLIC_MAPBOX_KEY}`
+    );
+    const newAddress =
+      data.features
+        .find((item) => item.id.includes("address"))
+        ?.place_name.split(",")[0] || "";
+    const newPostcode =
+      data.features.find((item) => item.id.includes("postcode"))?.text || "";
+    const newCountry =
+      data.features.find((item) => item.id.includes("country"))?.text || "";
+    const newCity =
+      data.features.find((item) => item.id.includes("place"))?.text || "";
+    console.log(data);
+    setAddress(newAddress);
+    setCity(newCity);
+    setCountry(newCountry);
+    setPincode(newPostcode);
+  }
 
   return (
-    <div className="space-y-4">
-      <form onSubmit={handleSubmit} className="space-y-4">
-        <input
-          type="text"
-          value={address}
-          onChange={(e) => setAddress(e.target.value)}
-          placeholder="Address"
-          className="p-2 border rounded w-full"
-        />
-        <input
-          type="text"
-          value={city}
-          onChange={(e) => setCity(e.target.value)}
-          placeholder="City"
-          className="p-2 border rounded w-full"
-        />
-        <input
-          type="text"
-          value={country}
-          onChange={(e) => setCountry(e.target.value)}
-          placeholder="Country"
-          className="p-2 border rounded w-full"
-        />
+    <>
+      <div className="w-full col-span-2 max-md:col-span-8">
+        <label
+          className={`block mb-2 text-sm font-bold text-black ${josefin.className}`}
+        >
+          Pincode
+        </label>
         <input
           type="text"
           value={pincode}
           onChange={(e) => setPincode(e.target.value)}
           placeholder="Pincode"
-          className="p-2 border rounded w-full"
+          className="w-full h-[52px] border border-solid border-greyishBrown rounded-lg p-3"
         />
-        <div className="h-64">
-          <div id="map" className="h-full"></div>
-        </div>
+      </div>
 
-        <button type="submit" className="bg-blue-500 text-white p-2 rounded">
-          Submit
-        </button>
-      </form>
-    </div>
+      <div className="w-full col-span-2 max-md:col-span-8">
+        <label
+          className={`block mb-2 text-sm font-bold text-black ${josefin.className}`}
+        >
+          Address
+        </label>
+        <input
+          type="text"
+          value={address}
+          onChange={(e) => setAddress(e.target.value)}
+          placeholder="Address"
+          className="w-full h-[52px] border border-solid border-greyishBrown rounded-lg p-3"
+        />
+      </div>
+      <div className="w-full col-span-2 max-md:col-span-8">
+        <label
+          className={`block mb-2 text-sm font-bold text-black ${josefin.className}`}
+        >
+          City
+        </label>
+        <input
+          type="text"
+          value={city}
+          onChange={(e) => setCity(e.target.value)}
+          placeholder="City"
+          className="w-full h-[52px] border border-solid border-greyishBrown rounded-lg p-3"
+        />
+      </div>
+      <div className="w-full col-span-2 max-md:col-span-8">
+        <label
+          className={`block mb-2 text-sm font-bold text-black ${josefin.className}`}
+        >
+          Country
+        </label>
+        <input
+          type="text"
+          value={country}
+          onChange={(e) => setCountry(e.target.value)}
+          placeholder="Country"
+          className="w-full h-[52px] border border-solid border-greyishBrown rounded-lg p-3"
+        />
+      </div>
+      <div className="w-full col-[1/3] max-md:col-span-4">
+        <label
+          className={`block mb-2 text-sm font-bold text-black ${josefin.className}`}
+        >
+          Longitude
+        </label>
+        <input
+          className="w-full h-[52px] border border-solid border-greyishBrown bg-greyishBrown/30 rounded-lg p-3"
+          type="text"
+          placeholder="Choose on the map"
+          name="longitude"
+          readOnly
+          onFocus={(e) => e.preventDefault()}
+          value={selectedLocation?.longitude || ""}
+        />
+      </div>
+      <div className="w-full col-span-2 max-md:col-span-4">
+        <label
+          className={`block mb-2 text-sm font-bold text-black ${josefin.className}`}
+        >
+          Latitude
+        </label>
+        <input
+          className="w-full h-[52px] border border-solid border-greyishBrown bg-greyishBrown/30 rounded-lg p-3"
+          type="text"
+          placeholder="Choose on the map"
+          name="lattitude"
+          readOnly
+          onFocus={(e) => e.preventDefault()}
+          value={selectedLocation?.latitude || ""}
+        />
+      </div>
+      <div className="h-64 sm:col-span-6 col-span-8 w-full relative">
+        <Map
+          mapLib={import("mapbox-gl")}
+          mapboxAccessToken={process.env.NEXT_PUBLIC_MAPBOX_KEY}
+          style={{ height: "100%", width: "100%" }}
+          initialViewState={{ longitude: 78.8718, latitude: 21.7679 }}
+          mapStyle="mapbox://styles/mapbox/streets-v11"
+          onClick={search}
+        >
+          {selectedLocation && (
+            <Source
+              type="geojson"
+              data={{
+                type: "Point",
+                coordinates: [
+                  selectedLocation.longitude,
+                  selectedLocation.latitude,
+                ],
+              }}
+            >
+              <Layer
+                type="circle"
+                paint={{
+                  "circle-color": "#FFFFFF",
+                  "circle-radius": 6,
+                  "circle-stroke-width": 6,
+                  "circle-stroke-color": "#0000FF",
+                }}
+              ></Layer>
+            </Source>
+          )}
+        </Map>
+      </div>
+    </>
   );
 };
 
