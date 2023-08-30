@@ -39,7 +39,7 @@ export default function ListingRef({
         toggleEndpoint = "toggle-service-featured";
       }
 
-      await axios.put(
+      await axios.post(
         `${process.env.NEXT_PUBLIC_API_URL}/services/${toggleEndpoint}/${_id}`,
         JSON.stringify({
           [key]: value,
