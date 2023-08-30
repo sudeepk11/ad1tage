@@ -69,7 +69,8 @@ const SearchServicesBox = ({ services }) => {
           {servicesList.length === 0 && (
             <div className=" col-span-full flex flex-col items-center justify-center">
               <h2 className="text-2xl font-semibold text-center">
-                No services found for "{input}"
+              No services found for &quot;{input}&quot;
+
               </h2>
             </div>
           )}

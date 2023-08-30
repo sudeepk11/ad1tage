@@ -17,7 +17,7 @@ type TopCategories = {
   services: Service[];
 };
 
-export default async function Categories({showTop = true}) {
+export default async function Categories({ showTop = true }) {
   let categories: Category[] = [];
   let topCategories: TopCategories[] = [];
   try {
@@ -59,45 +59,50 @@ export default async function Categories({showTop = true}) {
         </div>
 
         {/* Top Categories */}
-   {showTop && <>     <h2
-          className={`mb-4 ${josefin.className} text-[32px] text-primary  max-lg:text-[32px] max-lg:leading-[35px] mt-[50px] font-semibold`}
-        >
-          Top Services Across Categories
-        </h2>
-        { topCategories.map((item, index) => (
-          <div key={index} className="hotel-suggestion py-5">
-            <div className="flex justify-between">
-              <h2
-                className={` ${josefin.className} text-[32px] text-black max-lg:text-[32px] max-md:text-[22px] max-lg:leading-[35px] mb-[30px] font-semibold`}
-              >
-                {item.category}
-              </h2>
+        {showTop && (
+          <>
+            {" "}
+            <h2
+              className={`mb-4 ${josefin.className} text-[32px] text-primary  max-lg:text-[32px] max-lg:leading-[35px] mt-[50px] font-semibold`}
+            >
+              Top Services Across Categories
+            </h2>
+            {topCategories.map((item, index) => (
+              <div key={index} className="hotel-suggestion py-5">
+                <div className="flex justify-between">
+                  <h2
+                    className={` ${josefin.className} text-[32px] text-black max-lg:text-[32px] max-md:text-[22px] max-lg:leading-[35px] mb-[30px] font-semibold`}
+                  >
+                    {item.category}
+                  </h2>
 
-              <Link href={`/categories/${item.categoryId}`}>
-                <Button
-                  ButtonText={"Show All"}
-                  ButtonClasses={
-                    "!bg-blue-100 text-[#2A86DB] font-semibold w-fit flex items-center justify-center max-w-fit max-h-[38px] max-xl:w-full"
-                  }
-                ></Button>
-              </Link>
-            </div>
-            <div className="grid grid-cols-4 gap-6 hotel-suggestion max-md:grid-cols-1 max-lg:grid-cols-2">
-              {item.services.map(({ _id, rating, name, photos, city }) => (
-                <CardWithSlider
-                  paraText={name}
-                  rating={rating.toPrecision(2)}
-                  id={_id}
-                  likeButton={false}
-                  photos={photos}
-                  key={`slider-${_id}`}
-                  location={city}
-                  subParaText={item.category}
-                />
-              ))}
-            </div>
-          </div>
-        ))}</>}
+                  <Link href={`/categories/${item.categoryId}`}>
+                    <Button
+                      ButtonText={"Show All"}
+                      ButtonClasses={
+                        "!bg-blue-100 text-[#2A86DB] font-semibold w-fit flex items-center justify-center max-w-fit max-h-[38px] max-xl:w-full"
+                      }
+                    ></Button>
+                  </Link>
+                </div>
+                <div className="grid grid-cols-4 gap-6 hotel-suggestion max-md:grid-cols-1 max-lg:grid-cols-2">
+                  {item.services.map(({ _id, rating, name, photos, city }) => (
+                    <CardWithSlider
+                      paraText={name}
+                      rating={rating.toPrecision(2)}
+                      id={_id}
+                      likeButton={false}
+                      photos={photos}
+                      key={`slider-${_id}`}
+                      location={city}
+                      subParaText={item.category}
+                    />
+                  ))}
+                </div>
+              </div>
+            ))}
+          </>
+        )}
       </div>
     </div>
   );

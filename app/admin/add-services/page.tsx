@@ -4,6 +4,7 @@ import addService from "../../../service/services/addService";
 import axios from "axios";
 import { Category } from "../../../types/categories";
 import { cookies } from "next/headers";
+import LocationForm from "../../test/page";
 
 export default async function Page() {
   let categories: Category[] = [];
@@ -16,6 +17,7 @@ export default async function Page() {
   } catch (err) {
     console.log(err.response.data);
   }
+
   return (
     <div className="container-2xl max-lg:px-4 lg:px-[50px] py-5">
       <div className="flex items-center justify-between gap-4 max-xl:flex-col max-xl:justify-start max-xl:items-start">
@@ -78,46 +80,8 @@ export default async function Page() {
               ))}
             </select>
           </div>
+
           <div className="w-full col-span-2 max-md:col-span-4">
-            <label
-              className={`block mb-2 text-sm font-bold text-black ${josefin.className}`}
-            >
-              City
-            </label>
-            <input
-              className="w-full h-[52px] border border-solid border-greyishBrown rounded-lg p-3"
-              type="text"
-              placeholder="Enter City"
-              name="city"
-            />
-          </div>
-          <div className="w-full col-span-2 max-md:col-span-4">
-            <label
-              className={`block mb-2 text-sm font-bold text-black ${josefin.className}`}
-            >
-              Lattitude
-            </label>
-            <input
-              className="w-full h-[52px] border border-solid border-greyishBrown rounded-lg p-3"
-              type="text"
-              placeholder="Enter Lattitude"
-              name="lattitude"
-            />
-          </div>
-          <div className="w-full col-span-2 max-md:col-span-4">
-            <label
-              className={`block mb-2 text-sm font-bold text-black ${josefin.className}`}
-            >
-              Longitude
-            </label>
-            <input
-              className="w-full h-[52px] border border-solid border-greyishBrown rounded-lg p-3"
-              type="text"
-              placeholder="Enter Longitude"
-              name="longitude"
-            />
-          </div>
-          <div className="w-full col-span-4 max-md:col-span-8">
             <label
               className={`block mb-2 text-sm font-bold text-black ${josefin.className}`}
             >
@@ -130,7 +94,7 @@ export default async function Page() {
               name="phone"
             />
           </div>
-          <div className="w-full col-span-4 max-md:col-span-8">
+          <div className="w-full col-span-2 max-md:col-span-8">
             <label
               className={`block mb-2 text-sm font-bold text-black ${josefin.className}`}
             >
@@ -143,20 +107,7 @@ export default async function Page() {
               name="photos"
             />
           </div>
-          {/* Create a field to take multiple urls into a single field */}
-          <div className="w-full col-span-7 max-md:col-span-8">
-            <label
-              className={`block mb-2 text-sm font-bold text-black ${josefin.className}`}
-            >
-              Address
-            </label>
-            <input
-              className="w-full h-[52px] border border-solid border-greyishBrown rounded-lg p-3"
-              type="text"
-              placeholder="Enter Address"
-              name="address"
-            />
-          </div>
+          <LocationForm />
           <input type="hidden" name="user_id" value={userId} />
         </FormWrapper>
       </div>
