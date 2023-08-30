@@ -39,6 +39,44 @@ const LocationForm = () => {
 
   return (
     <>
+      <div className="h-80 col-span-8 w-full relative">
+        <label
+          className={`block mb-2 !text-sm !font-bold text-black !${josefin.className}`}
+        >
+          Pick Location
+        </label>
+        <Map
+          mapLib={import("mapbox-gl")}
+          mapboxAccessToken={process.env.NEXT_PUBLIC_MAPBOX_KEY}
+          style={{ height: "100%", width: "100%" }}
+          initialViewState={{ longitude: 77.5946, latitude: 12.9716, zoom: 12 }}
+          mapStyle="mapbox://styles/mapbox/streets-v11"
+          onClick={search}
+        >
+          {selectedLocation && (
+            <Source
+              type="geojson"
+              data={{
+                type: "Point",
+                coordinates: [
+                  selectedLocation.longitude,
+                  selectedLocation.latitude,
+                ],
+              }}
+            >
+              <Layer
+                type="circle"
+                paint={{
+                  "circle-color": "#FFFFFF",
+                  "circle-radius": 6,
+                  "circle-stroke-width": 6,
+                  "circle-stroke-color": "#0000FF",
+                }}
+              ></Layer>
+            </Source>
+          )}
+        </Map>
+      </div>
       <div className="w-full col-span-2 max-md:col-span-8">
         <label
           className={`block mb-2 text-sm font-bold text-black ${josefin.className}`}
@@ -127,39 +165,6 @@ const LocationForm = () => {
           onFocus={(e) => e.preventDefault()}
           value={selectedLocation?.latitude || ""}
         />
-      </div>
-      <div className="h-64 sm:col-span-6 col-span-8 w-full relative">
-        <Map
-          mapLib={import("mapbox-gl")}
-          mapboxAccessToken={process.env.NEXT_PUBLIC_MAPBOX_KEY}
-          style={{ height: "100%", width: "100%" }}
-          initialViewState={{ longitude: 78.8718, latitude: 21.7679 }}
-          mapStyle="mapbox://styles/mapbox/streets-v11"
-          onClick={search}
-        >
-          {selectedLocation && (
-            <Source
-              type="geojson"
-              data={{
-                type: "Point",
-                coordinates: [
-                  selectedLocation.longitude,
-                  selectedLocation.latitude,
-                ],
-              }}
-            >
-              <Layer
-                type="circle"
-                paint={{
-                  "circle-color": "#FFFFFF",
-                  "circle-radius": 6,
-                  "circle-stroke-width": 6,
-                  "circle-stroke-color": "#0000FF",
-                }}
-              ></Layer>
-            </Source>
-          )}
-        </Map>
       </div>
     </>
   );
