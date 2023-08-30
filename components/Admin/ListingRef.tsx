@@ -30,8 +30,17 @@ export default function ListingRef({
   const submit = async (key: keyof Service, value: any) => {
     setIsLoading((prev) => ({ ...prev, [key]: true }));
     try {
+
+      let toggleEndpoint = "";
+
+      if (key === "isApproved") {
+        toggleEndpoint = "toggle-service-approval";
+      } else if (key === "featured") {
+        toggleEndpoint = "toggle-service-featured";
+      }
+
       await axios.put(
-        `${process.env.NEXT_PUBLIC_API_URL}/services/${_id}`,
+        `${process.env.NEXT_PUBLIC_API_URL}/services/${toggleEndpoint}/${_id}`,
         JSON.stringify({
           [key]: value,
         }),
