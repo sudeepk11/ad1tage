@@ -3,9 +3,9 @@ import { useState } from "react";
 import mapboxgl from "mapbox-gl";
 import "mapbox-gl/dist/mapbox-gl.css";
 import { Layer, Map, Source } from "react-map-gl";
-import { Coords } from "../../types/general";
+import { Coords } from "../../../types/general";
 import axios from "axios";
-import { josefin } from "../../utils/utilsFonts";
+import { josefin } from "../../../utils/utilsFonts";
 
 const LocationForm = () => {
   const [address, setAddress] = useState("");

@@ -134,7 +134,7 @@ export default function PrivacyPolicy() {
             We may update this Privacy Policy from time to time to reflect
             changes in our practices or for other operational, legal, or
             regulatory reasons. The updated Privacy Policy will be posted on our
-            website, and the "Effective Date" at the top will indicate when the
+            website, and the &#34;Effective Date&#34; at the top will indicate when the
             changes take effect.
           </p>
         </section>
