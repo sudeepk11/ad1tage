@@ -120,7 +120,9 @@ export default function ListingRef({
         </td>
       )}
       <td className="py-5 px-3">
-        <p className="mx-3">{views}</p>
+        <p className="mx-3">
+          {typeof views === "number" ? views : views.length}
+        </p>
       </td>
       <td className="py-5 px-3">
         <p className="mx-3">{rating.toPrecision(2)}</p>

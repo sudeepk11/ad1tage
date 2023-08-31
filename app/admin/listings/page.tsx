@@ -10,16 +10,45 @@ import ListingRef from "../../../components/Admin/ListingRef";
 import { cookies } from "next/headers";
 
 export default async function Page() {
+  const authToken = cookies().get("access_token")?.value;
   const role = cookies().get("role")?.value;
   let listings: Service[] = [];
+  let URLextention =
+    role === "admin" ? "/services" : "/services/owner-services";
   try {
     const { data } = await axios.get(
-      `${process.env.NEXT_PUBLIC_API_URL}/services`
+      `${process.env.NEXT_PUBLIC_API_URL}${URLextention}`,
+      {
+        headers: {
+          Cookie: `access_token=${authToken}`,
+          Authorization: `Bearer ${authToken}`,
+        },
+      }
     );
     listings = data.data;
+    console.log(listings);
   } catch (err) {
+    console.log("✅ Error: " + err);
     return notFound();
   }
+
+  // try {
+  //   const { data } = await axios.get(
+  //     `${process.env.NEXT_PUBLIC_API_URL}/services/owner-services`,
+  //     {
+  //       headers: {
+  //         Cookie: `access_token=${authToken}`,
+  //         Authorization: `Bearer ${authToken}`,
+  //       },
+  //     }
+  //   );
+  //   // console.log(data.data);
+  //   console.log("✅ response: " + JSON.parse(data.data));
+  //   // listings = data.data;
+  // } catch (err) {
+  //   console.log("✅ Error: " + err);
+  //   return notFound();
+  // }
   return (
     <div className="container-2xl max-lg:px-4 lg:px-[50px] py-5">
       <div className="flex items-center justify-between gap-4 max-xl:flex-col max-xl:justify-start max-xl:items-start w-full">

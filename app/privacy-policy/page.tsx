@@ -3,7 +3,7 @@ import { josefin } from "../../utils/utilsFonts";
 
 export default function PrivacyPolicy() {
   return (
-    <div className=" w-11/12 mx-auto mb-5 text-justify flex flex-col gap-5">
+    <div className=" w-11/12 mx-auto my-5 text-justify flex flex-col gap-5">
       <header>
         <h1
           className={`md:text-[56px] md:leading-[56px] font-semibold ${josefin.className} md:mt-[80px] max-md:text-4xl`}
@@ -134,8 +134,8 @@ export default function PrivacyPolicy() {
             We may update this Privacy Policy from time to time to reflect
             changes in our practices or for other operational, legal, or
             regulatory reasons. The updated Privacy Policy will be posted on our
-            website, and the &#34;Effective Date&#34; at the top will indicate when the
-            changes take effect.
+            website, and the &#34;30th August 2023&#34; at the top will indicate
+            when the changes take effect.
           </p>
         </section>
 
@@ -144,7 +144,7 @@ export default function PrivacyPolicy() {
           <p>
             If you have any questions, concerns, or requests related to your
             personal information or this Privacy Policy, please contact us at
-            [contact email].
+            mohan@ad1tage.com.
           </p>
         </section>
       </main>

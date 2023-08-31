@@ -21,6 +21,21 @@ export const navbarItems = [
   },
 ];
 
+export const adminNavDropdownItems = [
+  {
+    name: "Home",
+    link: "/",
+  },
+  {
+    name: "Dashboard",
+    link: "/admin",
+  },
+  {
+    name: "My Profile",
+    link: "/tenent",
+  },
+];
+
 export const footerMenuMainPageOption = [
   "About Us",
   "Stay with Us",

@@ -30,7 +30,6 @@ const LocationForm = () => {
       data.features.find((item) => item.id.includes("country"))?.text || "";
     const newCity =
       data.features.find((item) => item.id.includes("place"))?.text || "";
-    console.log(data);
     setAddress(newAddress);
     setCity(newCity);
     setCountry(newCountry);
@@ -39,7 +38,7 @@ const LocationForm = () => {
 
   return (
     <>
-      <div className="h-80 col-span-8 w-full relative">
+      <div className=" h-80 col-span-8 w-full relative">
         <label
           className={`block mb-2 !text-sm !font-bold text-black !${josefin.className}`}
         >
@@ -48,7 +47,7 @@ const LocationForm = () => {
         <Map
           mapLib={import("mapbox-gl")}
           mapboxAccessToken={process.env.NEXT_PUBLIC_MAPBOX_KEY}
-          style={{ height: "100%", width: "100%" }}
+          style={{ height: "90%", width: "100%" }}
           initialViewState={{ longitude: 77.5946, latitude: 12.9716, zoom: 12 }}
           mapStyle="mapbox://styles/mapbox/streets-v11"
           onClick={search}
@@ -77,23 +76,8 @@ const LocationForm = () => {
           )}
         </Map>
       </div>
-      <div className="w-full col-span-2 max-md:col-span-8">
-        <label
-          className={`block mb-2 text-sm font-bold text-black ${josefin.className}`}
-        >
-          Pincode
-        </label>
-        <input
-          type="text"
-          value={pincode}
-          onChange={(e) => setPincode(e.target.value)}
-          placeholder="Pincode"
-          className="w-full h-[52px] border border-solid border-greyishBrown rounded-lg p-3"
-          name="pincode"
-        />
-      </div>
 
-      <div className="w-full col-span-2 max-md:col-span-8">
+      <div className="w-full col-span-8">
         <label
           className={`block mb-2 text-sm font-bold text-black ${josefin.className}`}
         >
@@ -119,33 +103,35 @@ const LocationForm = () => {
           value={city}
           onChange={(e) => setCity(e.target.value)}
           placeholder="City"
-          className="w-full h-[52px] border border-solid border-greyishBrown rounded-lg p-3"
+          className="w-full h-[52px] border border-solid border-greyishBrown bg-gray-50 rounded-lg p-3"
           name="city"
+          readOnly
         />
       </div>
       <div className="w-full col-span-2 max-md:col-span-8">
         <label
           className={`block mb-2 text-sm font-bold text-black ${josefin.className}`}
         >
-          Country
+          Pincode
         </label>
         <input
           type="text"
-          value={country}
-          onChange={(e) => setCountry(e.target.value)}
-          placeholder="Country"
-          className="w-full h-[52px] border border-solid border-greyishBrown rounded-lg p-3"
-          name="country"
+          value={pincode}
+          onChange={(e) => setPincode(e.target.value)}
+          placeholder="Pincode"
+          className="w-full h-[52px] border border-solid border-greyishBrown bg-gray-50 rounded-lg p-3"
+          name="pincode"
+          readOnly
         />
       </div>
-      <div className="w-full col-[1/3] max-md:col-span-4">
+      <div className="w-full col-span-2 max-md:col-span-8">
         <label
           className={`block mb-2 text-sm font-bold text-black ${josefin.className}`}
         >
           Longitude
         </label>
         <input
-          className="w-full h-[52px] border border-solid border-greyishBrown bg-greyishBrown/30 rounded-lg p-3"
+          className="w-full h-[52px] border border-solid border-greyishBrown bg-gray-50 rounded-lg p-3"
           type="text"
           placeholder="Choose on the map"
           name="longitude"
@@ -154,14 +140,14 @@ const LocationForm = () => {
           value={selectedLocation?.longitude || ""}
         />
       </div>
-      <div className="w-full col-span-2 max-md:col-span-4">
+      <div className="w-full col-span-2 max-md:col-span-8">
         <label
           className={`block mb-2 text-sm font-bold text-black ${josefin.className}`}
         >
           Latitude
         </label>
         <input
-          className="w-full h-[52px] border border-solid border-greyishBrown bg-greyishBrown/30 rounded-lg p-3"
+          className="w-full h-[52px] border border-solid border-greyishBrown bg-gray-50 rounded-lg p-3"
           type="text"
           placeholder="Choose on the map"
           name="lattitude"
