@@ -102,8 +102,9 @@ const Navbar = () => {
               <div className="p-4 shadow rounded-lg mt-1 absolute z-[1] bg-white w-[150px] top-[100%] right-2">
                 <ul>
                   {isAdmin &&
-                    adminNavDropdownItems.map((item) => (
+                    adminNavDropdownItems.map((item, index) => (
                       <li
+                        key={index}
                         className="my-2 text-base"
                         onClick={() =>
                           setUserSettingDropdown(!userSettingDropdown)
@@ -114,8 +115,9 @@ const Navbar = () => {
                     ))}
 
                   {!isAdmin &&
-                    userNavDropdownItems.map((item) => (
+                    userNavDropdownItems.map((item, index) => (
                       <li
+                        key={index}
                         className="my-2 text-base"
                         onClick={() =>
                           setUserSettingDropdown(!userSettingDropdown)
