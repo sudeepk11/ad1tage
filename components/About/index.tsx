@@ -9,15 +9,15 @@ import Goals from "./Goals";
 
 const About = () => {
   return (
-    <div className="flex container-2xl max-lg:px-4 lg:px-[50px] max-xl:gap-12 xl:gap-[120px] max-md:flex-col">
-      <div className=" max-md:w-full md:w-[55%] md:mb-[60px]">
+    <div className="flex container-2xl max-lg:px-4 lg:px-[50px] max-xl:gap-12 xl:gap-[120px] max-lg:flex-col">
+      <div className=" max-md:w-full max-lg:mt-[60px]">
         <Image
           src={aboutImg}
           alt=""
-          className="object-contain sticky top-[80px] h-screen left-0 w-full rounded-lg"
+          className="object-contain sticky top-[60px] lg:h-screen left-0 w-full rounded-lg"
         />
       </div>
-      <div className="max-md:w-full md:w-[45%] md:mb-[100px] max-md:mb-5">
+      <div className="max-md:w-full md:mb-[100px] max-md:mb-5">
         <h1
           className={`md:text-[56px] md:leading-[56px] font-semibold ${josefin.className} md:mt-[80px] max-md:text-4xl`}
         >

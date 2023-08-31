@@ -46,7 +46,7 @@ export default async function Categories({ showTop = true }) {
             }
           ></Button> */}
         </div>
-        <div className="grid lg:grid-cols-4 md:grid-cols-4 sm:grid-cols-2 gap-6 hotel-card-design max-lg:grid-cols-1">
+        <div className="grid lg:grid-cols-4 sm:grid-cols-2 gap-6 hotel-card-design max-lg:grid-cols-1">
           {categories.map((category, i) => (
             <CategoryCard
               key={i}
@@ -75,16 +75,24 @@ export default async function Categories({ showTop = true }) {
                   >
                     {item.category}
                   </h2>
-
-                  <Link href={`/categories/${item.categoryId}`}>
-                    <Button
-                      ButtonText={"Show All"}
-                      ButtonClasses={
-                        "!bg-blue-100 text-[#2A86DB] font-semibold w-fit flex items-center justify-center max-w-fit max-h-[38px] max-xl:w-full"
-                      }
-                    ></Button>
-                  </Link>
+                  {item.services.length > 0 && (
+                    <Link href={`/categories/${item.categoryId}`}>
+                      <Button
+                        ButtonText={"Show All"}
+                        ButtonClasses={
+                          "!bg-blue-100 text-[#2A86DB] font-semibold w-fit flex items-center justify-center max-w-fit max-h-[38px] max-xl:w-full"
+                        }
+                      ></Button>
+                    </Link>
+                  )}
                 </div>
+                {item.services.length === 0 && (
+                  <div className=" col-span-full flex flex-col items-center justify-center">
+                    <h2 className="text-xl font-semibold text-center">
+                      No services found in this category
+                    </h2>
+                  </div>
+                )}
                 <div className="grid grid-cols-4 gap-6 hotel-suggestion max-md:grid-cols-1 max-lg:grid-cols-2">
                   {item.services.map(({ _id, rating, name, photos, city }) => (
                     <CardWithSlider

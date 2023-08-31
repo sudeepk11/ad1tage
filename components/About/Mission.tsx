@@ -11,7 +11,7 @@ const Mission = () => {
       >
         Mission
       </h3>
-      <div className="grid grid-cols-2 gap-6">
+      <div className="grid grid-cols-1 gap-6">
         <Image
           src={aboutImgSixth}
           alt=""
@@ -19,8 +19,11 @@ const Mission = () => {
         />
 
         <div>
-          <p className="text-base md:font-semibold max-md:font-normal">
-          Our mission at ad1tage is to create a vibrant and supportive community where seniors can thrive. We are dedicated to delivering exceptional services that enhance their quality of life and enable them to savor their golden year
+          <p className="text-base text-justify md:font-semibold max-md:font-normal">
+            Our mission at ad1tage is to create a vibrant and supportive
+            community where seniors can thrive. We are dedicated to delivering
+            exceptional services that enhance their quality of life and enable
+            them to savor their golden year
           </p>
         </div>
       </div>
