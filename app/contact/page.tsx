@@ -84,7 +84,7 @@ const contact = () => {
                   <div className="w-full">
                     <h4 className="mb-1 text-xl font-semibold">Email Us</h4>
                     <p className="text-base text-body-color">
-                      ad1tage@gmail.com
+                      mohan@ad1tage.com
                     </p>
                   </div>
                 </div>

@@ -100,7 +100,9 @@ export default function VisualHeader({
       >
         <div className="absolute z-50 left-4 bottom-4 bg-black/60 text-white py-3 px-6 flex flex-col rounded">
           <p className="text-sm">
-            Duration by car: {Math.floor(duration / 60)} minutes
+            {/* Show duration in hours and minutes */}
+            Duration by car: {Math.floor(duration / 3600)} hours and{" "}
+            {Math.floor(duration / 60)} minutes
           </p>
         </div>
         <Map
