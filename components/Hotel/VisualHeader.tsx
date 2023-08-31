@@ -82,13 +82,13 @@ export default function VisualHeader({
 
   return (
     <div className="grid grid-cols-12 gap-6 relative overflow-hidden property-detail hotel-suggestion w-[98%] mx-auto my-2 p-4">
-      <Slider {...settings} className="h-[450px] md:col-span-7 col-span-12">
+      <Slider {...settings} className="col-span-7 max-lg:col-span-12">
         {photos.map((item) => (
           <Image
-            className="w-full object-cover h-[450px] md:!w-[60vw] rounded-lg"
+            className="w-full object-contain md:h-[450px] rounded-lg"
             src={photos ? photos[0] : ""}
             alt="item"
-            width={200}
+            width={300}
             height={200}
             key={item}
           />
@@ -96,7 +96,7 @@ export default function VisualHeader({
       </Slider>
       <div
         id="map-container"
-        className="md:sticky right-0 md:order-2 order-1 sw-full h-[450px] rounded-lg col-span-5"
+        className="md:sticky right-0 md:order-2 order-1 sw-full h-[450px] rounded-lg col-span-5 max-lg:col-span-12"
       >
         <div className="absolute z-50 left-4 bottom-4 bg-black/60 text-white py-3 px-6 flex flex-col rounded">
           <p className="text-sm">
@@ -110,7 +110,7 @@ export default function VisualHeader({
           initialViewState={{
             latitude: 20.5937,
             longitude: 78.9629,
-            zoom: 3.5,
+            zoom: 5,
           }}
           style={{
             width: "100%",

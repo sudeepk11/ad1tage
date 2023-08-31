@@ -78,17 +78,18 @@ export default async function ServiceDetails({
         longitude={parseFloat(longitude)}
       />
       <div className="grid grid-cols-12 px-4 lg:px-4 max-lg:flex-col gap-4">
-        <div className="col-span-7 max-lg:w-full md:order-1 order-2 px-4">
+        {/* Service details */}
+        <div className="lg:col-span-7 col-span-12 max-lg:w-full px-4 max-lg:order-last">
           <div className="flex justify-between py-5 mt-4">
             <h1
-              className={`text-3xl flex md:flex-row flex-col w-full ${josefin.className} font-semibold`}
+              className={`text-3xl flex max-md:flex-col w-full ${josefin.className} font-semibold`}
             >
               {name}
-              <div className="flex md:mx-5 ">
-                {isApproved && (
-                  <Image src={verifiedIcon} alt="" className="object-contain" />
-                )}
-                {featured && (
+              {isApproved && (
+                <Image src={verifiedIcon} alt="" className="object-contain" />
+              )}
+              <div className="flex md:mx-5">
+                {true && (
                   <span className=" flex items-center justify-center text-[15px] text-primary bg-blue-100 mx-4 px-4 border-primary border-solid border-2 rounded-full">
                     # ad1tage recommended
                   </span>
@@ -108,7 +109,7 @@ export default async function ServiceDetails({
                   ID: {_id.slice(0, 4)}
                 </div>
               </div>
-              <div className="flex w-full justify-between my-5">
+              <div className="flex max-md:flex-col max-md:gap-2 w-full justify-between my-5">
                 <div className="flex flex-col gap-2">
                   <div className="flex gap-2">
                     <Image
@@ -232,7 +233,8 @@ export default async function ServiceDetails({
             ))}
           </div>
         </div>
-        <div className="col-span-5 bg-[#FAFAFA] rounded-[16px] mt-10 px-[30px] py-[20px] h-max max-lg:w-full md:sticky top-[80px] right-0 md:order-2 order-1">
+        {/* Contact details */}
+        <div className="lg:col-span-5 col-span-12 bg-[#FAFAFA] rounded-[16px] mt-10 px-[30px] py-[20px] h-max max-lg:w-full md:sticky top-[80px] right-0">
           <div className="flex justify-between">
             <Rating rating={rating} />
 
@@ -240,21 +242,23 @@ export default async function ServiceDetails({
               ({reviews.length} Reviews){" "}
             </div>
           </div>
-          <div className="flex my-5">
+          <div className="flex my-5 max-md:flex-col">
             {isApproved && (
-              <div className="flex justify-center items-center">
+              <div className="flex md:justify-center items-center">
                 <Image src={verifiedIcon} alt="" className="object-contain" />
                 <p className="text-sm font-semibold ml-1 mr-2">
                   ad1tage verified
                 </p>
               </div>
             )}
-            {true && (
-              <span
-                className={`${josefin.className} px-2 py-1  flex items-center justify-center text-[15px] text-blue-100 bg-primary  border-primary border-solid border-1.5 rounded-full w-fit`}
-              >
-                #ad1tage recommended
-              </span>
+            {featured && (
+              <div className="max-md:mx-auto max-md:mt-4">
+                <span
+                  className={`${josefin.className} px-2 py-1  flex items-center justify-center text-[15px] text-blue-100 bg-primary  border-primary border-solid border-1.5 rounded-full w-fit`}
+                >
+                  #ad1tage recommended
+                </span>
+              </div>
             )}
           </div>
           <form action={addOneToCall} className="w-full">
