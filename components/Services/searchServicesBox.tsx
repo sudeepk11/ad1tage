@@ -11,11 +11,11 @@ const SearchServicesBox = ({ services }) => {
   const [servicesList, setServicesList] = useState<Service[]>(services);
   const [input, setInput] = useState("");
   const [isFocused, setIsFocused] = useState(false);
-  const debounce = useDebounce(input, 400);
+  // const debounce = useDebounce(input, 400);
 
-  const handleSearch = (e) => {
+  const handleSearch = (e, queryString) => {
     e.preventDefault();
-    let query = debounce.toLowerCase().split(" ").join("");
+    let query = queryString.toLowerCase().split(" ").join("");
     let newServices = (services as Service[]).filter(
       (item) =>
         item.name.toLowerCase().split(" ").join("").includes(query) ||
@@ -49,33 +49,25 @@ const SearchServicesBox = ({ services }) => {
       <div className="bg-white p-[20px] mb-10 rounded-xl shadow-md max-w-[1190px] w-full m-auto relative z-1 h-fit">
         <div className="flex flex-col lg:flex-row lg:items-center md:gap-4 gap-2 relative">
           <div className="relative flex-1" ref={wrapperRef}>
-            <form onSubmit={handleSearch}>
-              <input
-                type="text"
-                placeholder="Search by name, category or city..."
-                className="py-[10px] px-6 border border-greyishBrown rounded-[8px] w-full flex-1"
-                onFocus={() => setIsFocused(true)}
-                value={input}
-                onChange={(e) => {
-                  setInput(e.target.value);
-                  setIsLoading(true);
-                }}
-              />
-            </form>
+            <input
+              type="text"
+              placeholder="Search by name, category or city..."
+              className="py-[10px] px-6 border border-greyishBrown rounded-[8px] w-full flex-1"
+              onFocus={() => setIsFocused(true)}
+              value={input}
+              onChange={(e) => {
+                setInput(e.target.value);
+                handleSearch(e, e.target.value);
+                setIsLoading(true);
+              }}
+            />
           </div>
-          <Button
-            ButtonText={"Search"}
-            ButtonClicked={handleSearch}
-            ButtonClasses={
-              "lg:w-max !bg-blue-100 text-[#2A86DB] font-semibold w-full flex items-center justify-center py-3"
-            }
-          ></Button>
         </div>
       </div>
       <div className="max-md:flex max-md:flex-col-reverse max-lg:grid-col-2">
         <div className="grid lg:grid-cols-4 gap-6">
           {servicesList.length === 0 && (
-            <div className="flex flex-col items-center">
+            <div className=" col-span-full flex flex-col items-center justify-center">
               <h2 className="text-2xl font-semibold text-center">
               No services found for &quot;{input}&quot;
 

@@ -25,7 +25,7 @@ export default async function Services({ title }) {
         >
           {title}
         </h2>
-        <ShowMore url={"/services/top-services"} />
+        <ShowMore url={"/services/top-services"} ButtonText={"Show All"} />
       </div>
       <div className="grid lg:grid-cols-4 md:grid-cols-2 gap-6 max-md:grid-cols-1 max-lg:grid-cols-2">
         {services.map((item) => (

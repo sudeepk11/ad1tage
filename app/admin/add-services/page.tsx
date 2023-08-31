@@ -94,7 +94,7 @@ export default async function Page() {
               name="phone"
             />
           </div>
-          <div className="w-full col-span-2 max-md:col-span-8">
+          <div className="w-full col-span-4 max-md:col-span-8">
             <label
               className={`block mb-2 text-sm font-bold text-black ${josefin.className}`}
             >

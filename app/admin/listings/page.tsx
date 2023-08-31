@@ -7,8 +7,10 @@ import axios from "axios";
 import { notFound } from "next/navigation";
 import { Service } from "../../../types/services";
 import ListingRef from "../../../components/Admin/ListingRef";
+import { cookies } from "next/headers";
 
 export default async function Page() {
+  const role = cookies().get("role")?.value;
   let listings: Service[] = [];
   try {
     const { data } = await axios.get(
@@ -86,7 +88,7 @@ export default async function Page() {
           </thead>
           <tbody>
             {listings.map((item) => (
-              <ListingRef {...item} key={item._id} />
+              <ListingRef {...item} key={item._id} role={role} />
             ))}
           </tbody>
         </table>
