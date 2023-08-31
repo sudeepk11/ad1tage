@@ -4,7 +4,7 @@ import addQuery from "../../service/queries/addQuery";
 
 const contact = () => {
   return (
-    <div className="grid grid-cols-1 mt-10 md:grid-cols-3 gap-10 p-3  md:mt-16 max-lg:px-4 lg:px-[50px] max-md:py-3">
+    <div className="grid grid-cols-1 mt-10 lg:grid-cols-3 max-lg:w-11/12 max-lg:mx-auto  gap-10 p-3  md:mt-16 max-lg:px-4 lg:px-[50px] max-md:py-3">
       <div className="col-span-2">
         <h1 className="font-medium text-2xl mb-4">
           Any query? Reach out to us
@@ -84,7 +84,7 @@ const contact = () => {
                   <div className="w-full">
                     <h4 className="mb-1 text-xl font-semibold">Email Us</h4>
                     <p className="text-base text-body-color">
-                      ad1tage@gmail.com
+                      mohan@ad1tage.com
                     </p>
                   </div>
                 </div>

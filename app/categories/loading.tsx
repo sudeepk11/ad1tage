@@ -24,7 +24,7 @@ export default function Loading() {
           Top Services Across Categories
         </h2>
         <div className="hotel-suggestion py-5">
-          <div className="flex justify-between">
+          <div className="flex justify-between my-3">
             <div className="bg-gray-100 w-[3in] h-12 rounded-full"></div>
           </div>
           <div className="grid grid-cols-4 gap-6 hotel-suggestion max-md:grid-cols-1 max-lg:grid-cols-2">

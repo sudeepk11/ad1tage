@@ -28,7 +28,7 @@ export default async function CategoryId({
   return (
     <div className="container-2xl max-lg:px-4 lg:px-[50px]">
       <div className="hotel-suggestion py-16">
-        <div className="flex justify-between">
+        <div className="flex justify-between max-sm:flex-col max-sm:justify-center">
           <h2
             className={` ${josefin.className} text-[32px] text-black max-lg:text-[32px] max-lg:leading-[35px] max-md:text-[22px] mb-[30px] font-semibold`}
           >
@@ -37,28 +37,11 @@ export default async function CategoryId({
           <Button
             ButtonText={"Showing Near Bangalore"}
             ButtonClasses={
-              "!bg-white text-[#2A86DB] font-semibold w-fit flex items-center justify-center max-w-fit max-h-[38px] max-xl:w-full"
+              "!bg-white text-[#2A86DB] font-semibold w-fit flex items-center justify-center max-w-fit max-h-[38px] max-xl:w-full self-center"
             }
           ></Button>
         </div>
         <SearchServicesBox services={services} />
-        {/* <GridProvider>
-          {services.map((item, i) => (
-            <CardWithSlider
-              paraText={item.name}
-              location={item.city}
-              subParaText={item.category.category}
-              rating={item.rating.toPrecision(2)}
-              perRoomUserCount={"2 sleeps"}
-              bedCount={"1 Bedroom"}
-              photos={item.photos}
-              bathCount={"1 Bath"}
-              likeButton={"unfilled"}
-              id={item._id}
-              key={i}
-            />
-          ))}
-        </GridProvider> */}
       </div>
     </div>
   );

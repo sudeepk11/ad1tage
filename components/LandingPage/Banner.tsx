@@ -23,7 +23,7 @@ const Banner = () => {
       <div className="flex justify-center lg:order-2 order-1">
         <Image
           src={home_banner}
-          className="rounded-lg h-auto lg:w-7/12 md:w-11/12 object-contain mb-10 shadow-2xl "
+          className="rounded-lg h-auto lg:w-9/12 md:w-11/12 object-contain mb-5 shadow-2xl "
           alt="arrow"
         />
       </div>

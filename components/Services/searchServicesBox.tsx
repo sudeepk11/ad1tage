@@ -5,7 +5,7 @@ import useDebounce from "../../hooks/useDebounce";
 import CardWithSlider from "../Common/CardWithSlider";
 import { Service } from "../../types/services";
 
-const SearchServicesBox = ({ services }) => {
+const SearchServicesBox = ({ services, gridClasses = "" }) => {
   const wrapperRef = useRef<HTMLDivElement>(null!);
   const [isLoading, setIsLoading] = useState(false);
   const [servicesList, setServicesList] = useState<Service[]>(services);
@@ -65,12 +65,17 @@ const SearchServicesBox = ({ services }) => {
         </div>
       </div>
       <div className="max-md:flex max-md:flex-col-reverse max-lg:grid-col-2">
-        <div className="grid lg:grid-cols-4 gap-6">
+        <div
+          className={`grid ${
+            gridClasses == "" ? "lg:grid-cols-4 md:grid-cols-2" : gridClasses
+          } gap-6`}
+        >
           {servicesList.length === 0 && (
             <div className=" col-span-full flex flex-col items-center justify-center">
-              <h2 className="text-2xl font-semibold text-center">
-              No services found for &quot;{input}&quot;
-
+              <h2 className="text-xl w-[300px] font-semibold text-center truncate">
+                {input === ""
+                  ? "No services found"
+                  : `No services found for "${input}"`}
               </h2>
             </div>
           )}

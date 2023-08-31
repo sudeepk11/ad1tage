@@ -26,7 +26,7 @@ export default async function Services() {
   return (
     <div className="container-2xl max-lg:px-4 lg:px-[50px]">
       <div className="hotel-suggestion py-16">
-        <div className="flex gap-2 justify-between items-center mb-[30px]">
+        <div className="flex gap-2 justify-between items-center mb-[30px] max-sm:flex-col max-sm:justify-center">
           <h2
             className={` ${josefin.className} text-[32px] text-black max-lg:text-[32px] max-md:text-[22px] max-lg:leading-[35px] font-semibold`}
           >

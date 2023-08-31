@@ -3,9 +3,9 @@ import { useState } from "react";
 import mapboxgl from "mapbox-gl";
 import "mapbox-gl/dist/mapbox-gl.css";
 import { Layer, Map, Source } from "react-map-gl";
-import { Coords } from "../../types/general";
+import { Coords } from "../../../types/general";
 import axios from "axios";
-import { josefin } from "../../utils/utilsFonts";
+import { josefin } from "../../../utils/utilsFonts";
 
 const LocationForm = () => {
   const [address, setAddress] = useState("");
@@ -89,6 +89,7 @@ const LocationForm = () => {
           onChange={(e) => setPincode(e.target.value)}
           placeholder="Pincode"
           className="w-full h-[52px] border border-solid border-greyishBrown rounded-lg p-3"
+          name="pincode"
         />
       </div>
 
@@ -104,6 +105,7 @@ const LocationForm = () => {
           onChange={(e) => setAddress(e.target.value)}
           placeholder="Address"
           className="w-full h-[52px] border border-solid border-greyishBrown rounded-lg p-3"
+          name="address"
         />
       </div>
       <div className="w-full col-span-2 max-md:col-span-8">
@@ -118,6 +120,7 @@ const LocationForm = () => {
           onChange={(e) => setCity(e.target.value)}
           placeholder="City"
           className="w-full h-[52px] border border-solid border-greyishBrown rounded-lg p-3"
+          name="city"
         />
       </div>
       <div className="w-full col-span-2 max-md:col-span-8">
@@ -132,6 +135,7 @@ const LocationForm = () => {
           onChange={(e) => setCountry(e.target.value)}
           placeholder="Country"
           className="w-full h-[52px] border border-solid border-greyishBrown rounded-lg p-3"
+          name="country"
         />
       </div>
       <div className="w-full col-[1/3] max-md:col-span-4">

@@ -51,7 +51,7 @@ export default function GridProvider({ children, withMap }: Props) {
       )} */}
       {mapView || withMap ? (
         <div className="grid grid-cols-2 gap-6 max-md:flex max-md:flex-col-reverse max-lg:grid-col-2">
-          <div className="grid lg:grid-cols-2 gap-6">{children}</div>
+          <div className="lg:grid-cols-2">{children}</div>
           <div className="rounded-xl">
             <Map
               mapLib={import("mapbox-gl")}

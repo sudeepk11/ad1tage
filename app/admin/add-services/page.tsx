@@ -4,7 +4,7 @@ import addService from "../../../service/services/addService";
 import axios from "axios";
 import { Category } from "../../../types/categories";
 import { cookies } from "next/headers";
-import LocationForm from "../../test/page";
+import LocationForm from "../../../components/Admin/add-services/LocationPicker";
 
 export default async function Page() {
   let categories: Category[] = [];
