@@ -7,6 +7,7 @@ import CardWithSlider from "../../../components/Common/CardWithSlider";
 import { notFound } from "next/navigation";
 import { Service } from "../../../types/services";
 import GridProvider from "../../../components/Layout/GridProvider";
+import SearchServicesBox from "../../../components/Services/searchServicesBox";
 import { useNearbyServices } from "../../../providers/NearbyServicesProvider";
 
 const API_URL = process.env.NEXT_PUBLIC_API_URL;
@@ -34,7 +35,13 @@ export default function Services() {
               </h2>
             </div>
           )}
-          {nearbyServices &&
+          {nearbyServices && nearbyServices.length > 0 && (
+            <SearchServicesBox
+              services={nearbyServices}
+              gridClasses="md:grid-cols-2"
+            />
+          )}
+          {/* {nearbyServices &&
             nearbyServices.map((item) => (
               <CardWithSlider
                 paraText={item.name}
@@ -49,7 +56,7 @@ export default function Services() {
                 id={item._id}
                 key={item._id}
               />
-            ))}
+            ))} */}
         </GridProvider>
       </div>
     </div>

@@ -42,23 +42,6 @@ export default async function CategoryId({
           ></Button>
         </div>
         <SearchServicesBox services={services} />
-        {/* <GridProvider>
-          {services.map((item, i) => (
-            <CardWithSlider
-              paraText={item.name}
-              location={item.city}
-              subParaText={item.category.category}
-              rating={item.rating.toPrecision(2)}
-              perRoomUserCount={"2 sleeps"}
-              bedCount={"1 Bedroom"}
-              photos={item.photos}
-              bathCount={"1 Bath"}
-              likeButton={"unfilled"}
-              id={item._id}
-              key={i}
-            />
-          ))}
-        </GridProvider> */}
       </div>
     </div>
   );
