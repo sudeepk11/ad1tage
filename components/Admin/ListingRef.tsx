@@ -25,6 +25,7 @@ export default function ListingRef({
     featured: false,
     isApproved: false,
   });
+  console.log(rating.toPrecision(2));
   const { refresh } = useRouter();
   const { token } = useContext(AuthContext);
 

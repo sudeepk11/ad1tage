@@ -6,7 +6,11 @@ import profileImage from "../../images/profile.png";
 import arrowDown from "../../images/arrow-down.png";
 // import logoText from "../../images/trophy-logo.png";
 import logoText from "../../images/logo-text.png";
-import { navbarItems, adminNavDropdownItems } from "../../utils/utilsItems";
+import {
+  navbarItems,
+  adminNavDropdownItems,
+  userNavDropdownItems,
+} from "../../utils/utilsItems";
 import { usePathname, useRouter } from "next/navigation";
 import { AuthContext } from "../../providers/AuthProvider";
 import logOut from "../../service/auth/logOut";
@@ -31,6 +35,7 @@ const Navbar = () => {
   const { push } = useRouter();
   const [isPending, startTransition] = useTransition();
   const { user, token, logOut: signOut } = useContext(AuthContext);
+  console.log(user);
   const isAdmin =
     !!(token && user.role === "admin") || !!(token && user.role === "owner");
   const [userSettingDropdown, setUserSettingDropdown] = useState(false);
@@ -96,16 +101,29 @@ const Navbar = () => {
             {userSettingDropdown && (
               <div className="p-4 shadow rounded-lg mt-1 absolute z-[1] bg-white w-[150px] top-[100%] right-2">
                 <ul>
-                  {adminNavDropdownItems.map((item) => (
-                    <li
-                      className="my-2 text-base"
-                      onClick={() =>
-                        setUserSettingDropdown(!userSettingDropdown)
-                      }
-                    >
-                      <Link href={item.link}>{item.name}</Link>
-                    </li>
-                  ))}
+                  {isAdmin &&
+                    adminNavDropdownItems.map((item) => (
+                      <li
+                        className="my-2 text-base"
+                        onClick={() =>
+                          setUserSettingDropdown(!userSettingDropdown)
+                        }
+                      >
+                        <Link href={item.link}>{item.name}</Link>
+                      </li>
+                    ))}
+
+                  {!isAdmin &&
+                    userNavDropdownItems.map((item) => (
+                      <li
+                        className="my-2 text-base"
+                        onClick={() =>
+                          setUserSettingDropdown(!userSettingDropdown)
+                        }
+                      >
+                        <Link href={item.link}>{item.name}</Link>
+                      </li>
+                    ))}
 
                   <li className="my-2 text-base">
                     <form

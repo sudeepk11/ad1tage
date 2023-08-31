@@ -21,6 +21,13 @@ export const navbarItems = [
   },
 ];
 
+export const userNavDropdownItems = [
+  {
+    name: "My Profile",
+    link: "/tenent",
+  },
+];
+
 export const adminNavDropdownItems = [
   {
     name: "Home",

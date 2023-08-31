@@ -8,6 +8,7 @@ import { notFound } from "next/navigation";
 import { Service } from "../../../types/services";
 import ListingRef from "../../../components/Admin/ListingRef";
 import { cookies } from "next/headers";
+import Link from "next/link";
 
 export default async function Page() {
   const authToken = cookies().get("access_token")?.value;
@@ -26,29 +27,11 @@ export default async function Page() {
       }
     );
     listings = data.data;
-    console.log(listings);
   } catch (err) {
     console.log("✅ Error: " + err);
     return notFound();
   }
 
-  // try {
-  //   const { data } = await axios.get(
-  //     `${process.env.NEXT_PUBLIC_API_URL}/services/owner-services`,
-  //     {
-  //       headers: {
-  //         Cookie: `access_token=${authToken}`,
-  //         Authorization: `Bearer ${authToken}`,
-  //       },
-  //     }
-  //   );
-  //   // console.log(data.data);
-  //   console.log("✅ response: " + JSON.parse(data.data));
-  //   // listings = data.data;
-  // } catch (err) {
-  //   console.log("✅ Error: " + err);
-  //   return notFound();
-  // }
   return (
     <div className="container-2xl max-lg:px-4 lg:px-[50px] py-5">
       <div className="flex items-center justify-between gap-4 max-xl:flex-col max-xl:justify-start max-xl:items-start w-full">
@@ -58,10 +41,14 @@ export default async function Page() {
           >
             Listings
           </p>
-          <Button
-            ButtonText={"+ Create Listing"}
-            ButtonClasses={"text-white justify-center max-h-[58px] max-md:py-3"}
-          ></Button>
+          <Link href="/admin/add-services">
+            <Button
+              ButtonText={"+ Create Listing"}
+              ButtonClasses={
+                "text-white justify-center max-h-[58px] max-md:py-3"
+              }
+            ></Button>
+          </Link>
         </div>
       </div>
       <div className="flex content-center justify-between gap-4 mt-4 mb-6 max-md:flex-col md:flex-wrap">
@@ -95,15 +82,19 @@ export default async function Page() {
                 <input type="checkbox" name="" id="" />
                 <p className="mx-3">Listing</p>
               </th>
-              <th className="px-3">
-                <p className="mx-3">Status</p>
-              </th>
+              {role == "admin" && (
+                <th className="px-3">
+                  <p className="mx-3">Status</p>
+                </th>
+              )}
               <th className="px-3">
                 <p className="mx-3">Category</p>
               </th>
-              <th className="px-3">
-                <p className="mx-3">SS Recommendations</p>
-              </th>
+              {role == "admin" && (
+                <th className="px-3">
+                  <p className="mx-3">SS Recommendations</p>
+                </th>
+              )}
               <th className="px-3">
                 <p className="mx-3">Total Views</p>
               </th>
@@ -116,9 +107,20 @@ export default async function Page() {
             </tr>
           </thead>
           <tbody>
-            {listings.map((item) => (
-              <ListingRef {...item} key={item._id} role={role} />
-            ))}
+            {!listings && (
+              <tr>
+                <td
+                  colSpan={7}
+                  className="text-center py-5 font-semibold text-xl"
+                >
+                  No Listings Found
+                </td>
+              </tr>
+            )}
+            {listings &&
+              listings.map((item) => (
+                <ListingRef {...item} key={item._id} role={role} />
+              ))}
           </tbody>
         </table>
       </div>

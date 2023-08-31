@@ -15,7 +15,7 @@ const BusinessOwnerSignUp = () => {
   const [phoneNumber, setPhoneNumber] = useState("");
   const [password, setPassword] = useState("");
   const [confirmPassword, setConfirmPassword] = useState("");
-  const [error, setError] = useState("");
+  const [error, setError] = useState(null);
   const { push } = useRouter();
 
   const validateEmail = (email: string) => {
@@ -156,7 +156,7 @@ const BusinessOwnerSignUp = () => {
           </div>
 
           <div>
-            {error.length > 0 && (
+            {error && (
               <div
                 className="mt-3 bg-red-100 border border-red-400 text-red-600 px-4 py-3 mb-2 rounded relative"
                 role="alert"
