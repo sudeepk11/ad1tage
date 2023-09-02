@@ -38,7 +38,7 @@ const items = [
   },
   {
     title: "24/7 Support",
-    desc: "Feel supported around the clock with ad1tage&apos;s constant assistance for all your inquiries.",
+    desc: "Feel supported around the clock with ad1tage's constant assistance for all your inquiries.",
     icon: chat,
   },
 ];
