@@ -100,11 +100,11 @@ export default async function ServiceDetails({
           <div className="room-details flex gap-2 mt-[12px] justify-between flex-wrap mb-6">
             <div className="pb-[54px] w-full">
               <div className="flex w-full justify-between my-5">
-                <Link href="#service-reviews">
+                <a href="#service-reviews">
                   <span className="text-primary">
                     View Reviews {`(${reviews.length})`}
                   </span>
-                </Link>
+                </a>
                 <div className="text-base bg-primary rounded-[20px] px-5 flex items-center text-white py-[2px] w-max">
                   ID: {_id.slice(0, 4)}
                 </div>

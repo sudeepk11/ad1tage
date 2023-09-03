@@ -25,6 +25,7 @@ export default function ListingRef({
     featured: false,
     isApproved: false,
   });
+  console.log(rating.toPrecision(2));
   const { refresh } = useRouter();
   const { token } = useContext(AuthContext);
 
@@ -120,7 +121,9 @@ export default function ListingRef({
         </td>
       )}
       <td className="py-5 px-3">
-        <p className="mx-3">{views}</p>
+        <p className="mx-3">
+          {typeof views === "number" ? views : views.length}
+        </p>
       </td>
       <td className="py-5 px-3">
         <p className="mx-3">{rating.toPrecision(2)}</p>
