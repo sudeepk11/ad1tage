@@ -15,7 +15,7 @@ export default async function Page() {
   const role = cookies().get("role")?.value;
   let listings: Service[] = [];
   let URLextention =
-    role === "admin" ? "/services" : "/services/owner-services";
+    role === "admin" ? "/services?all=true" : "/services/owner-services";
   try {
     const { data } = await axios.get(
       `${process.env.NEXT_PUBLIC_API_URL}${URLextention}`,
