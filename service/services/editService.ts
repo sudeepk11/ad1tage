@@ -7,7 +7,7 @@ import { cookies } from "next/headers";
 import { redirect } from "next/navigation";
 import { revalidatePath } from "next/cache";
 
-export default async function addService(
+export default async function editService(
   data: FormData
 ): Promise<APIResponse<User>> {
   const authToken = cookies().get("access_token")?.value;
