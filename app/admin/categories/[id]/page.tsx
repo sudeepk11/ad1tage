@@ -4,7 +4,7 @@ import { Category } from "../../../../types/categories";
 import axios from "axios";
 import { notFound } from "next/navigation";
 import FormWrapper from "../../../../components/Admin/add-services/FormWrapper";
-import addCategory from "../../../../service/categories/addCategory";
+import editCategory from "../../../../service/categories/editCategory";
 
 export default async function Page({ params }: { params: { id: string } }) {
   let category: Category;
@@ -31,7 +31,7 @@ export default async function Page({ params }: { params: { id: string } }) {
             formClassName="grid grid-cols-7 w-full place-items-end gap-3"
             buttonClassName="w-full h-[52px] bg-primary rounded-lg text-white text-base flex items-center justify-center"
             buttonWrapperClassName="w-full col-span-1 max-md:col-span-3 max-md:col-start-5"
-            callback={addCategory}
+            callback={editCategory}
             buttonText="Update Category"
           >
             <div className="w-full col-span-2">
@@ -86,6 +86,7 @@ export default async function Page({ params }: { params: { id: string } }) {
                 />
               </div>
             </div>
+            <input type="hidden" name="category_id" value={params.id} />
           </FormWrapper>
         </div>
       </div>

@@ -4,11 +4,11 @@ import Image from "next/image";
 import { Service } from "../../types/services";
 import { useContext, useRef, useState, useTransition } from "react";
 import { AuthContext } from "../../providers/AuthProvider";
-import updateService from "../../service/services/updateService";
 import { toast } from "react-hot-toast";
 import axios from "axios";
 import { useRouter } from "next/navigation";
 import deleteIcon from "../../Assets/Icons/delete.png";
+import deleteService from "../../service/services/deleteService";
 import editIcon from "../../Assets/Icons/edit.png";
 import Link from "next/link";
 
@@ -28,7 +28,6 @@ export default function ListingRef({
     featured: false,
     isApproved: false,
   });
-  console.log(rating.toPrecision(2));
   const { refresh } = useRouter();
   const { token } = useContext(AuthContext);
 
@@ -137,7 +136,7 @@ export default function ListingRef({
         </Link>
       </td>
       <td className="py-5 px-3">
-        <form>
+        <form action={deleteService}>
           <input type="hidden" value={_id} name="id" />
           <button>
             <Image src={deleteIcon} alt="" className="w-5 h-auto" />

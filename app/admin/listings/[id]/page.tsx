@@ -27,8 +27,8 @@ export default async function Page({ params }: { params: { id: string } }) {
       `${process.env.NEXT_PUBLIC_API_URL}/services/${params.id}`
     );
     details = data.data;
-    console.log(details);
   } catch (err) {
+    console.log(err.response.data);
     return notFound();
   }
 
@@ -148,6 +148,7 @@ export default async function Page({ params }: { params: { id: string } }) {
             }}
           />
           <input type="hidden" name="user_id" value={userId} />
+          <input type="hidden" name="service_id" value={params.id} />
         </FormWrapper>
       </div>
     </div>
