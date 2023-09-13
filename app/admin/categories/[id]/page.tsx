@@ -46,6 +46,7 @@ export default async function Page({ params }: { params: { id: string } }) {
                 name="name"
                 placeholder="Enter Category Name"
                 defaultValue={category.category}
+                required
               />
             </div>
             <div className="w-full col-span-5">
@@ -60,6 +61,7 @@ export default async function Page({ params }: { params: { id: string } }) {
                 name="desc"
                 placeholder="Enter Category Description"
                 defaultValue={category.desc}
+                required
               />
             </div>
 
@@ -83,6 +85,7 @@ export default async function Page({ params }: { params: { id: string } }) {
                   name="imageUrl"
                   placeholder="Enter Category Image URL"
                   defaultValue={category.imageUrl}
+                  required
                 />
               </div>
             </div>

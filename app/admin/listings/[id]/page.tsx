@@ -24,7 +24,7 @@ export default async function Page({ params }: { params: { id: string } }) {
   let details: Service;
   try {
     const { data } = await axios.get(
-      `${process.env.NEXT_PUBLIC_API_URL}/services/${params.id}`
+      `${process.env.NEXT_PUBLIC_API_URL}/services/${params.id}?all=true`
     );
     details = data.data;
   } catch (err) {
@@ -61,6 +61,7 @@ export default async function Page({ params }: { params: { id: string } }) {
               placeholder="Enter Name"
               name="name"
               defaultValue={details.name}
+              required
             />
           </div>
           <div className="w-full col-span-6 max-md:col-span-8">
@@ -75,6 +76,7 @@ export default async function Page({ params }: { params: { id: string } }) {
               placeholder="Enter Category Description"
               name="desc"
               defaultValue={details.desc}
+              required
             />
           </div>
 
@@ -88,6 +90,7 @@ export default async function Page({ params }: { params: { id: string } }) {
               className="w-full h-[52px] border border-solid bg-white border-greyishBrown rounded-lg p-3"
               placeholder="Enter Category"
               name="category"
+              required
             >
               {categories.map((opt) => (
                 <option
@@ -113,6 +116,7 @@ export default async function Page({ params }: { params: { id: string } }) {
               placeholder="Enter Phone Number"
               name="phone"
               defaultValue={details.phoneNumber}
+              required
             />
           </div>
           <div className="w-full col-span-4 max-md:col-span-8">
@@ -135,6 +139,7 @@ export default async function Page({ params }: { params: { id: string } }) {
                 name="photos"
                 placeholder="Enter Category Image URL"
                 defaultValue={details.photos[0]}
+                required
               />
             </div>
           </div>

@@ -101,6 +101,7 @@ const LocationForm = ({
           placeholder="Address"
           className="w-full h-[52px] border border-solid border-greyishBrown rounded-lg p-3"
           name="address"
+          required
         />
       </div>
       <div className="w-full col-span-2 max-md:col-span-8">
@@ -117,6 +118,7 @@ const LocationForm = ({
           className="w-full h-[52px] border border-solid border-greyishBrown bg-gray-50 rounded-lg p-3"
           name="city"
           readOnly
+          required
         />
       </div>
       <div className="w-full col-span-2 max-md:col-span-8">
@@ -133,6 +135,7 @@ const LocationForm = ({
           className="w-full h-[52px] border border-solid border-greyishBrown bg-gray-50 rounded-lg p-3"
           name="pincode"
           readOnly
+          required
         />
       </div>
       <div className="w-full col-span-2 max-md:col-span-8">
@@ -149,6 +152,7 @@ const LocationForm = ({
           readOnly
           onFocus={(e) => e.preventDefault()}
           value={selectedLocation?.longitude || ""}
+          required
         />
       </div>
       <div className="w-full col-span-2 max-md:col-span-8">
@@ -165,6 +169,7 @@ const LocationForm = ({
           readOnly
           onFocus={(e) => e.preventDefault()}
           value={selectedLocation?.latitude || ""}
+          required
         />
       </div>
     </>
