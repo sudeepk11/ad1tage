@@ -2,6 +2,7 @@ import { josefin } from "../../../../utils/utilsFonts";
 import Image from "next/image";
 import FormWrapper from "../../../../components/Admin/add-services/FormWrapper";
 import editService from "../../../../service/services/editService";
+import MultiImageUploader from "../../../../components/Upload/MultiImageUploader";
 import axios from "axios";
 import { Category } from "../../../../types/categories";
 import { cookies } from "next/headers";
@@ -43,7 +44,7 @@ export default async function Page({ params }: { params: { id: string } }) {
       </div>
       <div className="flex justify-between gap-4 max-md:flex-col md:flex-wrap">
         <FormWrapper
-          formClassName="grid grid-cols-8 w-full place-items-end gap-3"
+          formClassName="grid grid-cols-8 w-full place-items-end gap-3 relative"
           buttonClassName="text-white w-full py-3 flex justify-center items-center"
           buttonWrapperClassName="w-full col-start-8 col-span-1 max-md:col-span-4 max-md:col-start-5"
           buttonText="Update Service"
@@ -119,7 +120,8 @@ export default async function Page({ params }: { params: { id: string } }) {
               required
             />
           </div>
-          <div className="w-full col-span-4 max-md:col-span-8">
+          <MultiImageUploader initImages={details.photos} />
+          {/* <div className="w-full col-span-4 max-md:col-span-8">
             <label
               className={`block mb-2 text-sm font-bold text-black ${josefin.className}`}
             >
@@ -142,7 +144,7 @@ export default async function Page({ params }: { params: { id: string } }) {
                 required
               />
             </div>
-          </div>
+          </div> */}
           <LocationForm
             initAddress={details.address}
             initCity={details.city}

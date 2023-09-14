@@ -20,7 +20,7 @@ export default async function editService(
   const phoneNumber = data.get("phone").toString();
   const category = data.get("category").toString();
   const desc = data.get("desc").toString();
-  const photos = data.get("photos").toString();
+  const photos = data.get("photos").toString().split(",");
   const userId = data.get("user_id").toString();
   const serviceId = data.get("service_id").toString();
   const pincode = data.get("pincode").toString();
@@ -39,7 +39,7 @@ export default async function editService(
         category,
         desc,
         Owner: userId,
-        photos: [photos],
+        photos: [...photos],
       }),
       {
         headers: {

@@ -20,10 +20,9 @@ export default async function addService(
   const phoneNumber = data.get("phone").toString();
   const category = data.get("category").toString();
   const desc = data.get("desc").toString();
-  const photos = data.get("photos").toString();
+  const photos = data.get("photos").toString().split(",");
   const userId = data.get("user_id").toString();
   const pincode = data.get("pincode").toString();
-
   try {
     const { data } = await axios.post(
       `${process.env.NEXT_PUBLIC_API_URL}/services`,
@@ -38,7 +37,7 @@ export default async function addService(
         category,
         desc,
         Owner: userId,
-        photos: [photos],
+        photos: [...photos],
       }),
       {
         headers: {
