@@ -2,6 +2,7 @@ import { josefin } from "../../utils/utilsFonts";
 import primaryArrowDown from "../../images/primary-arrow-down.png";
 import Image from "next/image";
 import LineChartCommon from "../../components/Admin/LineChartCommon";
+import DashBoardStats from "../../components/Admin/dashBoardStats";
 import Rating from "../../components/Common/Rating";
 import Listing from "../../components/Admin/Listing";
 import Reviews from "../../components/Admin/Reviews";
@@ -32,6 +33,17 @@ export default async function Page() {
     return notFound();
   }
 
+  let services: Service[] = [];
+  try {
+    const { data } = await axios.get(
+      `${process.env.NEXT_PUBLIC_API_URL}/services`
+    );
+    // console.log(data.data);
+    services = data.data.slice(0, 4);
+  } catch (err) {
+    return notFound();
+  }
+
   const {
     servicesCount,
     categoriesCount,
@@ -46,8 +58,6 @@ export default async function Page() {
     reviews,
   } = dashboardData;
 
-  console.log(dashboardData);
-
   return (
     <div className="container-2xl max-lg:px-4 lg:px-[50px] py-5">
       <p
@@ -56,101 +66,38 @@ export default async function Page() {
         Admin Dashboard
       </p>
       <div className="justify-between grid-cols-3 lg:grid lg:gap-6">
-        <div className="bg-offWhite w-full max-lg:mb-4 h-[185px] rounded-2xl overflow-hidden">
-          <p className="text-3xl font-semibold mt-5 text-center">
-            {servicesCount}
-          </p>
-          <p className="text-[14px] font-semibold mt-3 text-center">
-            Total Services
-          </p>
-          <LineChartCommon color="#8FA3CA" dataKey="pv" />
-        </div>
+        <DashBoardStats title="Total Services" value={servicesCount} />
         {role === "admin" && (
-          <div className="bg-offWhite w-full max-lg:mb-4 h-[185px] rounded-2xl overflow-hidden">
-            <p className="text-3xl font-semibold mt-5 text-center">
-              {websiteVisits}
-            </p>
-            <p className="text-[14px] font-semibold mt-3 text-center">
-              30-Day Website Views
-            </p>
-            <LineChartCommon color="#CA8FB2" dataKey="uv" />
-          </div>
+          <DashBoardStats title="30-Day Website Views" value={websiteVisits} />
         )}
-        <div className="bg-offWhite w-full max-lg:mb-4 h-[185px] rounded-2xl overflow-hidden">
-          <p className="text-3xl font-semibold mt-5 text-center">
-            {typeof callCount === "number" ? callCount : callCount.length}
-          </p>
-          <p className="text-[14px] font-semibold mt-3 text-center">
-            30-Day Calls
-          </p>
-          <LineChartCommon color="#8FCAB5" dataKey="amt" />
-        </div>
+        <DashBoardStats
+          title="30-Day Calls"
+          value={typeof callCount === "number" ? callCount : callCount.length}
+        />
 
         {role === "admin" && (
           <>
-            <div className="bg-offWhite w-full max-lg:mb-4 h-[185px] rounded-2xl overflow-hidden">
-              <p className="text-3xl font-semibold mt-5 text-center">
-                {averageReviews.toPrecision(2)}
-              </p>
-              <p className="text-[14px] font-semibold mt-3 text-center">
-                Average Reviews
-              </p>
-              <LineChartCommon color="#F9C270" dataKey="amt" />
-            </div>
-            <div className="bg-offWhite w-full max-lg:mb-4 h-[185px] rounded-2xl overflow-hidden">
-              <p className="text-3xl font-semibold mt-5 text-center">
-                {categoriesCount}
-              </p>
-              <p className="text-[14px] font-semibold mt-3 text-center">
-                Total Categories
-              </p>
-              <LineChartCommon color="#6DB3C9" dataKey="amt" />
-            </div>
-            <div className="bg-offWhite w-full max-lg:mb-4 h-[185px] rounded-2xl overflow-hidden">
-              <p className="text-3xl font-semibold mt-5 text-center">
-                {usersCount}
-              </p>
-              <p className="text-[14px] font-semibold mt-3 text-center">
-                Total Users
-              </p>
-              <LineChartCommon color="#E99A9A" dataKey="amt" />
-            </div>
-            <div className="bg-offWhite w-full max-lg:mb-4 h-[185px] rounded-2xl overflow-hidden">
-              <p className="text-3xl font-semibold mt-5 text-center">
-                {totalBuisnessOwner}
-              </p>
-              <p className="text-[14px] font-semibold mt-3 text-center">
-                Total Business Owners
-              </p>
-              <LineChartCommon color="#B5D4B4" dataKey="amt" />
-            </div>
+            <DashBoardStats
+              title="Average Reviews"
+              value={averageReviews.toPrecision(2)}
+            />
+            <DashBoardStats title="Total Categories" value={categoriesCount} />
+            <DashBoardStats title="Total Users" value={usersCount} />
+            <DashBoardStats
+              title="Total Business Owners"
+              value={totalBuisnessOwner}
+            />
           </>
         )}
 
-        <div className="bg-offWhite w-full max-lg:mb-4 h-[185px] rounded-2xl overflow-hidden">
-          <p className="text-3xl font-semibold mt-5 text-center">
-            {reviewsCount}
-          </p>
-          <p className="text-[14px] font-semibold mt-3 text-center">
-            Total Reviews
-          </p>
-          <LineChartCommon color="#F2A5A0" dataKey="amt" />
-        </div>
+        <DashBoardStats title="Total Reviews" value={reviewsCount} />
 
         {role === "admin" && (
-          <div className="bg-offWhite w-full max-lg:mb-4 h-[185px] rounded-2xl overflow-hidden">
-            <p className="text-3xl font-semibold mt-5 text-center">
-              {totalQueries}
-            </p>
-            <p className="text-[14px] font-semibold mt-3 text-center">
-              Total Queries
-            </p>
-            <LineChartCommon color="#B39DDB" dataKey="amt" />
-          </div>
+          <DashBoardStats title="Total Queries" value={totalQueries} />
         )}
       </div>
       <div className="grid justify-between gap-4 mt-6 mb-2 lg:grid-cols-3 max-lg:grid-cols-1">
-        <div className="col-span-2 p-5 bg-offWhite rounded-xl max-md:p-3">
+        <div className="col-span-2 p-5 bg-offWhite rounded-xl max-md:p-3 max-md:order-2">
           <div className="flex justify-between mb-5">
             <p className="mr-10 font-semibold leading-9 text-black md:text-2xl max-md:text-lg">
               {role === "owner" ? "" : "ad1tage "}Reviews
@@ -180,11 +127,11 @@ export default async function Page() {
           </button>
         </div>
 
-        <div className="p-5 bg-offWhite rounded-xl max-md:p-3">
+        <div className="p-5 bg-offWhite rounded-xl max-md:p-3 h-fit">
           <p className="mb-5 font-semibold leading-9 text-black max-md:text-lg md:text-2xl lg:flex-wrap">
             Top Services
           </p>
-          {(topServices as Service[]).map((item, idx) => (
+          {services.map((item, idx) => (
             <div key={idx} className="mb-5">
               <Listing {...item} />
             </div>

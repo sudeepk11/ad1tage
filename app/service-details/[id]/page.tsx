@@ -27,7 +27,7 @@ export default async function ServiceDetails({
   let details: Service;
   try {
     const { data } = await axios.get(
-      `${process.env.NEXT_PUBLIC_API_URL}/services/${params.id}`
+      `${process.env.NEXT_PUBLIC_API_URL}/services/${params.id}?all=true`
     );
     details = data.data;
   } catch (err) {

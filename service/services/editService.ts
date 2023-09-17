@@ -7,7 +7,7 @@ import { cookies } from "next/headers";
 import { redirect } from "next/navigation";
 import { revalidatePath } from "next/cache";
 
-export default async function addService(
+export default async function editService(
   data: FormData
 ): Promise<APIResponse<User>> {
   const authToken = cookies().get("access_token")?.value;
@@ -22,10 +22,12 @@ export default async function addService(
   const desc = data.get("desc").toString();
   const photos = data.get("photos").toString().split(",");
   const userId = data.get("user_id").toString();
+  const serviceId = data.get("service_id").toString();
   const pincode = data.get("pincode").toString();
+
   try {
-    const { data } = await axios.post(
-      `${process.env.NEXT_PUBLIC_API_URL}/services`,
+    const { data } = await axios.put(
+      `${process.env.NEXT_PUBLIC_API_URL}/services/${serviceId}`,
       JSON.stringify({
         name,
         city,
@@ -52,4 +54,6 @@ export default async function addService(
   } catch (err) {
     return err.response.data;
   }
+
+  // return { status: "success", message: "Service updated successfully" };
 }

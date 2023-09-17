@@ -104,6 +104,12 @@ export default async function Page() {
               <th className="px-3">
                 <p className="mx-3">Location</p>
               </th>
+              <th className="px-3">
+                <p className="mx-3"></p>
+              </th>
+              <th className="px-3">
+                <p className="mx-3"></p>
+              </th>
             </tr>
           </thead>
           <tbody>

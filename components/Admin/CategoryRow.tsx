@@ -1,12 +1,14 @@
 import Image from "next/image";
 import BookingHistoryImage1 from "../../images/bookinghistory1.png";
 import deleteIcon from "../../Assets/Icons/delete.png";
+import editIcon from "../../Assets/Icons/edit.png";
 import { Category } from "../../types/categories";
 import axios from "axios";
 import { APIResponse } from "../../types/general";
 import { revalidatePath } from "next/cache";
 import { cookies } from "next/headers";
 import { redirect } from "next/navigation";
+import Link from "next/link";
 
 export default function CategoryRow({ _id, category, count, desc }: Category) {
   async function deleteCategory(data: FormData): Promise<APIResponse<any>> {
@@ -50,6 +52,14 @@ export default function CategoryRow({ _id, category, count, desc }: Category) {
       </td>
       <td className="py-5 px-3">
         <p className="mx-3">{count}</p>
+      </td>
+      <td className="py-5 px-3">
+        <Link href={`/admin/categories/${_id}`}>
+          <input type="hidden" value={_id} name="id" />
+          <button>
+            <Image src={editIcon} alt="" className="w-5 h-auto" />
+          </button>
+        </Link>
       </td>
       <td className="py-5 px-3">
         <form action={deleteCategory}>
