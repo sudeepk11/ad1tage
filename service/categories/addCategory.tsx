@@ -34,7 +34,7 @@ export default async function addCategory(
     revalidatePath("/admin/categories");
     return data;
   } catch (err) {
-    console.log(err.response.data);
-    return err.response.data;
+    console.log(err);
+    return err;
   }
 }

@@ -13,7 +13,6 @@ const MultiImageUploader = ({ initImages = [] }) => {
 
   // serialize images array to string
   const imagesString = images.join(",");
-  console.log(imagesString);
 
   return (
     <div className="w-full col-span-4 max-md:col-span-8">

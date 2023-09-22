@@ -7,6 +7,7 @@ import { notFound } from "next/navigation";
 import CategoryRow from "../../../components/Admin/CategoryRow";
 import FormWrapper from "../../../components/Admin/add-services/FormWrapper";
 import addCategory from "../../../service/categories/addCategory";
+import SingleImageUploader from "../../../components/Upload/SingleImageUploader";
 
 export default async function Page() {
   let categories: Category[] = [];
@@ -15,6 +16,7 @@ export default async function Page() {
       `${process.env.NEXT_PUBLIC_API_URL}/categories/count`
     );
     categories = data.data;
+    console.log(categories);
   } catch (err) {
     console.log(err.response.data);
     return notFound();
@@ -118,19 +120,7 @@ export default async function Page() {
                 placeholder="Enter Category Description"
               />
             </div>
-            <div className="w-full col-span-6 max-md:col-span-7">
-              <label
-                className={`block mb-2 text-sm font-bold text-black ${josefin.className}`}
-              >
-                Image URL
-              </label>
-              <input
-                className="w-full h-[52px] border border-solid border-greyishBrown rounded-lg p-3"
-                type="text"
-                name="imageUrl"
-                placeholder="Enter Category Image URL"
-              />
-            </div>
+            <SingleImageUploader />
           </FormWrapper>
         </div>
       </div>

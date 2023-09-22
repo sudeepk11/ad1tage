@@ -10,7 +10,13 @@ import { cookies } from "next/headers";
 import { redirect } from "next/navigation";
 import Link from "next/link";
 
-export default function CategoryRow({ _id, category, count, desc }: Category) {
+export default function CategoryRow({
+  _id,
+  category,
+  count,
+  desc,
+  imageUrl,
+}: Category) {
   async function deleteCategory(data: FormData): Promise<APIResponse<any>> {
     "use server";
     const authToken = cookies().get("access_token")?.value;
@@ -40,8 +46,10 @@ export default function CategoryRow({ _id, category, count, desc }: Category) {
       <td className="flex py-5 px-3">
         <input type="checkbox" name="" id="" />
         <Image
-          src={BookingHistoryImage1}
+          src={imageUrl}
           alt=""
+          width={200}
+          height={200}
           className="w-14 h-auto rounded-lg m-3"
         />
         <p className="mx-3">{category}</p>
