@@ -20,109 +20,110 @@ var settings = {
 const CardWithSlider = (props) => {
   return (
     <div className="bg-white rounded-[16px] overflow-hidden hotel-card-design shadow-lg h-max">
-      {props.photos ? (
-        <Slider {...settings}>
-          {props.photos.map((item) => (
-            <div
-              className="relative before:bg-slider-overlay before:absolute before:h-full before:w-full before:top-0 before:left-0"
-              key={item + "wrapper"}
-            >
+      <Link href={`/service-details/${props.id}`}>
+        {props.photos ? (
+          <Slider {...settings}>
+            {props.photos.map((item) => (
+              <div
+                className="relative before:bg-slider-overlay before:absolute before:h-full before:w-full before:top-0 before:left-0"
+                key={item + "wrapper"}
+              >
+                <Image
+                  className="w-full h-[240px] object-cover rounded-[16px]"
+                  src={item}
+                  alt=""
+                  key={item}
+                  width={200}
+                  height={200}
+                />
+              </div>
+            ))}
+          </Slider>
+        ) : (
+          <Slider {...settings}>
+            <div className="relative before:bg-slider-overlay before:absolute before:h-full before:w-full before:top-0 before:left-0">
               <Image
-                className="w-full h-[240px] object-cover rounded-[16px]"
-                src={item}
+                className="w-full h-[240px] object-cover"
+                src={sliderImg}
                 alt=""
-                key={item}
-                width={200}
-                height={200}
               />
             </div>
-          ))}
-        </Slider>
-      ) : (
-        <Slider {...settings}>
-          <div className="relative before:bg-slider-overlay before:absolute before:h-full before:w-full before:top-0 before:left-0">
-            <Image
-              className="w-full h-[240px] object-cover"
-              src={sliderImg}
-              alt=""
-            />
-          </div>
 
-          <div className="relative before:bg-slider-overlay before:absolute before:h-full before:w-full before:top-0 before:left-0">
-            <Image
-              className="w-full h-[240px] object-cover"
-              src={sliderImg1}
-              alt=""
-            />
-          </div>
+            <div className="relative before:bg-slider-overlay before:absolute before:h-full before:w-full before:top-0 before:left-0">
+              <Image
+                className="w-full h-[240px] object-cover"
+                src={sliderImg1}
+                alt=""
+              />
+            </div>
 
-          <div className="relative before:bg-slider-overlay before:absolute before:h-full before:w-full before:top-0 before:left-0">
-            <Image
-              className="w-full h-[240px] object-cover"
-              src={sliderImg2}
-              alt=""
-            />
-          </div>
+            <div className="relative before:bg-slider-overlay before:absolute before:h-full before:w-full before:top-0 before:left-0">
+              <Image
+                className="w-full h-[240px] object-cover"
+                src={sliderImg2}
+                alt=""
+              />
+            </div>
 
-          <div className="relative before:bg-slider-overlay before:absolute before:h-full before:w-full before:top-0 before:left-0">
-            <Image
-              className="w-full h-[240px] object-cover"
-              src={sliderImg3}
-              alt=""
-            />
-          </div>
-        </Slider>
-      )}
-      {/* <div className="text-white bg-black bg-opacity-50 px-[11px] py-[3px] -mt-[45px] relative z-1 w-max ml-4 rounded-2xl mb-[10px]">
+            <div className="relative before:bg-slider-overlay before:absolute before:h-full before:w-full before:top-0 before:left-0">
+              <Image
+                className="w-full h-[240px] object-cover"
+                src={sliderImg3}
+                alt=""
+              />
+            </div>
+          </Slider>
+        )}
+        {/* <div className="text-white bg-black bg-opacity-50 px-[11px] py-[3px] -mt-[45px] relative z-1 w-max ml-4 rounded-2xl mb-[10px]">
         $12.00<span className="text-secondary">/Month</span>
       </div> */}
-      <div className="px-4 py-4">
-        <div className="flex items-center justify-between rating-like ">
-          <div className="flex gap-1 mb-2 starts">
-            {Array.from(Array(Math.round(parseFloat(props.rating)))).map(
-              (_, i) => (
-                <svg
-                  width="22"
-                  height="22"
-                  viewBox="0 0 22 22"
-                  fill="none"
-                  xmlns="http://www.w3.org/2000/svg"
-                  key={i}
-                >
-                  <path
-                    d="M11 1L14.09 7.26L21 8.27L16 13.14L17.18 20.02L11 16.77L4.82 20.02L6 13.14L1 8.27L7.91 7.26L11 1Z"
-                    fill="#2A86DB"
-                    stroke="#2A86DB"
-                    stroke-width="2"
-                    stroke-linecap="round"
-                    stroke-linejoin="round"
-                  />
-                </svg>
-              )
-            )}
-            {Array.from(Array(5 - Math.round(parseFloat(props.rating)))).map(
-              (_, i) => (
-                <svg
-                  width="22"
-                  height="22"
-                  viewBox="0 0 22 22"
-                  fill="none"
-                  xmlns="http://www.w3.org/2000/svg"
-                  key={i}
-                >
-                  <path
-                    d="M11 1L14.09 7.26L21 8.27L16 13.14L17.18 20.02L11 16.77L4.82 20.02L6 13.14L1 8.27L7.91 7.26L11 1Z"
-                    stroke="#2A86DB"
-                    stroke-width="2"
-                    stroke-linecap="round"
-                    stroke-linejoin="round"
-                  />
-                </svg>
-              )
-            )}
-            <span className="ml-2 font-medium">{props.rating}</span>
-          </div>
-          {/* <div className="cursor-pointer">
+        <div className="px-4 py-4">
+          <div className="flex items-center justify-between rating-like ">
+            <div className="flex gap-1 mb-2 starts">
+              {Array.from(Array(Math.round(parseFloat(props.rating)))).map(
+                (_, i) => (
+                  <svg
+                    width="22"
+                    height="22"
+                    viewBox="0 0 22 22"
+                    fill="none"
+                    xmlns="http://www.w3.org/2000/svg"
+                    key={i}
+                  >
+                    <path
+                      d="M11 1L14.09 7.26L21 8.27L16 13.14L17.18 20.02L11 16.77L4.82 20.02L6 13.14L1 8.27L7.91 7.26L11 1Z"
+                      fill="#2A86DB"
+                      stroke="#2A86DB"
+                      stroke-width="2"
+                      stroke-linecap="round"
+                      stroke-linejoin="round"
+                    />
+                  </svg>
+                )
+              )}
+              {Array.from(Array(5 - Math.round(parseFloat(props.rating)))).map(
+                (_, i) => (
+                  <svg
+                    width="22"
+                    height="22"
+                    viewBox="0 0 22 22"
+                    fill="none"
+                    xmlns="http://www.w3.org/2000/svg"
+                    key={i}
+                  >
+                    <path
+                      d="M11 1L14.09 7.26L21 8.27L16 13.14L17.18 20.02L11 16.77L4.82 20.02L6 13.14L1 8.27L7.91 7.26L11 1Z"
+                      stroke="#2A86DB"
+                      stroke-width="2"
+                      stroke-linecap="round"
+                      stroke-linejoin="round"
+                    />
+                  </svg>
+                )
+              )}
+              <span className="ml-2 font-medium">{props.rating}</span>
+            </div>
+            {/* <div className="cursor-pointer">
             {props.likeButton === "filled" ? (
               <svg
                 width="24"
@@ -158,13 +159,12 @@ const CardWithSlider = (props) => {
               </svg>
             )}
           </div> */}
-        </div>
-        <Link href={`/service-details/${props.id}`}>
+          </div>
           <p className={`text-base mt-1`}>{props.paraText}</p>
           <p className={` text-gray-600 text-sm`}>{props.subParaText}</p>
           <p className={`text-primary text-[14px] mt-1`}>{props.location}</p>
-        </Link>
-      </div>
+        </div>
+      </Link>
     </div>
   );
 };

@@ -73,7 +73,6 @@ const ImagePreviewModal = ({ images, setModal, setImages }) => {
         `${process.env.NEXT_PUBLIC_API_URL}/upload/images`,
         formData
       );
-      console.log(data);
       setImages([...images, ...data.data.images]);
       setSelectedFiles([]);
       fileInputRef.current.value = "";
@@ -97,7 +96,6 @@ const ImagePreviewModal = ({ images, setModal, setImages }) => {
       const { data } = await axios.delete(
         `${process.env.NEXT_PUBLIC_API_URL}/images/${id}`
       );
-      console.log(data);
       if (data.status === "success") {
         const newImages = images.filter((image, i) => i !== index);
         setImages([...newImages]);

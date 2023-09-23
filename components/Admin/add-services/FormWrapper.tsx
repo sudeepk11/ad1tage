@@ -31,7 +31,6 @@ export default function FormWrapper({
       action={(props) =>
         startTransition(async () => {
           const resp = await callback(props);
-          console.log(resp);
           if (resp.status === "success") {
             toast.success("Success!");
             formRef.current.reset();

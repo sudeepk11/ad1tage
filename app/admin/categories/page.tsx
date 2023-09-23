@@ -16,7 +16,6 @@ export default async function Page() {
       `${process.env.NEXT_PUBLIC_API_URL}/categories/count`
     );
     categories = data.data;
-    console.log(categories);
   } catch (err) {
     console.log(err.response.data);
     return notFound();

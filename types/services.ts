@@ -6,6 +6,8 @@ export type Service = {
   name: string;
   city: string;
   address: string;
+  pincode: string;
+  plotnumber: string;
   lattitude: string;
   longitude: string;
   phoneNumber: string;

@@ -35,7 +35,6 @@ const Navbar = () => {
   const { push } = useRouter();
   const [isPending, startTransition] = useTransition();
   const { user, token, logOut: signOut } = useContext(AuthContext);
-  console.log(user);
   const isAdmin =
     !!(token && user.role === "admin") || !!(token && user.role === "owner");
   const [userSettingDropdown, setUserSettingDropdown] = useState(false);

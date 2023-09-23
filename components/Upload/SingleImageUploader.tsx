@@ -28,7 +28,6 @@ const SingleImageUploader = ({ initImage = "" }) => {
         `${process.env.NEXT_PUBLIC_API_URL}/upload/images`,
         formData
       );
-      console.log(data);
       setImage(data.data.images[0]);
       fileInputRef.current.value = "";
       setUploading(false);
@@ -47,7 +46,6 @@ const SingleImageUploader = ({ initImage = "" }) => {
       const { data } = await axios.delete(
         `${process.env.NEXT_PUBLIC_API_URL}/images/${id}`
       );
-      console.log(data);
       if (data.status === "success") {
         setImage("");
       }

@@ -9,7 +9,6 @@ export const getApi = async (action, url) => {
       setAuthToken(token);
     }
     let apiUrl = `${config.serverURL + config.version}${action}`;
-    console.log(apiUrl);
     const response = await Axios.get(apiUrl);
 
     return response?.data;

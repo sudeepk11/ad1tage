@@ -148,7 +148,8 @@ export default async function Page({ params }: { params: { id: string } }) {
           <LocationForm
             initAddress={details.address}
             initCity={details.city}
-            initPincode={""}
+            initPincode={details.pincode}
+            initPlotnumber={details.plotnumber}
             initCoords={{
               latitude: Number(details.lattitude),
               longitude: Number(details.longitude),
