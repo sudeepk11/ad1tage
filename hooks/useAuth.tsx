@@ -9,8 +9,6 @@ export default function useAuth(): AuthContextType {
     null
   );
 
-  console.log(user);
-
   function logIn(user: User) {
     if (!user) return logOut();
     setUser(user);

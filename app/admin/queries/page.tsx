@@ -9,7 +9,6 @@ import QueryRef from "../../../components/Admin/QueryRef";
 export default async function Page() {
   let queries: Query[] = [];
   const authToken = cookies().get("access_token")?.value;
-  console.log(authToken);
   try {
     const { data } = await axios.get(
       `${process.env.NEXT_PUBLIC_API_URL}/query`,
@@ -21,7 +20,6 @@ export default async function Page() {
       }
     );
     queries = data.data;
-    console.log(queries);
   } catch (err) {
     return notFound();
   }

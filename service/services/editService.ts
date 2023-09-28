@@ -24,6 +24,7 @@ export default async function editService(
   const userId = data.get("user_id").toString();
   const serviceId = data.get("service_id").toString();
   const pincode = data.get("pincode").toString();
+  const plotnumber = data.get("plotnumber").toString();
 
   try {
     const { data } = await axios.put(
@@ -32,7 +33,8 @@ export default async function editService(
         name,
         city,
         address,
-        // pincode,
+        pincode,
+        plotnumber,
         lattitude,
         longitude,
         phoneNumber,

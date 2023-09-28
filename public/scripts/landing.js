@@ -131,7 +131,6 @@ let bedroomOptions = document.querySelectorAll('#bedrooms-dropdown li');
 // Merge the arrays into one
 let options = [...citiesOptions, ...serviceOptions, ...termOptions, ...bedroomOptions];
 
-console.log(options);
 
 // Then, add a click event listener to each option
 options.forEach(option => {

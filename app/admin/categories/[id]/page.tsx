@@ -5,6 +5,7 @@ import axios from "axios";
 import { notFound } from "next/navigation";
 import FormWrapper from "../../../../components/Admin/add-services/FormWrapper";
 import editCategory from "../../../../service/categories/editCategory";
+import SingleImageUploader from "../../../../components/Upload/SingleImageUploader";
 
 export default async function Page({ params }: { params: { id: string } }) {
   let category: Category;
@@ -65,30 +66,8 @@ export default async function Page({ params }: { params: { id: string } }) {
               />
             </div>
 
-            <div className="w-full col-span-6 max-md:col-span-7">
-              <label
-                className={`block mb-2 text-sm font-bold text-black ${josefin.className}`}
-              >
-                Image URL
-              </label>
-              <div className="w-full flex gap-x-2 items-center">
-                <Image
-                  src={category.imageUrl}
-                  alt=""
-                  width={52}
-                  height={52}
-                  className="h-full w-auto rounded-lg"
-                />
-                <input
-                  className="w-full h-[52px] border border-solid border-greyishBrown rounded-lg p-3"
-                  type="text"
-                  name="imageUrl"
-                  placeholder="Enter Category Image URL"
-                  defaultValue={category.imageUrl}
-                  required
-                />
-              </div>
-            </div>
+            <SingleImageUploader initImage={category.imageUrl} />
+
             <input type="hidden" name="category_id" value={params.id} />
           </FormWrapper>
         </div>

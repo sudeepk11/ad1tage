@@ -9,15 +9,19 @@ import Goals from "./Goals";
 
 const About = () => {
   return (
-    <div className="flex container-2xl max-lg:px-4 lg:px-[50px] max-xl:gap-12 xl:gap-[120px] max-lg:flex-col">
-      <div className=" max-md:w-full max-lg:mt-[60px]">
+    <div className="flex container-2xl max-lg:px-4 lg:px-[50px] max-xl:gap-12 xl:gap-[40px] max-lg:flex-col">
+      <div className="sticky flex flex-col justify-center w-1/2 h-screen top-[30px] max-md:w-full max-lg:mt-[30px]">
         <Image
           src={aboutImg}
           alt=""
-          className="object-contain sticky top-[60px] lg:h-screen left-0 w-full rounded-lg"
+          className="object-contain h-fit left-0 w-full rounded-lg"
         />
+        <p className="text-center font-bold text-2xl mt-4 mb-6 max-md:font-medium max-md:text-base">
+          The dedicated minds & vision behind ad1tage, your companions in making
+          senior life easier.
+        </p>
       </div>
-      <div className="max-md:w-full md:mb-[100px] max-md:mb-5">
+      <div className="w-1/2 max-md:w-full md:mb-[100px] max-md:mb-5">
         <h1
           className={`md:text-[56px] md:leading-[56px] font-semibold ${josefin.className} md:mt-[80px] max-md:text-4xl`}
         >

@@ -24,13 +24,13 @@ export default function FormWrapper({
 }: Props) {
   const [isPending, startTransition] = useTransition();
   const formRef = useRef<HTMLFormElement>();
+
   return (
     <form
       ref={(ref) => ref && (formRef.current = ref)}
       action={(props) =>
         startTransition(async () => {
           const resp = await callback(props);
-          console.log(resp);
           if (resp.status === "success") {
             toast.success("Success!");
             formRef.current.reset();

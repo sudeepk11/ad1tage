@@ -23,6 +23,7 @@ export default async function addService(
   const photos = data.get("photos").toString().split(",");
   const userId = data.get("user_id").toString();
   const pincode = data.get("pincode").toString();
+  const plotnumber = data.get("plotnumber").toString();
   try {
     const { data } = await axios.post(
       `${process.env.NEXT_PUBLIC_API_URL}/services`,
@@ -30,7 +31,8 @@ export default async function addService(
         name,
         city,
         address,
-        // pincode,
+        pincode,
+        plotnumber,
         lattitude,
         longitude,
         phoneNumber,
