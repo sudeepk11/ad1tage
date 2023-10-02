@@ -50,7 +50,7 @@ export default async function Page({ params }: { params: { id: string } }) {
           buttonText="Update Service"
           callback={editService}
         >
-          <div className="w-full col-span-2 max-md:col-span-8">
+          <div className="w-full col-span-8">
             <label
               className={`block mb-2 text-sm font-bold text-black ${josefin.className}`}
             >
@@ -65,15 +65,14 @@ export default async function Page({ params }: { params: { id: string } }) {
               required
             />
           </div>
-          <div className="w-full col-span-6 max-md:col-span-8">
+          <div className="w-full col-span-8">
             <label
               className={`block mb-2 text-sm font-bold text-black ${josefin.className}`}
             >
               Description
             </label>
-            <input
-              className="w-full h-[52px] border border-solid border-greyishBrown rounded-lg p-3"
-              type="text"
+            <textarea
+              className="w-full h-fit border border-solid border-greyishBrown rounded-lg p-3"
               placeholder="Enter Category Description"
               name="desc"
               defaultValue={details.desc}

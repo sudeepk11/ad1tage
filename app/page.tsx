@@ -3,6 +3,8 @@ import Banner from "../components/LandingPage/Banner";
 import Services from "../components/LandingPage/Services";
 import SixSteps from "../components/LandingPage/SixSteps";
 import Categories from "./categories/page";
+import "slick-carousel/slick/slick.css";
+import "slick-carousel/slick/slick-theme.css";
 
 export default function Home() {
   return (
@@ -13,7 +15,7 @@ export default function Home() {
       </div>
 
       <Services title="Find Top Services Nearby" />
-      <Categories showTop={false}/>
+      <Categories showTop={false} />
       <SixSteps />
     </div>
   );
