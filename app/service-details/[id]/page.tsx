@@ -81,6 +81,7 @@ export default async function ServiceDetails({
       <div className="grid grid-cols-12 px-4 lg:px-4 max-lg:flex-col gap-4">
         {/* Service details */}
         <div className="lg:col-span-7 col-span-12 max-lg:w-full px-4 max-lg:order-last">
+          {/* Title */}
           <div className="flex justify-between py-5 mt-4">
             <h1
               className={` text-3xl flex items-center leading-10 w-full ${josefin.className} font-semibold flex-wrap`}
@@ -102,6 +103,7 @@ export default async function ServiceDetails({
               </div>
             </h1>
           </div>
+          {/* Address and owner bar */}
           <div className="room-details flex gap-2 mt-[12px] justify-between flex-wrap mb-6">
             <div className="pb-[54px] w-full">
               <div className="flex w-full justify-between my-5">
@@ -124,10 +126,11 @@ export default async function ServiceDetails({
                     />
                     <p>{address}</p>
                   </div>
-                  <div className="flex gap-2">
+                  {/* TODO: Need to display dynamic data calcuated from map */}
+                  {/* <div className="flex gap-2">
                     <Image src={arrowIcon} alt="" className="object-contain" />
                     <p>4 km</p>
-                  </div>
+                  </div> */}
                 </div>
                 <div className="flex items-center justify-center gap-2 bg-blue-100 rounded-md px-2 py-3">
                   <p>
@@ -142,10 +145,10 @@ export default async function ServiceDetails({
               <h3 className="mb-5 text-xl font-medium">Description</h3>
               <p className="mb-5 text-base text-justify">
                 {desc.map((item) => (
-                  <p>
+                  <span>
                     {item}
                     <br />
-                  </p>
+                  </span>
                 ))}
               </p>
             </div>
