@@ -140,8 +140,8 @@ export default async function ServiceDetails({
             <div>
               <h3 className="mb-5 text-xl font-medium">Description</h3>
               <p className="mb-5 text-base text-justify">
-                {desc.map((item) => (
-                  <span>
+                {desc.map((item, index) => (
+                  <span key={index}>
                     {item}
                     <br />
                   </span>

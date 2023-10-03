@@ -6,7 +6,7 @@ import arrowIcon from "../../Assets/Icons/arrow.png";
 
 export const RouteDetails = () => {
   const { mapData } = useMapData();
-  console.log(mapData);
+
   const { distance } = mapData?.routes[0] || {};
 
   return (
