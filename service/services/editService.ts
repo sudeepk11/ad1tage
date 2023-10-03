@@ -19,7 +19,12 @@ export default async function editService(
   const longitude = data.get("longitude").toString();
   const phoneNumber = data.get("phone").toString();
   const category = data.get("category").toString();
-  const desc = data.get("desc").toString();
+  const desc = data
+    .get("desc")
+    .toString()
+    .replace(/\r/g, "")
+    .replace(/\t/g, "    ")
+    .split("\n");
   const photos = data.get("photos").toString().split(",");
   const userId = data.get("user_id").toString();
   const serviceId = data.get("service_id").toString();

@@ -75,7 +75,7 @@ export default async function Page({ params }: { params: { id: string } }) {
               className="w-full h-fit border border-solid border-greyishBrown rounded-lg p-3"
               placeholder="Enter Category Description"
               name="desc"
-              defaultValue={details.desc}
+              defaultValue={details.desc.join("\n")}
               required
             />
           </div>

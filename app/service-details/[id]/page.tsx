@@ -55,9 +55,6 @@ export default async function ServiceDetails({
     }
   }
 
-  // Formating the description:
-  details.desc = details.desc.replace(/(?:\r\n|\r|\n)/g, "<br>");
-
   const {
     _id,
     name,
@@ -143,11 +140,14 @@ export default async function ServiceDetails({
 
             <div>
               <h3 className="mb-5 text-xl font-medium">Description</h3>
-              {/* This needs to be fixed */}
-              <p
-                className="mb-5 text-base text-justify"
-                dangerouslySetInnerHTML={{ __html: desc }}
-              ></p>
+              <p className="mb-5 text-base text-justify">
+                {desc.map((item) => (
+                  <p>
+                    {item}
+                    <br />
+                  </p>
+                ))}
+              </p>
             </div>
 
             {/* <Button
