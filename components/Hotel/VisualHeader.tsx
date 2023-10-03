@@ -18,6 +18,7 @@ import { useRef, useEffect, useState, useCallback } from "react";
 import { Coords } from "../../types/general";
 import { Service } from "../../types/services";
 import { useRouter } from "next/navigation";
+import { useMapData } from "../../providers/MapDataProvider";
 import axios from "axios";
 
 const settings = {
@@ -34,6 +35,7 @@ export default function VisualHeader({
   photos,
 }: Coords & Pick<Service, "photos">) {
   const router = useRouter();
+  const { setMapData } = useMapData();
   const mapRef = useRef<MapRef>(null!);
   const geolocationRef = useRef<mapboxgl.GeolocateControl>(null!);
   const [userCoords, setUserCoords] = useState<Coords | null>(null);
@@ -67,8 +69,8 @@ export default function VisualHeader({
     const { data } = await axios.get(
       `https://api.mapbox.com/directions/v5/mapbox/driving/${userCoords.longitude},${userCoords.latitude};${longitude},${latitude}?steps=true&geometries=geojson&access_token=${process.env.NEXT_PUBLIC_MAPBOX_KEY}`
     );
+    setMapData(data);
     const coordinates = data.routes[0].geometry.coordinates;
-    console.log(data.routes[0]);
     setDuration(data.routes[0].duration);
     const geojson: mapboxgl.GeoJSONSourceOptions["data"] = {
       type: "Feature",

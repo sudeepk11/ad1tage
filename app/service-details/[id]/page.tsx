@@ -9,7 +9,6 @@ import Button from "../../../components/Common/Button";
 import callIcon from "../../../Assets/Icons/call.png";
 import verifiedIcon from "../../../Assets/Icons/verified.png";
 import locationIcon from "../../../Assets/Icons/location.png";
-import arrowIcon from "../../../Assets/Icons/arrow.png";
 import Rating from "../../../components/Common/Rating";
 import RatingInput from "../../../components/Common/RatingInput";
 import { notFound, redirect } from "next/navigation";
@@ -18,6 +17,7 @@ import { APIResponse } from "../../../types/general";
 import ReviewRef from "../../../components/Hotel/ReviewRef";
 import FormWrapper from "../../../components/Admin/add-services/FormWrapper";
 import addReview from "../../../service/services/addReview";
+import { RouteDetails } from "../../../components/ServiceDetails/routeDetails";
 
 export default async function ServiceDetails({
   params,
@@ -126,11 +126,7 @@ export default async function ServiceDetails({
                     />
                     <p>{address}</p>
                   </div>
-                  {/* TODO: Need to display dynamic data calcuated from map */}
-                  {/* <div className="flex gap-2">
-                    <Image src={arrowIcon} alt="" className="object-contain" />
-                    <p>4 km</p>
-                  </div> */}
+                  <RouteDetails />
                 </div>
                 <div className="flex items-center justify-center gap-2 bg-blue-100 rounded-md px-2 py-3">
                   <p>
