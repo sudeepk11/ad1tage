@@ -45,6 +45,7 @@ export default function VisualHeader({
   >(null);
 
   useEffect(() => {
+    setMapData(null);
     router.refresh();
   }, []);
 
