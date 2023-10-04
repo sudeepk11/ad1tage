@@ -9,7 +9,6 @@ import Button from "../../../components/Common/Button";
 import callIcon from "../../../Assets/Icons/call.png";
 import verifiedIcon from "../../../Assets/Icons/verified.png";
 import locationIcon from "../../../Assets/Icons/location.png";
-import arrowIcon from "../../../Assets/Icons/arrow.png";
 import Rating from "../../../components/Common/Rating";
 import RatingInput from "../../../components/Common/RatingInput";
 import { notFound, redirect } from "next/navigation";
@@ -18,6 +17,7 @@ import { APIResponse } from "../../../types/general";
 import ReviewRef from "../../../components/Hotel/ReviewRef";
 import FormWrapper from "../../../components/Admin/add-services/FormWrapper";
 import addReview from "../../../service/services/addReview";
+import { RouteDetails } from "../../../components/ServiceDetails/routeDetails";
 
 export default async function ServiceDetails({
   params,
@@ -70,6 +70,7 @@ export default async function ServiceDetails({
     phoneNumber,
     Owner,
   } = details;
+
   return (
     <div>
       <VisualHeader
@@ -80,23 +81,29 @@ export default async function ServiceDetails({
       <div className="grid grid-cols-12 px-4 lg:px-4 max-lg:flex-col gap-4">
         {/* Service details */}
         <div className="lg:col-span-7 col-span-12 max-lg:w-full px-4 max-lg:order-last">
+          {/* Title */}
           <div className="flex justify-between py-5 mt-4">
             <h1
-              className={`text-3xl flex max-md:flex-col w-full ${josefin.className} font-semibold`}
+              className={` text-3xl flex items-center leading-10 w-full ${josefin.className} font-semibold flex-wrap`}
             >
-              {name}
+              <span>{name}</span>
               {isApproved && (
-                <Image src={verifiedIcon} alt="" className="object-contain" />
+                <Image
+                  src={verifiedIcon}
+                  alt=""
+                  className="object-contain mx-2"
+                />
               )}
-              <div className="flex md:mx-5">
-                {true && (
-                  <span className=" flex items-center justify-center text-[15px] text-primary bg-blue-100 mx-4 px-4 border-primary border-solid border-2 rounded-full">
+              <div className="flex">
+                {featured && (
+                  <span className=" flex items-center justify-center text-[15px] text-primary bg-blue-100 md:mx-4 px-4 border-primary border-solid border-2 rounded-full">
                     # ad1tage recommended
                   </span>
                 )}
               </div>
             </h1>
           </div>
+          {/* Address and owner bar */}
           <div className="room-details flex gap-2 mt-[12px] justify-between flex-wrap mb-6">
             <div className="pb-[54px] w-full">
               <div className="flex w-full justify-between my-5">
@@ -119,10 +126,7 @@ export default async function ServiceDetails({
                     />
                     <p>{address}</p>
                   </div>
-                  <div className="flex gap-2">
-                    <Image src={arrowIcon} alt="" className="object-contain" />
-                    <p>4 km</p>
-                  </div>
+                  <RouteDetails />
                 </div>
                 <div className="flex items-center justify-center gap-2 bg-blue-100 rounded-md px-2 py-3">
                   <p>
@@ -135,49 +139,14 @@ export default async function ServiceDetails({
 
             <div>
               <h3 className="mb-5 text-xl font-medium">Description</h3>
-              <p className="mb-5 text-base text-justify">{desc}</p>
-              {/* <p className="mb-5 text-base text-justify">
-                Discover the best of Austin, with this studio East Austin
-                apartment with balcony views over the city. It’ll be easy to
-                simply show up and start living in this lavishly Blueground
-                furnished apartment with its fully-equipped kitchen, spacious
-                living room, and our dedicated, on-the-ground support. (ID
-                #ATX6)
+              <p className="mb-5 text-base text-justify">
+                {desc.map((item, index) => (
+                  <span key={index}>
+                    {item}
+                    <br />
+                  </span>
+                ))}
               </p>
-
-              <p className="mb-5 text-base font-medium">
-                Designed with you in mind
-              </p> */}
-
-              {/* <p className="mb-5 text-base  text-justify">
-                Thoughtfully designed with bespoke finishes, modern furnishings,
-                and a fully-equipped kitchen, you’ll enjoy that “I’m home”
-                feeling with this Blueground apartment. Whether you’re lounging
-                in your sophisticated living room streaming the latest and
-                greatest entertainment on the smart TV or premium wireless
-                speaker, or getting some well-earned rest on the superior
-                quality mattress with luxury linens, you’ll fall in love with
-                everything this East Austin apartment has to offer. This
-                apartment also offers in-apartment laundry.
-              </p> */}
-
-              {/* <p className="mb-5 text-base font-medium">
-                Sleeping arrangements
-              </p> */}
-
-              {/* <p className="mb-5 text-base">1 Queen Bed, 63 in / 160 cm</p>
-              <p className="mb-5 text-base font-medium">
-                Arrival and ongoing support
-              </p>
-              <p className="mb-5 text-base  text-justify">
-                The entire apartment is yours to enjoy! You’ll either be
-                personally greeted by a Blueground team member or given self
-                check-in instructions. Throughout your stay, you’ll have access
-                to our Client Experience team through the Blueground App. You
-                can schedule additional cleanings, submit maintenance requests,
-                and view our neighborhood recommendations with just a few taps.
-                We’ll share all details upon confirmation of your stay.
-              </p> */}
             </div>
 
             {/* <Button
@@ -185,26 +154,6 @@ export default async function ServiceDetails({
               ButtonClasses="text-primary border-primary border bg-transparent arrow-up"
             /> */}
           </div>
-
-          {/* <div>
-            <p className="mb-5 text-base font-medium">About the Location</p>
-            <p className="mb-5 text-base text-justify">
-              This furnished apartment is located in East Austin, one of the
-              city’s hippest and most diverse neighborhoods. The area is home to
-              a thriving nightlife scene that includes breweries, cocktail bars,
-              and live-music venues like the Native Hostel and Parish. Anyone
-              who likes to shop will delight in the selection at East Austin
-              boutiques like Take Heart and Raven + Lily. The dining scene is
-              also eclectic, featuring everything from Asian fusion to
-              gastropubs to the world famous Franklin Barbeque, regarded by many
-              to be the best BBQ in the US.
-            </p>
-            <Button
-              ButtonText="See More"
-              ButtonClasses="text-primary border-primary border bg-transparent arrow-down w-fit"
-            />
-          </div> */}
-
           {/* add reviews  */}
           <div id="service-reviews">
             <FormWrapper

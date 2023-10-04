@@ -36,7 +36,7 @@ export default async function Page() {
           buttonText="Add Service"
           callback={addService}
         >
-          <div className="w-full col-span-2 max-md:col-span-8">
+          <div className="w-full col-span-8">
             <label
               className={`block mb-2 text-sm font-bold text-black ${josefin.className}`}
             >
@@ -49,15 +49,14 @@ export default async function Page() {
               name="name"
             />
           </div>
-          <div className="w-full col-span-6 max-md:col-span-8">
+          <div className="w-full col-span-8">
             <label
               className={`block mb-2 text-sm font-bold text-black ${josefin.className}`}
             >
               Description
             </label>
-            <input
+            <textarea
               className="w-full h-[52px] border border-solid border-greyishBrown rounded-lg p-3"
-              type="text"
               placeholder="Enter Category Description"
               name="desc"
             />
@@ -95,19 +94,6 @@ export default async function Page() {
               name="phone"
             />
           </div>
-          {/* <div className="w-full col-span-4 max-md:col-span-8">
-            <label
-              className={`block mb-2 text-sm font-bold text-black ${josefin.className}`}
-            >
-              Image URL
-            </label>
-            <input
-              className="w-full h-[52px] border border-solid border-greyishBrown rounded-lg p-3"
-              type="text"
-              placeholder="Enter Image URL"
-              name="photos"
-            />
-          </div> */}
           <MultiImageUploader />
           <LocationForm />
           <input type="hidden" name="user_id" value={userId} />

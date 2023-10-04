@@ -18,6 +18,7 @@ import { useRef, useEffect, useState, useCallback } from "react";
 import { Coords } from "../../types/general";
 import { Service } from "../../types/services";
 import { useRouter } from "next/navigation";
+import { useMapData } from "../../providers/MapDataProvider";
 import axios from "axios";
 
 const settings = {
@@ -25,7 +26,7 @@ const settings = {
   infinite: true,
   speed: 500,
   slidesToShow: 1,
-  variableWidth: true,
+  slidesToScroll: 1,
 };
 
 export default function VisualHeader({
@@ -34,6 +35,7 @@ export default function VisualHeader({
   photos,
 }: Coords & Pick<Service, "photos">) {
   const router = useRouter();
+  const { setMapData } = useMapData();
   const mapRef = useRef<MapRef>(null!);
   const geolocationRef = useRef<mapboxgl.GeolocateControl>(null!);
   const [userCoords, setUserCoords] = useState<Coords | null>(null);
@@ -43,6 +45,7 @@ export default function VisualHeader({
   >(null);
 
   useEffect(() => {
+    setMapData(null);
     router.refresh();
   }, []);
 
@@ -67,6 +70,7 @@ export default function VisualHeader({
     const { data } = await axios.get(
       `https://api.mapbox.com/directions/v5/mapbox/driving/${userCoords.longitude},${userCoords.latitude};${longitude},${latitude}?steps=true&geometries=geojson&access_token=${process.env.NEXT_PUBLIC_MAPBOX_KEY}`
     );
+    setMapData(data);
     const coordinates = data.routes[0].geometry.coordinates;
     setDuration(data.routes[0].duration);
     const geojson: mapboxgl.GeoJSONSourceOptions["data"] = {
@@ -81,22 +85,24 @@ export default function VisualHeader({
   }, [userCoords, latitude, longitude]);
 
   return (
-    <div className="grid grid-cols-12 gap-6 relative overflow-hidden property-detail hotel-suggestion w-[98%] mx-auto my-2 p-4">
-      <Slider {...settings} className="col-span-7 max-lg:col-span-12">
-        {photos.map((item) => (
-          <Image
-            className="w-full object-contain md:h-[450px] rounded-lg"
-            src={photos ? photos[0] : ""}
-            alt="item"
-            width={300}
-            height={200}
-            key={item}
-          />
-        ))}
-      </Slider>
+    <div className="grid grid-cols-12 gap-6 relative overflow-hidden property-detail hotel-suggestion w-[98%] h-fit mx-auto my-2 p-4">
+      <div className="col-span-7 max-lg:col-span-12 md:h-fit max-md:w-full">
+        <Slider {...settings}>
+          {photos.map((item) => (
+            <Image
+              className="w-full object-contain h-full rounded-lg"
+              src={item}
+              alt="item"
+              width={1200}
+              height={600}
+              key={item}
+            />
+          ))}
+        </Slider>
+      </div>
       <div
         id="map-container"
-        className="md:sticky right-0 md:order-2 order-1 sw-full h-[450px] rounded-lg col-span-5 max-lg:col-span-12"
+        className="md:sticky right-0 md:order-2 order-1 sw-full h-[400px] lg:h-full rounded-lg col-span-5 max-lg:col-span-12"
       >
         <div className="absolute z-50 left-4 bottom-4 bg-black/60 text-white py-3 px-6 flex flex-col rounded">
           <p className="text-sm">

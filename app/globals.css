@@ -105,16 +105,16 @@ div.property-detail .slick-list {
 .property-detail.hotel-suggestion .slick-arrow.slick-prev,
 .property-detail.hotel-suggestion .slick-prev:hover,
 .property-detail.hotel-suggestion .slick-prev:focus {
-  left: 50px;
-  background: url("../images/secondary-solid-color-arrow.png") no-repeat center;
+  left: 10px;
+  background: url("../Assets/Icons/arrow-left.png") no-repeat center;
   width: 55px;
   height: 55px;
 }
 .property-detail.hotel-suggestion .slick-arrow.slick-next,
 .property-detail.hotel-suggestion .slick-next:hover,
 .property-detail.hotel-suggestion .slick-next:focus {
-  right: 50px;
-  background: url("../images/blog-arrow-right.png") no-repeat center;
+  right: 10px;
+  background: url("../Assets/Icons/arrow-right.png") no-repeat center;
   width: 55px;
   height: 55px;
 }

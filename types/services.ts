@@ -16,7 +16,7 @@ export type Service = {
   rating: number;
   featured: boolean;
   isApproved: boolean;
-  desc: string;
+  desc: [string];
   Owner: User;
   category: Category;
   views: number | any[];

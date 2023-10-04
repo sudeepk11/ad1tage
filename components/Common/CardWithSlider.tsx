@@ -6,8 +6,6 @@ import sliderImg2 from "../../images/hero.png";
 import sliderImg3 from "../../images/login-form-img-1.png";
 import Link from "next/link";
 import Slider from "react-slick";
-import "slick-carousel/slick/slick.css";
-import "slick-carousel/slick/slick-theme.css";
 
 var settings = {
   dots: true,
@@ -33,8 +31,8 @@ const CardWithSlider = (props) => {
                   src={item}
                   alt=""
                   key={item}
-                  width={200}
-                  height={200}
+                  width={600}
+                  height={300}
                 />
               </div>
             ))}
