@@ -7,16 +7,17 @@ import Philosophy from "./Philosophy";
 import Mission from "./Mission";
 import Goals from "./Goals";
 
+
 const About = () => {
   return (
     <div className="flex container-2xl max-lg:px-4 lg:px-[50px] max-xl:gap-12 xl:gap-[40px] max-lg:flex-col">
-      <div className="sticky flex flex-col justify-center w-1/2 h-screen top-[30px] max-md:w-full max-lg:mt-[30px]">
+      <div className="static md:sticky flex flex-col justify-center w-1/2 h-fit md:h-screen top-[30px] max-md:w-full max-lg:mt-[30px]">
         <Image
           src={aboutImg}
           alt=""
           className="object-contain h-fit left-0 w-full rounded-lg"
         />
-        <p className="text-center font-bold text-2xl mt-4 mb-6 max-md:font-medium max-md:text-base">
+        <p className="text-center font-thin text-2xl mt-4 mb-6 max-md:font-medium max-md:text-base">
           The dedicated minds & vision behind ad1tage, your companions in making
           senior life easier.
         </p>
