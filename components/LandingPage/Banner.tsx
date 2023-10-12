@@ -13,7 +13,7 @@ const Banner = () => {
         >
           Empowering Seniors: Find Nearby Services with Ease!
         </h1>
-        <p className="text-lg mb-[18px] text-justify">
+        <p className="text-lg mb-[18px] text-justify font-light">
           Discover personalized and reliable solutions for a vibrant and
           fulfilling senior lifestyle. Your gateway to a life enriched with
           convenience and care.
