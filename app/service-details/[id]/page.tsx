@@ -127,13 +127,16 @@ export default async function ServiceDetails({
                     <p>{address}</p>
                   </div>
                   <RouteDetails />
-                </div>
-                <div className="flex items-center justify-center gap-2 bg-blue-100 rounded-md px-2 py-3">
+                  <div>
                   <p>
                     <span className="text-base text-primary">Owner:</span>{" "}
                     {Owner.username}
                   </p>
+
+                  </div>
+            
                 </div>
+            
               </div>
             </div>
 
