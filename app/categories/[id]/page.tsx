@@ -34,12 +34,12 @@ export default async function CategoryId({
           >
             Category: {name}
           </h2>
-          <Button
+          {/* <Button
             ButtonText={"Showing Near Bangalore"}
             ButtonClasses={
               "!bg-white text-[#2A86DB] font-semibold w-fit flex items-center justify-center max-w-fit max-h-[38px] max-xl:w-full self-center"
             }
-          ></Button>
+          ></Button> */}
         </div>
         <SearchServicesBox services={services} />
       </div>

@@ -60,12 +60,12 @@ const CategoriesListing = () => {
         >
           Categories
         </h2>
-        <Button
+        {/* <Button
           ButtonText={"Showing Near Bangalore"}
           ButtonClasses={
             "!bg-white text-[#2A86DB] font-semibold w-fit flex items-center justify-center max-w-fit max-h-[38px] max-xl:w-full"
           }
-        ></Button>
+        ></Button> */}
       </div>
       <div className="grid lg:grid-cols-4 md:grid-cols-4 sm:grid-cols-2 gap-6 hotel-card-design max-lg:grid-cols-1">
         {categories.map((category, i) => (
