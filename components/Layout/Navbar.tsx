@@ -48,7 +48,7 @@ const Navbar = () => {
         <div className="flex gap-[50px]">
           <Link className="flex items-center text-gray-600" href="/">
             <Image
-              className="w-[80px] min-w-[80px]"
+              className="w-[95px] min-w-[80px]"
               src={logoLionImage}
               alt=""
             />
