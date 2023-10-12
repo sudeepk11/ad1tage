@@ -37,10 +37,10 @@ export const adminNavDropdownItems = [
     name: "Dashboard",
     link: "/admin",
   },
-  {
-    name: "My Profile",
-    link: "/tenent",
-  },
+  // {
+  //   name: "My Profile",
+  //   link: "/tenent",
+  // },
 ];
 
 export const footerMenuMainPageOption = [
