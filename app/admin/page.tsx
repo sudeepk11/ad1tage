@@ -67,9 +67,9 @@ export default async function Page() {
       </p>
       <div className="justify-between grid-cols-3 lg:grid lg:gap-6">
         <DashBoardStats title="Total Services" value={servicesCount} />
-        {role === "admin" && (
+        {/* {role === "admin" && (
           <DashBoardStats title="30-Day Website Views" value={websiteVisits} />
-        )}
+        )} */}
         <DashBoardStats
           title="30-Day Calls"
           value={typeof callCount === "number" ? callCount : callCount.length}
