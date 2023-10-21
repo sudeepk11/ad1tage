@@ -20,6 +20,7 @@ export type Service = {
   Owner: User;
   category: Category;
   views: number | any[];
+  websiteLink: String;
 };
 
 export type Review = {

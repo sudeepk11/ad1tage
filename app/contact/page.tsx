@@ -67,7 +67,7 @@ const contact = () => {
                   </div>
                   <div className="w-full">
                     <h4 className="mb-1 text-xl font-semibold">Call Us</h4>
-                    <p className="text-base text-body-color">+919008758909</p>
+                    <a href="tel:+919739555119" className="text-base text-body-color">+919739555119</a>
                   </div>
                 </div>
                 <div className="mb-8 flex w-full max-w-[370px]">

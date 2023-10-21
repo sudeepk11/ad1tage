@@ -7,6 +7,7 @@ import { josefin } from "../../../utils/utilsFonts";
 import Link from "next/link";
 import Button from "../../../components/Common/Button";
 import callIcon from "../../../Assets/Icons/call.png";
+import webLink from '../../../Assets/Icons/web-link.png'
 import verifiedIcon from "../../../Assets/Icons/verified.png";
 import locationIcon from "../../../Assets/Icons/location.png";
 import Rating from "../../../components/Common/Rating";
@@ -68,6 +69,7 @@ export default async function ServiceDetails({
     featured,
     isApproved,
     phoneNumber,
+    websiteLink,
     Owner,
   } = details;
 
@@ -113,7 +115,7 @@ export default async function ServiceDetails({
                   </span>
                 </a>
                 <div className="text-base bg-primary rounded-[20px] px-5 flex items-center text-white py-[2px] w-max">
-                  ID: {_id.slice(0, 4)}
+                  Service ID: {_id.slice(0, 5)}
                 </div>
               </div>
               <div className="flex max-md:flex-col max-md:gap-2 w-full justify-between my-5">
@@ -128,15 +130,15 @@ export default async function ServiceDetails({
                   </div>
                   <RouteDetails />
                   <div>
-                  <p>
-                    <span className="text-base text-primary">Owner:</span>{" "}
-                    {Owner.username}
-                  </p>
+                    <p>
+                      <span className="text-base text-primary">Owner:</span>{" "}
+                      {Owner.username}
+                    </p>
 
                   </div>
-            
+
                 </div>
-            
+
               </div>
             </div>
 
@@ -214,13 +216,24 @@ export default async function ServiceDetails({
             )}
           </div>
           <form action={addOneToCall} className="w-full">
-            {/* <Link href={`tel:${phoneNumber}`}> */}
-            <Button
-              ButtonText="Call"
-              icon={callIcon}
-              ButtonClasses="!bg-primary mt-6 text-white font-medium w-full flex items-center justify-center my-6 !py-3"
-            />
-            {/* </Link> */}
+            <a href={`tel:${phoneNumber}`}>
+              <Button
+                ButtonText="Call"
+                icon={callIcon}
+                ButtonClasses="!bg-primary mt-6 text-white font-medium w-full flex items-center justify-center my-6 !py-3"
+              />
+            </a>
+
+            {websiteLink && (
+              <a href={`${websiteLink}`}>
+                <Button
+                  ButtonText="Website"
+                  icon={webLink}
+                  ButtonClasses="!bg-primary mt-6 text-white font-medium w-full flex items-center justify-center my-6 !py-3"
+                />
+              </a>
+            )}
+
           </form>
         </div>
       </div>
