@@ -19,6 +19,7 @@ export default async function addService(
   const longitude = data.get("longitude").toString();
   const phoneNumber = data.get("phone").toString();
   const category = data.get("category").toString();
+  const website = data.get("website").toString();
   const desc = data
     .get("desc")
     .toString()
@@ -54,6 +55,7 @@ export default async function addService(
         phoneNumber,
         category,
         desc,
+        website,
         Owner: userId,
         photos: [...photos],
       }),

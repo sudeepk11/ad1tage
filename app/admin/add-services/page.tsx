@@ -94,6 +94,20 @@ export default async function Page() {
               name="phone"
             />
           </div>
+
+          <div className="w-full col-span-2 max-md:col-span-4">
+            <label
+              className={`block mb-2 text-sm font-bold text-black ${josefin.className}`}
+            >
+              Website URL ( Optional )
+            </label>
+            <input
+              className="w-full h-[52px] border border-solid border-greyishBrown rounded-lg p-3"
+              type="text"
+              placeholder="www.myservice.com"
+              name="website"
+            />
+          </div>
           <MultiImageUploader />
           <LocationForm />
           <input type="hidden" name="user_id" value={userId} />
