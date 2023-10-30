@@ -13,6 +13,7 @@ const Button = ({
   return (
     <button
       type={type || "submit"}
+    
       disabled={disabled}
       onClick={ButtonClicked}
       className={`flex gap-1 bg-primary rounded-[8px] px-[31px] py-2 laptopScreen:text-base cursor-pointer max-lg:px-4  max-lg:text-sm transition-opacity ${

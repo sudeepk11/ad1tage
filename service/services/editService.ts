@@ -29,6 +29,7 @@ export default async function editService(
   const userId = data.get("user_id").toString();
   const serviceId = data.get("service_id").toString();
   const pincode = data.get("pincode").toString();
+  const websiteLink = data.get("website").toString();
   const plotnumber = data.get("plotnumber").toString();
 
   try {
@@ -39,6 +40,7 @@ export default async function editService(
         city,
         address,
         pincode,
+        websiteLink,
         plotnumber,
         lattitude,
         longitude,

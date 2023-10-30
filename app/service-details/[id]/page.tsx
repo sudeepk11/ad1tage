@@ -226,17 +226,17 @@ export default async function ServiceDetails({
 
             
 
-            {websiteLink && (
-              <a href={`${websiteLink}`}>
+          </form>
+
+          {websiteLink && (
+              <a href={`${websiteLink}`} target="_blank">
                 <Button
                   ButtonText="Website"
                   icon={webLink}
-                  ButtonClasses="!bg-primary mt-6 text-white font-medium w-full flex items-center justify-center my-6 !py-3"
+                  ButtonClasses="!bg-white border-blue-300 text-black border border-1 mt-6 font-medium w-full flex items-center justify-center my-6 !py-3"
                 />
               </a>
             )}
-
-          </form>
         </div>
       </div>
     </div>

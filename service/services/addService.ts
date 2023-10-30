@@ -19,7 +19,7 @@ export default async function addService(
   const longitude = data.get("longitude").toString();
   const phoneNumber = data.get("phone").toString();
   const category = data.get("category").toString();
-  const website = data.get("website").toString();
+  const websiteLink = data.get("website").toString();
   const desc = data
     .get("desc")
     .toString()
@@ -31,17 +31,9 @@ export default async function addService(
   const pincode = data.get("pincode").toString();
   const plotnumber = data.get("plotnumber").toString();
 
-  // console.log({
-  //   name,
-  //   desc: data
-  //     .get("desc")
-  //     .toString()
-  //     .replace(/\r/g, "")
-  //     .replace(/\t/g, "    ")
-  //     .split("\n"),
-  // });
+
+
   try {
-    // return { status: "success", message: "success" };
     const { data } = await axios.post(
       `${process.env.NEXT_PUBLIC_API_URL}/services`,
       JSON.stringify({
@@ -55,7 +47,7 @@ export default async function addService(
         phoneNumber,
         category,
         desc,
-        website,
+        websiteLink,
         Owner: userId,
         photos: [...photos],
       }),

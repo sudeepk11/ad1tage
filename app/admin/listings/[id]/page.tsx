@@ -119,6 +119,22 @@ export default async function Page({ params }: { params: { id: string } }) {
               required
             />
           </div>
+
+          <div className="w-full col-span-2 max-md:col-span-4">
+            <label
+              className={`block mb-2 text-sm font-bold text-black ${josefin.className}`}
+            >
+              Website Link ( Optional )
+            </label>
+            <input
+              className="w-full h-[52px] border border-solid border-greyishBrown rounded-lg p-3"
+              type="text"
+              placeholder="https://www.myservice.com"
+              name="website"
+              defaultValue={details.websiteLink}
+     
+            />
+          </div>
           <MultiImageUploader initImages={details.photos} />
           {/* <div className="w-full col-span-4 max-md:col-span-8">
             <label

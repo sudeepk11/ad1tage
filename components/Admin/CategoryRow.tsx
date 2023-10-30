@@ -22,7 +22,6 @@ export default function CategoryRow({
     const authToken = cookies().get("access_token")?.value;
     if (!authToken) return redirect("/login");
     const id = data.get("id").toString();
-
     try {
       const { data } = await axios.delete(
         `${process.env.NEXT_PUBLIC_API_URL}/categories/${id}`,

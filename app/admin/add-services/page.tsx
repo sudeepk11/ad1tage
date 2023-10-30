@@ -104,7 +104,7 @@ export default async function Page() {
             <input
               className="w-full h-[52px] border border-solid border-greyishBrown rounded-lg p-3"
               type="text"
-              placeholder="www.myservice.com"
+              placeholder="https://www.myservice.com"
               name="website"
             />
           </div>
