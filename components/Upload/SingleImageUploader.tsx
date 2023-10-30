@@ -28,8 +28,8 @@ const SingleImageUploader = ({ initImage = "" }) => {
         `${process.env.NEXT_PUBLIC_API_URL}/upload/images`,
         formData
       );
-      setImage(data.data.images[0]);
-      fileInputRef.current.value = "";
+      setImage(null);
+      fileInputRef.current.value = null;
       setUploading(false);
     } catch (error) {
       console.log(error);
