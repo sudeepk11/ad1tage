@@ -28,8 +28,8 @@ const SingleImageUploader = ({ initImage = "" }) => {
         `${process.env.NEXT_PUBLIC_API_URL}/upload/images`,
         formData
       );
-      setImage(null);
-      fileInputRef.current.value = null;
+      setImage(data.data.images[0]);
+      fileInputRef.current.value = "";
       setUploading(false);
     } catch (error) {
       console.log(error);
@@ -39,16 +39,16 @@ const SingleImageUploader = ({ initImage = "" }) => {
   };
 
   const handelDelete = async () => {
-    // Delete image using api call
+
     const id = image.split("/").pop();
 
     try {
-      const { data } = await axios.delete(
-        `${process.env.NEXT_PUBLIC_API_URL}/images/${id}`
-      );
-      if (data.status === "success") {
-        setImage("");
-      }
+      // const { data } = await axios.delete(
+      //   `${process.env.NEXT_PUBLIC_API_URL}/images/${id}`
+      // );
+
+      setImage("");
+
     } catch (error) {
       console.log(error);
     }
