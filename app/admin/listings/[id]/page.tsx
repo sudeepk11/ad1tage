@@ -131,8 +131,7 @@ export default async function Page({ params }: { params: { id: string } }) {
               type="text"
               placeholder="https://www.myservice.com"
               name="website"
-              defaultValue={details.websiteLink}
-     
+              defaultValue={details.websiteLink as string}
             />
           </div>
           <MultiImageUploader initImages={details.photos} />
