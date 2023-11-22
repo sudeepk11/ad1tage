@@ -42,12 +42,6 @@ const MultiImageUploader = ({ initImages = [] }) => {
           setImages={setImages}
         />
       )}
-      {/* <input
-        className="hidden w-full h-[52px] border border-solid border-greyishBrown rounded-lg p-3"
-        type="text"
-        placeholder="Enter Image URL"
-        name="photos"
-      /> */}
     </div>
   );
 };

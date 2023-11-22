@@ -43,11 +43,9 @@ const SingleImageUploader = ({ initImage = "" }) => {
     const id = image.split("/").pop();
 
     try {
-      // const { data } = await axios.delete(
-      //   `${process.env.NEXT_PUBLIC_API_URL}/images/${id}`
-      // );
-
-      setImage("");
+      const { data } = await axios.delete(
+        `${process.env.NEXT_PUBLIC_API_URL}/images/${id}`
+      );
 
     } catch (error) {
       console.log(error);

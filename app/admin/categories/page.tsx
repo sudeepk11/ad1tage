@@ -8,6 +8,7 @@ import CategoryRow from "../../../components/Admin/CategoryRow";
 import FormWrapper from "../../../components/Admin/add-services/FormWrapper";
 import addCategory from "../../../service/categories/addCategory";
 import SingleImageUploader from "../../../components/Upload/SingleImageUploader";
+import AddCategoryForm from "../../../components/Admin/add-category/AddCategoryForm";
 
 export default async function Page() {
   let categories: Category[] = [];
@@ -87,40 +88,7 @@ export default async function Page() {
           Add Category
         </p>
         <div className="flex justify-between gap-4 max-md:flex-col md:flex-wrap">
-          <FormWrapper
-            formClassName="grid grid-cols-7 w-full place-items-end gap-3"
-            buttonClassName="w-full h-[52px] bg-primary rounded-lg text-white text-base flex items-center justify-center"
-            buttonWrapperClassName="w-full col-span-1 max-md:col-span-3 max-md:col-start-5"
-            callback={addCategory}
-          >
-            <div className="w-full col-span-2">
-              <label
-                className={`block mb-2 text-sm font-bold text-black ${josefin.className}`}
-              >
-                Name
-              </label>
-              <input
-                className="w-full h-[52px] border border-solid border-greyishBrown rounded-lg p-3"
-                type="text"
-                name="name"
-                placeholder="Enter Category Name"
-              />
-            </div>
-            <div className="w-full col-span-5">
-              <label
-                className={`block mb-2 text-sm font-bold text-black ${josefin.className}`}
-              >
-                Description
-              </label>
-              <input
-                className="w-full h-[52px] border border-solid border-greyishBrown rounded-lg p-3"
-                type="text"
-                name="desc"
-                placeholder="Enter Category Description"
-              />
-            </div>
-            <SingleImageUploader />
-          </FormWrapper>
+          <AddCategoryForm />
         </div>
       </div>
     </div>
