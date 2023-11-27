@@ -1,18 +1,4 @@
-import Image from "next/image";
 import React from "react";
-import FooterLogo from "../../images/footer-logo.png";
-import FooterLogoText from "../../images/footer-logo-text.png";
-import {
-  footerMenuMainPageOption,
-  footerMenuOtherOption,
-} from "../../utils/utilsItems";
-import { josefin } from "../../utils/utilsFonts";
-import Button from "../Common/Button";
-import emailIcon from "../../images/email-icon.png";
-import instaIcon from "../../images/insta.png";
-import linkedIn from "../../images/linkedIn.png";
-import whatappIcon from "../../images/whatapp.png";
-import Link from "next/link";
 
 const Footer = () => {
   return (
