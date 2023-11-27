@@ -1,14 +1,10 @@
 "use client";
 import { Fragment, useEffect, useRef, useState } from "react";
-import FilterOptions from "../Hotel/filterOptions";
 import Map, { GeolocateControl, Marker } from "react-map-gl";
 import { Coords } from "../../types/general";
 import mapboxgl from "mapbox-gl";
 import { useRouter } from "next/navigation";
 import axios from "axios";
-import { Service } from "../../types/services";
-import { toast } from "react-hot-toast";
-import CardWithSlider from "../../components/Common/CardWithSlider";
 import MapMarker from "../Common/MapMarker";
 import { useNearbyServices } from "../../providers/NearbyServicesProvider";
 

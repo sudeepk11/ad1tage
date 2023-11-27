@@ -1,5 +1,4 @@
 "use client";
-import { Formik, Field, Form } from "formik";
 import Image from "next/image";
 import React from "react";
 import arrowDropdown from "../../images/arrow-down-solid.png";

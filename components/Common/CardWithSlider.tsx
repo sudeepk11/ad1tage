@@ -1,9 +1,5 @@
 "use client";
 import Image from "next/image";
-import sliderImg from "../../images/slider-img.png";
-import sliderImg1 from "../../images/kitchen-img-2.png";
-import sliderImg2 from "../../images/hero.png";
-import sliderImg3 from "../../images/login-form-img-1.png";
 import Link from "next/link";
 import Slider from "react-slick";
 
@@ -38,39 +34,9 @@ const CardWithSlider = (props) => {
             ))}
           </Slider>
         ) : (
-          <Slider {...settings}>
-            <div className="relative before:bg-slider-overlay before:absolute before:h-full before:w-full before:top-0 before:left-0">
-              <Image
-                className="w-full h-[240px] object-cover"
-                src={sliderImg}
-                alt=""
-              />
-            </div>
-
-            <div className="relative before:bg-slider-overlay before:absolute before:h-full before:w-full before:top-0 before:left-0">
-              <Image
-                className="w-full h-[240px] object-cover"
-                src={sliderImg1}
-                alt=""
-              />
-            </div>
-
-            <div className="relative before:bg-slider-overlay before:absolute before:h-full before:w-full before:top-0 before:left-0">
-              <Image
-                className="w-full h-[240px] object-cover"
-                src={sliderImg2}
-                alt=""
-              />
-            </div>
-
-            <div className="relative before:bg-slider-overlay before:absolute before:h-full before:w-full before:top-0 before:left-0">
-              <Image
-                className="w-full h-[240px] object-cover"
-                src={sliderImg3}
-                alt=""
-              />
-            </div>
-          </Slider>
+          <div>
+            <p className="text-center text-2xl font-semibold pt-4">No Images</p>
+          </div>
         )}
         {/* <div className="text-white bg-black bg-opacity-50 px-[11px] py-[3px] -mt-[45px] relative z-1 w-max ml-4 rounded-2xl mb-[10px]">
         $12.00<span className="text-secondary">/Month</span>

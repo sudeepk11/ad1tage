@@ -2,8 +2,7 @@
 import React, { useEffect, useRef, useState } from "react";
 import Button from "./Button";
 import locationIcon from "../../Assets/Icons/location.png";
-import mapboxgl from "mapbox-gl";
-import { Coords, Result } from "../../types/general";
+import { Result } from "../../types/general";
 import axios from "axios";
 import ResultRef from "./ResultRef";
 import useDebounce from "../../hooks/useDebounce";

@@ -1,8 +1,6 @@
 import React from "react";
 import Image from "next/image";
 import Link from "next/link";
-import logoLionImage from "../../images/logo.png";
-import logoText from "../../images/logo-text.png";
 import google from "../../images/google-logo.png";
 import linkedin from "../../images/linkedinLogin.png";
 import { josefin } from "../../utils/utilsFonts";

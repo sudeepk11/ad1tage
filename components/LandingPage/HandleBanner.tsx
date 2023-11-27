@@ -1,7 +1,5 @@
 import React from "react";
-import Link from "next/link";
 import { josefin } from "../../utils/utilsFonts";
-import Button from "../Common/Button";
 
 const HostWithUsHandle = () => {
   return (

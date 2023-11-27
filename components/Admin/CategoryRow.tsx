@@ -1,5 +1,4 @@
 import Image from "next/image";
-import BookingHistoryImage1 from "../../images/bookinghistory1.png";
 import deleteIcon from "../../Assets/Icons/delete.png";
 import editIcon from "../../Assets/Icons/edit.png";
 import { Category } from "../../types/categories";

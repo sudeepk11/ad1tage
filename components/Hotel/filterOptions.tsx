@@ -4,7 +4,6 @@ import listIcon from "../../images/list-icon.png";
 import listBlackIcon from "../../images/menu-icon-black.png";
 import mapIcon from "../../images/map-icon.png";
 import mapWhiteIcon from "../../images/map-icon-white.png";
-import Dropdown from "../Common/Dropdown";
 
 type Props = {
   mapView: boolean;

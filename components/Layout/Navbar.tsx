@@ -2,10 +2,7 @@ import Link from "next/link";
 import React, { useContext, useState, useTransition } from "react";
 import Image from "next/image";
 import logoLionImage from "../../images/logo.png";
-import profileImage from "../../images/profile.png";
 import arrowDown from "../../images/arrow-down.png";
-// import logoText from "../../images/trophy-logo.png";
-import logoText from "../../images/logo-text.png";
 import {
   navbarItems,
   adminNavDropdownItems,

@@ -1,6 +1,4 @@
-import Image from "next/image";
 import Rating from "../Common/Rating";
-import userImg from "../../images/user-img.png";
 import { Review } from "../../types/services";
 
 export default function ReviewRef({ rating, comment, user }: Review) {
@@ -8,7 +6,6 @@ export default function ReviewRef({ rating, comment, user }: Review) {
     <div className="border-b  p-4 flex flex-col items-left my-3">
       <div>
         <div className="flex items-center gap-2">
-
           <p className="font-medium text-[16px]">{user.username}</p>
         </div>
 
