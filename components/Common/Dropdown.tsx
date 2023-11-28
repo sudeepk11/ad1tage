@@ -38,7 +38,7 @@ const Dropdown = ({
         </p>
       </div>
       {filtreMenu && (
-        <div className="p-4 rounded-xl grid grid-cols-2 bg-white mt-2 absolute z-[1] bg-white w-full top-[100%]">
+        <div className="p-4 rounded-xl grid grid-cols-2 bg-white mt-2 absolute z-[1] w-full top-[100%]">
           {/* {arrivalItems.map((items, index) => {
             return (
               <div key={index} className="text-base">

@@ -13,7 +13,6 @@ import { AuthContext } from "../../providers/AuthProvider";
 import logOut from "../../service/auth/logOut";
 import AdminNav from "../Admin/AdminNav";
 const withLogin = [
-  "/tenent",
   "/booking-history",
   "/admin",
   "/admin/setting",
