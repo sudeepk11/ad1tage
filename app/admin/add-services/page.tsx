@@ -3,10 +3,12 @@ import axios from "axios";
 import { Category } from "../../../types/categories";
 import { cookies } from "next/headers";
 import AddServicesForm from "../../../components/Admin/add-services/AddServicesForm";
+import addService from "../../../service/services/addService";
 
 export default async function Page() {
   let categories: Category[] = [];
   const userId = cookies().get("_id")?.value;
+
   try {
     const { data } = await axios.get(
       `${process.env.NEXT_PUBLIC_API_URL}/categories`
@@ -17,7 +19,7 @@ export default async function Page() {
   }
 
   return (
-    <div className="container-2xl max-lg:px-4 lg:px-[50px] py-5">
+    <div className="flex flex-col min-h-[90vh] max-lg:px-4 lg:px-[50px] py-5">
       <div className="flex items-center justify-between gap-4 max-xl:flex-col max-xl:justify-start max-xl:items-start">
         <p
           className={`mt-4 mb-3 text-2xl font-semibold leading-6 text-black ${josefin.className}`}
@@ -25,8 +27,12 @@ export default async function Page() {
           Add Service
         </p>
       </div>
-      <div className="flex justify-between gap-4 max-md:flex-col md:flex-wrap">
-        <AddServicesForm categories={categories} userId={userId} />
+      <div className="flex flex-1 justify-between gap-4 max-md:flex-col md:flex-wrap">
+        <AddServicesForm
+          categories={categories}
+          userId={userId}
+          action={addService}
+        />
       </div>
     </div>
   );

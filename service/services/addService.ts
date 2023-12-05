@@ -13,13 +13,14 @@ export default async function addService(
   const authToken = cookies().get("access_token")?.value;
   if (!authToken) return redirect("/login");
   const name = data.get("name").toString();
+  const displayName = data.get("displayName").toString();
   const city = data.get("city").toString();
   const address = data.get("address").toString();
   const lattitude = data.get("lattitude").toString();
   const longitude = data.get("longitude").toString();
-  const phoneNumber = data.get("phone").toString();
+  const phoneNumber = data.get("phoneNumber").toString();
   const category = data.get("category").toString();
-  const websiteLink = data.get("website").toString();
+  const websiteLink = data.get("websiteLink").toString();
   const desc = data
     .get("desc")
     .toString()
@@ -27,17 +28,16 @@ export default async function addService(
     .replace(/\t/g, "    ")
     .split("\n");
   const photos = data.get("photos").toString().split(",");
-  const userId = data.get("user_id").toString();
+  const userId = data.get("userId").toString();
   const pincode = data.get("pincode").toString();
   const plotnumber = data.get("plotnumber").toString();
-
-
 
   try {
     const { data } = await axios.post(
       `${process.env.NEXT_PUBLIC_API_URL}/services`,
       JSON.stringify({
         name,
+        displayName,
         city,
         address,
         pincode,

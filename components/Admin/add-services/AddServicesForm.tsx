@@ -1,103 +1,153 @@
 "use client";
-import { useState } from "react";
-import addService from "../../../service/services/addService";
-import { josefin } from "../../../utils/utilsFonts";
-import MultiImageUploader from "../../Upload/MultiImageUploader";
-import FormWrapper from "./FormWrapper";
+import { useRef, useState, useEffect, useTransition, useContext } from "react";
+import { useMultistepForm } from "../../../hooks/useMultipleForm";
+import AdditionalDetailsForm from "./AddDetailsForm";
+import BasicDetailsForm from "./BasicDetailsForm";
 import LocationForm from "./LocationPicker";
+import Button from "../../Common/Button";
+import toast from "react-hot-toast";
+import { AuthContext } from "../../../providers/AuthProvider";
 
-const AddServicesForm = ({ categories, userId }) => {
-  const [key, setKey] = useState(0);
+type FormData = {
+  name: string;
+  city: string;
+  address: string;
+  pincode: string;
+  plotnumber: string;
+  lattitude: string;
+  longitude: string;
+  phoneNumber: string;
+  category: string;
+  desc: string;
+  websiteLink: string;
+  photos: string[];
+  userId: string;
+  displayName: string;
+};
 
-  const resetForm = () => {
-    setKey((prev) => prev + 1);
+const INIT_DATA: FormData = {
+  name: "",
+  city: "",
+  address: "",
+  pincode: "",
+  plotnumber: "",
+  lattitude: "12.9716",
+  longitude: "77.5946",
+  phoneNumber: "",
+  category: "",
+  desc: "",
+  websiteLink: "",
+  photos: [],
+  userId: "",
+  displayName: "",
+};
+
+const AddServicesForm = ({ categories, userId, details = null, action }) => {
+  const formRef = useRef(null);
+  const [data, setData] = useState({ ...INIT_DATA });
+  const [isPending, startTransition] = useTransition();
+  const { user } = useContext(AuthContext);
+
+  useEffect(() => {
+    if (details) {
+      setData((prev) => ({
+        ...prev,
+        ...details,
+        userId,
+        category: details.category._id,
+        displayName: details.displayName,
+        serviceId: details._id,
+      }));
+    } else {
+      setData((prev) => ({ ...prev, userId, displayName: user?.username }));
+    }
+  }, [details, userId, user]);
+
+  function updateFields(fields: Partial<FormData>) {
+    setData((prev) => ({ ...prev, ...fields }));
+  }
+
+  const { currentStepIndex, step, isFirstStep, isLastStep, back, next, reset } =
+    useMultistepForm([
+      <BasicDetailsForm {...data} updateFields={updateFields} />,
+      <AdditionalDetailsForm
+        categories={categories}
+        {...data}
+        updateFields={updateFields}
+      />,
+      <LocationForm {...data} updateFields={updateFields} />,
+    ]);
+
+  const onSubmit = (e) => {
+    e.preventDefault();
+    if (currentStepIndex === 1 && data.photos.length === 0)
+      return toast.error("Please upload atleast one image");
+    if (!isLastStep) return next();
+    // Convert data into form data:
+    const formData = new FormData();
+    Object.keys(data).forEach((key) => {
+      formData.append(key, data[key]);
+    });
+    startTransition(async () => {
+      const resp = await action(formData);
+
+      if (resp.status === "success") {
+        toast.success("Success!");
+        setData(INIT_DATA);
+        reset();
+      } else {
+        toast.error(resp.message || "An error occured");
+      }
+    });
   };
 
   return (
-    <FormWrapper
-      formClassName="grid grid-cols-8 w-full place-items-end gap-3 relative"
-      buttonClassName="text-white w-full py-3 flex justify-center items-center"
-      buttonWrapperClassName="w-full col-start-8 col-span-1 max-md:col-span-4 max-md:col-start-5"
-      buttonText="Add Service"
-      callback={addService}
-      resetForm={resetForm}
+    <form
+      ref={formRef}
+      className="w-full flex flex-col justify-between"
+      onSubmit={onSubmit}
     >
-      <div className="w-full col-span-8">
-        <label
-          className={`block mb-2 text-sm font-bold text-black ${josefin.className}`}
-        >
-          Name
-        </label>
-        <input
-          className="w-full h-[52px] border border-solid border-greyishBrown rounded-lg p-3"
-          type="text"
-          placeholder="Enter Name"
-          name="name"
-        />
+      <div className="grid grid-cols-8  place-items-end gap-3  relative">
+        {step}
       </div>
-      <div className="w-full col-span-8">
-        <label
-          className={`block mb-2 text-sm font-bold text-black ${josefin.className}`}
-        >
-          Description
-        </label>
-        <textarea
-          className="w-full h-[52px] border border-solid border-greyishBrown rounded-lg p-3"
-          placeholder="Enter Category Description"
-          name="desc"
-        />
+      <div className="flex-grow"></div>
+      <div className="col-span-full flex justify-between w-full my-4">
+        {!isFirstStep && (
+          <Button
+            ButtonClasses="text-white py-3 flex justify-center items-center"
+            ButtonText="Previous"
+            type="button"
+            ButtonClicked={back}
+          />
+        )}
+        <div className="flex-grow"></div>
+        {!details ? (
+          <Button
+            ButtonClasses="text-white py-3 flex justify-center align-self-end "
+            ButtonText={
+              isLastStep
+                ? isPending
+                  ? "Adding Service"
+                  : "Add Service"
+                : "Next"
+            }
+            disabled={isPending}
+          />
+        ) : (
+          <Button
+            ButtonClasses="text-white py-3 flex justify-center align-self-end "
+            ButtonText={
+              isLastStep
+                ? isPending
+                  ? "Updating Service"
+                  : "Update Service"
+                : "Next"
+            }
+            disabled={isPending}
+          />
+        )}
       </div>
-
-      <div className="w-full col-span-2 max-md:col-span-4">
-        <label
-          className={`block mb-2 text-sm font-bold text-black ${josefin.className}`}
-        >
-          Category
-        </label>
-        <select
-          className="w-full h-[52px] border border-solid bg-white border-greyishBrown rounded-lg p-3"
-          placeholder="Enter Category"
-          name="category"
-        >
-          {categories.map((opt) => (
-            <option value={opt._id} key={opt._id}>
-              {opt.category}
-            </option>
-          ))}
-        </select>
-      </div>
-
-      <div className="w-full col-span-2 max-md:col-span-4">
-        <label
-          className={`block mb-2 text-sm font-bold text-black ${josefin.className}`}
-        >
-          Phone Number
-        </label>
-        <input
-          className="w-full h-[52px] border border-solid border-greyishBrown rounded-lg p-3"
-          type="text"
-          placeholder="Enter Phone Number"
-          name="phone"
-        />
-      </div>
-
-      <div className="w-full col-span-2 max-md:col-span-4">
-        <label
-          className={`block mb-2 text-sm font-bold text-black ${josefin.className}`}
-        >
-          Website URL ( Optional )
-        </label>
-        <input
-          className="w-full h-[52px] border border-solid border-greyishBrown rounded-lg p-3"
-          type="text"
-          placeholder="https://www.myservice.com"
-          name="website"
-        />
-      </div>
-      <MultiImageUploader key={key} />
-      <LocationForm key={key + 1} />
-      <input type="hidden" name="user_id" value={userId} />
-    </FormWrapper>
+    </form>
   );
 };
 

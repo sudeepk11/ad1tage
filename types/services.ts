@@ -4,6 +4,7 @@ import { Category } from "./categories";
 export type Service = {
   _id: string;
   name: string;
+  displayName: string;
   city: string;
   address: string;
   pincode: string;
