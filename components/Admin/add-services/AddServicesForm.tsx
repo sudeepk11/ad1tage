@@ -69,13 +69,14 @@ const AddServicesForm = ({ categories, userId, details = null, action }) => {
 
   const { currentStepIndex, step, isFirstStep, isLastStep, back, next, reset } =
     useMultistepForm([
-      <BasicDetailsForm {...data} updateFields={updateFields} />,
+      <BasicDetailsForm key={1} {...data} updateFields={updateFields} />,
       <AdditionalDetailsForm
+        key={2}
         categories={categories}
         {...data}
         updateFields={updateFields}
       />,
-      <LocationForm {...data} updateFields={updateFields} />,
+      <LocationForm key={3} {...data} updateFields={updateFields} />,
     ]);
 
   const onSubmit = (e) => {
