@@ -2,10 +2,7 @@ import Link from "next/link";
 import React, { useContext, useState, useTransition } from "react";
 import Image from "next/image";
 import logoLionImage from "../../images/logo.png";
-import profileImage from "../../images/profile.png";
 import arrowDown from "../../images/arrow-down.png";
-// import logoText from "../../images/trophy-logo.png";
-import logoText from "../../images/logo-text.png";
 import {
   navbarItems,
   adminNavDropdownItems,
@@ -16,7 +13,6 @@ import { AuthContext } from "../../providers/AuthProvider";
 import logOut from "../../service/auth/logOut";
 import AdminNav from "../Admin/AdminNav";
 const withLogin = [
-  "/tenent",
   "/booking-history",
   "/admin",
   "/admin/setting",

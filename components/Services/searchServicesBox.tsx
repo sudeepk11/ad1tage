@@ -1,7 +1,5 @@
 "use client";
 import React, { useEffect, useRef, useState } from "react";
-import Button from "../Common/Button";
-import useDebounce from "../../hooks/useDebounce";
 import CardWithSlider from "../Common/CardWithSlider";
 import { Service } from "../../types/services";
 

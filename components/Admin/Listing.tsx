@@ -7,7 +7,6 @@ import Link from "next/link";
 import Slider from "react-slick";
 import "slick-carousel/slick/slick.css";
 import "slick-carousel/slick/slick-theme.css";
-import img from "../../images/about-img-2.png";
 
 var settings = {
   dots: true,

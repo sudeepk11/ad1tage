@@ -13,11 +13,12 @@ export default async function editService(
   const authToken = cookies().get("access_token")?.value;
   if (!authToken) return redirect("/login");
   const name = data.get("name").toString();
+  const displayName = data.get("displayName").toString();
   const city = data.get("city").toString();
   const address = data.get("address").toString();
   const lattitude = data.get("lattitude").toString();
   const longitude = data.get("longitude").toString();
-  const phoneNumber = data.get("phone").toString();
+  const phoneNumber = data.get("phoneNumber").toString();
   const category = data.get("category").toString();
   const desc = data
     .get("desc")
@@ -26,10 +27,10 @@ export default async function editService(
     .replace(/\t/g, "    ")
     .split("\n");
   const photos = data.get("photos").toString().split(",");
-  const userId = data.get("user_id").toString();
-  const serviceId = data.get("service_id").toString();
+  const userId = data.get("userId").toString();
+  const serviceId = data.get("serviceId").toString();
   const pincode = data.get("pincode").toString();
-  const websiteLink = data.get("website").toString();
+  const websiteLink = data.get("websiteLink").toString();
   const plotnumber = data.get("plotnumber").toString();
 
   try {
@@ -37,6 +38,7 @@ export default async function editService(
       `${process.env.NEXT_PUBLIC_API_URL}/services/${serviceId}`,
       JSON.stringify({
         name,
+        displayName,
         city,
         address,
         pincode,

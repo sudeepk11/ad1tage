@@ -18,7 +18,7 @@ const ForgotPassword = () => {
         authLinkText={"Register"}
         authLink={"/signup"}
       >
-        <form className="flex flex-col justify-center items-center pt-6 max-w-[384px] w-full mx-auto w-full">
+        <form className="flex flex-col justify-center items-center pt-6 max-w-[384px] w-full mx-auto">
           <div className="w-full">
             <input
               type="text"

@@ -2,8 +2,6 @@ import Image from "next/image";
 import React from "react";
 import aboutImg from "../../Assets/Images/about-us.jpg";
 import { josefin } from "../../utils/utilsFonts";
-import Uniqueness from "./Uniqueness";
-import Philosophy from "./Philosophy";
 import Mission from "./Mission";
 import Goals from "./Goals";
 

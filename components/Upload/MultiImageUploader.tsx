@@ -7,12 +7,8 @@ import close from "../../Assets/Icons/close.png";
 import axios from "axios";
 
 // Multiple image uploader input form component and has a modal to preview the images and delete them
-const MultiImageUploader = ({ initImages = [] }) => {
+const MultiImageUploader = ({ photos, updateFields }) => {
   const [modal, setModal] = useState(false);
-  const [images, setImages] = useState([...initImages]); // array of images url
-
-  // serialize images array to string
-  const imagesString = images.join(",");
 
   return (
     <div className="w-full col-span-4 max-md:col-span-8">
@@ -23,36 +19,24 @@ const MultiImageUploader = ({ initImages = [] }) => {
       </label>
       <Button
         ButtonClasses="text-white w-full py-3 flex justify-center items-center"
-        ButtonText={`${images.length} Images Uploaded`}
+        ButtonText={`${photos.length} Images Uploaded`}
         ButtonClicked={(e) => {
           e.preventDefault();
           setModal(true);
         }}
       />
-      <input
-        type="text"
-        name="photos"
-        className="hidden"
-        value={imagesString}
-      />
       {modal && (
         <ImagePreviewModal
-          images={images}
+          photos={photos}
           setModal={setModal}
-          setImages={setImages}
+          updateFields={updateFields}
         />
       )}
-      {/* <input
-        className="hidden w-full h-[52px] border border-solid border-greyishBrown rounded-lg p-3"
-        type="text"
-        placeholder="Enter Image URL"
-        name="photos"
-      /> */}
     </div>
   );
 };
 
-const ImagePreviewModal = ({ images, setModal, setImages }) => {
+const ImagePreviewModal = ({ photos, setModal, updateFields }) => {
   // Upload Images API call:
   const [selectedFiles, setSelectedFiles] = useState([]);
   const [uploading, setUploading] = useState(false);
@@ -73,7 +57,7 @@ const ImagePreviewModal = ({ images, setModal, setImages }) => {
         `${process.env.NEXT_PUBLIC_API_URL}/upload/images`,
         formData
       );
-      setImages([...images, ...data.data.images]);
+      updateFields({ photos: [...photos, ...data.data.images] });
       setSelectedFiles([]);
       fileInputRef.current.value = "";
       setUploading(false);
@@ -90,15 +74,15 @@ const ImagePreviewModal = ({ images, setModal, setImages }) => {
 
   const handelDelete = async (index) => {
     // Delete image using api call
-    const id = images[index].split("/").pop();
+    const id = photos[index].split("/").pop();
 
     try {
       const { data } = await axios.delete(
         `${process.env.NEXT_PUBLIC_API_URL}/images/${id}`
       );
       if (data.status === "success") {
-        const newImages = images.filter((image, i) => i !== index);
-        setImages([...newImages]);
+        const newImages = photos.filter((image, i) => i !== index);
+        updateFields({ photos: [...newImages] });
       }
     } catch (error) {
       console.log(error);
@@ -124,12 +108,12 @@ const ImagePreviewModal = ({ images, setModal, setImages }) => {
           </p>
         </div>
         <div className="grid grid-cols-6 gap-3 overflow-scroll scrollbar-hide my-3">
-          {images.length === 0 && (
+          {photos.length === 0 && (
             <div className="col-span-6 flex justify-center items-center">
               <p className="text-center text-black">No Images Uploaded</p>
             </div>
           )}
-          {images.map((image, index) => (
+          {photos.map((image, index) => (
             <div key={index} className="col-span-1 relative shadow-lg">
               <Image
                 className="rounded-lg object-cover w-52 h-24"

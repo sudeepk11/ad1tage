@@ -2,9 +2,8 @@
 
 import Image from "next/image";
 import { Service } from "../../types/services";
-import { useContext, useRef, useState, useTransition } from "react";
+import { useContext, useState } from "react";
 import { AuthContext } from "../../providers/AuthProvider";
-import { toast } from "react-hot-toast";
 import axios from "axios";
 import { useRouter } from "next/navigation";
 import deleteIcon from "../../Assets/Icons/delete.png";

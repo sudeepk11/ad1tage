@@ -10,7 +10,6 @@ const withoutLayout = [
   "/signup/business-owner",
 ];
 const withLogin = [
-  "/tenent",
   "/booking-history",
   "/admin",
   "/admin/setting",

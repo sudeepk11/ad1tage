@@ -1,18 +1,21 @@
 import { NextRequest, NextResponse } from "next/server";
 
-const publicPathnames = ['/login', '/signup', '/forgot-password']
+const publicPathnames = ["/login", "/signup", "/forgot-password"];
 
-const privatePathnames = ['/admin', '/tenent']
+const privatePathnames = ["/admin"];
 
 export default function middleware(req: NextRequest) {
-    const authToken = req.cookies.get("access_token")?.value
-    const { pathname } = req.nextUrl
-    
-    if(authToken && publicPathnames.some(item => pathname.startsWith(item))) {
-        return NextResponse.redirect(new URL("/tenent", req.url))
-    }
+  const authToken = req.cookies.get("access_token")?.value;
+  const { pathname } = req.nextUrl;
 
-    if(!authToken && privatePathnames.some(item => pathname.startsWith(item))) {
-        return NextResponse.redirect(new URL("/login", req.url))
-    }
+  if (authToken && publicPathnames.some((item) => pathname.startsWith(item))) {
+    return NextResponse.redirect(new URL("/", req.url));
+  }
+
+  if (
+    !authToken &&
+    privatePathnames.some((item) => pathname.startsWith(item))
+  ) {
+    return NextResponse.redirect(new URL("/login", req.url));
+  }
 }

@@ -7,7 +7,7 @@ import { josefin } from "../../../utils/utilsFonts";
 import Link from "next/link";
 import Button from "../../../components/Common/Button";
 import callIcon from "../../../Assets/Icons/call.png";
-import webLink from '../../../Assets/Icons/web-link.png'
+import webLink from "../../../Assets/Icons/web-link.png";
 import verifiedIcon from "../../../Assets/Icons/verified.png";
 import locationIcon from "../../../Assets/Icons/location.png";
 import Rating from "../../../components/Common/Rating";
@@ -59,6 +59,7 @@ export default async function ServiceDetails({
   const {
     _id,
     name,
+    displayName,
     desc,
     lattitude,
     longitude,
@@ -75,6 +76,24 @@ export default async function ServiceDetails({
 
   return (
     <div>
+      {/* Title */}
+      <div className="flex justify-between py-5 mt-4 px-4 mx-4 ">
+        <h1
+          className={` text-3xl flex items-center leading-10 w-full ${josefin.className} font-semibold flex-wrap`}
+        >
+          <span>{name}</span>
+          {isApproved && (
+            <Image src={verifiedIcon} alt="" className="object-contain mx-2" />
+          )}
+          <div className="flex">
+            {featured && (
+              <span className=" flex items-center justify-center text-[15px] max-md:text-sm text-primary bg-blue-100 md:mx-4 px-4 border-primary border-solid border-2 rounded-full">
+                # ad1tage recommended
+              </span>
+            )}
+          </div>
+        </h1>
+      </div>
       <VisualHeader
         photos={photos}
         latitude={parseFloat(lattitude)}
@@ -83,28 +102,6 @@ export default async function ServiceDetails({
       <div className="grid grid-cols-12 px-4 lg:px-4 max-lg:flex-col gap-4">
         {/* Service details */}
         <div className="lg:col-span-7 col-span-12 max-lg:w-full px-4 max-lg:order-last">
-          {/* Title */}
-          <div className="flex justify-between py-5 mt-4">
-            <h1
-              className={` text-3xl flex items-center leading-10 w-full ${josefin.className} font-semibold flex-wrap`}
-            >
-              <span>{name}</span>
-              {isApproved && (
-                <Image
-                  src={verifiedIcon}
-                  alt=""
-                  className="object-contain mx-2"
-                />
-              )}
-              <div className="flex">
-                {featured && (
-                  <span className=" flex items-center justify-center text-[15px] text-primary bg-blue-100 md:mx-4 px-4 border-primary border-solid border-2 rounded-full">
-                    # ad1tage recommended
-                  </span>
-                )}
-              </div>
-            </h1>
-          </div>
           {/* Address and owner bar */}
           <div className="room-details flex gap-2 mt-[12px] justify-between flex-wrap mb-6">
             <div className="pb-[54px] w-full">
@@ -132,13 +129,10 @@ export default async function ServiceDetails({
                   <div>
                     <p>
                       <span className="text-base text-primary">Owner:</span>{" "}
-                      {Owner.username}
+                      {displayName || Owner.username}
                     </p>
-
                   </div>
-
                 </div>
-
               </div>
             </div>
 
@@ -223,20 +217,17 @@ export default async function ServiceDetails({
                 ButtonClasses="!bg-primary mt-6 text-white font-medium w-full flex items-center justify-center my-6 !py-3"
               />
             </a>
-
-            
-
           </form>
 
           {websiteLink && (
-              <a href={`${websiteLink}`} target="_blank">
-                <Button
-                  ButtonText="Website"
-                  icon={webLink}
-                  ButtonClasses="!bg-white border-blue-300 text-black border border-1 mt-6 font-medium w-full flex items-center justify-center my-6 !py-3"
-                />
-              </a>
-            )}
+            <a href={`${websiteLink}`} target="_blank">
+              <Button
+                ButtonText="Website"
+                icon={webLink}
+                ButtonClasses="!bg-white border-blue-300 text-black border border-1 mt-6 font-medium w-full flex items-center justify-center my-6 !py-3"
+              />
+            </a>
+          )}
         </div>
       </div>
     </div>

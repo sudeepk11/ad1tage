@@ -2,7 +2,6 @@
 import Image from "next/image";
 import React, { useState } from "react";
 import filterIcon from "../../images/filter-icon.png";
-import { arrivalItems } from "../../utils/utilsItems";
 
 const Dropdown = ({
   dropdownBeforeImg,
@@ -39,14 +38,14 @@ const Dropdown = ({
         </p>
       </div>
       {filtreMenu && (
-        <div className="p-4 rounded-xl grid grid-cols-2 bg-white mt-2 absolute z-[1] bg-white w-full top-[100%]">
-          {arrivalItems.map((items, index) => {
+        <div className="p-4 rounded-xl grid grid-cols-2 bg-white mt-2 absolute z-[1] w-full top-[100%]">
+          {/* {arrivalItems.map((items, index) => {
             return (
               <div key={index} className="text-base">
                 {items}
               </div>
             );
-          })}
+          })} */}
         </div>
       )}
     </div>
