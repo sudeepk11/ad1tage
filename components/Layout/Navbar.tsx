@@ -1,7 +1,8 @@
 import Link from "next/link";
 import React, { useContext, useState, useTransition } from "react";
 import Image from "next/image";
-import logoLionImage from "../../images/logo.png";
+import { montserrat } from "../../utils/utilsFonts";
+// import logoLionImage from "../../images/logo.png";
 import arrowDown from "../../images/arrow-down.png";
 import {
   navbarItems,
@@ -43,11 +44,16 @@ const Navbar = () => {
       <div className="flex items-center justify-between max-w-full py-[13px] mx-auto px-5 lg:px-[50px] ">
         <div className="flex gap-[50px]">
           <Link className="flex items-center text-gray-600" href="/">
-            <Image
+            {/* <Image
               className="w-[95px] min-w-[80px]"
               src={logoLionImage}
               alt=""
-            />
+            /> */}
+            <p className=" font-extrabold">
+              ad
+              <span className={`${montserrat.className} text-primary`}>1</span>
+              tage
+            </p>
           </Link>
           <input type="checkbox" className="hidden peer" id="nav-check" />
           {!router.startsWith("/admin") && (
