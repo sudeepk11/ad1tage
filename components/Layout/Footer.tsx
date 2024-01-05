@@ -1,12 +1,19 @@
 import React from "react";
+import { inter } from "../../utils/utilsFonts";
 
 const Footer = () => {
   return (
     <section className="bg-footer">
       <div className="max-w-screen-xl px-4 py-10 mx-auto space-y-6 overflow-hidden sm:px-6 lg:px-8">
         <p className=" text-base leading-6 text-center text-gray-100">
-          <span className="font-semibold">ad1tage</span> Discover Nearby
-          Services with Ease
+          <span className="font-semibold">
+            ad
+            <span className={`${inter.className} text-primary font-bold`}>
+              1
+            </span>
+            tage
+          </span>{" "}
+          Discover Nearby Services with Ease
         </p>
         <nav className="flex flex-wrap justify-center -mx-5 -my-2">
           <div className="px-5 py-2">
@@ -86,7 +93,9 @@ const Footer = () => {
           </a>
         </div>
         <p className="mt-8 text-base leading-6 text-center text-white">
-          © 2023 ad1tage, Inc. All rights reserved.
+          © 2023 ad
+          <span className={`${inter.className}`}>1</span>
+          tage, Inc. All rights reserved.
         </p>
       </div>
     </section>

@@ -1,7 +1,7 @@
 import Link from "next/link";
 import React, { useContext, useState, useTransition } from "react";
 import Image from "next/image";
-import { montserrat } from "../../utils/utilsFonts";
+import { inter } from "../../utils/utilsFonts";
 // import logoLionImage from "../../images/logo.png";
 import arrowDown from "../../images/arrow-down.png";
 import {
@@ -51,7 +51,9 @@ const Navbar = () => {
             /> */}
             <p className=" font-extrabold">
               ad
-              <span className={`${montserrat.className} text-primary`}>1</span>
+              <span className={`${inter.className} text-primary font-bold`}>
+                1
+              </span>
               tage
             </p>
           </Link>
