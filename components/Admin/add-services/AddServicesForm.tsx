@@ -48,12 +48,25 @@ const AddServicesForm = ({ categories, userId, details = null, action }) => {
   const [isPending, startTransition] = useTransition();
   const { user } = useContext(AuthContext);
 
+  const formatDescription = (desc) => {
+    const result = desc.map((line, index) => {
+      // Check if it's the last line
+      const isLastLine = index === desc.length - 1;
+
+      // Add a newline character if it's not the last line
+      return isLastLine ? line : line + "\n";
+    });
+
+    // Join the lines into a single string
+    return result.join("");
+  };
+
   useEffect(() => {
     if (details) {
       setData((prev) => ({
         ...prev,
         ...details,
-        userId,
+        desc: formatDescription(details.desc),
         category: details.category._id,
         displayName: details.displayName,
         serviceId: details._id,
@@ -89,6 +102,7 @@ const AddServicesForm = ({ categories, userId, details = null, action }) => {
     Object.keys(data).forEach((key) => {
       formData.append(key, data[key]);
     });
+
     startTransition(async () => {
       const resp = await action(formData);
 
