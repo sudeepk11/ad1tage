@@ -87,6 +87,9 @@ export default function VisualHeader({
   const calculateEstimatedTime = (duration) => {
     const hours = Math.floor(duration / 3600);
     const minutes = Math.floor((duration - hours * 3600) / 60);
+
+    if (hours === 0) return `${minutes} minutes`;
+
     return `${hours} hours and ${minutes} minutes`;
   };
 
