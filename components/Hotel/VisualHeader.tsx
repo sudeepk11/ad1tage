@@ -84,6 +84,12 @@ export default function VisualHeader({
     setRoute(geojson);
   }, [userCoords, latitude, longitude]);
 
+  const calculateEstimatedTime = (duration) => {
+    const hours = Math.floor(duration / 3600);
+    const minutes = Math.floor((duration - hours * 3600) / 60);
+    return `${hours} hours and ${minutes} minutes`;
+  };
+
   return (
     <div className="grid grid-cols-12 gap-6 relative overflow-hidden property-detail hotel-suggestion w-[98%] h-fit mx-auto my-2 p-4">
       <div className="col-span-7 max-lg:col-span-12 md:h-fit max-md:w-full">
@@ -107,8 +113,7 @@ export default function VisualHeader({
         <div className="absolute z-50 left-4 bottom-4 bg-black/60 text-white py-3 px-6 flex flex-col rounded">
           <p className="text-sm">
             {/* Show duration in hours and minutes */}
-            Duration by car: {Math.floor(duration / 3600)} hours and{" "}
-            {Math.floor(duration / 60)} minutes
+            Duration by car: {calculateEstimatedTime(duration)}
           </p>
         </div>
         <Map
