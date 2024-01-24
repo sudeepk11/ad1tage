@@ -31,7 +31,7 @@ const Navbar = () => {
   const router = usePathname();
   const { push } = useRouter();
   const [isPending, startTransition] = useTransition();
-  const { user, token, logOut: signOut } = useContext(AuthContext);
+  const { user, loading, token, logOut: signOut } = useContext(AuthContext);
   const isAdmin =
     !!(token && user.role === "admin") || !!(token && user.role === "owner");
   const [userSettingDropdown, setUserSettingDropdown] = useState(false);
@@ -41,8 +41,8 @@ const Navbar = () => {
         token ? "shadow-md" : ""
       } `}
     >
-      <div className="flex items-center justify-between max-w-full py-[13px] mx-auto px-5 lg:px-[50px] ">
-        <div className="flex gap-[50px]">
+      <div className="flex items-center justify-between gap-4 max-w-full py-[13px] mx-auto px-5 lg:px-[50px] ">
+        <div className="flex gap-[50px] max-lg:flex-[2]">
           <Link className="flex items-center text-gray-600" href="/">
             <Image className="w-[95px] min-w-[80px]" src={logo} alt="" />
           </Link>
@@ -78,10 +78,10 @@ const Navbar = () => {
           )}
           {isAdmin && router.startsWith("/admin") && <AdminNav />}
         </div>
-        {token ? (
+        {token && !loading && (
           <div className="relative cursor-pointer">
             <div
-              className="flex items-center max-lg:hidden"
+              className="flex items-center"
               onClick={() => setUserSettingDropdown(!userSettingDropdown)}
             >
               {/* <Image className="w-[44px] h-[44px]" src={} alt="" /> */}
@@ -145,7 +145,8 @@ const Navbar = () => {
               </div>
             )}
           </div>
-        ) : (
+        )}
+        {!token && !loading && (
           <div className="flex items-center gap-5 max-lg:hidden">
             <Link
               href={"/signup/business-owner"}
@@ -166,10 +167,10 @@ const Navbar = () => {
           </div>
         )}
         <div className="flex items-center gap-4 nav-button lg:hidden">
-          {!token && (
+          {!token && !loading && (
             <Link
               href={"/login"}
-              className={`bg-blackLight rounded-[8px] px-[31px] py-2  laptopScreen:text-base text-white`}
+              className={` bg-primary rounded-[8px] px-[31px] py-2  laptopScreen:text-base text-white`}
             >
               Sign In
             </Link>

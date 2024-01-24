@@ -8,6 +8,7 @@ export default function useAuth(): AuthContextType {
   const [user, setUser] = useState<Pick<User, "username" | "role"> | null>(
     null
   );
+  const [loading, setLoading] = useState(true);
 
   function logIn(user: User) {
     if (!user) return logOut();
@@ -22,6 +23,7 @@ export default function useAuth(): AuthContextType {
         role: user.role,
       })
     );
+    setLoading(false);
   }
 
   function logOut() {
@@ -29,6 +31,7 @@ export default function useAuth(): AuthContextType {
     setUser(null);
     setToken("");
     delete axios.defaults.headers.common.Authorization;
+    setLoading(false);
   }
 
   useLayoutEffect(() => {
@@ -40,6 +43,7 @@ export default function useAuth(): AuthContextType {
   return {
     user,
     token,
+    loading,
     logIn,
     logOut,
   };
