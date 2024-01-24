@@ -1,6 +1,8 @@
 import { josefin } from "../../../utils/utilsFonts";
 import MultiImageUploader from "../../Upload/MultiImageUploader";
 
+const URL_REGEX = "^(http|https)://.(.*)";
+
 const AdditionalDetailsForm = ({
   categories,
   category,
@@ -66,6 +68,8 @@ const AdditionalDetailsForm = ({
           name="website"
           value={websiteLink}
           onChange={(e) => updateFields({ websiteLink: e.target.value })}
+          pattern={URL_REGEX}
+          title="Please enter a valid URL"
         />
       </div>
       <MultiImageUploader photos={photos} updateFields={updateFields} />
