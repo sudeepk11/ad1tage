@@ -27,7 +27,6 @@ export default async function editService(
     .replace(/\t/g, "    ")
     .split("\n");
   const photos = data.get("photos").toString().split(",");
-  const userId = data.get("userId").toString();
   const serviceId = data.get("serviceId").toString();
   const pincode = data.get("pincode").toString();
   const websiteLink = data.get("websiteLink").toString();
@@ -49,7 +48,6 @@ export default async function editService(
         phoneNumber,
         category,
         desc,
-        Owner: userId,
         photos: [...photos],
       }),
       {
