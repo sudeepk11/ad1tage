@@ -2,7 +2,7 @@ import Link from "next/link";
 import React, { useContext, useState, useTransition } from "react";
 import Image from "next/image";
 import { inter } from "../../utils/utilsFonts";
-// import logoLionImage from "../../images/logo.png";
+import logo from "../../Assets/Images/logo.png";
 import arrowDown from "../../images/arrow-down.png";
 import {
   navbarItems,
@@ -44,18 +44,7 @@ const Navbar = () => {
       <div className="flex items-center justify-between max-w-full py-[13px] mx-auto px-5 lg:px-[50px] ">
         <div className="flex gap-[50px]">
           <Link className="flex items-center text-gray-600" href="/">
-            {/* <Image
-              className="w-[95px] min-w-[80px]"
-              src={logoLionImage}
-              alt=""
-            /> */}
-            <p className=" font-extrabold">
-              ad
-              <span className={`${inter.className} text-primary font-bold`}>
-                1
-              </span>
-              tage
-            </p>
+            <Image className="w-[95px] min-w-[80px]" src={logo} alt="" />
           </Link>
           <input type="checkbox" className="hidden peer" id="nav-check" />
           {!router.startsWith("/admin") && (

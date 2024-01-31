@@ -4,6 +4,7 @@ import Link from "next/link";
 import google from "../../images/google-logo.png";
 import linkedin from "../../images/linkedinLogin.png";
 import { josefin } from "../../utils/utilsFonts";
+import logo from "../../Assets/Images/logo.png";
 
 const RightFormSection = ({
   titleText,
@@ -17,7 +18,8 @@ const RightFormSection = ({
   return (
     <div className="p-4 basis-3/6">
       <Link className="flex items-center justify-center" href="/">
-        <h2 className="font-semibold text-3xl">ad1tage</h2>
+        <Image className="w-[95px] min-w-[80px]" src={logo} alt="" />
+
         {/* {logoText} */}
       </Link>
       <h3
