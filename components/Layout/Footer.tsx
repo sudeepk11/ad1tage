@@ -1,20 +1,25 @@
 import React from "react";
 import { inter } from "../../utils/utilsFonts";
+import Image from "next/image";
+import logo from "../../Assets/Images/logo-white-1.png";
 
 const Footer = () => {
   return (
     <section className="bg-footer">
       <div className="max-w-screen-xl px-4 py-10 mx-auto space-y-6 overflow-hidden sm:px-6 lg:px-8">
-        <p className=" text-base leading-6 text-center text-gray-100">
-          <span className="font-semibold">
+        <div className="flex items-center justify-center">
+          <Image className="w-[95px] min-w-[80px]" src={logo} alt="" />
+          <p className="block text-base leading-6 text-center text-gray-100 px-2">
+            {/* <span className="font-semibold">
             ad
             <span className={`${inter.className} text-primary font-bold`}>
-              1
+            1
             </span>
             tage
-          </span>{" "}
-          Discover Nearby Services with Ease
-        </p>
+          </span>{" "} */}
+            Discover Nearby Services with Ease
+          </p>
+        </div>
         <nav className="flex flex-wrap justify-center -mx-5 -my-2">
           <div className="px-5 py-2">
             <a href="/about" className="text-base leading-6 text-white ">
