@@ -38,7 +38,7 @@ const LocationForm = ({
     //   data.features.find((item) => item.id.includes("country"))?.text || "";
     const newCity =
       data.features.find((item) => item.id.includes("place"))?.text || "";
-    // setAddress(newAddress);
+
     updateFields({ city: newCity });
     // setCountry(newCountry);
     updateFields({ pincode: newPostcode });
@@ -53,7 +53,6 @@ const LocationForm = ({
     const newCity =
       data.features.find((item) => item.id.includes("place"))?.text || "";
     const newCoords = data.features[0].center;
-    // updateFields({ city: newCity });
 
     updateFields({ lattitude: newCoords[1], longitude: newCoords[0] });
 
@@ -182,7 +181,7 @@ const LocationForm = ({
           placeholder="City"
           className="w-full h-[52px] border border-solid border-greyishBrown bg-gray-50 rounded-lg p-3"
           name="city"
-          readOnly
+          // readOnly
           required
         />
       </div>
